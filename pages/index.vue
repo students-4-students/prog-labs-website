@@ -41,7 +41,7 @@
         <span class="font-semibold">Instructions</span>
       </div>
     </ResizablePanel>
-    <ResizableHandle :id="layout.instructions.id" />
+    <EditorResizableHandle id="layout.instructions.id" />
     <ResizablePanel>
       <ResizablePanelGroup id="code-terminal-group" direction="vertical">
         <ResizablePanel
@@ -60,7 +60,7 @@
             }"
           />
         </ResizablePanel>
-        <ResizableHandle :id="layout.codeEditor.id" />
+        <EditorResizableHandle :id="layout.codeEditor.id" />
         <ResizablePanel
           :id="layout.terminal.id"
           :default-size="layout.terminal.defaultSize"

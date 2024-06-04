@@ -6,6 +6,8 @@ export default defineNuxtConfig({
     'shadcn-nuxt',
     '@nuxtjs/tailwindcss',
     'nuxt-monaco-editor',
+    '@nuxt/content',
+    '@vueuse/nuxt',
   ],
   shadcn: {
     /**

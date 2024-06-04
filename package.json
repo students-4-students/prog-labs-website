@@ -29,7 +29,9 @@
   },
   "type": "module",
   "devDependencies": {
+    "@nuxt/content": "^2.12.1",
     "@nuxtjs/tailwindcss": "^6.12.0",
+    "@vueuse/nuxt": "^10.10.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.5",
     "prettier": "3.3.0",
