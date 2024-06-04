@@ -67,7 +67,8 @@
           :min-size="layout.terminal.minSize"
         >
           <div class="flex h-full items-center justify-center p-6">
-            <span class="font-semibold">Terminal</span>
+            <!-- <span class="font-semibold">Terminal</span> -->
+            <EditorTerminal />
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>
