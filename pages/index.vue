@@ -66,7 +66,7 @@
           :default-size="layout.terminal.defaultSize"
           :min-size="layout.terminal.minSize"
         >
-          <div class="flex h-full items-center justify-center p-6">
+          <div class="flex flex-col h-full">
             <EditorTerminal />
           </div>
         </ResizablePanel>
