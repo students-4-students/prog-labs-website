@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     'nuxt-monaco-editor',
     '@nuxt/content',
     '@vueuse/nuxt',
+    'nuxt-lucide-icons',
   ],
   shadcn: {
     /**
@@ -20,5 +21,13 @@ export default defineNuxtConfig({
      * @default "./components/ui"
      */
     componentDir: './components/ui',
+  },
+  content: {
+    highlight: {
+      theme: {
+        // Default theme (same as single string)
+        default: 'github-light',
+      },
+    },
   },
 });
