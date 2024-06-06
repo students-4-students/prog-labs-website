@@ -28,6 +28,7 @@ export default defineNuxtConfig({
         // Default theme (same as single string)
         default: 'github-light',
       },
+      langs: ['c', 'cpp', 'java', 'typescript', 'python'],
     },
   },
 });

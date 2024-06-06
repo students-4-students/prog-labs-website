@@ -41,10 +41,10 @@
       :max-size="layout.instructions.maxSize"
     >
       <div
-        class="flex h-full items-center justify-center px-6 bg-slate-50 overflow-y-scroll"
+        class="flex h-full items-center justify-center bg-slate-50 overflow-y-scroll"
       >
         <ContentDoc
-          class="w-full h-full overflow-y-scroll overflow-x-hidden prose prose-pre:bg-slate-200 prose-pre:p-4 lg:prose-lg"
+          class="p-6 w-full h-full overflow-y-scroll prose prose-pre:bg-white prose-pre:border prose-pre:p-4 lg:prose-lg text-justify"
         />
       </div>
     </ResizablePanel>
