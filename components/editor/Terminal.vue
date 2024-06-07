@@ -65,13 +65,13 @@
     <div
       class="flex grow justify-start bg-slate-50 border-b-[1.5px] border-l-[1.5px] border-border"
     >
-      <Button variant="ghost" size="icon" class="rounded-none">
+      <!-- <Button variant="ghost" size="icon" class="rounded-none">
         <LucideChevronDown class="w-4 h-4" />
-      </Button>
-      <Separator orientation="vertical" class="border" />
+      </Button> -->
       <Button variant="ghost" size="icon" class="rounded-none">
         <LucideEraser class="w-4 h-4" />
       </Button>
+      <Separator orientation="vertical" class="border" />
     </div>
   </div>
   <div ref="container" class="w-full h-full p-4">

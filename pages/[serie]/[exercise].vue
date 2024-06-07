@@ -1,6 +1,10 @@
 <script setup lang="ts">
+  /*
+   * User data
+   */
   // Language of the monaco code editor.
-  const codeLanguage = ref('python');
+  const codeLanguage = ref('java');
+  const section = 'computer-science';
 
   /**
    * Layout configuration for the resizable panels.
@@ -45,10 +49,15 @@
       >
         <ContentDoc
           class="p-6 w-full h-full overflow-y-scroll prose prose-pre:bg-white prose-pre:border prose-pre:p-4 lg:prose-lg text-justify"
-        />
+          :path="`${section}/${route.params.serie}/${route.params.exercise}`"
+        >
+          <template #not-found>
+            <h1>Uh oh, cet exercice n'existe pas.</h1>
+          </template>
+        </ContentDoc>
       </div>
     </ResizablePanel>
-    <EditorResizableHandle id="layout.instructions.id" />
+    <EditorResizableHandle :id="layout.instructions.id" />
     <ResizablePanel>
       <ResizablePanelGroup id="code-terminal-group" direction="vertical">
         <ResizablePanel
