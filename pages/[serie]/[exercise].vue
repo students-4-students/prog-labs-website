@@ -23,7 +23,6 @@
     },
     terminal: {
       id: 'terminal',
-      defaultSize: 35,
       minSize: 12,
     },
   };
@@ -32,7 +31,6 @@
 </script>
 
 <template>
-  <Navbar />
   <ResizablePanelGroup
     id="demo-group-1"
     direction="horizontal"
@@ -82,7 +80,6 @@
         <EditorResizableHandle :id="layout.codeEditor.id" />
         <ResizablePanel
           :id="layout.terminal.id"
-          :default-size="layout.terminal.defaultSize"
           :min-size="layout.terminal.minSize"
         >
           <div class="flex flex-col h-full">
