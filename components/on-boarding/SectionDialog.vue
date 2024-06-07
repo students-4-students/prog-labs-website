@@ -35,7 +35,7 @@
           >
             <Card class="hover:bg-slate-50 transition-all">
               <CardHeader>
-                <CardTitle>
+                <CardTitle class="text-lg">
                   {{ name }}
                 </CardTitle>
                 <CardDescription>

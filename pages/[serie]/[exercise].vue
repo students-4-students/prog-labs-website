@@ -12,13 +12,12 @@
   const layout = {
     instructions: {
       id: 'instructions',
-      defaultSize: 35,
+      defaultSize: 30,
       minSize: 20,
-      maxSize: 35,
+      maxSize: 30,
     },
     codeEditor: {
       id: 'code-editor',
-      defaultSize: 65,
       minSize: 25,
     },
     terminal: {
@@ -34,7 +33,7 @@
   <ResizablePanelGroup
     id="demo-group-1"
     direction="horizontal"
-    class="flex border w-full h-full"
+    class="flex w-full h-full"
   >
     <ResizablePanel
       :id="layout.instructions.id"
@@ -60,7 +59,6 @@
       <ResizablePanelGroup id="code-terminal-group" direction="vertical">
         <ResizablePanel
           :id="layout.codeEditor.id"
-          :default-size="layout.codeEditor.defaultSize"
           :min-size="layout.codeEditor.minSize"
         >
           <MonacoEditor

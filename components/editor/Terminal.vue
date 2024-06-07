@@ -63,7 +63,7 @@
       <p class="text-sm font-medium">Code Execution</p>
     </div>
     <div
-      class="flex grow justify-start bg-slate-50 border-b-[1.5px] border-l-[1.5px] border-border"
+      class="flex grow justify-start bg-slate-50 border-b border-l border-border"
     >
       <!-- <Button variant="ghost" size="icon" class="rounded-none">
         <LucideChevronDown class="w-4 h-4" />
@@ -71,7 +71,7 @@
       <Button variant="ghost" size="icon" class="rounded-none">
         <LucideEraser class="w-4 h-4" />
       </Button>
-      <Separator orientation="vertical" class="border" />
+      <Separator orientation="vertical" />
     </div>
   </div>
   <div ref="container" class="w-full h-full p-4">
