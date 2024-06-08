@@ -18,15 +18,32 @@
     },
     codeEditor: {
       id: 'code-editor',
-      minSize: 25,
+      minSize: 35,
     },
     terminal: {
       id: 'terminal',
-      minSize: 12,
+      defaultSize: 25,
+      minSize: 15,
     },
   };
 
   const route = useRoute();
+  const writtenCode = ref(
+    ` 
+/**
+ * Welcome to the Java programming environment!
+ */
+public class Main {
+    /**
+     * Program entry point.
+     * This will be the first method that is called when you run your program.
+     */
+    public static void main(String[] args) {
+      System.out.println("Hello, World!");
+    }
+}
+`.trimStart(),
+  );
 </script>
 
 <template>
@@ -63,12 +80,12 @@
         >
           <MonacoEditor
             class="w-full h-full p-4"
+            v-model.lazy="writtenCode"
             :lang="codeLanguage"
             :options="{
               automaticLayout: true,
-              glyphMargin: false,
-              folding: false,
               lineNumbersMinChars: 0,
+              fontSize: 16,
               minimap: {
                 enabled: false,
               },
@@ -78,6 +95,7 @@
         <EditorResizableHandle :id="layout.codeEditor.id" />
         <ResizablePanel
           :id="layout.terminal.id"
+          :default-size="layout.terminal.defaultSize"
           :min-size="layout.terminal.minSize"
         >
           <div class="flex flex-col h-full">

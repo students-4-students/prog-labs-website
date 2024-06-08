@@ -1,18 +1,29 @@
 <script lang="ts" setup>
-  import CardContent from '../ui/card/CardContent.vue';
-
   const languages = ref([
     {
       name: 'C++',
-      sections: ['MA', 'PH', 'SV', 'MT', 'EL', 'GM'],
+      sections: [
+        'Mathématiques',
+        'Physique',
+        'Ingénierie des Sciences du Vivant',
+        'Microtechnique',
+        'Génie Electrique et Electronique',
+        'Génie Mécanique',
+      ],
     },
     {
       name: 'Java',
-      sections: ['IN', 'SC'],
+      sections: ['Informatique', 'Systèmes de Communication'],
     },
     {
       name: 'Python',
-      sections: ['GC', 'MX', 'SIE', 'CMS'],
+      sections: [
+        'Génie Chimique',
+        'Science et Génie des Matériaux',
+        'Génie Civil',
+        "Science et Ingénierie de l'Environnement",
+        'Cours de mathématiques spéciales (CMS)',
+      ],
     },
   ]);
 </script>
@@ -31,7 +42,7 @@
           <AlertDialogAction
             v-for="{ name, sections } in languages"
             :key="name"
-            class="block bg-transparent hover:bg-transparent h-auto p-0 text-left"
+            class="block bg-transparent hover:bg-transparent h-auto p-0 text-left whitespace-normal"
           >
             <Card class="hover:bg-slate-50 transition-all">
               <CardHeader>
