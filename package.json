@@ -27,7 +27,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "prepare": "husky"
+    "prepare": "bunx husky"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"

@@ -5,9 +5,16 @@
         <img src="/logo.png" class="h-7" alt="S4S Logo" />
       </a>
       <div class="flex items-center md:order-2 space-x-2 rtl:space-x-reverse">
+        <Button variant="outline">
+          Changer de section
+          <LucideUsersRound class="ml-2 w-4 h-4" />
+        </Button>
         <DropdownMenu>
           <DropdownMenuTrigger as-child>
-            <Button variant="outline">Changer d'exercice</Button>
+            <Button variant="outline">
+              Changer d'exercice
+              <LucideBookOpenCheck class="ml-2 w-4 h-4" />
+            </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent class="w-48">
             <DropdownMenuLabel>Série 1</DropdownMenuLabel>
@@ -20,7 +27,9 @@
             </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
-        <Button variant="default">Prochain Exercice</Button>
+        <Button variant="default">
+          Prochain Exercice <LucideArrowRight class="ml-2 w-4 h-4" />
+        </Button>
       </div>
     </div>
   </nav>
