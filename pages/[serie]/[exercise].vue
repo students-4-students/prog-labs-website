@@ -62,7 +62,7 @@ public class Main {
         class="flex h-full items-center justify-center bg-slate-50 overflow-y-scroll"
       >
         <ContentDoc
-          class="p-6 w-full h-full overflow-y-scroll prose prose-pre:bg-white prose-pre:border prose-pre:p-4 lg:prose-lg text-justify"
+          class="px-6 w-full h-full overflow-y-scroll prose prose-img:border prose-img:rounded-md prose-pre:bg-white prose-pre:border prose-pre:p-4 prose-a:no-underline lg:prose-lg text-justify"
           :path="`${section}/${route.params.serie}/${route.params.exercise}`"
         >
           <template #not-found>

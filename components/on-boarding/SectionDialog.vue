@@ -26,6 +26,8 @@
       ],
     },
   ]);
+
+  const studentData = useStudentDataStore();
 </script>
 
 <template>
@@ -42,6 +44,7 @@
           <AlertDialogAction
             v-for="{ name, sections } in languages"
             :key="name"
+            @click="studentData.setCodeLanguage(name)"
             class="block bg-transparent hover:bg-transparent h-auto p-0 text-left whitespace-normal"
           >
             <Card class="hover:bg-slate-50 transition-all">
