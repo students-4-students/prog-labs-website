@@ -1,6 +1,6 @@
 <template>
-  <nav class="bg-white border border-gray-200">
-    <div class="flex flex-wrap items-center justify-between mx-8 py-2">
+  <nav class="sticky top-0 z-20 bg-white border border-gray-200">
+    <div class="flex flex-wrap items-center justify-between mx-8 py-3">
       <a class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="/logo.png" class="h-7" alt="S4S Logo" />
       </a>

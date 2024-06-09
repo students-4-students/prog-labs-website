@@ -1,6 +1,8 @@
 <template>
   <OnBoardingSectionDialog />
-  <div class="flex flex-col space-y-8 px-8 py-6 h-full max-w-[60%]">
+  <div
+    class="flex flex-col space-y-8 px-8 py-6 h-full lg:max-w-[90%] xl:max-w-[60%]"
+  >
     <div class="flex flex-col space-y-5">
       <h2 className="flex items-baseline text-3xl font-bold tracking-tight">
         Exercices
@@ -11,7 +13,7 @@
           <Card class="w-full grow" v-for="nb in 2">
             <CardHeader class="flex items-start">
               <img class="h-14 mb-4" src="/logos/s4s-text-darkpng.png" />
-              <CardTitle>Série {{ nb }}</CardTitle>
+              <CardTitle>Série {{ nb }} : Lorem Ipsum</CardTitle>
               <CardDescription>
                 Commodo quis eu in consectetur nisi et eu exercitation. Do magna
                 voluptate sint reprehenderit pariatur cupidatat Lorem esse
