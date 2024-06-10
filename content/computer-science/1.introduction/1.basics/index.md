@@ -1,6 +1,6 @@
 ---
-title: 'Introduction au Java'
-description: 'Test'
+title: 'Java: Les bases'
+description: 'Nulla duis cupidatat duis dolore nisi exercitation non nisi est enim aute.'
 ---
 
 ![Java logo](https://kinsta.com/wp-content/uploads/2023/01/Java-logo.png)
