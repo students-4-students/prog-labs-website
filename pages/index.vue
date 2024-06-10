@@ -1,5 +1,8 @@
+<script lang="ts" setup></script>
+
 <template>
   <OnBoardingSectionDialog />
+  <Navbar />
   <div
     class="flex flex-col space-y-8 px-8 py-6 h-full lg:max-w-[90%] xl:max-w-[60%]"
   >
@@ -59,7 +62,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup></script>
-
-<style></style>

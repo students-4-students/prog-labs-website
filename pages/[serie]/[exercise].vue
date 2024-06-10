@@ -6,27 +6,6 @@
   const codeLanguage = ref('java');
   const section = 'computer-science';
 
-  /**
-   * Layout configuration for the resizable panels.
-   */
-  const layout = {
-    instructions: {
-      id: 'instructions',
-      defaultSize: 30,
-      minSize: 20,
-      maxSize: 30,
-    },
-    codeEditor: {
-      id: 'code-editor',
-      minSize: 35,
-    },
-    terminal: {
-      id: 'terminal',
-      defaultSize: 25,
-      minSize: 15,
-    },
-  };
-
   const route = useRoute();
   const writtenCode = ref(
     ` 
@@ -44,20 +23,20 @@ public class Main {
 }
 `.trimStart(),
   );
+
+  watch(writtenCode, (newCode) => {
+    console.log('New code:', newCode);
+  });
 </script>
 
 <template>
+  <Navbar is-playground />
   <ResizablePanelGroup
     id="demo-group-1"
     direction="horizontal"
     class="flex w-full h-full"
   >
-    <ResizablePanel
-      :id="layout.instructions.id"
-      :default-size="layout.instructions.defaultSize"
-      :min-size="layout.instructions.minSize"
-      :max-size="layout.instructions.maxSize"
-    >
+    <ResizablePanel id="instructions" :min-size="25" :max-size="30">
       <div
         class="flex h-full items-center justify-center bg-slate-50 overflow-y-scroll"
       >
@@ -71,35 +50,16 @@ public class Main {
         </ContentDoc>
       </div>
     </ResizablePanel>
-    <EditorResizableHandle :id="layout.instructions.id" />
+    <PlaygroundResizableHandle id="instructions" />
     <ResizablePanel>
       <ResizablePanelGroup id="code-terminal-group" direction="vertical">
-        <ResizablePanel
-          :id="layout.codeEditor.id"
-          :min-size="layout.codeEditor.minSize"
-        >
-          <MonacoEditor
-            class="w-full h-full p-4"
-            v-model.lazy="writtenCode"
-            :lang="codeLanguage"
-            :options="{
-              automaticLayout: true,
-              lineNumbersMinChars: 0,
-              fontSize: 16,
-              minimap: {
-                enabled: false,
-              },
-            }"
-          />
+        <ResizablePanel id="editor" :min-size="35">
+          <PlaygroundEditor :language="codeLanguage" v-model="writtenCode" />
         </ResizablePanel>
-        <EditorResizableHandle :id="layout.codeEditor.id" />
-        <ResizablePanel
-          :id="layout.terminal.id"
-          :default-size="layout.terminal.defaultSize"
-          :min-size="layout.terminal.minSize"
-        >
+        <PlaygroundResizableHandle id="editor" />
+        <ResizablePanel id="terminal" :default-size="25" :min-size="15">
           <div class="flex flex-col h-full">
-            <EditorTerminal />
+            <PlaygroundTerminal />
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>

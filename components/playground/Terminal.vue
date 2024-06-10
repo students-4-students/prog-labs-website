@@ -57,23 +57,27 @@
 </script>
 
 <template>
-  <div class="flex flex-row w-full">
-    <div class="flex gap-2 px-3 py-2 items-center">
-      <LucideTerminal class="w-4 h-4" />
-      <p class="text-sm font-medium">Code Execution</p>
-    </div>
-    <div
-      class="flex grow justify-start bg-slate-50 border-b border-l border-border"
-    >
+  <PlaygroundTabsHeader tab-name="Terminal">
+    <template #icon>
+      <LucideTerminal />
+    </template>
+    <template #bar>
       <!-- <Button variant="ghost" size="icon" class="rounded-none">
         <LucideChevronDown class="w-4 h-4" />
       </Button> -->
-      <Button variant="ghost" size="icon" class="rounded-none">
+      <!-- <Button variant="outline" size="sm" class="">
+        <LucidePlay class="w-4 h-4 mr-2"/>
+        Exécuter le code
+      </Button> -->
+      <Button variant="ghost" size="icon" class="rounded-none bg-slate-50">
         <LucideEraser class="w-4 h-4" />
       </Button>
-      <Separator orientation="vertical" />
-    </div>
-  </div>
+      <!-- <Button variant="default" size="sm">
+        <LucidePlay class="w-4 h-4 mr-2"/>
+        Exécuter le code
+      </Button> -->
+    </template>
+  </PlaygroundTabsHeader>
   <div ref="container" class="w-full h-full p-4">
     <div
       ref="xterm"
