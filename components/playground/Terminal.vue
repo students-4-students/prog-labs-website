@@ -62,20 +62,12 @@
       <LucideTerminal />
     </template>
     <template #bar>
-      <!-- <Button variant="ghost" size="icon" class="rounded-none">
-        <LucideChevronDown class="w-4 h-4" />
-      </Button> -->
-      <!-- <Button variant="outline" size="sm" class="">
-        <LucidePlay class="w-4 h-4 mr-2"/>
-        Exécuter le code
-      </Button> -->
-      <Button variant="ghost" size="icon" class="rounded-none bg-slate-50">
+      <Button variant="ghost" size="icon" class="rounded-none border-r">
+        <LucidePlay class="w-4 h-4" />
+      </Button>
+      <Button variant="ghost" size="icon" class="rounded-none border-r">
         <LucideEraser class="w-4 h-4" />
       </Button>
-      <!-- <Button variant="default" size="sm">
-        <LucidePlay class="w-4 h-4 mr-2"/>
-        Exécuter le code
-      </Button> -->
     </template>
   </PlaygroundTabsHeader>
   <div ref="container" class="w-full h-full p-4">

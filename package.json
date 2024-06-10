@@ -2,6 +2,7 @@
   "name": "nuxt-app",
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
+    "@shikijs/monaco": "^1.6.3",
     "@xterm/addon-clipboard": "^0.1.0",
     "@xterm/addon-fit": "^0.10.0",
     "@xterm/addon-unicode11": "^0.8.0",
@@ -14,6 +15,7 @@
     "nuxt-monaco-editor": "^1.2.9",
     "radix-vue": "^1.8.3",
     "shadcn-nuxt": "^0.10.4",
+    "shiki": "^1.6.3",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "vaul-vue": "^0.1.2",
