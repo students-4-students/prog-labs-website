@@ -30,7 +30,6 @@
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <User class="mr-2 h-4 w-4" />
                 <span>Les bases</span>
               </DropdownMenuItem>
             </DropdownMenuGroup>

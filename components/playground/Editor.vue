@@ -1,19 +1,29 @@
 <script lang="ts" setup>
-  import { getHighlighter } from 'shiki';
+  import {
+    getHighlighter,
+    type BundledLanguage,
+    type BundledTheme,
+    type LanguageInput,
+  } from 'shiki';
   import { shikiToMonaco } from '@shikijs/monaco';
 
   const code = defineModel();
   const props = defineProps<{
     language: string;
+    supportedLanguages: BundledLanguage[];
+    theme: BundledTheme;
   }>();
 
   const monaco = useMonaco();
   const highlighter = await getHighlighter({
-    themes: ['github-light'],
-    langs: ['java', 'cpp', 'python'],
+    themes: [props.theme],
+    langs: props.supportedLanguages,
   });
 
   if (monaco) {
+    for (const lang of props.supportedLanguages) {
+      monaco.languages.register({ id: lang });
+    }
     // Register the themes from Shiki, and provide syntax highlighting for Monaco.
     shikiToMonaco(highlighter, monaco);
   }
