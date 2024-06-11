@@ -4,7 +4,7 @@
 
   // Monaco editor config
   const language = ref('java');
-  const supportedLanguages: BundledLanguage[] = ['java', 'cpp', 'py'];
+  const supportedLanguages: BundledLanguage[] = ['java', 'cpp', 'python'];
   const theme = 'github-light';
 
   const route = useRoute();
@@ -12,32 +12,15 @@
   const exercise = <string>route.params.exercise;
 
   // Fetch the content for the current exercise
-  const { data } = await useAsyncData('exercise', () =>
-    queryContent(serie, exercise, language.value).findOne(),
-  );
-
-  watch(data, (data) => {
-    if (data != null)
-      // Update the head with the exercise title
-      useContentHead(data);
-  });
-
-  const writtenCode = ref(
-    `
-/**
- * Welcome to the Java programming environment!
- */
-public class Main {
-    /**
-     * Program entry point.
-     * This will be the first method that is called when you run your program.
-     */
-    public static void main(String[] args) {
-      System.out.println("Hello, World!");
+  let writtenCode = defineModel();
+  const { data } = await useAsyncData('exercise', async () => {
+    const data = await queryContent(serie, exercise, language.value).findOne();
+    if (data != null) {
+      useContentHead(data); // Update the page title and meta tags
+      writtenCode.value = data.defaultCode ?? ''; // Set the default code if it exists
     }
-}
-`.trimStart(),
-  );
+    return data;
+  });
 </script>
 
 <template>
