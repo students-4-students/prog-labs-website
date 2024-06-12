@@ -73,13 +73,11 @@
     <ResizablePanel>
       <ResizablePanelGroup id="code-terminal-group" direction="vertical">
         <ResizablePanel id="editor" :min-size="35">
-          <Tabs default-value="code" class="w-full h-full">
-            <TabsList
-              class="flex justify-start rounded-none px-0 border-b bg-slate-50"
-            >
+          <Tabs default-value="code" class="flex flex-col h-full">
+            <TabsList class="justify-start rounded-none p-0 bg-slate-50 h-auto">
               <TabsTrigger
                 value="code"
-                class="rounded-none !shadow-none p-0 transition-none"
+                class="rounded-none !shadow-none p-0 transition-none focus-visible:ring-0 focus-visible:ring-offset-0 border-t-2 border-b border-transparent data-[state='active']:border-t-blue-400 data-[state='inactive']:border-b-border"
               >
                 <PlaygroundTab>
                   <template #icon>
@@ -90,7 +88,7 @@
               </TabsTrigger>
               <TabsTrigger
                 value="correctedCode"
-                class="rounded-none !shadow-none p-0 transition-none"
+                class="rounded-none !shadow-none p-0 transition-none focus-visible:ring-0 focus-visible:ring-offset-0 border-t-2 border-b border-transparent data-[state='active']:border-t-blue-400 data-[state='inactive']:border-b-border"
                 :disabled="correctedCode == null"
               >
                 <PlaygroundTab>
@@ -100,8 +98,13 @@
                   Code corrigé
                 </PlaygroundTab>
               </TabsTrigger>
+              <!-- Add bottom border to the rest of the bar -->
+              <div class="border-b grow h-full"></div>
             </TabsList>
-            <TabsContent value="code" class="h-full m-0">
+            <TabsContent
+              value="code"
+              class="flex grow m-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+            >
               <PlaygroundEditor
                 :language="language"
                 :supportedLanguages="supportedLanguages"
@@ -109,7 +112,10 @@
                 v-model="writtenCode"
               />
             </TabsContent>
-            <TabsContent value="correctedCode" class="h-full m-0">
+            <TabsContent
+              value="correctedCode"
+              class="flex grow m-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+            >
               <PlaygroundEditor
                 :language="language"
                 :supportedLanguages="supportedLanguages"

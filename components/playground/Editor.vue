@@ -31,10 +31,11 @@
 
 <template>
   <MonacoEditor
-    class="w-full h-full p-4"
+    class="grow p-4"
     v-model="code"
     :lang="language"
     :options="{
+      automaticLayout: true,
       lineNumbersMinChars: 2,
       fontSize: 16,
       readOnly: props.readOnly,
