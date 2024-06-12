@@ -129,7 +129,7 @@
         <PlaygroundResizableHandle id="editor" />
         <ResizablePanel id="terminal" :default-size="25" :min-size="15">
           <div class="flex flex-col h-full">
-            <PlaygroundTerminal />
+            <PlaygroundTerminal :theme="theme" />
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>

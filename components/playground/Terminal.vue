@@ -1,38 +1,56 @@
 <script lang="ts" setup>
   import '@xterm/xterm/css/xterm.css';
-  import { Terminal } from '@xterm/xterm';
+  import { Terminal, type ITheme } from '@xterm/xterm';
   import { WebLinksAddon } from '@xterm/addon-web-links';
   import { ClipboardAddon } from '@xterm/addon-clipboard';
   import { FitAddon } from '@xterm/addon-fit';
   import { Unicode11Addon } from '@xterm/addon-unicode11';
+  import { getHighlighter, type BundledTheme } from 'shiki';
+
+  const props = defineProps<{
+    theme: BundledTheme;
+  }>();
+
+  const highlighter = await getHighlighter({
+    themes: [props.theme],
+    langs: [],
+  });
+
+  /**
+   * Converts a TextMate theme to an xterm.js theme.
+   * @param themeName The name of the theme.
+   */
+  function textmateThemeToXtermTheme(themeName: BundledTheme): ITheme {
+    // Get the theme from Shiki
+    const theme = highlighter.getTheme(themeName);
+    // Theme base
+    const xtermTheme: Omit<ITheme, 'extendedAnsi'> = {
+      background: theme?.colors?.['editor.background'],
+      foreground: theme?.colors?.['editor.foreground'],
+      selectionBackground: theme?.colors?.['editor.selectionBackground'],
+      cursor: theme?.colors?.['terminalCursor.background'],
+      cursorAccent: theme?.colors?.['terminalCursor.foreground'],
+    };
+
+    // Extract ANSI colors
+    for (const key in theme.colors) {
+      if (key.startsWith('terminal.ansi')) {
+        // Convert the full key to only the color name
+        const extractedKey = key.split('.')[1].slice(4);
+        const xtermKey = <keyof typeof xtermTheme>(
+          (extractedKey.charAt(0).toLowerCase() + extractedKey.slice(1))
+        );
+        xtermTheme[xtermKey] = theme.colors[key];
+      }
+    }
+    return xtermTheme;
+  }
 
   const terminal = new Terminal({
     allowProposedApi: true,
     allowTransparency: true,
     cursorBlink: true,
-    theme: {
-      // Serendipity Morning theme
-      background: 'rgba(255, 255, 255, 0)',
-      black: '#F2E9DE',
-      red: '#D26A5D',
-      green: '#77AAB3',
-      yellow: '#C8A299',
-      blue: '#3788BE',
-      magenta: '#886CDB',
-      cyan: '#7397DE',
-      white: '#575279',
-      brightBlack: '#6E6A86',
-      brightRed: '#D26A5D',
-      brightGreen: '#77AAB3',
-      brightYellow: '#C8A299',
-      brightBlue: '#3788BE',
-      brightMagenta: '#886CDB',
-      brightCyan: '#7397DE',
-      brightWhite: '#575279',
-      foreground: '#575279',
-      selectionBackground: '#F4EFEA',
-      cursor: '#9893A5',
-    },
+    theme: textmateThemeToXtermTheme(props.theme),
     fontFamily: 'Consolas',
   });
 
@@ -46,7 +64,6 @@
   const xterm = ref();
   onMounted(() => {
     terminal.open(xterm.value);
-    terminal.writeln('Hello from \x1B[1;3;31mxterm.js\x1B[0m');
     terminal.write('$ ');
     fitAddon.fit();
   });
