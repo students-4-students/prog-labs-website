@@ -1,28 +1,53 @@
 <script setup lang="ts">
   import type { ParsedContent } from '@nuxt/content/types';
-  import type { BundledLanguage } from 'shiki';
+  import type { BundledLanguage, BundledTheme } from 'shiki';
 
   // Monaco editor config
-  const language = ref('java');
+  const language: Ref<BundledLanguage> = ref('java');
+  const fallbackLanguage: BundledLanguage = 'python';
   const supportedLanguages: BundledLanguage[] = ['java', 'cpp', 'python'];
-  const theme = 'github-light';
+  const theme: BundledTheme = 'github-light';
 
   const route = useRoute();
   const serie = <string>route.params.serie;
   const exercise = <string>route.params.exercise;
 
-  // Fetch the content for the current exercise
+  // Store the code written in each editor and set its default value
   const writtenCode = defineModel('writtenCode');
   const correctedCode = defineModel('correctedCode');
-  // Load the content for the current exercise
-  const { data } = await useAsyncData('exercise', async () => {
-    const data = await queryContent(serie, exercise, language.value).findOne();
-    if (data != null) {
-      useContentHead(data); // Update the page title and meta tags
-      writtenCode.value = data.defaultCode ?? ''; // Set the default code if it exists
-      correctedCode.value = data.correctedCode ?? ''; // Set the corrected code if it exists
+
+  /**
+   * Load the content for the current exercise.
+   */
+  async function loadExercise() {
+    // Try to fetch the exercise from the server
+    let data = await queryContent(serie, exercise, language.value)
+      .findOne()
+      .catch((_) => null);
+
+    // Try to fallback to the default language for this serie,
+    // if the exercise is not found for this language
+    if (data === null) {
+      language.value = fallbackLanguage;
+      data = await queryContent(serie, exercise, fallbackLanguage)
+        .findOne()
+        .catch((_) => null);
+    }
+
+    // Check if the exercise exists
+    if (data !== null) {
+      // Update the page title and meta tags
+      useContentHead(data);
+      // Set the default content for the editors
+      writtenCode.value = data.defaultCode;
+      correctedCode.value = data.correctedCode;
     }
     return data;
+  }
+
+  // Load the content for the current exercise asynchronously
+  const { data } = await useAsyncData('exercise', loadExercise, {
+    watch: [language],
   });
 </script>
 
@@ -66,6 +91,7 @@
               <TabsTrigger
                 value="correctedCode"
                 class="rounded-none !shadow-none p-0 transition-none"
+                :disabled="correctedCode == null"
               >
                 <PlaygroundTab>
                   <template #icon>
