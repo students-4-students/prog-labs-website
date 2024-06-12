@@ -1,5 +1,5 @@
 ---
-title: 'Java: Les bases'
+title: 'Java : Les bases'
 description: 'Nulla duis cupidatat duis dolore nisi exercitation non nisi est enim aute.'
 defaultCode: >
   /**

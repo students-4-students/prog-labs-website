@@ -12,12 +12,15 @@
   const exercise = <string>route.params.exercise;
 
   // Fetch the content for the current exercise
-  let writtenCode = defineModel();
+  const writtenCode = defineModel('writtenCode');
+  const correctedCode = defineModel('correctedCode');
+  // Load the content for the current exercise
   const { data } = await useAsyncData('exercise', async () => {
     const data = await queryContent(serie, exercise, language.value).findOne();
     if (data != null) {
       useContentHead(data); // Update the page title and meta tags
       writtenCode.value = data.defaultCode ?? ''; // Set the default code if it exists
+      correctedCode.value = data.correctedCode ?? ''; // Set the corrected code if it exists
     }
     return data;
   });
@@ -45,12 +48,51 @@
     <ResizablePanel>
       <ResizablePanelGroup id="code-terminal-group" direction="vertical">
         <ResizablePanel id="editor" :min-size="35">
-          <PlaygroundEditor
-            :language="language"
-            :supportedLanguages="supportedLanguages"
-            :theme="theme"
-            v-model="writtenCode"
-          />
+          <Tabs default-value="code" class="w-full h-full">
+            <TabsList
+              class="flex justify-start rounded-none px-0 border-b bg-slate-50"
+            >
+              <TabsTrigger
+                value="code"
+                class="rounded-none !shadow-none p-0 transition-none"
+              >
+                <PlaygroundTab>
+                  <template #icon>
+                    <LucideCode />
+                  </template>
+                  Série 1 / Exercice 1
+                </PlaygroundTab>
+              </TabsTrigger>
+              <TabsTrigger
+                value="correctedCode"
+                class="rounded-none !shadow-none p-0 transition-none"
+              >
+                <PlaygroundTab>
+                  <template #icon>
+                    <LucideBook />
+                  </template>
+                  Code corrigé
+                </PlaygroundTab>
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="code" class="h-full m-0">
+              <PlaygroundEditor
+                :language="language"
+                :supportedLanguages="supportedLanguages"
+                :theme="theme"
+                v-model="writtenCode"
+              />
+            </TabsContent>
+            <TabsContent value="correctedCode" class="h-full m-0">
+              <PlaygroundEditor
+                :language="language"
+                :supportedLanguages="supportedLanguages"
+                :theme="theme"
+                v-model="correctedCode"
+                read-only
+              />
+            </TabsContent>
+          </Tabs>
         </ResizablePanel>
         <PlaygroundResizableHandle id="editor" />
         <ResizablePanel id="terminal" :default-size="25" :min-size="15">

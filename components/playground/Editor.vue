@@ -3,7 +3,6 @@
     getHighlighter,
     type BundledLanguage,
     type BundledTheme,
-    type LanguageInput,
   } from 'shiki';
   import { shikiToMonaco } from '@shikijs/monaco';
 
@@ -12,6 +11,7 @@
     language: string;
     supportedLanguages: BundledLanguage[];
     theme: BundledTheme;
+    readOnly?: boolean;
   }>();
 
   const monaco = useMonaco();
@@ -30,18 +30,14 @@
 </script>
 
 <template>
-  <PlaygroundTabsHeader tabName="Série 1 / Exercice 1">
-    <template #icon>
-      <LucideCode />
-    </template>
-  </PlaygroundTabsHeader>
   <MonacoEditor
     class="w-full h-full p-4"
     v-model="code"
     :lang="language"
     :options="{
-      lineNumbersMinChars: 0,
+      lineNumbersMinChars: 2,
       fontSize: 16,
+      readOnly: props.readOnly,
       minimap: {
         enabled: false,
       },
