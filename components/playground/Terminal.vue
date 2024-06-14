@@ -20,7 +20,7 @@
    * Converts a TextMate theme to an xterm.js theme.
    * @param themeName The name of the theme.
    */
-  function textmateThemeToXtermTheme(themeName: BundledTheme): ITheme {
+  function shikiToXterm(themeName: BundledTheme): ITheme {
     // Get the theme from Shiki
     const theme = highlighter.getTheme(themeName);
     // Theme base
@@ -51,7 +51,7 @@
     allowTransparency: true,
     convertEol: true, // Make \n create a new line
     cursorBlink: true,
-    theme: textmateThemeToXtermTheme(props.theme),
+    theme: shikiToXterm(props.theme),
     fontFamily: 'Consolas',
   });
 
