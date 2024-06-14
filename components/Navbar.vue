@@ -18,26 +18,10 @@
           <LucideUsersRound class="mr-2 w-4 h-4" />
           Changer de section
         </Button>
-        <DropdownMenu v-if="isPlayground">
-          <DropdownMenuTrigger as-child>
-            <Button variant="outline">
-              <LucideBookOpenCheck class="mr-2 w-4 h-4" />
-              Changer d'exercice
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent class="w-48">
-            <DropdownMenuLabel>Série 1</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <span>Les bases</span>
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <!-- <Button variant="default">
-          Prochain Exercice <LucideArrowRight class="ml-2 w-4 h-4" />
-        </Button> -->
+        <Button variant="outline" @click="navigateTo('/')">
+          <LucideBookOpenCheck class="mr-2 w-4 h-4" />
+          Changer d'exercice
+        </Button>
         <Button variant="default" v-if="isPlayground">
           <LucidePlay class="w-4 h-4 mr-2" />
           Exécuter le code
