@@ -127,7 +127,7 @@
           </Tabs>
         </ResizablePanel>
         <PlaygroundResizableHandle id="editor" />
-        <ResizablePanel id="terminal" :default-size="25" :min-size="15">
+        <ResizablePanel id="terminal" :default-size="35" :min-size="15">
           <div class="flex flex-col h-full">
             <PlaygroundTerminal :theme="theme" />
           </div>
