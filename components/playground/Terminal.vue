@@ -49,6 +49,7 @@
   const terminal = new Terminal({
     allowProposedApi: true,
     allowTransparency: true,
+    convertEol: true, // Make \n create a new line
     cursorBlink: true,
     theme: textmateThemeToXtermTheme(props.theme),
     fontFamily: 'Consolas',
@@ -64,6 +65,16 @@
   const xterm = ref();
   onMounted(() => {
     terminal.open(xterm.value);
+    terminal.writeln(`
+\u001b[31mException in thread "main" com.example.FakeException: This is a fake exception for demonstration purposes\u001b[0m
+    \u001b[36mat \u001b]8;;http://localhost:3000/DummyClass.java:10\u001b\\DummyClass.method(DummyClass.java:10)\u001b]8;;\u001b\\\u001b[36m\u001b[0m
+    \u001b[36mat \u001b]8;;http://localhost:3000/Main.java:4\u001b\\Main.main(Main.java:4)\u001b]8;;\u001b\\\u001b[36m\u001b[0m
+
+\u001b[31mCaused by: com.example.AnotherFakeException: Another fake exception occurred\u001b[0m
+    \u001b[36mat \u001b]8;;http://localhost:3000/DummyClass.java:15\u001b\\DummyClass.anotherMethod(DummyClass.java:15)\u001b]8;;\u001b\\\u001b[36m\u001b[0m
+    \u001b[36mat \u001b]8;;http://localhost:3000/DummyClass.java:8\u001b\\DummyClass.method(DummyClass.java:8)\u001b]8;;\u001b\\\u001b[36m\u001b[0m
+    \u001b[36mat \u001b]8;;http://localhost:3000/Main.java:4\u001b\\Main.main(Main.java:4)\u001b]8;;\u001b\\\u001b[36m\u001b[0m
+`);
     terminal.write('$ ');
     fitAddon.fit();
   });
