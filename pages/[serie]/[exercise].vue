@@ -1,16 +1,21 @@
 <script setup lang="ts">
-  import type { ParsedContent } from '@nuxt/content/types';
+  import type { ParsedContent } from '@nuxt/content';
   import type { BundledLanguage, BundledTheme } from 'shiki';
 
+  const studentData = useStudentDataStore();
+  if (studentData.codeLanguage === undefined) {
+    await navigateTo('/');
+  }
+
   // Monaco editor config
-  const language: Ref<BundledLanguage> = ref('java');
+  const language = ref(<BundledLanguage>studentData.codeLanguage);
   const fallbackLanguage: BundledLanguage = 'python';
   const supportedLanguages: BundledLanguage[] = ['java', 'cpp', 'python'];
   const theme: BundledTheme = 'github-light';
 
   const route = useRoute();
-  const serie = <string>route.params.serie;
   const exercise = <string>route.params.exercise;
+  const serie = <string>route.params.serie;
 
   // Store the code written in each editor and set its default value
   const writtenCode = defineModel('writtenCode');

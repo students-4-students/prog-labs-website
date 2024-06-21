@@ -1,19 +1,20 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+  useHead({
+    title: 'Exercices',
+  });
+</script>
 
 <template>
-  <OnBoardingSectionDialog />
   <Navbar />
-  <div
-    class="flex flex-col space-y-8 px-8 py-6 h-full lg:max-w-[90%] xl:max-w-[60%]"
-  >
+  <div class="flex flex-col space-y-8 px-8 py-6 h-full">
     <div class="flex flex-col space-y-5">
       <h2 className="flex items-baseline text-3xl font-bold tracking-tight">
         Exercices
         <LucideBookCopy class="ml-3 w-6 h-6" />
       </h2>
       <div class="flex flex-col">
-        <div class="flex flex-row space-x-8">
-          <Card class="w-full grow" v-for="nb in 2">
+        <div class="flex flex-col md:flex-row gap-8">
+          <Card class="w-full grow max-w-[520px]" v-for="nb in 2">
             <CardHeader class="flex items-start">
               <img class="h-14 mb-4" src="/logos/s4s-text-darkpng.png" />
               <CardTitle>Série {{ nb }} : Lorem Ipsum</CardTitle>
@@ -42,7 +43,7 @@
         Partenaires
         <LucideHandshake class="ml-3 w-6 h-6" />
       </h2>
-      <Card class="w-full grow max-w-[65%]">
+      <Card class="w-full grow max-w-[760px]">
         <CardHeader class="flex items-start">
           <img class="h-14 mb-4" src="/logos/polympiads.svg" />
           <CardTitle class="flex">Série Polympiads</CardTitle>

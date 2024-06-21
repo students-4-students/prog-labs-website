@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@vueuse/nuxt',
     'nuxt-lucide-icons',
+    '@nuxt/image',
   ],
   shadcn: {
     /**

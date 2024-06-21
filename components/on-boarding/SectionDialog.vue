@@ -1,65 +1,35 @@
 <script lang="ts" setup>
-  const languages = ref([
-    {
-      name: 'C++',
-      sections: [
-        'Mathématiques',
-        'Physique',
-        'Ingénierie des Sciences du Vivant',
-        'Microtechnique',
-        'Génie Electrique et Electronique',
-        'Génie Mécanique',
-      ],
-    },
-    {
-      name: 'Java',
-      sections: ['Informatique', 'Systèmes de Communication'],
-    },
-    {
-      name: 'Python',
-      sections: [
-        'Génie Chimique',
-        'Science et Génie des Matériaux',
-        'Génie Civil',
-        "Science et Ingénierie de l'Environnement",
-        'Cours de mathématiques spéciales (CMS)',
-      ],
-    },
-  ]);
-
   const studentData = useStudentDataStore();
 </script>
 
 <template>
-  <AlertDialog :default-open="true">
-    <AlertDialogContent>
+  <AlertDialog :default-open="studentData.sectionCode == undefined">
+    <AlertDialogTrigger>
+      <slot name="trigger" />
+    </AlertDialogTrigger>
+    <AlertDialogContent @escape-key-down.prevent trap-focus>
       <AlertDialogHeader>
-        <AlertDialogTitle>Choix du language de programmation</AlertDialogTitle>
+        <img
+          class="my-[-24px]"
+          src="https://www.epfl.ch/about/overview/wp-content/uploads/2020/07/logo-epfl-1024x576.png"
+        />
+        <AlertDialogTitle class="flex items-center">
+          Choix de section
+          <LucideSwatchBook class="ml-2 h-5 w-5" />
+        </AlertDialogTitle>
         <AlertDialogDescription>
           Voluptate reprehenderit aute ullamco culpa consectetur laboris
           voluptate ea proident ut. Reprehenderit occaecat dolore qui ad enim
           dolor.
         </AlertDialogDescription>
-        <div class="flex flex-col gap-3 my-4">
-          <AlertDialogAction
-            v-for="{ name, sections } in languages"
-            :key="name"
-            @click="studentData.setCodeLanguage(name)"
-            class="block bg-transparent hover:bg-transparent h-auto p-0 text-left whitespace-normal"
-          >
-            <Card class="hover:bg-slate-50 transition-all">
-              <CardHeader>
-                <CardTitle class="text-lg">
-                  {{ name }}
-                </CardTitle>
-                <CardDescription>
-                  Pour les sections : {{ sections.join(', ') }}
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </AlertDialogAction>
-        </div>
       </AlertDialogHeader>
+      <AlertDialogFooter>
+        <OnBoardingSectionDialogComboBox />
+        <AlertDialogAction>
+          Choisir
+          <LucideArrowRight class="ml-2 h-4 w-4" />
+        </AlertDialogAction>
+      </AlertDialogFooter>
     </AlertDialogContent>
   </AlertDialog>
 </template>
