@@ -16,12 +16,12 @@
 
 <template>
   <AlertDialog :open="isOpen">
-    <AlertDialogTrigger>
+    <AlertDialogTrigger @click="isOpen = true">
       <slot name="trigger" />
     </AlertDialogTrigger>
     <AlertDialogContent @escape-key-down.prevent trap-focus>
       <AlertDialogHeader>
-        <img
+        <NuxtImg
           class="my-[-24px]"
           src="https://www.epfl.ch/about/overview/wp-content/uploads/2020/07/logo-epfl-1024x576.png"
         />

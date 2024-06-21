@@ -5,6 +5,9 @@
       default: false,
     },
   });
+
+  const studentData = useStudentDataStore();
+  const { section } = storeToRefs(studentData);
 </script>
 
 <template>
@@ -21,7 +24,12 @@
           <template v-if="!isPlayground" #trigger>
             <Button variant="outline">
               <LucideUsersRound class="mr-2 w-4 h-4" />
-              Changer de section
+              Section
+              {{
+                section !== undefined
+                  ? '"' + section?.name + '"'
+                  : 'non définie'
+              }}
             </Button>
           </template>
         </OnBoardingSectionDialog>
