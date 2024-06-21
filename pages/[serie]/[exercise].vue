@@ -66,7 +66,7 @@
         <ContentRenderer :value="<ParsedContent>data">
           <ContentRendererMarkdown
             :value="<ParsedContent>data"
-            class="px-6 w-full h-full overflow-y-scroll prose prose-img:border prose-img:rounded-md prose-pre:bg-white prose-pre:border prose-pre:p-4 prose-a:no-underline lg:prose-lg text-justify"
+            class="px-6 w-full h-full overflow-y-scroll prose prose-img:w-full prose-img:border prose-img:rounded-md prose-pre:bg-white prose-pre:border prose-pre:p-4 prose-a:no-underline lg:prose-lg text-justify"
           />
           <template #empty>
             <h1>Uh oh, cet exercice n'existe pas.</h1>
