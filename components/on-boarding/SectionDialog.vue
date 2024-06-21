@@ -1,9 +1,21 @@
 <script lang="ts" setup>
   const studentData = useStudentDataStore();
+  const { sectionCode } = storeToRefs(studentData);
+
+  const isOpen = ref(false);
+  watch(
+    sectionCode,
+    (newValue) => {
+      if (newValue === undefined) {
+        isOpen.value = newValue === undefined;
+      }
+    },
+    { immediate: true },
+  );
 </script>
 
 <template>
-  <AlertDialog :default-open="studentData.sectionCode == undefined">
+  <AlertDialog :open="isOpen">
     <AlertDialogTrigger>
       <slot name="trigger" />
     </AlertDialogTrigger>
@@ -25,7 +37,7 @@
       </AlertDialogHeader>
       <AlertDialogFooter>
         <OnBoardingSectionDialogComboBox />
-        <AlertDialogAction>
+        <AlertDialogAction @click="isOpen = false">
           Choisir
           <LucideArrowRight class="ml-2 h-4 w-4" />
         </AlertDialogAction>

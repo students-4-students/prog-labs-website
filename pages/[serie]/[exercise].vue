@@ -3,19 +3,17 @@
   import type { BundledLanguage, BundledTheme } from 'shiki';
 
   const studentData = useStudentDataStore();
-  if (studentData.codeLanguage === undefined) {
-    await navigateTo('/');
-  }
+  const { codeLanguage } = storeToRefs(studentData);
 
   // Monaco editor config
-  const language = ref(<BundledLanguage>studentData.codeLanguage);
-  const fallbackLanguage: BundledLanguage = 'python';
+  const language: Ref<BundledLanguage> = ref('python');
+  const fallbackLanguage: Ref<BundledLanguage> = ref('python');
   const supportedLanguages: BundledLanguage[] = ['java', 'cpp', 'python'];
   const theme: BundledTheme = 'github-light';
 
   const route = useRoute();
-  const exercise = <string>route.params.exercise;
-  const serie = <string>route.params.serie;
+  const exerciseName = <string>route.params.exercise;
+  const serieName = <string>route.params.serie;
 
   // Store the code written in each editor and set its default value
   const writtenCode = defineModel('writtenCode');
@@ -25,34 +23,52 @@
    * Load the content for the current exercise.
    */
   async function loadExercise() {
+    // Check if the student has provided a valid code language
+    if (codeLanguage.value === undefined) {
+      return undefined;
+    }
+
+    // Update the code language to the one selected by the student
+    language.value = codeLanguage.value;
+
+    // Try to fetch the serie from the server
+    const serie = await queryContent(serieName)
+      .findOne()
+      .catch((_) => null);
+
+    // Load the fallback language from the serie if any
+    if (serie !== null && serie.fallbackLanguage !== null) {
+      fallbackLanguage.value = serie.fallbackLanguage;
+    }
+
     // Try to fetch the exercise from the server
-    let data = await queryContent(serie, exercise, language.value)
+    let exercise = await queryContent(serieName, exerciseName, language.value)
       .findOne()
       .catch((_) => null);
 
     // Try to fallback to the default language for this serie,
     // if the exercise is not found for this language
-    if (data === null) {
-      language.value = fallbackLanguage;
-      data = await queryContent(serie, exercise, fallbackLanguage)
+    if (exercise === null) {
+      language.value = fallbackLanguage.value;
+      exercise = await queryContent(serieName, exerciseName, language.value)
         .findOne()
         .catch((_) => null);
     }
 
     // Check if the exercise exists
-    if (data !== null) {
+    if (exercise !== null) {
       // Update the page title and meta tags
-      useContentHead(data);
+      useContentHead(exercise);
       // Set the default content for the editors
-      writtenCode.value = data.defaultCode;
-      correctedCode.value = data.correctedCode;
+      writtenCode.value = exercise.defaultCode;
+      correctedCode.value = exercise.correctedCode;
     }
-    return data;
+    return exercise;
   }
 
   // Load the content for the current exercise asynchronously
   const { data } = await useAsyncData('exercise', loadExercise, {
-    watch: [language],
+    watch: [codeLanguage],
   });
 </script>
 
