@@ -31,10 +31,16 @@ export default defineNuxtConfig({
         default: 'github-light',
         dark: 'github-dark',
       },
-      langs: ['c', 'cpp', 'java', 'typescript', 'python'],
+      langs: ['c', 'cpp', 'java', 'python'],
     },
   },
   colorMode: {
     classSuffix: '',
+  },
+  vite: {
+    define: {
+      // Make ansis think that it's running in a terminal
+      'process.env.FORCE_COLOR': 'true',
+    },
   },
 });

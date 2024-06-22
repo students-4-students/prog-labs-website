@@ -114,7 +114,7 @@
             <TabsList class="justify-start rounded-none p-0 bg-accent h-auto">
               <TabsTrigger
                 value="code"
-                class="rounded-none !shadow-none p-0 transition-none focus-visible:ring-0 focus-visible:ring-offset-0 border-t-2 border-b border-transparent data-[state='active']:border-t-blue-400 data-[state='inactive']:border-b-border"
+                class="rounded-none !shadow-none p-0 transition-none focus-visible:ring-0 focus-visible:ring-offset-0 border-t-2 border-b border-transparent data-[state='active']:border-t-primary data-[state='inactive']:border-b-border"
               >
                 <PlaygroundTab>
                   <template #icon>
@@ -125,7 +125,7 @@
               </TabsTrigger>
               <TabsTrigger
                 value="correctedCode"
-                class="rounded-none !shadow-none p-0 transition-none focus-visible:ring-0 focus-visible:ring-offset-0 border-t-2 border-b border-transparent data-[state='active']:border-t-blue-400 data-[state='inactive']:border-b-border"
+                class="rounded-none !shadow-none p-0 transition-none focus-visible:ring-0 focus-visible:ring-offset-0 border-t-2 border-b border-transparent data-[state='active']:border-t-primary data-[state='inactive']:border-b-border"
                 :disabled="correctedCode == null"
               >
                 <PlaygroundTab>
