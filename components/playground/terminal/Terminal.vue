@@ -10,7 +10,7 @@
     type BundledTheme,
     type HighlighterGeneric,
   } from 'shiki';
-  import { shikiToXterm } from './terminal/shiki-to-xterm';
+  import { shikiToXterm } from './shiki-to-xterm';
 
   const props = defineProps<{
     highlighter: HighlighterGeneric<BundledLanguage, BundledTheme>;
