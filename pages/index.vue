@@ -13,17 +13,16 @@
 
 <template>
   <Navbar />
-  <div class="flex flex-col gap-y-12 mx-8 py-8">
+  <div class="flex flex-col gap-y-12 px-4 md:px-8 py-8">
     <div class="flex flex-col gap-5">
       <h2 className="flex items-baseline text-4xl font-bold tracking-tight">
         Exercices
         <LucideBookCopy class="ml-3 w-6 h-6" />
       </h2>
       <div class="flex flex-col">
-        <div class="flex flex-col md:flex-row gap-8">
-          <Card class="w-full grow max-w-[520px]" v-for="nb in 2">
+        <div class="flex flex-col md:flex-row gap-8 flex-wrap">
+          <Card class="w-full grow max-w-[520px]" v-for="nb in 3">
             <CardHeader class="flex items-start">
-              <!-- <img class="h-14 mb-4" src="/logos/s4s-text-darkpng.png" /> -->
               <NuxtImg
                 class="w-full -my-2 self-center"
                 :src="`/logos/stylized/${bannerFileName}.png`"
@@ -37,7 +36,7 @@
               </CardDescription>
             </CardHeader>
             <CardContent class="flex flex-1 basis-0 flex-wrap gap-2">
-              <Button variant="secondary" size="lg" v-for="i in 6">
+              <Button variant="secondary" size="lg" class="grow" v-for="i in 6">
                 Exercice n°{{ i }}
               </Button>
             </CardContent>

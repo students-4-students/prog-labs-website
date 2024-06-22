@@ -13,7 +13,7 @@
       {{ tabName }}
     </PlaygroundTab>
     <div
-      class="flex grow justify-start items-center mr-8 bg-slate-50 border-b border-l border-border"
+      class="flex grow justify-start items-center mr-8 bg-accent border-b border-border"
     >
       <slot name="bar" />
     </div>

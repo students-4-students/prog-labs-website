@@ -22,8 +22,8 @@
     <AlertDialogContent @escape-key-down.prevent trap-focus>
       <AlertDialogHeader>
         <NuxtImg
-          class="my-[-24px]"
-          src="https://www.epfl.ch/about/overview/wp-content/uploads/2020/07/logo-epfl-1024x576.png"
+          class="mx-24 my-20"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logo_EPFL.svg/2560px-Logo_EPFL.svg.png"
         />
         <AlertDialogTitle class="flex items-center">
           Choix de section

@@ -2,6 +2,7 @@
   "name": "nuxt-app",
   "dependencies": {
     "@nuxt/image": "^1.7.0",
+    "@nuxtjs/color-mode": "^3.4.1",
     "@pinia/nuxt": "^0.5.1",
     "@shikijs/monaco": "^1.7.0",
     "@vee-validate/zod": "^4.13.1",

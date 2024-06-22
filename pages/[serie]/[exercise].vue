@@ -1,6 +1,10 @@
 <script setup lang="ts">
   import type { ParsedContent } from '@nuxt/content';
-  import type { BundledLanguage, BundledTheme } from 'shiki';
+  import {
+    getHighlighter,
+    type BundledLanguage,
+    type BundledTheme,
+  } from 'shiki';
 
   const studentData = useStudentDataStore();
   const { codeLanguage } = storeToRefs(studentData);
@@ -9,7 +13,19 @@
   const language: Ref<BundledLanguage> = ref('python');
   const fallbackLanguage: Ref<BundledLanguage> = ref('python');
   const supportedLanguages: BundledLanguage[] = ['java', 'cpp', 'python'];
-  const theme: BundledTheme = 'github-light';
+
+  const themes: Record<'light' | 'dark', BundledTheme> = {
+    light: 'github-light',
+    dark: 'github-dark',
+  };
+  const colorMode = useColorMode();
+  const currentTheme = computed(() =>
+    colorMode.value === 'dark' ? themes.dark : themes.light,
+  );
+  const highlighter = await getHighlighter({
+    themes: Object.values(themes),
+    langs: supportedLanguages,
+  });
 
   const route = useRoute();
   const exerciseName = <string>route.params.exercise;
@@ -77,12 +93,12 @@
   <ResizablePanelGroup direction="horizontal" class="flex w-full h-full">
     <ResizablePanel id="instructions" :min-size="25" :max-size="30">
       <div
-        class="flex h-full items-center justify-center bg-slate-50 overflow-y-scroll"
+        class="flex h-full items-center justify-center bg-accent overflow-y-scroll"
       >
         <ContentRenderer :value="<ParsedContent>data">
           <ContentRendererMarkdown
             :value="<ParsedContent>data"
-            class="px-6 w-full h-full overflow-y-scroll prose prose-img:w-full prose-img:border prose-img:rounded-md prose-pre:bg-white prose-pre:border prose-pre:p-4 prose-a:no-underline lg:prose-lg text-justify"
+            class="px-6 w-full h-full overflow-y-scroll prose dark:prose-invert prose-img:w-full prose-img:border prose-img:rounded-md prose-pre:bg-background prose-pre:border prose-pre:p-4 prose-a:no-underline lg:prose-lg text-justify"
           />
           <template #empty>
             <h1>Uh oh, cet exercice n'existe pas.</h1>
@@ -95,7 +111,7 @@
       <ResizablePanelGroup id="code-terminal-group" direction="vertical">
         <ResizablePanel id="editor" :min-size="35">
           <Tabs default-value="code" class="flex flex-col h-full">
-            <TabsList class="justify-start rounded-none p-0 bg-slate-50 h-auto">
+            <TabsList class="justify-start rounded-none p-0 bg-accent h-auto">
               <TabsTrigger
                 value="code"
                 class="rounded-none !shadow-none p-0 transition-none focus-visible:ring-0 focus-visible:ring-offset-0 border-t-2 border-b border-transparent data-[state='active']:border-t-blue-400 data-[state='inactive']:border-b-border"
@@ -129,7 +145,8 @@
               <PlaygroundEditor
                 :language="language"
                 :supportedLanguages="supportedLanguages"
-                :theme="theme"
+                :highlighter="highlighter"
+                v-model:currentTheme="currentTheme"
                 v-model="writtenCode"
               />
             </TabsContent>
@@ -140,7 +157,8 @@
               <PlaygroundEditor
                 :language="language"
                 :supportedLanguages="supportedLanguages"
-                :theme="theme"
+                :highlighter="highlighter"
+                v-model:currentTheme="currentTheme"
                 v-model="correctedCode"
                 read-only
               />
@@ -150,7 +168,10 @@
         <PlaygroundResizableHandle id="editor" />
         <ResizablePanel id="terminal" :default-size="35" :min-size="15">
           <div class="flex flex-col h-full">
-            <PlaygroundTerminal :theme="theme" />
+            <PlaygroundTerminal
+              :highlighter="highlighter"
+              :currentTheme="currentTheme"
+            />
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>

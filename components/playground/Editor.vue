@@ -3,6 +3,7 @@
     getHighlighter,
     type BundledLanguage,
     type BundledTheme,
+    type HighlighterGeneric,
   } from 'shiki';
   import { shikiToMonaco } from '@shikijs/monaco';
 
@@ -10,22 +11,27 @@
   const props = defineProps<{
     language: string;
     supportedLanguages: BundledLanguage[];
-    theme: BundledTheme;
+    highlighter: HighlighterGeneric<BundledLanguage, BundledTheme>;
     readOnly?: boolean;
   }>();
 
-  const monaco = useMonaco();
-  const highlighter = await getHighlighter({
-    themes: [props.theme],
-    langs: props.supportedLanguages,
-  });
+  const currentTheme = defineModel<BundledTheme>('currentTheme');
 
+  const monaco = useMonaco();
   if (monaco) {
     for (const lang of props.supportedLanguages) {
       monaco.languages.register({ id: lang });
     }
     // Register the themes from Shiki, and provide syntax highlighting for Monaco.
-    shikiToMonaco(highlighter, monaco);
+    shikiToMonaco(props.highlighter, monaco);
+    // Change theme dynamically
+    watch(
+      currentTheme,
+      (theme) => {
+        if (theme) monaco.editor.setTheme(theme);
+      },
+      { immediate: true },
+    );
   }
 </script>
 

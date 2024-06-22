@@ -44,6 +44,7 @@
             :heading="codeLanguageData.name"
           >
             <CommandItem
+              class="cursor-pointer"
               v-for="[id, data] in Object.entries(Sections).filter(
                 (data) => data[1].codeLanguage === codeLanguage,
               )"

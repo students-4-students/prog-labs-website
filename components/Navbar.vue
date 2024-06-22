@@ -8,16 +8,33 @@
 
   const studentData = useStudentDataStore();
   const { section } = storeToRefs(studentData);
+
+  const colorMode = useColorMode();
+  const isDarkMode = computed(() => colorMode.value === 'dark');
+  function switchColorMode() {
+    colorMode.preference = colorMode.preference === 'light' ? 'dark' : 'light';
+  }
 </script>
 
 <template>
-  <nav class="sticky top-0 z-20 bg-white border border-gray-200">
-    <div class="flex flex-wrap items-center justify-between mx-8 py-3">
+  <nav class="sticky top-0 z-20 border">
+    <div class="flex flex-wrap items-center justify-between mx-4 md:mx-8 py-3">
       <a
         class="flex items-center space-x-3 rtl:space-x-reverse cursor-pointer"
         @click="navigateTo('/')"
       >
-        <img src="/logo.png" class="h-7" alt="S4S Logo" />
+        <NuxtImg
+          src="/logos/s4s-text-dark.png"
+          class="h-7"
+          alt="S4S Logo"
+          v-if="isDarkMode"
+        />
+        <NuxtImg
+          src="/logos/s4s-text-light.png"
+          class="h-7"
+          alt="S4S Logo"
+          v-else
+        />
       </a>
       <div class="flex items-center md:order-2 space-x-2 rtl:space-x-reverse">
         <OnBoardingSectionDialog>
@@ -37,9 +54,13 @@
           <LucideBookOpenCheck class="mr-2 w-4 h-4" />
           Changer d'exercice
         </Button>
-        <Button variant="default" v-if="isPlayground">
+        <Button v-if="isPlayground">
           <LucidePlay class="w-4 h-4 mr-2" />
           Exécuter le code
+        </Button>
+        <Button variant="ghost" size="icon" @click="switchColorMode">
+          <LucideSun v-if="isDarkMode" />
+          <LucideMoon v-else />
         </Button>
       </div>
     </div>

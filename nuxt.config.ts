@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-lucide-icons',
     '@nuxt/image',
+    '@nuxtjs/color-mode',
   ],
   shadcn: {
     /**
@@ -28,8 +29,12 @@ export default defineNuxtConfig({
       theme: {
         // Default theme (same as single string)
         default: 'github-light',
+        dark: 'github-dark',
       },
       langs: ['c', 'cpp', 'java', 'typescript', 'python'],
     },
+  },
+  colorMode: {
+    classSuffix: '',
   },
 });

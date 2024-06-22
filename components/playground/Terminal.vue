@@ -5,16 +5,17 @@
   import { ClipboardAddon } from '@xterm/addon-clipboard';
   import { FitAddon } from '@xterm/addon-fit';
   import { Unicode11Addon } from '@xterm/addon-unicode11';
-  import { getHighlighter, type BundledTheme } from 'shiki';
+  import {
+    type BundledLanguage,
+    type BundledTheme,
+    type HighlighterGeneric,
+  } from 'shiki';
 
   const props = defineProps<{
-    theme: BundledTheme;
+    highlighter: HighlighterGeneric<BundledLanguage, BundledTheme>;
   }>();
 
-  const highlighter = await getHighlighter({
-    themes: [props.theme],
-    langs: [],
-  });
+  const currentTheme = defineModel<BundledTheme>('currentTheme');
 
   /**
    * Converts a TextMate theme to an xterm.js theme.
@@ -22,7 +23,7 @@
    */
   function shikiToXterm(themeName: BundledTheme): ITheme {
     // Get the theme from Shiki
-    const theme = highlighter.getTheme(themeName);
+    const theme = props.highlighter.getTheme(themeName);
     // Theme base
     const xtermTheme: Omit<ITheme, 'extendedAnsi'> = {
       background: theme?.colors?.['editor.background'],
@@ -51,9 +52,17 @@
     allowTransparency: true,
     convertEol: true, // Make \n create a new line
     cursorBlink: true,
-    theme: shikiToXterm(props.theme),
     fontFamily: 'Consolas',
   });
+
+  // Change theme dynamically
+  watch(
+    currentTheme,
+    (theme) => {
+      if (theme) terminal.options.theme = shikiToXterm(theme);
+    },
+    { immediate: true },
+  );
 
   const fitAddon = new FitAddon();
   // Load plugins

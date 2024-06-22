@@ -3,6 +3,10 @@ title: 'Python: Les bases'
 description: 'Nulla duis cupidatat duis dolore nisi exercitation non nisi est enim aute.'
 defaultCode: >
   def main():
+    """
+    Officia nostrud laboris aute excepteur et excepteur tempor dolor mollit consectetur voluptate.
+    Esse veniam eu id duis enim commodo ea incididunt cillum incididunt.
+    """
     print('Hello World!')
 ---
 

@@ -11,7 +11,7 @@
   <div
     :class="
       cn(
-        'rounded-lg border bg-card text-card-foreground shadow-xl shadow-zinc-100',
+        'rounded-lg border bg-card text-card-foreground shadow-xl',
         props.class,
       )
     "
