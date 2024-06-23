@@ -44,6 +44,8 @@
       automaticLayout: true,
       lineNumbersMinChars: 2,
       fontSize: 16,
+      fontFamily: 'JetBrains Mono',
+      fontWeight: '400',
       readOnly: props.readOnly,
       minimap: {
         enabled: false,

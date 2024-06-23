@@ -23,7 +23,8 @@
     allowTransparency: true,
     convertEol: true, // Make \n create a new line
     cursorBlink: true,
-    fontFamily: 'Consolas',
+    fontFamily: 'JetBrains Mono',
+    letterSpacing: 0,
   });
 
   // Change theme dynamically

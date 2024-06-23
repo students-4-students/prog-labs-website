@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     'nuxt-lucide-icons',
     '@nuxt/image',
     '@nuxtjs/color-mode',
+    '@nuxtjs/google-fonts',
   ],
   shadcn: {
     /**
@@ -41,6 +42,11 @@ export default defineNuxtConfig({
     define: {
       // Make ansis think that it's running in a terminal
       'process.env.FORCE_COLOR': 'true',
+    },
+  },
+  googleFonts: {
+    families: {
+      'JetBrains+Mono': '100..800',
     },
   },
 });
