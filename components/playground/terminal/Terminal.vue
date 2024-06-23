@@ -23,8 +23,7 @@
     allowTransparency: true,
     convertEol: true, // Make \n create a new line
     cursorBlink: true,
-    fontFamily: 'JetBrains Mono',
-    letterSpacing: 0,
+    fontFamily: 'JetBrains Mono, monospace',
   });
 
   // Change theme dynamically
