@@ -44,4 +44,7 @@ export default defineNuxtConfig({
     },
     display: 'swap',
   },
+  monacoEditor: {
+    locale: 'fr',
+  },
 });
