@@ -38,15 +38,10 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: '',
   },
-  vite: {
-    define: {
-      // Make ansis think that it's running in a terminal
-      'process.env.FORCE_COLOR': 'true',
-    },
-  },
   googleFonts: {
     families: {
       'JetBrains+Mono': '100..800',
     },
+    display: 'swap',
   },
 });
