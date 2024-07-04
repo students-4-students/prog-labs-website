@@ -5,10 +5,40 @@
 
   const studentData = useStudentDataStore();
   const { codeLanguage } = storeToRefs(studentData);
-
+  // Temporary banner code
   const bannerFileName = computed(() => {
     return `${codeLanguage.value ?? 'python'}`;
   });
+
+  const EXPECTED_SERIES_NB = 2;
+  const { data: series, status: seriesStatus } = useAsyncData(
+    'series',
+    async () => {
+      // await new Promise((resolve) => setTimeout(resolve, 5000));
+      // Try to fetch the serie from the server
+      return await queryContent()
+        .where({
+          _dir: '', // Only fetch series
+          isPartnerSerie: { $ne: true }, // Exclude partner series
+        })
+        .find();
+    },
+  );
+
+  const EXPECTED_PARTNER_SERIES_NB = 1;
+  const { data: partnerSeries, status: partnerSeriesStatus } = useAsyncData(
+    'partner-series',
+    async () => {
+      // await new Promise((resolve) => setTimeout(resolve, 5000));
+      // Try to fetch the serie from the server
+      return await queryContent()
+        .where({
+          _dir: '', // Only fetch series
+          isPartnerSerie: true, // Only partner series
+        })
+        .find();
+    },
+  );
 </script>
 
 <template>
@@ -21,26 +51,18 @@
       </h2>
       <div class="flex flex-col">
         <div class="flex flex-col md:flex-row gap-8 flex-wrap">
-          <Card class="w-full grow max-w-[520px]" v-for="nb in 3">
-            <CardHeader class="flex items-start">
+          <SerieCardSkeleton
+            v-if="seriesStatus === 'pending'"
+            v-for="_ in EXPECTED_SERIES_NB"
+          />
+          <SerieCard v-else v-for="serie in series" :serieData="serie">
+            <template #banner>
               <NuxtImg
-                class="w-full -my-2 self-center"
+                class="w-full mb-2 self-center"
                 :src="`/logos/stylized/${bannerFileName}.png`"
-                alt=""
               />
-              <CardTitle>Série {{ nb }} : Lorem Ipsum</CardTitle>
-              <CardDescription>
-                Commodo quis eu in consectetur nisi et eu exercitation. Do magna
-                voluptate sint reprehenderit pariatur cupidatat Lorem esse
-                incididunt. Quis quis sint enim magna aute nisi ad anim.
-              </CardDescription>
-            </CardHeader>
-            <CardContent class="flex flex-1 basis-0 flex-wrap gap-2">
-              <Button variant="secondary" size="lg" class="grow" v-for="i in 6">
-                Exercice n°{{ i }}
-              </Button>
-            </CardContent>
-          </Card>
+            </template>
+          </SerieCard>
         </div>
       </div>
     </div>
@@ -49,23 +71,21 @@
         Partenaires
         <LucideHandshake class="ml-3 w-6 h-6" />
       </h2>
-      <Card class="w-full grow max-w-[760px]">
-        <CardHeader class="flex items-start">
-          <NuxtImg class="h-28 mb-4" src="/logos/polympiads.svg" />
-          <CardTitle class="flex">Série Polympiads</CardTitle>
-          <CardDescription>
-            Commodo quis eu in consectetur nisi et eu exercitation. Do magna
-            voluptate sint reprehenderit pariatur cupidatat Lorem esse
-            incididunt. Quis quis sint enim magna aute nisi ad anim. Non
-            deserunt anim adipisicing sint sit.
-          </CardDescription>
-        </CardHeader>
-        <CardContent class="flex flex-wrap gap-2">
-          <Button variant="secondary" size="lg" v-for="i in 3">
-            Exercice n°{{ i }}
-          </Button>
-        </CardContent>
-      </Card>
+      <SerieCardSkeleton
+        v-if="partnerSeriesStatus === 'pending'"
+        v-for="_ in EXPECTED_PARTNER_SERIES_NB"
+        class="max-w-[760px]"
+      />
+      <SerieCard
+        v-else
+        v-for="partnerSerie in partnerSeries"
+        :serieData="partnerSerie"
+        class="max-w-[760px]"
+      >
+        <template #banner>
+          <NuxtImg class="h-24 mb-4" src="/logos/polympiads.svg" />
+        </template>
+      </SerieCard>
     </div>
   </div>
 </template>
