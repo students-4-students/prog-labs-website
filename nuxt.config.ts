@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   ssr: false,
   devtools: { enabled: true },
+
   modules: [
     '@pinia/nuxt',
     'shadcn-nuxt',
@@ -14,6 +15,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxtjs/google-fonts',
   ],
+
   shadcn: {
     /**
      * Prefix for all the imported component
@@ -25,6 +27,7 @@ export default defineNuxtConfig({
      */
     componentDir: './components/ui',
   },
+
   content: {
     highlight: {
       theme: {
@@ -35,16 +38,21 @@ export default defineNuxtConfig({
       langs: ['c', 'cpp', 'java', 'python'],
     },
   },
+
   colorMode: {
     classSuffix: '',
   },
+
   googleFonts: {
     families: {
       'JetBrains+Mono': '100..800',
     },
     display: 'swap',
   },
+
   monacoEditor: {
     locale: 'fr',
   },
+
+  compatibilityDate: '2024-07-04',
 });
