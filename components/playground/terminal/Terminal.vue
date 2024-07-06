@@ -1,6 +1,6 @@
 <script lang="ts" setup>
   import '@xterm/xterm/css/xterm.css';
-  import { Terminal, type ITheme } from '@xterm/xterm';
+  import { Terminal } from '@xterm/xterm';
   import { WebLinksAddon } from '@xterm/addon-web-links';
   import { ClipboardAddon } from '@xterm/addon-clipboard';
   import { FitAddon } from '@xterm/addon-fit';
@@ -17,7 +17,6 @@
   }>();
 
   const currentTheme = defineModel<BundledTheme>('currentTheme');
-
   const terminal = new Terminal({
     allowProposedApi: true,
     allowTransparency: true,

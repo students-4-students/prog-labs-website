@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+  import { queryAllSeries } from '~/lib/content';
+
   useHead({
     title: 'Exercices',
   });
@@ -11,34 +13,14 @@
   });
 
   const EXPECTED_SERIES_NB = 2;
-  const { data: series, status: seriesStatus } = useAsyncData(
-    'series',
-    async () => {
-      // await new Promise((resolve) => setTimeout(resolve, 5000));
-      // Try to fetch the serie from the server
-      return await queryContent()
-        .where({
-          _dir: '', // Only fetch series
-          isPartnerSerie: { $ne: true }, // Exclude partner series
-        })
-        .find();
-    },
-  );
+  const { data: series, status: seriesStatus } = queryAllSeries({
+    isPartnerSerie: { $ne: true },
+  });
 
   const EXPECTED_PARTNER_SERIES_NB = 1;
-  const { data: partnerSeries, status: partnerSeriesStatus } = useAsyncData(
-    'partner-series',
-    async () => {
-      // await new Promise((resolve) => setTimeout(resolve, 5000));
-      // Try to fetch the serie from the server
-      return await queryContent()
-        .where({
-          _dir: '', // Only fetch series
-          isPartnerSerie: true, // Only partner series
-        })
-        .find();
-    },
-  );
+  const { data: partnerSeries, status: partnerSeriesStatus } = queryAllSeries({
+    isPartnerSerie: { $eq: true },
+  });
 </script>
 
 <template>
