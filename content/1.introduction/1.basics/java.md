@@ -1,21 +1,29 @@
 ---
 title: 'Java : Les bases'
 description: 'Nulla duis cupidatat duis dolore nisi exercitation non nisi est enim aute.'
-defaultCode: >
-  /**
-   * Welcome to the Java programming environment!
-   */
-  public class Main {
-      /**
-       * Program entry point.
-       * This will be the first method that is called when you run your program.
-       */
-      public static void main(String[] args) {
-        System.out.println("Hello World!");
-      }
-  }
-correctedCode: >
-  // This is the code that you should have made.
+
+code:
+  default: >
+    /**
+    * Welcome to the Java programming environment!
+    */
+    public class Main {
+        /**
+        * Program entry point.
+        * This will be the first method that is called when you run your program.
+        */
+        public static void main(String[] args) {
+          System.out.println("Hello World!");
+        }
+    }
+  corrected: >
+    // This is the code that you should have made.
+
+runtime:
+  stdin:
+    - 'first_line'
+  stdout:
+    - 'first_line'
 ---
 
 ![Java logo](https://kinsta.com/wp-content/uploads/2023/01/Java-logo.png)

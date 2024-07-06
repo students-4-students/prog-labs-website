@@ -18,6 +18,7 @@
     light: 'github-light',
     dark: 'github-dark',
   };
+  // TODO: Refactor dark mode
   const colorMode = useColorMode();
   const currentTheme = computed(() =>
     colorMode.value === 'dark' ? themes.dark : themes.light,
@@ -76,8 +77,8 @@
       // Update the page title and meta tags
       useContentHead(exercise);
       // Set the default content for the editors
-      writtenCode.value = exercise.defaultCode;
-      correctedCode.value = exercise.correctedCode;
+      writtenCode.value = exercise.code.default;
+      correctedCode.value = exercise.code.corrected;
     }
     return exercise;
   }
@@ -90,6 +91,9 @@
 
 <template>
   <Navbar is-playground />
+  <!-- Modals -->
+  <!-- <PlaygroundDialogExerciseCompletion default-open /> -->
+  <!-- Playground -->
   <ResizablePanelGroup direction="horizontal" class="flex w-full h-full">
     <ResizablePanel id="instructions" :min-size="25" :max-size="30">
       <div
@@ -101,6 +105,7 @@
             class="px-6 w-full h-full overflow-y-scroll prose dark:prose-invert prose-img:w-full prose-img:border prose-img:rounded-md prose-pre:bg-background prose-pre:border prose-pre:p-4 prose-a:no-underline lg:prose-lg text-justify"
           />
           <template #empty>
+            <!-- TODO: Better fallback content -->
             <h1>Uh oh, cet exercice n'existe pas.</h1>
           </template>
         </ContentRenderer>
