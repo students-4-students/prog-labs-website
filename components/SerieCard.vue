@@ -72,5 +72,3 @@
     </CardContent>
   </Card>
 </template>
-
-<style></style>
