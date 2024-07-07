@@ -1,14 +1,13 @@
 <script setup lang="ts">
   import type { ParsedContent } from '@nuxt/content';
   import {
-    getHighlighter,
+    createHighlighter,
     type BundledLanguage,
     type BundledTheme,
   } from 'shiki';
-  import { queryExercise, querySerieFallbackLanguage } from '~/lib/content';
 
   const studentData = useStudentDataStore();
-  const { codeLanguage } = storeToRefs(studentData);
+  const { codeLanguage, sectionCode } = storeToRefs(studentData);
 
   // Monaco editor config
   const language: Ref<BundledLanguage> = ref('python');
@@ -24,7 +23,7 @@
   const currentTheme = computed(() =>
     colorMode.value === 'dark' ? themes.dark : themes.light,
   );
-  const highlighter = await getHighlighter({
+  const highlighter = await createHighlighter({
     themes: Object.values(themes),
     langs: supportedLanguages,
   });
@@ -37,20 +36,64 @@
   const writtenCode = defineModel('writtenCode');
   const correctedCode = defineModel('correctedCode');
 
-  // const { data: fallbackLanguage } = querySerieFallbackLanguage(serieName)
-  const exercise = ref();
-  const { data: exerciseData, status } = queryExercise(
-    serieName,
-    exerciseName,
-    codeLanguage.value ?? fallbackLanguage.value,
-  );
-
-  watch(exerciseData, (data) => {
-    if (data) {
-      writtenCode.value = data.code.default;
-      correctedCode.value = data.code.corrected;
+  /**
+   * Load the content for the current exercise.
+   */
+  async function loadExercise() {
+    // Check if the student has provided a valid code language
+    if (codeLanguage.value === undefined) {
+      return undefined;
     }
-  });
+
+    // Update the code language to the one selected by the student
+    language.value = codeLanguage.value;
+
+    // Try to fetch the serie from the server
+    const serieFallbackLanguage = await queryContent(serieName)
+      .only(['fallbackLanguage'])
+      .findOne()
+      .catch((_) => null);
+
+    // Load the fallback language from the serie if any
+    if (serieFallbackLanguage !== null) {
+      fallbackLanguage.value = <BundledLanguage>(
+        (<unknown>serieFallbackLanguage)
+      );
+    }
+
+    // Try to fetch the exercise from the server
+    let exercise = await queryContent(serieName, exerciseName, language.value)
+      .findOne()
+      .catch((_) => null);
+
+    // Try to fallback to the default language for this serie,
+    // if the exercise is not found for this language
+    if (exercise === null) {
+      language.value = fallbackLanguage.value;
+      exercise = await queryContent(serieName, exerciseName, language.value)
+        .findOne()
+        .catch((_) => null);
+    }
+
+    // Check if the exercise exists
+    if (exercise !== null) {
+      // Update the page title and meta tags
+      useContentHead(exercise);
+      // Set the default content for the editors
+      writtenCode.value = exercise.code.default;
+      correctedCode.value = exercise.code.corrected;
+    }
+    return exercise;
+  }
+
+  // Load the content for the current exercise asynchronously
+  const { data: exerciseData, status } = useAsyncData(
+    `${serieName}-${exerciseName}-${sectionCode.value}`,
+    loadExercise,
+    {
+      watch: [sectionCode],
+    },
+  );
 </script>
 
 <template>
@@ -64,7 +107,7 @@
     leave-to-class="transform opacity-0"
   >
     <div
-      class="absolute z-50 flex flex-col items-center justify-center h-screen w-screen space-y-8 backdrop-blur-sm bg-background bg-opacity-35"
+      class="absolute z-50 flex flex-col items-center justify-center h-screen w-screen space-y-8 backdrop-blur-sm bg-background/35"
       v-if="status === 'pending'"
     >
       <div class="loader text-primary !text-8xl" />
@@ -84,7 +127,13 @@
           />
           <template #empty>
             <!-- TODO: Better fallback content -->
-            <h1>Uh oh, cet exercice n'existe pas.</h1>
+            <div class="flex flex-col space-y-4 items-center justify-center">
+              <NuxtImg class="mb-4" src="/illustrations/empty-box.png" />
+              <h1>Oups, il semblerait cet exercice n'existe pas.</h1>
+              <Button @click="navigateTo('/')">
+                Choisir un autre exercice
+              </Button>
+            </div>
           </template>
         </ContentRenderer>
       </div>

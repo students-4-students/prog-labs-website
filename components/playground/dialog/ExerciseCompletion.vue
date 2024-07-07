@@ -4,7 +4,7 @@
   <Dialog v-model="$attrs">
     <DialogContent>
       <DialogHeader>
-        <NuxtImg class="my-4" src="/illustrations/exercise_success.png" />
+        <NuxtImg class="my-4" src="/illustrations/exercise-success.png" />
         <DialogTitle>Exercice réussi !</DialogTitle>
         <DialogDescription>
           Laboris commodo cillum est laborum nulla do nulla eu velit. Eu ullamco

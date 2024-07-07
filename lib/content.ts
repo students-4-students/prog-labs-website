@@ -9,7 +9,7 @@ import type { BundledLanguage } from 'shiki';
 export function queryAllSeries(filter: QueryBuilderWhere) {
   return useAsyncData(`all-series-${JSON.stringify(filter)}`, async () => {
     // Try to fetch the serie from the server
-    await new Promise((resolve) => setTimeout(resolve, 5000));
+    // await new Promise((resolve) => setTimeout(resolve, 5000));
     return await queryContent()
       // Use _dir: '' to only include series
       // which are at the root of the 'content/' folder
@@ -40,7 +40,7 @@ export function queryExercise(
   codeLanguage: BundledLanguage,
 ) {
   return useAsyncData(`${serieName}-${name}-${codeLanguage}`, async () => {
-    await new Promise((resolve) => setTimeout(resolve, 5000));
+    // await new Promise((resolve) => setTimeout(resolve, 5000));
     return await queryContent(serieName, name, codeLanguage).findOne();
   });
 }
