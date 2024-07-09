@@ -6,6 +6,10 @@
     type BundledTheme,
   } from 'shiki';
 
+  definePageMeta({
+    layout: 'playground',
+  });
+
   const studentData = useStudentDataStore();
   const { codeLanguage, sectionCode } = storeToRefs(studentData);
 
@@ -87,7 +91,7 @@
   }
 
   // Load the content for the current exercise asynchronously
-  const { data: exerciseData, status } = useAsyncData(
+  const { data: exerciseData, status } = await useAsyncData(
     `${serieName}-${exerciseName}-${sectionCode.value}`,
     loadExercise,
     {
@@ -100,27 +104,16 @@
   <Navbar is-playground />
   <!-- Modals -->
   <!-- <PlaygroundDialogExerciseCompletion default-open /> -->
-  <!-- Playground loader -->
-  <Transition
-    leave-active-class="duration-200 ease-in"
-    leave-from-class="opacity-100"
-    leave-to-class="transform opacity-0"
-  >
-    <div
-      class="absolute z-50 flex flex-col items-center justify-center h-screen w-screen space-y-8 backdrop-blur-sm bg-background/35"
-      v-if="status === 'pending'"
-    >
-      <div class="loader text-primary !text-8xl" />
-      <h2 class="text-md text-center">Chargement de l'exercice</h2>
-    </div>
-  </Transition>
   <!-- Playground -->
   <ResizablePanelGroup direction="horizontal" class="flex w-full h-full">
     <ResizablePanel id="instructions" :min-size="25" :max-size="30">
       <div
         class="flex h-full items-center justify-center bg-accent overflow-y-scroll"
       >
-        <ContentRenderer :value="<ParsedContent>exerciseData">
+        <ContentRenderer
+          :value="<ParsedContent>exerciseData"
+          v-if="exerciseData"
+        >
           <ContentRendererMarkdown
             :value="<ParsedContent>exerciseData"
             class="px-6 w-full h-full overflow-y-scroll prose dark:prose-invert prose-img:w-full prose-img:border prose-img:rounded-md prose-pre:bg-background prose-pre:border prose-pre:p-4 prose-a:no-underline lg:prose-lg text-justify"
@@ -128,7 +121,11 @@
           <template #empty>
             <!-- TODO: Better fallback content -->
             <div class="flex flex-col space-y-4 items-center justify-center">
-              <NuxtImg class="mb-4" src="/illustrations/empty-box.png" />
+              <NuxtImg
+                class="mb-4"
+                src="/illustrations/empty-box.png"
+                placeholder
+              />
               <h1>Oups, il semblerait cet exercice n'existe pas.</h1>
               <Button @click="navigateTo('/')">
                 Choisir un autre exercice

@@ -42,6 +42,7 @@
               <NuxtImg
                 class="w-full mb-2 self-center"
                 :src="`/logos/stylized/${bannerFileName}.png`"
+                placeholder
               />
             </template>
           </SerieCard>
@@ -65,7 +66,7 @@
         class="max-w-[760px]"
       >
         <template #banner>
-          <NuxtImg class="h-24 mb-4" src="/logos/polympiads.svg" />
+          <NuxtImg class="h-24 mb-4" src="/logos/polympiads.svg" placeholder />
         </template>
       </SerieCard>
     </div>

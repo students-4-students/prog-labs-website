@@ -36,8 +36,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "prepare": "yarn husky",
-    "start": "node .output/server/index.mjs"
+    "prepare": "bunx husky",
+    "start": "bun run .output/server/index.mjs"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
