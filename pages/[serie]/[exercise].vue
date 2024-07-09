@@ -135,7 +135,7 @@
         </ContentRenderer>
       </div>
     </ResizablePanel>
-    <PlaygroundResizableHandle id="instructions" />
+    <ResizableHandle id="instructions" with-handle />
     <ResizablePanel>
       <ResizablePanelGroup id="code-terminal-group" direction="vertical">
         <ResizablePanel id="editor" :min-size="35">
@@ -195,7 +195,7 @@
             </TabsContent>
           </Tabs>
         </ResizablePanel>
-        <PlaygroundResizableHandle id="editor" />
+        <ResizableHandle id="editor" with-handle />
         <ResizablePanel id="terminal" :default-size="35" :min-size="15">
           <div class="flex flex-col h-full">
             <PlaygroundTerminal
