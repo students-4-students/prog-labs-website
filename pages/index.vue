@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+  import type { QueryBuilderWhere } from '@nuxt/content';
+
   useHead({
     title: 'Exercices',
   });
@@ -10,35 +12,32 @@
     return `${codeLanguage.value ?? 'python'}`;
   });
 
-  const EXPECTED_SERIES_NB = 2;
-  const { data: series, status: seriesStatus } = useAsyncData(
-    'series',
-    async () => {
-      // await new Promise((resolve) => setTimeout(resolve, 5000));
+  /**
+   * Fetches and caches all series following the filter constraints.
+   * @param filter - The filter constraints to apply to the query
+   * @returns The series that matches the filter
+   */
+  function queryAllSeries(filter: QueryBuilderWhere) {
+    return useAsyncData(`all-series-${JSON.stringify(filter)}`, async () => {
       // Try to fetch the serie from the server
+      // await new Promise((resolve) => setTimeout(resolve, 5000));
       return await queryContent()
-        .where({
-          _dir: '', // Only fetch series
-          isPartnerSerie: { $ne: true }, // Exclude partner series
-        })
+        // Use _dir: '' to only include series
+        // which are at the root of the 'content/' folder
+        .where({ _dir: '', ...filter })
         .find();
-    },
-  );
+    });
+  }
+
+  const EXPECTED_SERIES_NB = 2;
+  const { data: series, status: seriesStatus } = queryAllSeries({
+    isPartnerSerie: { $ne: true },
+  });
 
   const EXPECTED_PARTNER_SERIES_NB = 1;
-  const { data: partnerSeries, status: partnerSeriesStatus } = useAsyncData(
-    'partner-series',
-    async () => {
-      // await new Promise((resolve) => setTimeout(resolve, 5000));
-      // Try to fetch the serie from the server
-      return await queryContent()
-        .where({
-          _dir: '', // Only fetch series
-          isPartnerSerie: true, // Only partner series
-        })
-        .find();
-    },
-  );
+  const { data: partnerSeries, status: partnerSeriesStatus } = queryAllSeries({
+    isPartnerSerie: { $eq: true },
+  });
 </script>
 
 <template>
@@ -60,6 +59,7 @@
               <NuxtImg
                 class="w-full mb-2 self-center"
                 :src="`/logos/stylized/${bannerFileName}.png`"
+                placeholder
               />
             </template>
           </SerieCard>
@@ -83,7 +83,7 @@
         class="max-w-[760px]"
       >
         <template #banner>
-          <NuxtImg class="h-24 mb-4" src="/logos/polympiads.svg" />
+          <NuxtImg class="h-24 mb-4" src="/logos/polympiads.svg" placeholder />
         </template>
       </SerieCard>
     </div>
