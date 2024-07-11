@@ -1,37 +1,72 @@
 ---
-title: 'Java : Les bases'
-description: 'Nulla duis cupidatat duis dolore nisi exercitation non nisi est enim aute.'
+title: 'Java : Bienvenue !'
+description: 'Une rapide présentation du site de S4S Prog.'
 defaultCode: >
-  /**
-   * Welcome to the Java programming environment!
-   */
   public class Main {
-      /**
-       * Program entry point.
-       * This will be the first method that is called when you run your program.
-       */
-      public static void main(String[] args) {
-        System.out.println("Hello World!");
-      }
+
+    public static void main(String[] args) {
+
+      System.out.println("Hello EPFL"); // affiche "Hello EPFL"
+
+    }
+
   }
 correctedCode: >
-  // This is the code that you should have made.
+  // voilà le code corrigé (identique dans cet exemple)
+
+  public class Main {
+
+    public static void main(String[] args) {
+
+      System.out.println("Hello EPFL"); // affiche "Hello EPFL"
+
+    }
+
+  }
 ---
 
 ![Java logo](https://kinsta.com/wp-content/uploads/2023/01/Java-logo.png)
 
 ## Introduction au Java 👨‍💻
 
-Nisi occaecat culpa dolore ipsum veniam ex voluptate in ut occaecat adipisicing cupidatat ad magna. Eiusmod sit minim id aute consequat adipisicing consectetur incididunt. Cillum aliqua fugiat est ut incididunt. Ex et ex esse ea fugiat cupidatat culpa laborum eu ad commodo proident. Labore laboris ullamco minim aute cillum deserunt veniam mollit et Lorem mollit adipisicing ipsum esse.
+Bienvenue au cours de programmation de Students 4 Students ! 🎉
+
+Cette année, vous allez apprendre le Java, un langage de programmation très utilisé et assez adapté pour commencer. Ce site est là pour vous permettre d'acquérir quelques bases utiles pour votre première année à l'EPFL.
+
+Lors du semestre, vous utiliserez un logiciel installé sur votre ordinateur pour lancer le code, mais ce sera très similaire à ce site !
+
+Chaque exercice sera séparé en 3 parties :
+
+- une **introduction** présentant rapidement les concepts abordés
+- une **consigne** précisant ce que vous devez faire
+- un **cours** (et des indices...) pour apprendre à faire ce qui est demandé :)
+
+Si vous êtes à l'aise vous pouvez ne pas lire le cours, mais prenez votre temps pour bien comprendre chaque exercice !
+
+### La consigne
+
+Lancez le code pré-écrit dans l'éditeur de code.
+
+### Le cours
+
+En Java, on a besoin d’un petit bout de code qui sera toujours présent (vous comprendrez pourquoi durant le semestre) avant d'écrire notre propre code :
 
 ```java
 public class Main {
-  public static void main(String[] args) {
-    System.out.println("Hello World")
-  }
+	public static void main(String[] args) {
+
+    // et voilà
+    // après avoir écrit tout ça
+    // on peut enfin écrire notre code ici !
+
+	}
 }
 ```
 
-### Lorem Ipsum
+Les mots précédées de `//` sont ignorés, et sont des commentaires du code.
 
-Consequat cillum incididunt ad ullamco voluptate et eiusmod deserunt nostrud laboris ad consectetur. Culpa commodo nulla elit sit fugiat officia Lorem laborum dolore. Sit exercitation proident irure duis id labore tempor magna. Exercitation ad ipsum cillum incididunt et id dolor in aute cillum enim mollit dolore cillum. Amet reprehenderit laboris labore dolore dolore minim eiusmod in tempor laboris magna quis cillum officia.
+Et maintenant, comment exécuter notre code ? Dns chaque éditeur de code dont ce site, il existe un petit bouton prévu à cet effet, généralement un bouton "Play" (une flèche orientée vers la droite), situé en haut à droite de l’éditeur.
+
+#### Crédits
+
+Cette série a été rédigée par Emmanuel Omont.
