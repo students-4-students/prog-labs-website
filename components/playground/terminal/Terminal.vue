@@ -65,7 +65,7 @@
 </script>
 
 <template>
-  <PlaygroundTabsHeader tab-name="Terminal">
+  <PlaygroundTabsHeader tab-name="Résultat">
     <template #icon>
       <LucideTerminal />
     </template>
