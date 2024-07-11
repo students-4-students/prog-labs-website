@@ -1,5 +1,5 @@
 import type { QueryBuilderWhere } from '@nuxt/content';
-import type { BundledLanguage } from 'shiki';
+import type { AllowedLanguage } from '~/stores/studentData';
 
 /**
  * Fetches and caches all series following the filter constraints.
@@ -24,23 +24,12 @@ export function queryAllSeries(filter: QueryBuilderWhere) {
  * @returns The fallback language of the serie
  */
 export function querySerieFallbackLanguage(name: string) {
-  return useAsyncData<BundledLanguage>(
+  return useAsyncData<AllowedLanguage>(
     `${name}-fallback-language`,
     async () => {
-      return <BundledLanguage>(
+      return <AllowedLanguage>(
         (<unknown>await queryContent(name).only(['fallbackLanguage']).findOne())
       );
     },
   );
-}
-
-export function queryExercise(
-  serieName: string,
-  name: string,
-  codeLanguage: BundledLanguage,
-) {
-  return useAsyncData(`${serieName}-${name}-${codeLanguage}`, async () => {
-    // await new Promise((resolve) => setTimeout(resolve, 5000));
-    return await queryContent(serieName, name, codeLanguage).findOne();
-  });
 }

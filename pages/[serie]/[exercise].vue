@@ -1,10 +1,6 @@
 <script setup lang="ts">
   import type { ParsedContent } from '@nuxt/content';
-  import {
-    createHighlighter,
-    type BundledLanguage,
-    type BundledTheme,
-  } from 'shiki';
+  import { createHighlighter, type BundledTheme } from 'shiki';
 
   definePageMeta({
     layout: 'playground',
