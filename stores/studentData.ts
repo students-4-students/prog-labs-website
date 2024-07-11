@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia';
-import { type BundledLanguage } from 'shiki';
 
 export enum SectionCode {
   MA = 'MA',
@@ -17,29 +16,43 @@ export enum SectionCode {
   CMS = 'CMS',
 }
 
-export enum CodeLanguage {
-  CPP = 'cpp',
-  PYTHON = 'python',
-  JAVA = 'java',
-}
-
-export const CodeLanguages: Record<CodeLanguage, { name: string }> = {
-  [CodeLanguage.CPP]: {
-    name: 'C++',
-  },
-  [CodeLanguage.PYTHON]: {
-    name: 'Python',
-  },
-  [CodeLanguage.JAVA]: {
-    name: 'Java',
-  },
-};
-
 export type SectionData = {
   name: string;
   code: SectionCode;
-  codeLanguage: BundledLanguage;
+  codeLanguage: AllowedLanguage;
 };
+
+export type AllowedLanguage = 'java' | 'cpp' | 'python';
+export const ALLOWED_LANGUAGES: AllowedLanguage[] = ['java', 'cpp', 'python'];
+
+export function getCodeLanguageData(language: AllowedLanguage) {
+  switch (language) {
+    case 'cpp': {
+      return {
+        name: 'C++',
+        fileExtension: 'cpp',
+      };
+    }
+    case 'java': {
+      return {
+        name: 'Java',
+        fileExtension: 'java',
+      };
+    }
+    case 'python': {
+      return {
+        name: 'Python',
+        fileExtension: 'py',
+      };
+    }
+    default: {
+      return {
+        name: null,
+        fileExtension: null,
+      };
+    }
+  }
+}
 
 export const Sections: Record<SectionCode, SectionData> = {
   [SectionCode.MA]: {
@@ -113,14 +126,14 @@ export const useStudentDataStore = defineStore({
   id: 'studentData',
   state: () => ({
     sectionCode: useLocalStorage<SectionCode | undefined>(
-      'sectionCode',
+      'section-code',
       undefined,
     ),
   }),
   getters: {
     section: (state) =>
       state.sectionCode ? Sections[state.sectionCode] : undefined,
-    codeLanguage(): BundledLanguage | undefined {
+    codeLanguage(): AllowedLanguage | undefined {
       return this.section ? this.section.codeLanguage : undefined;
     },
   },

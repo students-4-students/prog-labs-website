@@ -5,8 +5,8 @@ description: 'Nulla duis cupidatat duis dolore nisi exercitation non nisi est en
 code:
   default: >
     /**
-    * Welcome to the Java programming environment!
-    */
+     * Welcome to the Java programming environment!
+     */
     public class Main {
         /**
         * Program entry point.

@@ -38,10 +38,8 @@
         <CommandEmpty>Aucune section n'est disponible.</CommandEmpty>
         <CommandList>
           <CommandGroup
-            v-for="[codeLanguage, codeLanguageData] in Object.entries(
-              CodeLanguages,
-            )"
-            :heading="codeLanguageData.name"
+            v-for="codeLanguage in ALLOWED_LANGUAGES"
+            :heading="<string>getCodeLanguageData(codeLanguage).name"
           >
             <CommandItem
               class="cursor-pointer"
@@ -72,7 +70,7 @@
             <!-- Hide the last separator -->
             <CommandSeparator
               class="mt-2"
-              v-if="codeLanguage != Object.keys(CodeLanguages).at(-1)"
+              v-if="codeLanguage != ALLOWED_LANGUAGES.at(-1)"
             />
           </CommandGroup>
         </CommandList>

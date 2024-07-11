@@ -14,9 +14,8 @@
   const { codeLanguage, sectionCode } = storeToRefs(studentData);
 
   // Monaco editor config
-  const language: Ref<BundledLanguage> = ref('python');
-  const fallbackLanguage: Ref<BundledLanguage> = ref('python');
-  const supportedLanguages: BundledLanguage[] = ['java', 'cpp', 'python'];
+  const language: Ref<AllowedLanguage> = ref('python');
+  const fallbackLanguage: Ref<AllowedLanguage> = ref('python');
 
   const themes: Record<'light' | 'dark', BundledTheme> = {
     light: 'github-light',
@@ -29,7 +28,7 @@
   );
   const highlighter = await createHighlighter({
     themes: Object.values(themes),
-    langs: supportedLanguages,
+    langs: ALLOWED_LANGUAGES,
   });
 
   const route = useRoute();
@@ -53,15 +52,15 @@
     language.value = codeLanguage.value;
 
     // Try to fetch the serie from the server
-    const serieFallbackLanguage = await queryContent(serieName)
+    const serieData = await queryContent(serieName)
       .only(['fallbackLanguage'])
       .findOne()
       .catch((_) => null);
 
     // Load the fallback language from the serie if any
-    if (serieFallbackLanguage !== null) {
-      fallbackLanguage.value = <BundledLanguage>(
-        (<unknown>serieFallbackLanguage)
+    if (serieData !== null && serieData.fallbackLanguage !== null) {
+      fallbackLanguage.value = <AllowedLanguage>(
+        (<unknown>serieData.fallbackLanguage)
       );
     }
 
@@ -72,7 +71,11 @@
 
     // Try to fallback to the default language for this serie,
     // if the exercise is not found for this language
-    if (exercise === null) {
+    if (
+      exercise === null &&
+      fallbackLanguage !== null &&
+      fallbackLanguage.value !== language.value
+    ) {
       language.value = fallbackLanguage.value;
       exercise = await queryContent(serieName, exerciseName, language.value)
         .findOne()
@@ -91,13 +94,25 @@
   }
 
   // Load the content for the current exercise asynchronously
-  const { data: exerciseData, status } = await useAsyncData(
+  const { data: exerciseData } = await useAsyncData(
     `${serieName}-${exerciseName}-${sectionCode.value}`,
     loadExercise,
     {
       watch: [sectionCode],
     },
   );
+
+  const editorTabName = computed(() => {
+    if (exerciseData.value !== null) {
+      const upperCaseSerieName =
+        serieName.charAt(0).toUpperCase() + serieName.slice(1);
+      const { fileExtension } = getCodeLanguageData(
+        language.value ?? fallbackLanguage.value,
+      );
+      return `${upperCaseSerieName}/${exerciseName}.${fileExtension}`;
+    }
+    return 'Exercice non trouvé';
+  });
 </script>
 
 <template>
@@ -110,10 +125,7 @@
       <div
         class="flex h-full items-center justify-center bg-accent overflow-y-scroll"
       >
-        <ContentRenderer
-          :value="<ParsedContent>exerciseData"
-          v-if="exerciseData"
-        >
+        <ContentRenderer :value="<ParsedContent>exerciseData">
           <ContentRendererMarkdown
             :value="<ParsedContent>exerciseData"
             class="px-6 w-full h-full overflow-y-scroll prose dark:prose-invert prose-img:w-full prose-img:border prose-img:rounded-md prose-pre:bg-background prose-pre:border prose-pre:p-4 prose-a:no-underline lg:prose-lg text-justify"
@@ -126,7 +138,9 @@
                 src="/illustrations/empty-box.png"
                 placeholder
               />
-              <h1>Oups, il semblerait cet exercice n'existe pas.</h1>
+              <h1 class="text-center">
+                Oups, il semblerait cet exercice n'existe pas.
+              </h1>
               <Button @click="navigateTo('/')">
                 Choisir un autre exercice
               </Button>
@@ -149,7 +163,7 @@
                   <template #icon>
                     <LucideCode />
                   </template>
-                  Série 1 / Exercice 1
+                  {{ editorTabName }}
                 </PlaygroundTab>
               </TabsTrigger>
               <TabsTrigger
@@ -172,9 +186,9 @@
               class="flex grow m-0 focus-visible:ring-0 focus-visible:ring-offset-0"
             >
               <PlaygroundEditor
-                v-if="status !== 'pending'"
+                v-if="exerciseData"
                 :language="language"
-                :supportedLanguages="supportedLanguages"
+                :supportedLanguages="ALLOWED_LANGUAGES"
                 :highlighter="highlighter"
                 v-model:currentTheme="currentTheme"
                 v-model="writtenCode"
@@ -186,7 +200,7 @@
             >
               <PlaygroundEditor
                 :language="language"
-                :supportedLanguages="supportedLanguages"
+                :supportedLanguages="ALLOWED_LANGUAGES"
                 :highlighter="highlighter"
                 v-model:currentTheme="currentTheme"
                 v-model="correctedCode"
