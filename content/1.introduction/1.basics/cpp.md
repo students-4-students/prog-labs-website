@@ -1,20 +1,22 @@
 ---
 title: 'C++ : Les bases'
 description: 'Nulla duis cupidatat duis dolore nisi exercitation non nisi est enim aute.'
-defaultCode: >
-  // Header file for input output functions
 
-  #include <iostream>
+code:
+  default: >
+    // Header file for input output functions
 
-  using namespace std;
+    #include <iostream>
+
+    using namespace std;
 
 
-  int main()
-  {
-      // Prints hello world
-      cout << "Hello World";
-      return 0;
-  }
+    int main()
+    {
+        // Prints hello world
+        cout << "Hello World";
+        return 0;
+    }
 ---
 
 ![C++ logo](https://logowik.com/content/uploads/images/911_c_logo.jpg)

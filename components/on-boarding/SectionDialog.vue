@@ -24,6 +24,7 @@
         <NuxtImg
           class="mx-24 my-20"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logo_EPFL.svg/2560px-Logo_EPFL.svg.png"
+          placeholder
         />
         <AlertDialogTitle class="flex items-center">
           Choix de section

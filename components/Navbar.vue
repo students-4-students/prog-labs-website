@@ -17,8 +17,8 @@
 </script>
 
 <template>
-  <nav class="sticky top-0 z-20 border bg-background">
-    <div class="flex flex-wrap items-center justify-between mx-4 md:mx-8 py-3">
+  <nav class="sticky top-0 z-20 border-b bg-background">
+    <div class="flex flex-wrap items-center justify-between mx-4 md:mx-8 py-2">
       <a
         class="flex items-center space-x-3 rtl:space-x-reverse cursor-pointer"
         @click="navigateTo('/')"

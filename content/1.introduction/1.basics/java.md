@@ -1,28 +1,33 @@
 ---
 title: 'Java : Bienvenue !'
 description: 'Une rapide présentation du site de S4S Prog.'
-defaultCode: >
-  public class Main {
 
-    public static void main(String[] args) {
+code:
+  default: >
+    public class Main {
 
-      System.out.println("Hello EPFL"); // affiche "Hello EPFL"
+      public static void main(String[] args) {
+
+        System.out.println("Hello EPFL"); // affiche "Hello EPFL"
+
+      }
+
+    }
+  corrected: >
+    // voilà le code corrigé (identique dans cet exemple)
+    public class Main {
+
+      public static void main(String[] args) {
+
+        System.out.println("Hello EPFL"); // affiche "Hello EPFL"
+
+      }
 
     }
 
-  }
-correctedCode: >
-  // voilà le code corrigé (identique dans cet exemple)
-
-  public class Main {
-
-    public static void main(String[] args) {
-
-      System.out.println("Hello EPFL"); // affiche "Hello EPFL"
-
-    }
-
-  }
+runtime:
+  stdin:
+  stdout:
 ---
 
 ![Java logo](https://kinsta.com/wp-content/uploads/2023/01/Java-logo.png)

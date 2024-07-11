@@ -12,9 +12,9 @@
 
       <DialogFooter>
         <Button size="default">Oui</Button>
-        <Button size="default" variant="outline"
-          >Non, je souhaite continuer à chercher</Button
-        >
+        <Button size="default" variant="outline">
+          Non, je souhaite continuer à chercher
+        </Button>
       </DialogFooter>
     </DialogContent>
   </Dialog>

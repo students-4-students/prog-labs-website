@@ -1,30 +1,30 @@
 <script setup lang="ts">
   import type { ParsedContent } from '@nuxt/content';
-  import {
-    getHighlighter,
-    type BundledLanguage,
-    type BundledTheme,
-  } from 'shiki';
+  import { createHighlighter, type BundledTheme } from 'shiki';
+
+  definePageMeta({
+    layout: 'playground',
+  });
 
   const studentData = useStudentDataStore();
-  const { codeLanguage } = storeToRefs(studentData);
+  const { codeLanguage, sectionCode } = storeToRefs(studentData);
 
   // Monaco editor config
-  const language: Ref<BundledLanguage> = ref('python');
-  const fallbackLanguage: Ref<BundledLanguage> = ref('python');
-  const supportedLanguages: BundledLanguage[] = ['java', 'cpp', 'python'];
+  const language: Ref<AllowedLanguage> = ref('python');
+  const fallbackLanguage: Ref<AllowedLanguage> = ref('python');
 
   const themes: Record<'light' | 'dark', BundledTheme> = {
     light: 'github-light',
     dark: 'github-dark',
   };
+  // TODO: Refactor dark mode
   const colorMode = useColorMode();
   const currentTheme = computed(() =>
     colorMode.value === 'dark' ? themes.dark : themes.light,
   );
-  const highlighter = await getHighlighter({
+  const highlighter = await createHighlighter({
     themes: Object.values(themes),
-    langs: supportedLanguages,
+    langs: ALLOWED_LANGUAGES,
   });
 
   const route = useRoute();
@@ -48,13 +48,16 @@
     language.value = codeLanguage.value;
 
     // Try to fetch the serie from the server
-    const serie = await queryContent(serieName)
+    const serieData = await queryContent(serieName)
+      .only(['fallbackLanguage'])
       .findOne()
       .catch((_) => null);
 
     // Load the fallback language from the serie if any
-    if (serie !== null && serie.fallbackLanguage !== null) {
-      fallbackLanguage.value = serie.fallbackLanguage;
+    if (serieData !== null && serieData.fallbackLanguage !== null) {
+      fallbackLanguage.value = <AllowedLanguage>(
+        (<unknown>serieData.fallbackLanguage)
+      );
     }
 
     // Try to fetch the exercise from the server
@@ -64,7 +67,11 @@
 
     // Try to fallback to the default language for this serie,
     // if the exercise is not found for this language
-    if (exercise === null) {
+    if (
+      exercise === null &&
+      fallbackLanguage !== null &&
+      fallbackLanguage.value !== language.value
+    ) {
       language.value = fallbackLanguage.value;
       exercise = await queryContent(serieName, exerciseName, language.value)
         .findOne()
@@ -76,37 +83,69 @@
       // Update the page title and meta tags
       useContentHead(exercise);
       // Set the default content for the editors
-      writtenCode.value = exercise.defaultCode;
-      correctedCode.value = exercise.correctedCode;
+      writtenCode.value = exercise.code.default;
+      correctedCode.value = exercise.code.corrected;
     }
     return exercise;
   }
 
   // Load the content for the current exercise asynchronously
-  const { data } = await useAsyncData('exercise', loadExercise, {
-    watch: [codeLanguage],
+  const { data: exerciseData } = await useAsyncData(
+    `${serieName}-${exerciseName}-${sectionCode.value}`,
+    loadExercise,
+    {
+      watch: [sectionCode],
+    },
+  );
+
+  const editorTabName = computed(() => {
+    if (exerciseData.value !== null) {
+      const upperCaseSerieName =
+        serieName.charAt(0).toUpperCase() + serieName.slice(1);
+      const { fileExtension } = getCodeLanguageData(
+        language.value ?? fallbackLanguage.value,
+      );
+      return `${upperCaseSerieName}/${exerciseName}.${fileExtension}`;
+    }
+    return 'Exercice non trouvé';
   });
 </script>
 
 <template>
   <Navbar is-playground />
+  <!-- Modals -->
+  <!-- <PlaygroundDialogExerciseCompletion default-open /> -->
+  <!-- Playground -->
   <ResizablePanelGroup direction="horizontal" class="flex w-full h-full">
     <ResizablePanel id="instructions" :min-size="25" :max-size="30">
       <div
         class="flex h-full items-center justify-center bg-accent overflow-y-scroll"
       >
-        <ContentRenderer :value="<ParsedContent>data">
+        <ContentRenderer :value="<ParsedContent>exerciseData">
           <ContentRendererMarkdown
-            :value="<ParsedContent>data"
+            :value="<ParsedContent>exerciseData"
             class="px-6 w-full h-full overflow-y-scroll prose dark:prose-invert prose-img:w-full prose-img:border prose-img:rounded-md prose-pre:bg-background prose-pre:border prose-pre:p-4 prose-a:no-underline lg:prose-lg text-justify"
           />
           <template #empty>
-            <h1>Uh oh, cet exercice n'existe pas.</h1>
+            <!-- TODO: Better fallback content -->
+            <div class="flex flex-col space-y-4 items-center justify-center">
+              <NuxtImg
+                class="mb-4"
+                src="/illustrations/empty-box.png"
+                placeholder
+              />
+              <h1 class="text-center">
+                Oups, il semblerait cet exercice n'existe pas.
+              </h1>
+              <Button @click="navigateTo('/')">
+                Choisir un autre exercice
+              </Button>
+            </div>
           </template>
         </ContentRenderer>
       </div>
     </ResizablePanel>
-    <PlaygroundResizableHandle id="instructions" />
+    <ResizableHandle id="instructions" with-handle />
     <ResizablePanel>
       <ResizablePanelGroup id="code-terminal-group" direction="vertical">
         <ResizablePanel id="editor" :min-size="35">
@@ -120,7 +159,7 @@
                   <template #icon>
                     <LucideCode />
                   </template>
-                  Série 1 / Exercice 1
+                  {{ editorTabName }}
                 </PlaygroundTab>
               </TabsTrigger>
               <TabsTrigger
@@ -143,8 +182,9 @@
               class="flex grow m-0 focus-visible:ring-0 focus-visible:ring-offset-0"
             >
               <PlaygroundEditor
+                v-if="exerciseData"
                 :language="language"
-                :supportedLanguages="supportedLanguages"
+                :supportedLanguages="ALLOWED_LANGUAGES"
                 :highlighter="highlighter"
                 v-model:currentTheme="currentTheme"
                 v-model="writtenCode"
@@ -156,7 +196,7 @@
             >
               <PlaygroundEditor
                 :language="language"
-                :supportedLanguages="supportedLanguages"
+                :supportedLanguages="ALLOWED_LANGUAGES"
                 :highlighter="highlighter"
                 v-model:currentTheme="currentTheme"
                 v-model="correctedCode"
@@ -165,7 +205,7 @@
             </TabsContent>
           </Tabs>
         </ResizablePanel>
-        <PlaygroundResizableHandle id="editor" />
+        <ResizableHandle id="editor" with-handle />
         <ResizablePanel id="terminal" :default-size="35" :min-size="15">
           <div class="flex flex-col h-full">
             <PlaygroundTerminal
