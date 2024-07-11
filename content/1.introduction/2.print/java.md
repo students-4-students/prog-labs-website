@@ -8,7 +8,7 @@ code:
 
       public static void main(String[] args) {
 
-        System.out.println("Hello EPFL"); // affiche "Hello EPFL"
+        // complétez le code ici
 
       }
 
@@ -29,37 +29,35 @@ runtime:
   stdout:
 ---
 
-![Java logo](https://kinsta.com/wp-content/uploads/2023/01/Java-logo.png)
+### Objectif
 
-## Introduction au Java 👨‍💻
-
-Afficher des choses dans le terminal, c’est primordial, pour voir ce qu’on est en train de faire, et même parfois pour savoir pourquoi le programme ne fonctionne pas comme on veut.
+Savoir afficher du contenu dans le terminal est une compétence primordial, pour voir ce qu’on est en train de faire, et même parfois pour savoir pourquoi le programme ne fonctionne pas comme on veut (on appelle ça "débugger").
 
 ### La consigne
 
-Afficher “Bonjour EPFL” dans le terminal.
+Votre programme doit afficher "Bonjour EPFL" dans le terminal.
 
 ### Le cours
 
-En Java, la ligne qui va permettre d’afficher quelque chose est l’instruction
+En Java, la ligne qui va permettre d’afficher quelque chose est l’instruction suivante :
 
 ```java
-System.out.println()
+System.out.println();
 ```
 
-Dans les (), on place alors ce qu’on veut afficher. Par exemple, si je veux afficher Hello word, j’écris
+> Attention, en Java chaquee instruction doit se terminer par un point-virgule ;
+
+Dans les (), on place alors ce qu’on veut afficher. Par exemple, pour afficher Hello word, on peut écrire :
 
 ```java
 System.out.println("Hello word");
 ```
 
-Attention, comme c’est des lettres, il faut les encadrer de “”, sinon cela ne fonctionne pas. Si je veux afficher 1, qui est simplement un nombre, j’écris
+Les guillements autour du texte sont importants, car c'est un texte (une suite de caractères). Par contre, pour afficher 1, qui ets un simple nombre, on écrit, sans guillemets :
 
 ```java
 System.out.println(1);
 ```
-
-Faites bien attention à ne pas oublier le ; à la fin de l’instruction, toutes les instructions en Java doivent se finir ainsi, sinon, il y aura une erreur
 
 #### Crédits
 
