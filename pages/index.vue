@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import { queryAllSeries } from '~/lib/content';
+  import type { QueryBuilderWhere } from '@nuxt/content';
 
   useHead({
     title: 'Exercices',
@@ -11,6 +11,23 @@
   const bannerFileName = computed(() => {
     return `${codeLanguage.value ?? 'python'}`;
   });
+
+  /**
+   * Fetches and caches all series following the filter constraints.
+   * @param filter - The filter constraints to apply to the query
+   * @returns The series that matches the filter
+   */
+  function queryAllSeries(filter: QueryBuilderWhere) {
+    return useAsyncData(`all-series-${JSON.stringify(filter)}`, async () => {
+      // Try to fetch the serie from the server
+      // await new Promise((resolve) => setTimeout(resolve, 5000));
+      return await queryContent()
+        // Use _dir: '' to only include series
+        // which are at the root of the 'content/' folder
+        .where({ _dir: '', ...filter })
+        .find();
+    });
+  }
 
   const EXPECTED_SERIES_NB = 2;
   const { data: series, status: seriesStatus } = queryAllSeries({
