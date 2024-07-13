@@ -143,7 +143,7 @@ l’EPFZ (**École polytechnique fédérale de Zurich)** et l’EPFL (**École p
 
 Ceci est le logo de notre chère EPFL
 
-XXXXXXXXXX
+![EPFL logo](https://www.epfl.ch/about/overview/wp-content/uploads/2020/07/logo-epfl.png)
 
 Stylé non ? 
 

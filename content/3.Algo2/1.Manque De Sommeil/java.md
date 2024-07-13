@@ -55,7 +55,7 @@ Etant donné le nombre **n** d’heure de sommeil d’Adam, vous devez renvoyez 
 
 Si **n** est :
 
-- > 7 afficher “Il faut pas non plus rater ses cours”
+- \> 7 afficher “Il faut pas non plus rater ses cours”
 - = 7 afficher “Suffisant”
 - < 7 afficher “Il faut dormir plus”
 
