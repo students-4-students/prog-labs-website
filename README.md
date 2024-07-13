@@ -7,7 +7,7 @@ Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introdu
 Make sure to install the dependencies:
 
 ```bash
-bun install
+pnpm install
 ```
 
 ## Development Server
@@ -15,7 +15,7 @@ bun install
 Start the development server on `http://localhost:3000`:
 
 ```bash
-bun run dev
+pnpm run dev
 ```
 
 ## Production
@@ -23,13 +23,13 @@ bun run dev
 Build the application for production:
 
 ```bash
-bun run build
+pnpm run build
 ```
 
 Locally preview production build:
 
 ```bash
-bun run preview
+pnpm run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
