@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   ssr: false,
   devtools: { enabled: true },
+
   modules: [
     '@pinia/nuxt',
     'shadcn-nuxt',

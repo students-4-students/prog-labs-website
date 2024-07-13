@@ -21,9 +21,9 @@
     </AlertDialogTrigger>
     <AlertDialogContent @escape-key-down.prevent trap-focus>
       <AlertDialogHeader>
-        <div class="px-24 my-24">
+        <div class="m-20">
           <NuxtImg
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logo_EPFL.svg/2560px-Logo_EPFL.svg.png"
+            src="/logos/epfl.png"
             placeholder
           />
         </div>
