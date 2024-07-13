@@ -3,26 +3,22 @@ title: 'Java : Affichage'
 description: 'Afficher du contenu dans le terminal.'
 
 code:
-  default: >
+  default: |
     public class Main {
-
       public static void main(String[] args) {
-
         // complétez le code ici
-
       }
-
     }
-  corrected: >
+  corrected: |
     public class Main(){
       public static void main(String[] args){
         System.out.println("Bonjour EPFL");
       }
     }
-    //le wrapper est préécrit et immodifiable, 
-    //mais la personne doit quand même le taper.
-    //Au début, il y a un commentaire à la place de la ligne, en mettant
-    //ligne à modifier
+    // le wrapper est préécrit et immodifiable, 
+    // mais la personne doit quand même le taper.
+    // Au début, il y a un commentaire à la place de la ligne, en mettant
+    // ligne à modifier
 
 runtime:
   stdin:

@@ -3,26 +3,18 @@ title: 'Java : Bienvenue !'
 description: 'Une rapide présentation du site de S4S Prog.'
 
 code:
-  default: >
+  default: |
     public class Main {
-
       public static void main(String[] args) {
-
         System.out.println("Hello EPFL"); // affiche "Hello EPFL"
-
       }
-
     }
-  corrected: >
+  corrected: |
     // voilà le code corrigé (identique dans cet exemple)
     public class Main {
-
       public static void main(String[] args) {
-
         System.out.println("Hello EPFL"); // affiche "Hello EPFL"
-
       }
-
     }
 
 runtime:
