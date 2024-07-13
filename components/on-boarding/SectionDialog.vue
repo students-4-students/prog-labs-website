@@ -21,11 +21,12 @@
     </AlertDialogTrigger>
     <AlertDialogContent @escape-key-down.prevent trap-focus>
       <AlertDialogHeader>
-        <NuxtImg
-          class="mx-24 my-20"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logo_EPFL.svg/2560px-Logo_EPFL.svg.png"
-          placeholder
-        />
+        <div class="px-24 my-24">
+          <NuxtImg
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logo_EPFL.svg/2560px-Logo_EPFL.svg.png"
+            placeholder
+          />
+        </div>
         <AlertDialogTitle class="flex items-center">
           Choix de section
           <LucideSwatchBook class="ml-2 h-5 w-5" />
