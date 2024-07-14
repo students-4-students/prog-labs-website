@@ -155,7 +155,7 @@ On vous donnera les 3 premières lettres soit EPF, et vous allez terminer le res
 
 ### Entrées :
 
-`n` (Entier) : la hauteur maximale des lettres
+**n** (Entier) : la hauteur maximale des lettres
 
 ### Exemples de tests :
 
