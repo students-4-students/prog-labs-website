@@ -1,6 +1,6 @@
 ---
 title: 'Java : NAS'
-description: 'todo'
+description: 'résoudre un problème composé de plusieurs partie'
 
 code:
   default: |

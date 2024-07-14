@@ -30,6 +30,12 @@ code:
         }
     }
 
+    // Intérêt :
+    // - Débogage
+    // - Se familiariser avec les instructions conditionnelles, notamment avec l’ordre des vérifications
+    // - Apprendre le modulo “%”
+
+
 runtime:
   stdin:
   stdout:
@@ -52,13 +58,7 @@ on cherche a retrouver tous les nombres multiples de 3, 5 et 15 entre 1 et 100 (
 
 ### Objectif
 
-Ce code qu’on vous donne doit être corrigé, trouvez cette petite faille.  
-
-### Intérêt 
-
-- Débogage
-- Se familiariser avec les instructions conditionnelles, notamment avec l’ordre des vérifications
-- Apprendre le modulo “%”
+Ce code qu’on vous donne doit être corrigé, trouvez cette petite faille.   
 
 
 
