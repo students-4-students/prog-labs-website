@@ -6,10 +6,11 @@
   const emits = defineEmits<TabsRootEmits>();
 
   const forwarded = useForwardPropsEmits(props, emits);
+  const model = defineModel();
 </script>
 
 <template>
-  <TabsRoot v-bind="forwarded">
+  <TabsRoot v-bind="forwarded" v-model="model">
     <slot />
   </TabsRoot>
 </template>

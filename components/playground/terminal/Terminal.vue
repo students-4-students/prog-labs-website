@@ -11,9 +11,14 @@
     type HighlighterGeneric,
   } from 'shiki';
   import { shikiToXterm } from './shiki-to-xterm';
+  import { type LanguageData } from '~/stores/studentData';
+  import { type CompilationResult } from '~/plugins/godbolt';
 
   const props = defineProps<{
     highlighter: HighlighterGeneric<BundledLanguage, BundledTheme>;
+    selectedCode: string;
+    languageData: LanguageData;
+    selected: string;
   }>();
 
   const currentTheme = defineModel<BundledTheme>('currentTheme');
@@ -59,6 +64,34 @@
     fitAddon.fit();
   });
 
+  const { $compile } = useNuxtApp();
+
+  const runCode = async () => {
+    terminal.open(xterm.value);
+    terminal.reset();
+    if (
+      props.languageData.name != null &&
+      props.languageData.compilerId != null
+    ) {
+      try {
+        const result: CompilationResult = await $compile(
+          props.languageData.name,
+          props.languageData.compilerId,
+          props.selectedCode.value,
+        );
+        terminal.writeln(result.stdout.map((o) => o.text).join('\n'));
+        terminal.writeln(result.stderr.map((o) => o.text).join('\n'));
+      } catch (e) {
+        terminal.writeln('Une erreur est arrivée lors de la compilation');
+      }
+    } else {
+      terminal.writeln('Problème de configuration du terminal');
+    }
+  };
+
+  const { $godbolt_bus } = useNuxtApp();
+  $godbolt_bus.$on('run_code', runCode);
+
   const container = ref();
   // Automatically resize the terminal when the container is resized.
   useResizeObserver(container, (_) => fitAddon.fit());
@@ -71,7 +104,7 @@
     </template>
     <template #bar>
       <Button variant="ghost" size="icon" class="rounded-none border-r">
-        <LucidePlay class="w-4 h-4" />
+        <LucidePlay class="w-4 h-4" @click="$godbolt_bus.$emit('run_code')" />
       </Button>
       <Button variant="ghost" size="icon" class="rounded-none border-r">
         <LucideEraser class="w-4 h-4" />
