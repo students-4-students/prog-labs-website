@@ -25,7 +25,7 @@ code:
             } else if(n < 7) {
                 System.out.println("Il faut dormir plus");
             } else {
-                System.out.println("Il faut pas non plus rater ses cours");
+                System.out.println("Bien joué !");
             }     
         }
     }
@@ -55,7 +55,7 @@ Etant donné le nombre **n** d’heure de sommeil d’Adam, vous devez renvoyez 
 
 Si **n** est :
 
-- \> 7 afficher “Il faut pas non plus rater ses cours”
+- \> 7 afficher “Bien joué !”
 - = 7 afficher “Suffisant”
 - < 7 afficher “Il faut dormir plus”
 
