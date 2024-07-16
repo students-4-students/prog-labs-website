@@ -78,11 +78,22 @@
       </Button>
     </template>
   </PlaygroundTabsHeader>
-  <div ref="container" class="w-full h-full p-4">
+  <ScrollArea ref="container" class="w-full h-full p-4">
     <div
       ref="xterm"
       @focus.capture="terminal.focus()"
       @blur.capture="terminal.blur()"
     />
-  </div>
+  </ScrollArea>
 </template>
+
+<style lang="scss">
+  // Hide the scrollbar from xterm
+  .xterm-viewport {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+  .xterm-viewport::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+</style>
