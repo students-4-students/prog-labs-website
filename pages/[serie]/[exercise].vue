@@ -117,33 +117,13 @@
   <!-- <PlaygroundDialogExerciseCompletion default-open /> -->
   <!-- Playground -->
   <ResizablePanelGroup direction="horizontal" class="flex w-full h-full">
-    <ResizablePanel id="instructions" :min-size="25" :max-size="30">
-      <div class="flex h-full items-center justify-center bg-accent">
-        <ScrollArea class="h-full">
-          <ContentRenderer :value="<ParsedContent>exerciseData">
-            <ContentRendererMarkdown
-              :value="<ParsedContent>exerciseData"
-              class="px-6 w-full h-full prose dark:prose-invert prose-img:w-full prose-img:border prose-img:rounded-md prose-pre:bg-background prose-pre:border prose-pre:p-4 prose-a:no-underline lg:prose-lg text-justify"
-            />
-            <template #empty>
-              <!-- TODO: Better fallback content -->
-              <div class="flex flex-col space-y-4 items-center justify-center">
-                <NuxtImg
-                  class="mb-4"
-                  src="/illustrations/empty-box.png"
-                  placeholder
-                />
-                <h1 class="text-center">
-                  Oups, il semblerait cet exercice n'existe pas.
-                </h1>
-                <Button @click="navigateTo('/')">
-                  Choisir un autre exercice
-                </Button>
-              </div>
-            </template>
-          </ContentRenderer>
-        </ScrollArea>
-      </div>
+    <ResizablePanel
+      id="instructions"
+      :min-size="27"
+      :max-size="40"
+      :default-size="32"
+    >
+      <PlaygroundExerciseViewer :exerciseData="exerciseData" />
     </ResizablePanel>
     <ResizableHandle id="instructions" with-handle />
     <ResizablePanel>
