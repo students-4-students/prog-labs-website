@@ -119,9 +119,9 @@
   <ResizablePanelGroup direction="horizontal" class="flex w-full h-full">
     <ResizablePanel
       id="instructions"
-      :min-size="27"
+      :min-size="32"
       :max-size="40"
-      :default-size="32"
+      :default-size="34"
     >
       <PlaygroundExerciseViewer :exerciseData="exerciseData" />
     </ResizablePanel>
