@@ -1,16 +1,10 @@
-<script lang="ts" setup>
-  defineProps<{
-    tabName: string;
-  }>();
-</script>
-
 <template>
   <div class="flex flex-row w-full">
     <PlaygroundTab>
       <template #icon>
         <LucideCode />
       </template>
-      {{ tabName }}
+      <slot />
     </PlaygroundTab>
     <div
       class="flex grow justify-start items-center bg-accent border-b border-border"

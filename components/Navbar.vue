@@ -56,7 +56,7 @@
         </Button>
         <Button v-if="isPlayground">
           <LucidePlay class="w-4 h-4 mr-2" />
-          Exécuter le code
+          Prochain exercice
         </Button>
         <Button variant="ghost" size="icon" @click="switchColorMode">
           <LucideSun v-if="isDarkMode" />

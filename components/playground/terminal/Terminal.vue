@@ -65,17 +65,41 @@
 </script>
 
 <template>
-  <PlaygroundTabsHeader tab-name="Résultat">
+  <PlaygroundTabsHeader>
+    Résultat du code
     <template #icon>
       <LucideTerminal />
     </template>
     <template #bar>
-      <Button variant="ghost" size="icon" class="rounded-none border-r">
-        <LucidePlay class="w-4 h-4" />
-      </Button>
-      <Button variant="ghost" size="icon" class="rounded-none border-r">
-        <LucideEraser class="w-4 h-4" />
-      </Button>
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger>
+            <Button variant="ghost" class="rounded-none border-l">
+              <LucidePlay class="w-4 h-4 mr-2" />
+              Exécuter le code
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Exécuter le code</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger>
+            <Button
+              variant="ghost"
+              size="icon"
+              class="rounded-none border-l border-r"
+            >
+              <LucideEraser class="w-4 h-4" />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Effacer le contenu du terminal</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
     </template>
   </PlaygroundTabsHeader>
   <ScrollArea ref="container" class="w-full h-full p-4">
