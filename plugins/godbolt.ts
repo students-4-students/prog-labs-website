@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 export type CompilationResult = {
   code: string;
   timedOut: boolean;
@@ -12,10 +10,8 @@ import mitt from 'mitt';
 const emitter = mitt();
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const axiosInstance = axios.create({
-    baseURL: 'https://godbolt.org/api',
-    timeout: 6000,
-  });
+  const baseURL = 'https://godbolt.org/api';
+  const timeout = 6000;
 
   nuxtApp.provide('godbolt_bus', {
     $on: emitter.on,
@@ -45,16 +41,15 @@ export default defineNuxtPlugin((nuxtApp) => {
           allowStoreCodeDebug: true,
         };
 
-        const { data: result } = await axiosInstance.post(
-          `/compiler/${compiler}/compile`,
-          data,
-          {
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json;charset=UTF-8',
-            },
+        const result = await $fetch(`${baseURL}/compiler/${compiler}/compile`, {
+          method: 'post',
+          body: data,
+          timeout: timeout,
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json;charset=UTF-8',
           },
-        );
+        });
 
         return {
           code: result.code,
