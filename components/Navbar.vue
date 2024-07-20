@@ -6,7 +6,7 @@
     },
   });
 
-  const { $godbolt_bus } = useNuxtApp();
+  const { $godboltBus } = useNuxtApp();
 
   const studentData = useStudentDataStore();
   const { section } = storeToRefs(studentData);
@@ -56,7 +56,7 @@
           <LucideBookOpenCheck class="mr-2 w-4 h-4" />
           Changer d'exercice
         </Button>
-        <Button v-if="isPlayground" @click="$godbolt_bus.$emit('run_code')">
+        <Button v-if="isPlayground" @click="$godboltBus.$emit('run_code')">
           <LucidePlay class="w-4 h-4 mr-2" />
           Exécuter le code
         </Button>

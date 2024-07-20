@@ -13,7 +13,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   const baseURL = 'https://godbolt.org/api';
   const timeout = 6000;
 
-  nuxtApp.provide('godbolt_bus', {
+  nuxtApp.provide('godboltBus', {
     $on: emitter.on,
     $emit: emitter.emit,
   });

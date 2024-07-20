@@ -89,8 +89,8 @@
     }
   };
 
-  const { $godbolt_bus } = useNuxtApp();
-  $godbolt_bus.$on('run_code', runCode);
+  const { $godboltBus } = useNuxtApp();
+  $godboltBus.$on('run_code', runCode);
 
   const container = ref();
   // Automatically resize the terminal when the container is resized.
@@ -104,7 +104,7 @@
     </template>
     <template #bar>
       <Button variant="ghost" size="icon" class="rounded-none border-r">
-        <LucidePlay class="w-4 h-4" @click="$godbolt_bus.$emit('run_code')" />
+        <LucidePlay class="w-4 h-4" @click="$godboltBus.$emit('run_code')" />
       </Button>
       <Button variant="ghost" size="icon" class="rounded-none border-r">
         <LucideEraser class="w-4 h-4" />
