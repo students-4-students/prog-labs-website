@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import type { ParsedContent } from '@nuxt/content';
   import { createHighlighter, type BundledTheme } from 'shiki';
+  import { toTitle } from '~/lib/utils';
 
   definePageMeta({
     layout: 'playground',
@@ -100,19 +101,21 @@
 
   const editorTabName = computed(() => {
     if (exerciseData.value !== null) {
-      const upperCaseSerieName =
-        serieName.charAt(0).toUpperCase() + serieName.slice(1);
       const { fileExtension } = getCodeLanguageData(
         language.value ?? fallbackLanguage.value,
       );
-      return `${upperCaseSerieName}/${exerciseName}.${fileExtension}`;
+      return `${toTitle(exerciseName)}.${fileExtension}`;
     }
     return 'Exercice non trouvé';
   });
 </script>
 
 <template>
-  <Navbar is-playground />
+  <Navbar
+    is-playground
+    :exerciseGroupName="serieName"
+    :exerciseName="exerciseName"
+  />
   <!-- Modals -->
   <!-- <PlaygroundDialogExerciseCompletion default-open /> -->
   <!-- Playground -->

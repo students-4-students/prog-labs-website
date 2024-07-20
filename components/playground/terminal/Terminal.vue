@@ -70,10 +70,11 @@
       <LucideTerminal />
     </template>
     <template #bar>
-      <Button variant="ghost" size="icon" class="rounded-none border-r">
-        <LucidePlay class="w-4 h-4" />
-      </Button>
-      <Button variant="ghost" size="icon" class="rounded-none border-r">
+      <Button
+        variant="ghostNoVariation"
+        size="icon"
+        class="rounded-none border-r"
+      >
         <LucideEraser class="w-4 h-4" />
       </Button>
     </template>
