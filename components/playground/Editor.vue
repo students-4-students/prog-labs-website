@@ -37,18 +37,22 @@
 
 <template>
   <MonacoEditor
-    class="grow p-4"
+    class="h-full"
     v-model="code"
     :lang="language"
     :options="{
       automaticLayout: true,
-      lineNumbersMinChars: 2,
+      lineNumbersMinChars: 3,
       fontSize: 16,
       fontFamily: 'JetBrains Mono',
       fontWeight: '400',
       readOnly: props.readOnly,
       minimap: {
         enabled: false,
+      },
+      padding: {
+        top: 16,
+        bottom: 16,
       },
     }"
   />

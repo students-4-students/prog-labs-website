@@ -25,30 +25,40 @@ export type SectionData = {
 export type AllowedLanguage = 'java' | 'cpp' | 'python';
 export const ALLOWED_LANGUAGES: AllowedLanguage[] = ['java', 'cpp', 'python'];
 
-export function getCodeLanguageData(language: AllowedLanguage) {
+export type LanguageData = {
+  name: string | null;
+  fileExtension: string | null;
+  compilerId: string | null;
+};
+
+export function getCodeLanguageData(language: AllowedLanguage): LanguageData {
   switch (language) {
     case 'cpp': {
       return {
         name: 'C++',
         fileExtension: 'cpp',
+        compilerId: 'gcc6502_1110',
       };
     }
     case 'java': {
       return {
         name: 'Java',
         fileExtension: 'java',
+        compilerId: 'java2100',
       };
     }
     case 'python': {
       return {
         name: 'Python',
         fileExtension: 'py',
+        compilerId: 'python312',
       };
     }
     default: {
       return {
         name: null,
         fileExtension: null,
+        compilerId: null,
       };
     }
   }

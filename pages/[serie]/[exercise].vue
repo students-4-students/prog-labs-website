@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import type { ParsedContent } from '@nuxt/content';
   import { createHighlighter, type BundledTheme } from 'shiki';
+  import { type LanguageData } from '~/stores/studentData';
 
   definePageMeta({
     layout: 'playground',
@@ -8,6 +9,8 @@
 
   const studentData = useStudentDataStore();
   const { codeLanguage, sectionCode } = storeToRefs(studentData);
+
+  const selectedTab: Ref<'code' | 'correctedCode'> = ref('code');
 
   // Monaco editor config
   const language: Ref<AllowedLanguage> = ref('python');
@@ -34,6 +37,10 @@
   // Store the code written in each editor and set its default value
   const writtenCode = defineModel('writtenCode');
   const correctedCode = defineModel('correctedCode');
+
+  const selectedCode = computed(() =>
+    selectedTab.value == 'code' ? writtenCode : correctedCode,
+  );
 
   /**
    * Load the content for the current exercise.
@@ -109,6 +116,10 @@
     }
     return 'Exercice non trouvé';
   });
+
+  const userLanguageData = computed(() =>
+    getCodeLanguageData(language.value ?? fallbackLanguage.value),
+  );
 </script>
 
 <template>
@@ -149,7 +160,11 @@
     <ResizablePanel>
       <ResizablePanelGroup id="code-terminal-group" direction="vertical">
         <ResizablePanel id="editor" :min-size="35">
-          <Tabs default-value="code" class="flex flex-col h-full">
+          <Tabs
+            default-value="code"
+            v-model="selectedTab"
+            class="flex flex-col h-full"
+          >
             <TabsList class="justify-start rounded-none p-0 bg-accent h-auto">
               <TabsTrigger
                 value="code"
@@ -177,10 +192,7 @@
               <!-- Add bottom border to the rest of the bar -->
               <div class="border-b grow h-full"></div>
             </TabsList>
-            <TabsContent
-              value="code"
-              class="flex grow m-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-            >
+            <TabsContent value="code" class="flex-1">
               <PlaygroundEditor
                 v-if="exerciseData"
                 :language="language"
@@ -190,10 +202,7 @@
                 v-model="writtenCode"
               />
             </TabsContent>
-            <TabsContent
-              value="correctedCode"
-              class="flex grow m-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-            >
+            <TabsContent value="correctedCode" class="flex-1">
               <PlaygroundEditor
                 :language="language"
                 :supportedLanguages="ALLOWED_LANGUAGES"
@@ -211,6 +220,9 @@
             <PlaygroundTerminal
               :highlighter="highlighter"
               :currentTheme="currentTheme"
+              :selected="selectedTab"
+              :selectedCode="selectedCode"
+              :languageData="userLanguageData"
             />
           </div>
         </ResizablePanel>
