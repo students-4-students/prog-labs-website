@@ -103,10 +103,22 @@
       <LucideTerminal />
     </template>
     <template #bar>
-      <Button variant="ghost" size="icon" class="rounded-none border-r">
-        <LucidePlay class="w-4 h-4" @click="$godboltBus.$emit('run_code')" />
+      <Button
+        variant="ghost"
+        size="icon"
+        class="rounded-none border-r"
+        @click="$godboltBus.$emit('run_code')"
+        title="Exécuter le code"
+      >
+        <LucidePlay class="w-4 h-4" />
       </Button>
-      <Button variant="ghost" size="icon" class="rounded-none border-r">
+      <!-- @TODO Make this button work -->
+      <Button
+        variant="ghost"
+        size="icon"
+        class="rounded-none border-r"
+        title="Effacer le résultat"
+      >
         <LucideEraser class="w-4 h-4" />
       </Button>
     </template>
