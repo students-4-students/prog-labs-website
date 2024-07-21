@@ -112,7 +112,6 @@
 </script>
 
 <template>
-  <Navbar is-playground />
   <!-- Modals -->
   <!-- <PlaygroundDialogExerciseCompletion default-open /> -->
   <!-- Playground -->
@@ -123,7 +122,7 @@
       :max-size="40"
       :default-size="34"
     >
-      <PlaygroundExerciseViewer :exerciseData="exerciseData" />
+      <PlaygroundExerciseView :exerciseData="<ParsedContent>exerciseData" />
     </ResizablePanel>
     <ResizableHandle id="instructions" with-handle />
     <ResizablePanel>

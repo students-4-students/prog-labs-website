@@ -16,7 +16,7 @@ module.exports = {
     },
     fontFamily: {
       main: ['Inter'],
-      code: ['JetBrainsMono'],
+      code: ['JetBrains Mono'],
     },
     extend: {
       colors: {

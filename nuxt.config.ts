@@ -45,7 +45,8 @@ export default defineNuxtConfig({
 
   googleFonts: {
     families: {
-      'JetBrains+Mono': '100..800',
+      Inter: '300..800',
+      'JetBrains+Mono': '200..800',
     },
     display: 'swap',
   },

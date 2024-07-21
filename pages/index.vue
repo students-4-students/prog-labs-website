@@ -41,7 +41,6 @@
 </script>
 
 <template>
-  <Navbar />
   <div class="flex flex-col gap-y-12 px-4 md:px-8 py-8">
     <div class="flex flex-col gap-5">
       <h2 className="flex items-baseline text-4xl font-bold tracking-tight">
