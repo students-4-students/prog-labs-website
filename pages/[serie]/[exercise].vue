@@ -192,10 +192,7 @@
               <!-- Add bottom border to the rest of the bar -->
               <div class="border-b grow h-full"></div>
             </TabsList>
-            <TabsContent
-              value="code"
-              class="flex grow m-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-            >
+            <TabsContent value="code" class="flex-1">
               <PlaygroundEditor
                 v-if="exerciseData"
                 :language="language"
@@ -205,10 +202,7 @@
                 v-model="writtenCode"
               />
             </TabsContent>
-            <TabsContent
-              value="correctedCode"
-              class="flex grow m-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-            >
+            <TabsContent value="correctedCode" class="flex-1">
               <PlaygroundEditor
                 :language="language"
                 :supportedLanguages="ALLOWED_LANGUAGES"
