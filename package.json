@@ -19,6 +19,7 @@
     "nuxt": "^3.12.3",
     "nuxt-monaco-editor": "^1.2.9",
     "radix-vue": "^1.9.1",
+    "pinia": "^2.1.7",
     "shadcn-nuxt": "^0.10.4",
     "shiki": "^1.10.3",
     "tailwind-merge": "^2.4.0",
