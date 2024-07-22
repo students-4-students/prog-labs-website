@@ -7,7 +7,7 @@
   } from 'shiki';
   import { shikiToMonaco } from '@shikijs/monaco';
 
-  const code = defineModel();
+  const code = defineModel<string>();
   const props = defineProps<{
     language: string;
     supportedLanguages: BundledLanguage[];
