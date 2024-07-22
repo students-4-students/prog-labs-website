@@ -121,7 +121,7 @@
       :min-size="30"
       :max-size="35"
       :default-size="30"
-      class="min-w-[27rem]"
+      class="min-w-[27.5rem]"
     >
       <PlaygroundExerciseView :exerciseData="<ParsedContent>exerciseData" />
     </ResizablePanel>
