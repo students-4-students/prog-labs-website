@@ -118,9 +118,10 @@
   <ResizablePanelGroup direction="horizontal" class="flex w-full h-full">
     <ResizablePanel
       id="instructions"
-      :min-size="32"
-      :max-size="40"
-      :default-size="34"
+      :min-size="30"
+      :max-size="35"
+      :default-size="30"
+      class="min-w-[27rem]"
     >
       <PlaygroundExerciseView :exerciseData="<ParsedContent>exerciseData" />
     </ResizablePanel>
@@ -185,7 +186,7 @@
           </Tabs>
         </ResizablePanel>
         <ResizableHandle id="editor" with-handle />
-        <ResizablePanel id="terminal" :default-size="35" :min-size="15">
+        <ResizablePanel id="terminal" :default-size="30" class="min-h-12">
           <div class="flex flex-col h-full">
             <PlaygroundTerminal
               :highlighter="highlighter"
