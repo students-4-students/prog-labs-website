@@ -40,7 +40,7 @@
         <OnBoardingSectionDialog>
           <template v-if="!isPlayground" #trigger>
             <Button variant="outline">
-              <LucideUsersRound class="mr-2 w-4 h-4" />
+              <LucideUsersRound class="w-4 h-4 mr-2" />
               Section
               {{
                 section !== undefined
@@ -50,14 +50,38 @@
             </Button>
           </template>
         </OnBoardingSectionDialog>
-        <Button variant="outline" v-if="isPlayground" @click="navigateTo('/')">
-          <LucideBookOpenCheck class="mr-2 w-4 h-4" />
-          Changer d'exercice
+
+        <TooltipProvider v-if="isPlayground">
+          <Tooltip>
+            <TooltipTrigger>
+              <Button variant="outline" size="icon">
+                <LucideRotateCcw class="w-4 h-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Recommencer l'exercice</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+
+        <TooltipProvider v-if="isPlayground" @click="navigateTo('/')">
+          <Tooltip>
+            <TooltipTrigger>
+              <Button variant="outline" size="icon">
+                <LucideBookOpen class="w-4 h-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Changer d'exercice</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+
+        <Button variant="default" size="default" v-if="isPlayground">
+          <LucideChevronRight class="w-4 h-4 mr-1" />
+          Exercice suivant
         </Button>
-        <Button v-if="isPlayground">
-          <LucidePlay class="w-4 h-4 mr-2" />
-          Prochain exercice
-        </Button>
+
         <Button variant="ghost" size="icon" @click="switchColorMode">
           <LucideSun v-if="isDarkMode" />
           <LucideMoon v-else />
