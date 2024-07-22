@@ -55,6 +55,19 @@
           <Tooltip>
             <TooltipTrigger>
               <Button variant="outline" size="icon">
+                <LucideChevronLeft class="w-4 h-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Exercice précédent</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+
+        <TooltipProvider v-if="isPlayground">
+          <Tooltip>
+            <TooltipTrigger>
+              <Button variant="outline" size="icon">
                 <LucideRotateCcw class="w-4 h-4" />
               </Button>
             </TooltipTrigger>
@@ -68,7 +81,7 @@
           <Tooltip>
             <TooltipTrigger>
               <Button variant="outline" size="icon">
-                <LucideBookOpen class="w-4 h-4" />
+                <LucideLibrary class="w-4 h-4" />
               </Button>
             </TooltipTrigger>
             <TooltipContent>
