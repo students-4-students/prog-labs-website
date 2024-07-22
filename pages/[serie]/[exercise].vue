@@ -118,7 +118,7 @@
   <ResizablePanelGroup direction="horizontal" class="flex w-full h-full">
     <ResizablePanel
       id="instructions"
-      :min-size="30"
+      :min-size="25"
       :max-size="35"
       :default-size="30"
       class="min-w-[27.5rem]"
