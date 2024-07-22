@@ -100,18 +100,17 @@
 
   const editorTabName = computed(() => {
     if (exerciseData.value !== null) {
-      const upperCaseSerieName =
-        serieName.charAt(0).toUpperCase() + serieName.slice(1);
       const { fileExtension } = getCodeLanguageData(
         language.value ?? fallbackLanguage.value,
       );
-      return `${upperCaseSerieName}/${exerciseName}.${fileExtension}`;
+      return `${serieName}/${exerciseName}.${fileExtension}`;
     }
     return 'Exercice non trouvé';
   });
 </script>
 
 <template>
+  <Navbar is-playground />
   <!-- Modals -->
   <!-- <PlaygroundDialogExerciseCompletion default-open /> -->
   <!-- Playground -->
@@ -133,7 +132,7 @@
             <TabsList class="justify-start rounded-none p-0 bg-accent h-auto">
               <TabsTrigger
                 value="code"
-                class="rounded-none !shadow-none p-0 transition-none focus-visible:ring-0 focus-visible:ring-offset-0 border-t-2 border-b border-transparent data-[state='active']:border-t-primary data-[state='inactive']:border-b-border"
+                class="text-md rounded-none !shadow-none p-0 transition-none focus-visible:ring-0 focus-visible:ring-offset-0 border-t-2 border-b border-transparent data-[state='active']:border-t-primary data-[state='inactive']:border-b-border"
               >
                 <PlaygroundTab>
                   <template #icon>
@@ -144,7 +143,7 @@
               </TabsTrigger>
               <TabsTrigger
                 value="correctedCode"
-                class="rounded-none !shadow-none p-0 transition-none focus-visible:ring-0 focus-visible:ring-offset-0 border-t-2 border-b border-transparent data-[state='active']:border-t-primary data-[state='inactive']:border-b-border"
+                class="text-md rounded-none !shadow-none p-0 transition-none focus-visible:ring-0 focus-visible:ring-offset-0 border-t-2 border-b border-transparent data-[state='active']:border-t-primary data-[state='inactive']:border-b-border"
                 :disabled="correctedCode == null"
               >
                 <PlaygroundTab>

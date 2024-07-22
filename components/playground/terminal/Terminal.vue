@@ -63,16 +63,15 @@
 </script>
 
 <template>
-  <PlaygroundTabsHeader tab-name="Résultat">
+  <PlaygroundTabsHeader>
     <template #icon>
       <LucideTerminal />
     </template>
+    Résultat du code
     <template #bar>
-      <Button variant="ghost" size="icon" class="rounded-none border-r">
-        <LucidePlay class="w-4 h-4" />
-      </Button>
-      <Button variant="ghost" size="icon" class="rounded-none border-r">
-        <LucideEraser class="w-4 h-4" />
+      <Button variant="default" size="xs" class="m-1 ml-2">
+        <LucidePlay class="w-4 h-4 mr-1" />
+        Exécuter
       </Button>
     </template>
   </PlaygroundTabsHeader>

@@ -1,5 +1,4 @@
 <template>
-  <Navbar is-playground />
   <!-- Displays a loader when the playground is loading -->
   <Suspense>
     <!-- Playground when loaded -->
