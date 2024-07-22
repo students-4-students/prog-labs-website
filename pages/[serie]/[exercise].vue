@@ -99,7 +99,7 @@
   );
 
   const editorTabName = computed(() => {
-    if (exerciseData.value !== null) {
+    if (exerciseData.value) {
       const { fileExtension } = getCodeLanguageData(
         language.value ?? fallbackLanguage.value,
       );
@@ -109,9 +109,8 @@
   });
 
   function resetExercise() {
-    if (exerciseData.value !== null) {
-      writtenCode.value = exerciseData.value?.code.default ?? '';
-      correctedCode.value = exerciseData.value?.code.corrected;
+    if (exerciseData.value) {
+      writtenCode.value = exerciseData.value.code.default ?? '';
     }
   }
 </script>
