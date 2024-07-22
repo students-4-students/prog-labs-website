@@ -32,8 +32,8 @@
   const serieName = <string>route.params.serie;
 
   // Store the code written in each editor and set its default value
-  const writtenCode = defineModel('writtenCode');
-  const correctedCode = defineModel('correctedCode');
+  const writtenCode = defineModel<string>('writtenCode');
+  const correctedCode = defineModel<string | null>('correctedCode');
 
   /**
    * Load the content for the current exercise.
@@ -107,10 +107,17 @@
     }
     return 'Exercice non trouvé';
   });
+
+  function resetExercise() {
+    if (exerciseData.value !== null) {
+      writtenCode.value = exerciseData.value?.code.default ?? '';
+      correctedCode.value = exerciseData.value?.code.corrected;
+    }
+  }
 </script>
 
 <template>
-  <Navbar is-playground />
+  <Navbar @reset-exercise="resetExercise()" is-playground />
   <!-- Modals -->
   <!-- <PlaygroundDialogExerciseCompletion default-open /> -->
   <!-- Playground -->
@@ -174,6 +181,7 @@
               class="flex grow m-0 focus-visible:ring-0 focus-visible:ring-offset-0"
             >
               <PlaygroundEditor
+                v-if="correctedCode !== null"
                 :language="language"
                 :supportedLanguages="ALLOWED_LANGUAGES"
                 :highlighter="highlighter"

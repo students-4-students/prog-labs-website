@@ -6,6 +6,12 @@
     },
   });
 
+  const emit = defineEmits<{
+    (e: 'resetExercise'): void;
+    (e: 'loadPreviousExercise'): void;
+    (e: 'loadNextExercise'): void;
+  }>();
+
   const studentData = useStudentDataStore();
   const { section } = storeToRefs(studentData);
 
@@ -54,7 +60,11 @@
         <TooltipProvider v-if="isPlayground">
           <Tooltip>
             <TooltipTrigger>
-              <Button variant="outline" size="icon">
+              <Button
+                @click="emit('loadPreviousExercise')"
+                variant="outline"
+                size="icon"
+              >
                 <LucideChevronLeft class="w-4 h-4" />
               </Button>
             </TooltipTrigger>
@@ -67,7 +77,11 @@
         <TooltipProvider v-if="isPlayground">
           <Tooltip>
             <TooltipTrigger>
-              <Button variant="outline" size="icon">
+              <Button
+                @click="emit('resetExercise')"
+                variant="outline"
+                size="icon"
+              >
                 <LucideRotateCcw class="w-4 h-4" />
               </Button>
             </TooltipTrigger>
@@ -77,10 +91,10 @@
           </Tooltip>
         </TooltipProvider>
 
-        <TooltipProvider v-if="isPlayground" @click="navigateTo('/')">
+        <TooltipProvider v-if="isPlayground">
           <Tooltip>
             <TooltipTrigger>
-              <Button variant="outline" size="icon">
+              <Button @click="navigateTo('/')" variant="outline" size="icon">
                 <LucideLibrary class="w-4 h-4" />
               </Button>
             </TooltipTrigger>
@@ -90,7 +104,12 @@
           </Tooltip>
         </TooltipProvider>
 
-        <Button variant="default" size="default" v-if="isPlayground">
+        <Button
+          v-if="isPlayground"
+          @click="emit('loadNextExercise')"
+          variant="default"
+          size="default"
+        >
           <LucideChevronRight class="w-4 h-4 mr-1" />
           Exercice suivant
         </Button>
