@@ -14,6 +14,10 @@ module.exports = {
         '2xl': '1400px',
       },
     },
+    fontFamily: {
+      main: ['Inter'],
+      code: ['JetBrains Mono'],
+    },
     extend: {
       colors: {
         border: 'hsl(var(--border))',
