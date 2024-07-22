@@ -1,17 +1,11 @@
 <script lang="ts" setup>
   const studentData = useStudentDataStore();
-  const { sectionCode } = storeToRefs(studentData);
+  const selectedSection = ref<SectionData | undefined>(studentData.section);
+  const isOpen = ref(studentData.section === undefined);
 
-  const isOpen = ref(false);
-  watch(
-    sectionCode,
-    (newValue) => {
-      if (newValue === undefined) {
-        isOpen.value = newValue === undefined;
-      }
-    },
-    { immediate: true },
-  );
+  watch(selectedSection, (section) => {
+    if (section) studentData.setSection(section.code);
+  });
 </script>
 
 <template>
@@ -22,10 +16,7 @@
     <AlertDialogContent @escape-key-down.prevent trap-focus>
       <AlertDialogHeader>
         <div class="m-20">
-          <NuxtImg
-            src="/logos/epfl.png"
-            placeholder
-          />
+          <NuxtImg src="/logos/epfl.png" placeholder />
         </div>
         <AlertDialogTitle class="flex items-center">
           Choix de section
@@ -38,8 +29,11 @@
         </AlertDialogDescription>
       </AlertDialogHeader>
       <AlertDialogFooter>
-        <OnBoardingSectionDialogComboBox />
-        <AlertDialogAction @click="isOpen = false">
+        <OnBoardingSectionDialogComboBox v-model:section="selectedSection" />
+        <AlertDialogAction
+          @click="isOpen = false"
+          :disabled="selectedSection === undefined"
+        >
           Choisir
           <LucideArrowRight class="ml-2 h-4 w-4" />
         </AlertDialogAction>

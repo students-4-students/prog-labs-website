@@ -1,34 +1,20 @@
 <script lang="ts" setup>
   import { cn } from '@/lib/utils';
 
-  const open = ref(false);
-  const section: Ref<SectionData | null> = ref(null);
-
-  // Store the current selected section
-  const studentData = useStudentDataStore();
-  watch(section, (selectedSection) => {
-    if (selectedSection) {
-      studentData.setSection(selectedSection.code);
-    }
-  });
+  const isOpen = ref(false);
+  const section = defineModel<SectionData | undefined>('section');
 </script>
 
 <template>
-  <Popover v-model:open="open">
+  <Popover v-model:open="isOpen">
     <PopoverTrigger class="flex gap-3">
       <Button
         variant="outline"
         role="combobox"
-        :aria-expanded="open"
+        :aria-expanded="isOpen"
         class="justify-between w-80"
       >
-        {{
-          studentData.section
-            ? studentData.section.name
-            : section
-              ? section.name
-              : 'Quelle section intègres-tu ?'
-        }}
+        {{ section ? section.name : 'Quelle section intègres-tu ?' }}
         <LucideChevronDown class="ml-2 h-4 w-4 shrink-0 opacity-50" />
       </Button>
     </PopoverTrigger>
@@ -53,7 +39,7 @@
                   if (typeof ev.detail.value === 'string') {
                     section = data;
                   }
-                  open = false;
+                  isOpen = false;
                 }
               "
             >
