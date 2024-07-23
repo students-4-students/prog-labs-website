@@ -1,16 +1,13 @@
 <script lang="ts" setup>
-  defineProps({
-    isPlayground: {
-      type: Boolean,
-      default: false,
-    },
-  });
+  interface Props {
+    isPlayground?: boolean;
+    previousExercisePath?: string;
+    nextExercisePath?: string;
+  }
 
-  const emit = defineEmits<{
-    (e: 'resetExercise'): void;
-    (e: 'loadPreviousExercise'): void;
-    (e: 'loadNextExercise'): void;
-  }>();
+  withDefaults(defineProps<Props>(), {
+    isPlayground: false,
+  });
 
   const studentData = useStudentDataStore();
   const { section } = storeToRefs(studentData);
@@ -61,7 +58,8 @@
           <Tooltip>
             <TooltipTrigger>
               <Button
-                @click="emit('loadPreviousExercise')"
+                @click="navigateTo(previousExercisePath)"
+                :disabled="previousExercisePath === undefined"
                 variant="outline"
                 size="icon"
               >
@@ -89,7 +87,8 @@
 
         <Button
           v-if="isPlayground"
-          @click="emit('loadNextExercise')"
+          @click="navigateTo(nextExercisePath)"
+          :disabled="nextExercisePath === undefined"
           variant="default"
           size="default"
         >

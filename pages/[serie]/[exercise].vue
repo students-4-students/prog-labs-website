@@ -1,6 +1,11 @@
 <script setup lang="ts">
   import type { ParsedContent } from '@nuxt/content';
   import { createHighlighter, type BundledTheme } from 'shiki';
+  import {
+    getExerciseUrl,
+    loadExerciseIntoPlayground,
+    loadSurroundingExercises,
+  } from './loadExercise';
 
   definePageMeta({
     layout: 'playground',
@@ -8,100 +13,74 @@
 
   const studentData = useStudentDataStore();
   const { codeLanguage, sectionCode } = storeToRefs(studentData);
-
-  // Monaco editor config
-  const language: Ref<AllowedLanguage> = ref('python');
-  const fallbackLanguage: Ref<AllowedLanguage> = ref('python');
-
   const themes: Record<'light' | 'dark', BundledTheme> = {
     light: 'github-light',
     dark: 'github-dark',
   };
-  // TODO: Refactor dark mode
+
   const colorMode = useColorMode();
   const currentTheme = computed(() =>
     colorMode.value === 'dark' ? themes.dark : themes.light,
   );
+
   const highlighter = await createHighlighter({
     themes: Object.values(themes),
     langs: ALLOWED_LANGUAGES,
   });
 
   const route = useRoute();
-  const exerciseName = <string>route.params.exercise;
-  const serieName = <string>route.params.serie;
+  const exerciseName = route.params.exercise.toString();
+  const serieName = route.params.serie.toString();
 
   // Store the code written in each editor and set its default value
   const writtenCode = defineModel<string>('writtenCode');
-  const correctedCode = defineModel<string | null>('correctedCode');
-
-  /**
-   * Load the content for the current exercise.
-   */
-  async function loadExercise() {
-    // Check if the student has provided a valid code language
-    if (codeLanguage.value === undefined) {
-      return undefined;
-    }
-
-    // Update the code language to the one selected by the student
-    language.value = codeLanguage.value;
-
-    // Try to fetch the serie from the server
-    const serieData = await queryContent(serieName)
-      .only(['fallbackLanguage'])
-      .findOne()
-      .catch((_) => null);
-
-    // Load the fallback language from the serie if any
-    if (serieData !== null && serieData.fallbackLanguage !== null) {
-      fallbackLanguage.value = <AllowedLanguage>(
-        (<unknown>serieData.fallbackLanguage)
-      );
-    }
-
-    // Try to fetch the exercise from the server
-    let exercise = await queryContent(serieName, exerciseName, language.value)
-      .findOne()
-      .catch((_) => null);
-
-    // Try to fallback to the default language for this serie,
-    // if the exercise is not found for this language
-    if (
-      exercise === null &&
-      fallbackLanguage !== null &&
-      fallbackLanguage.value !== language.value
-    ) {
-      language.value = fallbackLanguage.value;
-      exercise = await queryContent(serieName, exerciseName, language.value)
-        .findOne()
-        .catch((_) => null);
-    }
-
-    // Check if the exercise exists
-    if (exercise !== null) {
-      // Update the page title and meta tags
-      useContentHead(exercise);
-      // Set the default content for the editors
-      writtenCode.value = exercise.code.default;
-      correctedCode.value = exercise.code.corrected;
-    }
-    return exercise;
-  }
+  const correctedCode = defineModel<string>('correctedCode');
 
   // Load the content for the current exercise asynchronously
-  const { data: exerciseData } = await useAsyncData(
+  const { data: playgroundData } = await useAsyncData(
     `${serieName}-${exerciseName}-${sectionCode.value}`,
-    loadExercise,
+    async () =>
+      await loadExerciseIntoPlayground(
+        serieName,
+        exerciseName,
+        codeLanguage.value,
+        writtenCode,
+        correctedCode,
+      ),
     {
       watch: [sectionCode],
+      default() {
+        return { language: null, serie: null, exercise: null };
+      },
     },
   );
 
+  const { data: surroundingExercises } = useAsyncData(
+    `${serieName}-${exerciseName}-navigation`,
+    async () =>
+      await loadSurroundingExercises(
+        playgroundData.value.exercise,
+        playgroundData.value.language,
+      ),
+    {
+      default(): ParsedContent[] {
+        return [];
+      },
+    },
+  );
+
+  const previousExerciseUrl = computed(() =>
+    getExerciseUrl(surroundingExercises.value[0]?._path),
+  );
+
+  const nextExerciseUrl = computed(() =>
+    getExerciseUrl(surroundingExercises.value[1]?._path),
+  );
+
   const editorTabName = computed(() => {
-    if (exerciseData.value) {
+    if (playgroundData.value.exercise) {
       const { fileExtension } = getCodeLanguageData(
-        language.value ?? fallbackLanguage.value,
+        playgroundData.value.language,
       );
       return `${serieName}/${exerciseName}.${fileExtension}`;
     }
@@ -109,14 +88,18 @@
   });
 
   function resetExercise() {
-    if (exerciseData.value) {
-      writtenCode.value = exerciseData.value.code.default ?? '';
+    if (playgroundData.value.exercise) {
+      writtenCode.value = playgroundData.value.exercise.code?.default ?? '';
     }
   }
 </script>
 
 <template>
-  <Navbar is-playground />
+  <Navbar
+    :previousExercisePath="previousExerciseUrl"
+    :nextExercisePath="nextExerciseUrl"
+    is-playground
+  />
   <!-- Modals -->
   <!-- <PlaygroundDialogExerciseCompletion default-open /> -->
   <!-- Playground -->
@@ -128,7 +111,9 @@
       :default-size="30"
       class="min-w-[27.5rem]"
     >
-      <PlaygroundExerciseView :exerciseData="<ParsedContent>exerciseData" />
+      <PlaygroundExerciseView
+        :exerciseData="<ParsedContent>playgroundData.exercise"
+      />
     </ResizablePanel>
     <ResizableHandle id="instructions" with-handle />
     <ResizablePanel>
@@ -165,8 +150,8 @@
             </PlaygroundTabsList>
             <PlaygroundTabsContent value="code">
               <PlaygroundEditor
-                v-if="exerciseData"
-                :language="language"
+                v-if="playgroundData.exercise"
+                :language="playgroundData.language"
                 :supportedLanguages="ALLOWED_LANGUAGES"
                 :highlighter="highlighter"
                 v-model:currentTheme="currentTheme"
@@ -175,8 +160,8 @@
             </PlaygroundTabsContent>
             <PlaygroundTabsContent value="correctedCode">
               <PlaygroundEditor
-                v-if="correctedCode !== null"
-                :language="language"
+                v-if="playgroundData.exercise && correctedCode !== null"
+                :language="playgroundData.language"
                 :supportedLanguages="ALLOWED_LANGUAGES"
                 :highlighter="highlighter"
                 v-model:currentTheme="currentTheme"
