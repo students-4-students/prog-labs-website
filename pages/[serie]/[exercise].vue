@@ -116,7 +116,7 @@
 </script>
 
 <template>
-  <Navbar @reset-exercise="resetExercise()" is-playground />
+  <Navbar is-playground />
   <!-- Modals -->
   <!-- <PlaygroundDialogExerciseCompletion default-open /> -->
   <!-- Playground -->
@@ -134,38 +134,36 @@
     <ResizablePanel>
       <ResizablePanelGroup id="code-terminal-group" direction="vertical">
         <ResizablePanel id="editor" :min-size="35">
-          <Tabs default-value="code" class="flex flex-col h-full">
-            <TabsList class="justify-start rounded-none p-0 bg-accent h-auto">
-              <TabsTrigger
-                value="code"
-                class="text-md rounded-none !shadow-none p-0 transition-none focus-visible:ring-0 focus-visible:ring-offset-0 border-t-2 border-b border-transparent data-[state='active']:border-t-primary data-[state='inactive']:border-b-border"
-              >
-                <PlaygroundTab>
-                  <template #icon>
-                    <LucideCode />
-                  </template>
-                  {{ editorTabName }}
-                </PlaygroundTab>
-              </TabsTrigger>
-              <TabsTrigger
+          <PlaygroundTabs default-value="code">
+            <PlaygroundTabsList>
+              <PlaygroundTabsTrigger value="code">
+                <template #icon>
+                  <LucideCode />
+                </template>
+                {{ editorTabName }}
+              </PlaygroundTabsTrigger>
+              <PlaygroundTabsTrigger
                 value="correctedCode"
-                class="text-md rounded-none !shadow-none p-0 transition-none focus-visible:ring-0 focus-visible:ring-offset-0 border-t-2 border-b border-transparent data-[state='active']:border-t-primary data-[state='inactive']:border-b-border"
                 :disabled="correctedCode == null"
               >
-                <PlaygroundTab>
-                  <template #icon>
-                    <LucideBook />
-                  </template>
-                  Code corrigé
-                </PlaygroundTab>
-              </TabsTrigger>
+                <template #icon>
+                  <LucideBook />
+                </template>
+                Code corrigé
+              </PlaygroundTabsTrigger>
               <!-- Add bottom border to the rest of the bar -->
-              <div class="border-b grow h-full"></div>
-            </TabsList>
-            <TabsContent
-              value="code"
-              class="flex grow m-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-            >
+              <div class="flex border-b grow h-full items-center justify-start">
+                <Button
+                  @click="resetExercise()"
+                  variant="outline"
+                  size="sm"
+                  class="ml-1"
+                >
+                  <LucideRotateCcw class="w-3 h-3" />
+                </Button>
+              </div>
+            </PlaygroundTabsList>
+            <PlaygroundTabsContent value="code">
               <PlaygroundEditor
                 v-if="exerciseData"
                 :language="language"
@@ -174,11 +172,8 @@
                 v-model:currentTheme="currentTheme"
                 v-model="writtenCode"
               />
-            </TabsContent>
-            <TabsContent
-              value="correctedCode"
-              class="flex grow m-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-            >
+            </PlaygroundTabsContent>
+            <PlaygroundTabsContent value="correctedCode">
               <PlaygroundEditor
                 v-if="correctedCode !== null"
                 :language="language"
@@ -188,8 +183,8 @@
                 v-model="correctedCode"
                 read-only
               />
-            </TabsContent>
-          </Tabs>
+            </PlaygroundTabsContent>
+          </PlaygroundTabs>
         </ResizablePanel>
         <ResizableHandle id="editor" with-handle />
         <ResizablePanel id="terminal" :default-size="30" class="min-h-12">

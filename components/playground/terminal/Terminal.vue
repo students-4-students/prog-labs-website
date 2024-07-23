@@ -69,7 +69,7 @@
     </template>
     Résultat du code
     <template #bar>
-      <Button variant="default" size="xs" class="m-1 ml-2">
+      <Button variant="default" size="sm" class="m-1">
         <LucidePlay class="w-3 h-3 mr-1" />
         Exécuter
       </Button>

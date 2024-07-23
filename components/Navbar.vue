@@ -77,23 +77,6 @@
         <TooltipProvider v-if="isPlayground">
           <Tooltip>
             <TooltipTrigger>
-              <Button
-                @click="emit('resetExercise')"
-                variant="outline"
-                size="icon"
-              >
-                <LucideRotateCcw class="w-4 h-4" />
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Recommencer l'exercice</p>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-
-        <TooltipProvider v-if="isPlayground">
-          <Tooltip>
-            <TooltipTrigger>
               <Button @click="navigateTo('/')" variant="outline" size="icon">
                 <LucideLibrary class="w-4 h-4" />
               </Button>
