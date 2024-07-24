@@ -13,6 +13,7 @@
 
   const studentData = useStudentDataStore();
   const { codeLanguage, sectionCode } = storeToRefs(studentData);
+
   const themes: Record<'light' | 'dark', BundledTheme> = {
     light: 'github-light',
     dark: 'github-dark',

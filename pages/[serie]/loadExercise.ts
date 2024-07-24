@@ -64,9 +64,23 @@ export async function loadExerciseIntoPlayground(
   );
 
   if (data.exercise) {
-    // Set the default content for the editors
-    writtenCode.value = data.exercise.code?.default ?? '';
+    // Load the corrected code
     correctedCode.value = data.exercise.code?.corrected;
+
+    const playgroundState = usePlaygroundStateStore();
+    // Set the default editor code based on the previous playground state
+    if (playgroundState.exercisePath !== data.exercise._path) {
+      playgroundState.setCurrentExercisePath(data.exercise._path);
+      writtenCode.value = data.exercise.code?.default ?? '';
+    } else {
+      writtenCode.value = playgroundState.writtenCode ?? '';
+    }
+
+    // Automatically save the written code in the playground state
+    watch(writtenCode, (code) => {
+      playgroundState.setWrittenCode(code);
+    });
+
     // Update the page title and meta tags
     useContentHead(data.exercise);
   }
@@ -79,12 +93,11 @@ export async function loadSurroundingExercises(
   language: AllowedLanguage | null,
 ): Promise<ParsedContent[]> {
   if (exerciseData && exerciseData._path && language) {
-    const surroundingExercises = await queryContent()
+    return await queryContent()
       // Don't fetch series and only keep exercises of the same language
       .where({ _dir: { $ne: '' }, _path: { $contains: language } })
       .findSurround(exerciseData._path)
       .catch((_) => []);
-    return surroundingExercises;
   }
   return [];
 }
