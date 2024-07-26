@@ -14,6 +14,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxtjs/color-mode',
     '@nuxtjs/google-fonts',
+    '@nuxt/scripts',
   ],
 
   shadcn: {

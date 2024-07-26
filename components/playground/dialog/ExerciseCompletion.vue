@@ -1,8 +1,10 @@
 <script lang="ts" setup></script>
 
 <template>
-  <Dialog v-model="$attrs">
-    <DialogContent>
+  <Dialog>
+    <!-- Confetti z-index is 1000 -->
+    <ConfettiExplosion />
+    <DialogContent class="z-[1001]">
       <DialogHeader>
         <NuxtImg
           class="my-4"

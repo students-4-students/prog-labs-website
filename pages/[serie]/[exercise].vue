@@ -96,14 +96,14 @@
 </script>
 
 <template>
+  <!-- Modals -->
+  <PlaygroundDialogExerciseCompletion default-open />
+  <!-- Playground -->
   <Navbar
     :previousExercisePath="previousExerciseUrl"
     :nextExercisePath="nextExerciseUrl"
     is-playground
   />
-  <!-- Modals -->
-  <!-- <PlaygroundDialogExerciseCompletion default-open /> -->
-  <!-- Playground -->
   <ResizablePanelGroup direction="horizontal" class="flex w-full h-full">
     <ResizablePanel
       id="instructions"
