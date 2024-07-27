@@ -98,7 +98,7 @@
   />
   <!-- Modals -->
   <!-- <PlaygroundDialogExerciseCompletion
-    :nextExerciseUrl="nextExerciseUrl"
+    :nextExerciseUrl="surroundingExerciseUrls[1]"
     default-open
   /> -->
   <!-- Playground -->
