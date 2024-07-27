@@ -67,7 +67,13 @@
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Exercice précédent</p>
+              <p>
+                {{
+                  previousExerciseUrl
+                    ? 'Exercice précédent'
+                    : 'Aucun exercice précédent'
+                }}
+              </p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
@@ -93,7 +99,7 @@
           size="default"
         >
           <LucideChevronRight class="w-4 h-4 mr-1" />
-          Exercice suivant
+          {{ nextExerciseUrl ? 'Exercice suivant' : 'Aucun exercice suivant' }}
         </Button>
 
         <Button variant="ghost" size="icon" @click="switchColorMode">
