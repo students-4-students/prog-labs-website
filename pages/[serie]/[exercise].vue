@@ -97,12 +97,15 @@
 
 <template>
   <Navbar
-    :previousExercisePath="previousExerciseUrl"
-    :nextExercisePath="nextExerciseUrl"
+    :previousExerciseUrl="previousExerciseUrl"
+    :nextExerciseUrl="nextExerciseUrl"
     is-playground
   />
   <!-- Modals -->
-  <!-- <PlaygroundDialogExerciseCompletion default-open /> -->
+  <!-- <PlaygroundDialogExerciseCompletion
+    :nextExerciseUrl="nextExerciseUrl"
+    default-open
+  /> -->
   <!-- Playground -->
   <ResizablePanelGroup direction="horizontal" class="flex w-full h-full">
     <ResizablePanel

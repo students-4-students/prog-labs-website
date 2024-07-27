@@ -1,8 +1,8 @@
 <script lang="ts" setup>
   interface Props {
     isPlayground?: boolean;
-    previousExercisePath?: string;
-    nextExercisePath?: string;
+    previousExerciseUrl?: string;
+    nextExerciseUrl?: string;
   }
 
   withDefaults(defineProps<Props>(), {
@@ -58,8 +58,8 @@
           <Tooltip>
             <TooltipTrigger>
               <Button
-                @click="navigateTo(previousExercisePath)"
-                :disabled="previousExercisePath === undefined"
+                @click="navigateTo(previousExerciseUrl)"
+                :disabled="!previousExerciseUrl"
                 variant="outline"
                 size="icon"
               >
@@ -87,8 +87,8 @@
 
         <Button
           v-if="isPlayground"
-          @click="navigateTo(nextExercisePath)"
-          :disabled="nextExercisePath === undefined"
+          @click="navigateTo(nextExerciseUrl)"
+          :disabled="!nextExerciseUrl"
           variant="default"
           size="default"
         >
