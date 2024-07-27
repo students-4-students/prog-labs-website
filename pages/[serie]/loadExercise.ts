@@ -1,12 +1,24 @@
 import type { ParsedContent } from '@nuxt/content';
 import type { ModelRef } from 'vue';
 
+export type PayloadData =
+  | {
+      language: AllowedLanguage;
+      serie: ParsedContent | null;
+      exercise: ParsedContent | null;
+    }
+  | {
+      language: null;
+      serie: null;
+      exercise: null;
+    };
+
 export async function loadExerciseData(
   serieName: string,
   exerciseName: string,
   language: AllowedLanguage,
   defaultFallbackLanguage: AllowedLanguage,
-) {
+): Promise<PayloadData> {
   // Fetch the serie from the server
   const serieData = await queryContent(serieName)
     .findOne()
@@ -88,15 +100,15 @@ export async function loadExerciseIntoPlayground(
   return data;
 }
 
-export async function loadSurroundingExercises(
-  exerciseData: ParsedContent | null,
-  language: AllowedLanguage | null,
-): Promise<ParsedContent[]> {
-  if (exerciseData && exerciseData._path && language) {
+export async function loadSurroundingExercises({
+  exercise,
+  language,
+}: PayloadData): Promise<ParsedContent[]> {
+  if (exercise && exercise._path) {
     return await queryContent()
       // Don't fetch series and only keep exercises of the same language
       .where({ _dir: { $ne: '' }, _path: { $contains: language } })
-      .findSurround(exerciseData._path)
+      .findSurround(exercise._path)
       .catch((_) => []);
   }
   return [];

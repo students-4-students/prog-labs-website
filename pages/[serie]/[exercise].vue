@@ -5,6 +5,7 @@
     getExerciseUrl,
     loadExerciseIntoPlayground,
     loadSurroundingExercises,
+    type PayloadData,
   } from './loadExercise';
 
   definePageMeta({
@@ -38,7 +39,7 @@
   const correctedCode = defineModel<string>('correctedCode');
 
   // Load the content for the current exercise asynchronously
-  const { data: playgroundData } = await useAsyncData(
+  const { data: playgroundData } = await useAsyncData<PayloadData>(
     `${serieName}-${exerciseName}-${sectionCode.value}`,
     async () =>
       await loadExerciseIntoPlayground(
@@ -56,13 +57,9 @@
     },
   );
 
-  const { data: surroundingExercises } = useAsyncData(
+  const { data: surroundingExercises } = useAsyncData<ParsedContent[]>(
     `${serieName}-${exerciseName}-navigation`,
-    async () =>
-      await loadSurroundingExercises(
-        playgroundData.value.exercise,
-        playgroundData.value.language,
-      ),
+    async () => await loadSurroundingExercises(playgroundData.value),
     {
       default(): ParsedContent[] {
         return [];
@@ -70,13 +67,11 @@
     },
   );
 
-  const previousExerciseUrl = computed(() =>
-    getExerciseUrl(surroundingExercises.value[0]?._path),
-  );
-
-  const nextExerciseUrl = computed(() =>
-    getExerciseUrl(surroundingExercises.value[1]?._path),
-  );
+  const surroundingExerciseUrls = computed(() => {
+    return Array.from({ length: 2 }, (_, i) =>
+      getExerciseUrl(surroundingExercises.value[i]?._path),
+    );
+  });
 
   const editorTabName = computed(() => {
     if (playgroundData.value.exercise) {
@@ -88,17 +83,17 @@
     return 'Exercice non trouvé';
   });
 
-  function resetExercise() {
-    if (playgroundData.value.exercise) {
-      writtenCode.value = playgroundData.value.exercise.code?.default ?? '';
+  function resetWrittenCode(exercise: ParsedContent | null) {
+    if (exercise) {
+      writtenCode.value = exercise.code?.default ?? '';
     }
   }
 </script>
 
 <template>
   <Navbar
-    :previousExerciseUrl="previousExerciseUrl"
-    :nextExerciseUrl="nextExerciseUrl"
+    :previousExerciseUrl="surroundingExerciseUrls[0]"
+    :nextExerciseUrl="surroundingExerciseUrls[1]"
     is-playground
   />
   <!-- Modals -->
@@ -143,7 +138,7 @@
               <!-- Add bottom border to the rest of the bar -->
               <div class="flex border-b grow h-full items-center justify-start">
                 <Button
-                  @click="resetExercise()"
+                  @click="resetWrittenCode(playgroundData.exercise)"
                   variant="outline"
                   size="sm"
                   class="ml-1"
