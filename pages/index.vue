@@ -56,9 +56,8 @@
           <SerieCard v-else v-for="serie in series" :serieData="serie">
             <template #banner>
               <NuxtImg
-                class="w-full mb-2 self-center"
+                class="w-full aspect-[16/10] mb-2 self-center object-contain"
                 :src="`/logos/stylized/${bannerFileName}.png`"
-                placeholder
               />
             </template>
           </SerieCard>
@@ -82,7 +81,7 @@
         class="max-w-[760px]"
       >
         <template #banner>
-          <NuxtImg class="h-24 mb-4" src="/logos/polympiads.svg" placeholder />
+          <NuxtImg class="h-28 mb-4 aspect-auto" src="/logos/polympiads.svg" />
         </template>
       </SerieCard>
     </div>

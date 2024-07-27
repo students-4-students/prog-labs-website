@@ -9,9 +9,9 @@
     <DialogContent>
       <DialogHeader>
         <NuxtImg
-          class="my-4"
-          src="/illustrations/exercise-success.png"
-          placeholder
+          class="my-4 aspect-[31/20] object-contain"
+          src="/illustrations/exercise-success.webp"
+          preload
         />
         <DialogTitle>Exercice réussi !</DialogTitle>
         <DialogDescription>
@@ -20,7 +20,11 @@
           pariatur.
         </DialogDescription>
       </DialogHeader>
+
       <DialogFooter>
+        <Button size="default" variant="outline" @click="navigateTo('/')">
+          Changer d'exercice
+        </Button>
         <Button
           :disabled="!props.nextExerciseUrl"
           @click="navigateTo(props.nextExerciseUrl)"
@@ -32,12 +36,7 @@
               : 'Aucun prochain exercice'
           }}
         </Button>
-        <Button size="default" variant="outline" @click="navigateTo('/')">
-          Changer d'exercice
-        </Button>
       </DialogFooter>
     </DialogContent>
   </Dialog>
 </template>
-
-<style></style>

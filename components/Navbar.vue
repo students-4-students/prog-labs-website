@@ -27,13 +27,13 @@
         @click="navigateTo('/')"
       >
         <NuxtImg
-          src="/logos/s4s-text-dark.png"
+          src="/logos/s4s-text-dark.webp"
           class="h-7"
           alt="S4S Logo"
           v-if="isDarkMode"
         />
         <NuxtImg
-          src="/logos/s4s-text-light.png"
+          src="/logos/s4s-text-light.webp"
           class="h-7"
           alt="S4S Logo"
           v-else

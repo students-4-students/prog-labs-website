@@ -23,7 +23,7 @@
 <template>
   <DialogTitle
     v-bind="forwardedProps"
-    :class="cn('text-lg font-semibold leading-none', props.class)"
+    :class="cn('text-xl font-semibold leading-none', props.class)"
   >
     <slot />
   </DialogTitle>
