@@ -151,9 +151,6 @@
               <PlaygroundEditor
                 v-if="playgroundData.exercise"
                 :language="playgroundData.language"
-                :supportedLanguages="ALLOWED_LANGUAGES"
-                :highlighter="highlighter"
-                v-model:currentTheme="currentTheme"
                 v-model="writtenCode"
               />
             </PlaygroundTabsContent>

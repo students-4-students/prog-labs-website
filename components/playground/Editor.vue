@@ -1,55 +1,62 @@
 <script lang="ts" setup>
-  import {
-    getHighlighter,
-    type BundledLanguage,
-    type BundledTheme,
-    type HighlighterGeneric,
-  } from 'shiki';
-  import { shikiToMonaco } from '@shikijs/monaco';
+  import type { UserConfig } from 'monaco-editor-wrapper';
+  import '@codingame/monaco-vscode-theme-defaults-default-extension';
+  import '@codingame/monaco-vscode-java-default-extension';
+  import getThemeServiceOverride from '@codingame/monaco-vscode-theme-service-override';
+  import getTextmateServiceOverride from '@codingame/monaco-vscode-textmate-service-override';
 
-  const code = defineModel<string>();
   const props = defineProps<{
-    language: string;
-    supportedLanguages: BundledLanguage[];
-    highlighter: HighlighterGeneric<BundledLanguage, BundledTheme>;
     readOnly?: boolean;
+    darkMode?: boolean;
   }>();
 
-  const currentTheme = defineModel<BundledTheme>('currentTheme');
+  const writtenCode = defineModel<string>({ default: '' });
+  const colorMode = useColorMode();
+  const currentTheme = computed(() =>
+    colorMode.value === 'dark' ? 'Github Dark' : 'Github Light',
+  );
 
-  const monaco = useMonaco();
-  if (monaco) {
-    for (const lang of props.supportedLanguages) {
-      monaco.languages.register({ id: lang });
-    }
-    // Register the themes from Shiki, and provide syntax highlighting for Monaco.
-    shikiToMonaco(props.highlighter, monaco);
-    // Change theme dynamically
-    watch(
-      currentTheme,
-      (theme) => {
-        if (theme) monaco.editor.setTheme(theme);
+  const config = computed<UserConfig>(() => ({
+    wrapperConfig: {
+      editorAppConfig: {
+        $type: 'extended',
+        codeResources: {
+          main: {
+            text: '',
+            fileExt: 'java',
+            enforceLanguageId: 'java',
+          },
+        },
+        userConfiguration: {
+          json: JSON.stringify({
+            'workbench.colorTheme': currentTheme.value,
+          }),
+        },
+        editorOptions: {
+          lineNumbersMinChars: 2,
+          fontSize: 16,
+          fontFamily: 'JetBrains Mono',
+          fontWeight: '400',
+          minimap: {
+            enabled: false,
+          },
+          readOnly: props.readOnly,
+        },
       },
-      { immediate: true },
-    );
-  }
+      serviceConfig: {
+        userServices: {
+          ...getThemeServiceOverride(),
+          ...getTextmateServiceOverride(),
+        },
+      },
+    },
+  }));
 </script>
 
 <template>
-  <MonacoEditor
-    class="grow p-4"
-    v-model="code"
-    :lang="language"
-    :options="{
-      automaticLayout: true,
-      lineNumbersMinChars: 2,
-      fontSize: 16,
-      fontFamily: 'JetBrains Mono',
-      fontWeight: '400',
-      readOnly: props.readOnly,
-      minimap: {
-        enabled: false,
-      },
-    }"
+  <MonacoEditorWrapper
+    v-model="writtenCode"
+    :config="config"
+    class="grow p-4 pl-0"
   />
 </template>

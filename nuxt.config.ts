@@ -7,7 +7,6 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'shadcn-nuxt',
     '@nuxtjs/tailwindcss',
-    'nuxt-monaco-editor',
     '@nuxt/content',
     '@vueuse/nuxt',
     'nuxt-lucide-icons',
