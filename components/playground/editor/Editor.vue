@@ -4,6 +4,7 @@
   import '@codingame/monaco-vscode-java-default-extension';
   import getThemeServiceOverride from '@codingame/monaco-vscode-theme-service-override';
   import getTextmateServiceOverride from '@codingame/monaco-vscode-textmate-service-override';
+  import { themeExtension, lightTheme, darkTheme } from './extensions/themes';
 
   const props = defineProps<{
     readOnly?: boolean;
@@ -13,7 +14,7 @@
   const writtenCode = defineModel<string>({ default: '' });
   const colorMode = useColorMode();
   const currentTheme = computed(() =>
-    colorMode.value === 'dark' ? 'Github Dark' : 'Github Light',
+    colorMode.value === 'dark' ? darkTheme.id : lightTheme.id,
   );
 
   const config = computed<UserConfig>(() => ({
@@ -30,6 +31,7 @@
         userConfiguration: {
           json: JSON.stringify({
             'workbench.colorTheme': currentTheme.value,
+            'editor.bracketPairColorization.enabled': false,
           }),
         },
         editorOptions: {
@@ -42,6 +44,7 @@
           },
           readOnly: props.readOnly,
         },
+        extensions: [themeExtension],
       },
       serviceConfig: {
         userServices: {
