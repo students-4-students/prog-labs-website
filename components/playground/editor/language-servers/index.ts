@@ -1,13 +1,14 @@
-import type { UserConfig } from 'monaco-editor-wrapper'
-import type { MessageTransports } from 'vscode-languageclient'
-import { CloseAction, ErrorAction } from 'vscode-languageclient'
-import { Uri } from 'vscode'
+import '@codingame/monaco-vscode-python-default-extension';
+import type { UserConfig } from 'monaco-editor-wrapper';
+import type { MessageTransports } from 'vscode-languageclient';
+import { CloseAction, ErrorAction } from 'vscode-languageclient';
+import { Uri } from 'vscode';
 
 export abstract class LanguageServer {
-  private _languageId: string
-  private _worker!: Worker
-  private _transports!: MessageTransports
-  private _initializationOptions?: object
+  private _languageId: string;
+  private _worker!: Worker;
+  private _transports!: MessageTransports;
+  private _initializationOptions?: object;
 
   protected constructor({
     languageId,
@@ -15,15 +16,15 @@ export abstract class LanguageServer {
     transports,
     initializationOptions,
   }: {
-    languageId: string
-    worker: Worker
-    transports: MessageTransports
-    initializationOptions?: object
+    languageId: string;
+    worker: Worker;
+    transports: MessageTransports;
+    initializationOptions?: object;
   }) {
-    this._languageId = languageId
-    this._worker = worker
-    this._transports = transports
-    this._initializationOptions = initializationOptions
+    this._languageId = languageId;
+    this._worker = worker;
+    this._transports = transports;
+    this._initializationOptions = initializationOptions;
   }
 
   /**
@@ -33,21 +34,21 @@ export abstract class LanguageServer {
    * @returns a promise which resolves on the first worker message
    */
   static async awaitWorkerLoad(worker: Worker, failAfterMs = 8000) {
-    let markAsReady = (_: unknown) => {}
-    let markAsFailed = () => {}
+    let markAsReady = (_: unknown) => {};
+    let markAsFailed = () => {};
 
-    const timeout = setTimeout(() => markAsFailed(), failAfterMs)
+    const timeout = setTimeout(() => markAsFailed(), failAfterMs);
     worker.addEventListener('message', (message) => {
       if (message.data.type === 'ready') {
-        clearTimeout(timeout)
-        markAsReady(true)
+        clearTimeout(timeout);
+        markAsReady(true);
       }
-    })
+    });
 
     return new Promise((resolve, reject) => {
-      markAsReady = resolve
-      markAsFailed = reject
-    })
+      markAsReady = resolve;
+      markAsFailed = reject;
+    });
   }
 
   /**
@@ -78,26 +79,26 @@ export abstract class LanguageServer {
       connectionProvider: {
         get: async () => this.transports,
       },
-    }
+    };
   }
 
   dispose() {
-    this._worker.terminate()
+    this._worker.terminate();
   }
 
   get languageId() {
-    return this._languageId
+    return this._languageId;
   }
 
   get worker() {
-    return this._worker
+    return this._worker;
   }
 
   get transports() {
-    return this._transports
+    return this._transports;
   }
 
   get initializationOptions() {
-    return this._initializationOptions
+    return this._initializationOptions;
   }
 }

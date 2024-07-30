@@ -1,7 +1,9 @@
 {
   "name": "nuxt-app",
   "dependencies": {
+    "@codingame/monaco-vscode-cpp-default-extension": "^7.1.0",
     "@codingame/monaco-vscode-java-default-extension": "^7.0.11",
+    "@codingame/monaco-vscode-python-default-extension": "^7.1.0",
     "@nuxt/image": "^1.7.0",
     "@nuxtjs/color-mode": "^3.4.2",
     "@nuxtjs/google-fonts": "^3.2.0",
