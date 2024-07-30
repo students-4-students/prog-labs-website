@@ -1,9 +1,9 @@
 {
   "name": "nuxt-app",
   "dependencies": {
-    "@codingame/monaco-vscode-cpp-default-extension": "^7.1.0",
-    "@codingame/monaco-vscode-java-default-extension": "^7.0.11",
-    "@codingame/monaco-vscode-python-default-extension": "^7.1.0",
+    "@codingame/monaco-vscode-cpp-default-extension": "~7.0.7",
+    "@codingame/monaco-vscode-java-default-extension": "~7.0.7",
+    "@codingame/monaco-vscode-python-default-extension": "~7.0.7",
     "@nuxt/image": "^1.7.0",
     "@nuxtjs/color-mode": "^3.4.2",
     "@nuxtjs/google-fonts": "^3.2.0",
@@ -18,7 +18,6 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "defu": "^6.1.4",
-    "kleur": "^4.1.5",
     "monaco-editor": "npm:@codingame/monaco-vscode-editor-api@~7.0.7",
     "monaco-editor-wrapper": "~5.4.0",
     "monaco-languageclient": "~8.7.0",
@@ -30,10 +29,8 @@
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
     "vaul-vue": "^0.1.3",
-    "vee-validate": "^4.13.2",
     "vue": "^3.4.32",
-    "vue-router": "^4.4.0",
-    "zod": "^3.23.8"
+    "vue-router": "^4.4.0"
   },
   "private": true,
   "scripts": {
