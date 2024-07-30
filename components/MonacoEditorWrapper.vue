@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+  import '@codingame/monaco-vscode-language-pack-fr';
   import defu from 'defu';
   import {
     MonacoEditorLanguageClientWrapper,

@@ -50,9 +50,5 @@ export default defineNuxtConfig({
     display: 'swap',
   },
 
-  monacoEditor: {
-    locale: 'fr',
-  },
-
   compatibilityDate: '2024-07-04',
 });
