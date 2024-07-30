@@ -9,10 +9,10 @@ import {
   BrowserMessageWriter,
 } from 'vscode-languageserver-protocol/browser';
 import { JsonStream, LF } from './JsonStream';
+import { WORKSPACE_PATH } from '../../workspace';
 
 declare const self: DedicatedWorkerGlobalScope;
 
-const WORKSPACE_PATH = '/workspace';
 const SHOW_LOGS = import.meta.env.DEV;
 const COMPILE_ARGS = ['-xc++', '-std=c++2b', '-pedantic-errors', '-Wall'];
 const FLAGS = [

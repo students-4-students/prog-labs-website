@@ -1,10 +1,10 @@
 <script lang="ts" setup>
   import type { UserConfig } from 'monaco-editor-wrapper';
-  import '@codingame/monaco-vscode-theme-defaults-default-extension';
   import '@codingame/monaco-vscode-java-default-extension';
   import getThemeServiceOverride from '@codingame/monaco-vscode-theme-service-override';
   import getTextmateServiceOverride from '@codingame/monaco-vscode-textmate-service-override';
   import { themeExtension, lightTheme, darkTheme } from './extensions/themes';
+  import { WORKSPACE_URI } from './workspace';
 
   const props = defineProps<{
     readOnly?: boolean;
@@ -24,8 +24,8 @@
         codeResources: {
           main: {
             text: '',
-            fileExt: 'java',
             enforceLanguageId: 'java',
+            fileExt: 'java',
           },
         },
         userConfiguration: {
@@ -50,6 +50,17 @@
         userServices: {
           ...getThemeServiceOverride(),
           ...getTextmateServiceOverride(),
+        },
+        workspaceConfig: {
+          workspaceProvider: {
+            trusted: true,
+            workspace: {
+              workspaceUri: WORKSPACE_URI,
+            },
+            async open() {
+              return false;
+            },
+          },
         },
       },
     },

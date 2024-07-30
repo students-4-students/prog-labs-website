@@ -2,7 +2,7 @@ import '@codingame/monaco-vscode-python-default-extension';
 import type { UserConfig } from 'monaco-editor-wrapper';
 import type { MessageTransports } from 'vscode-languageclient';
 import { CloseAction, ErrorAction } from 'vscode-languageclient';
-import { Uri } from 'vscode';
+import { WORKSPACE_URI } from '../workspace';
 
 export abstract class LanguageServer {
   private _languageId: string;
@@ -73,7 +73,7 @@ export abstract class LanguageServer {
         workspaceFolder: {
           index: 0,
           name: 'workspace',
-          uri: Uri.file('workspace'),
+          uri: WORKSPACE_URI,
         },
       },
       connectionProvider: {
