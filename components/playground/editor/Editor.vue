@@ -1,10 +1,16 @@
 <script lang="ts" setup>
+  import { ClangdLanguageServer } from '~/components/playground/editor/language-servers/cpp/clangd';
   import type { UserConfig } from 'monaco-editor-wrapper';
   import '@codingame/monaco-vscode-java-default-extension';
   import getThemeServiceOverride from '@codingame/monaco-vscode-theme-service-override';
   import getTextmateServiceOverride from '@codingame/monaco-vscode-textmate-service-override';
-  import { themeExtension, lightTheme, darkTheme } from './extensions/themes';
-  import { WORKSPACE_URI } from './workspace';
+  import {
+    themeExtension,
+    lightTheme,
+    darkTheme,
+  } from '~/components/playground/editor/extensions/themes';
+  import { WORKSPACE_PATH } from './config/workspace';
+  import { Uri } from 'monaco-editor';
 
   const props = defineProps<{
     readOnly?: boolean;
@@ -24,8 +30,8 @@
         codeResources: {
           main: {
             text: '',
-            enforceLanguageId: 'java',
-            fileExt: 'java',
+            enforceLanguageId: 'cpp',
+            fileExt: 'cpp',
           },
         },
         userConfiguration: {
@@ -55,7 +61,7 @@
           workspaceProvider: {
             trusted: true,
             workspace: {
-              workspaceUri: WORKSPACE_URI,
+              workspaceUri: Uri.file(WORKSPACE_PATH),
             },
             async open() {
               return false;

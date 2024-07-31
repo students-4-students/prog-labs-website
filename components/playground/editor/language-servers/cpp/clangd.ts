@@ -1,5 +1,5 @@
 import '@codingame/monaco-vscode-cpp-default-extension';
-import { LanguageServer } from '../';
+import { LanguageServer } from '..';
 import ClangdWorker from './worker?worker';
 import {
   BrowserMessageReader,

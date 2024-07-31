@@ -1,11 +1,11 @@
-import '@codingame/monaco-vscode-python-default-extension'
-import PyrightWorker from '@typefox/pyright-browser/dist/pyright.worker?worker'
+import '@codingame/monaco-vscode-python-default-extension';
+import PyrightWorker from '@typefox/pyright-browser/dist/pyright.worker?worker';
 import {
   BrowserMessageReader,
   BrowserMessageWriter,
-} from 'vscode-languageserver-protocol/browser'
-import { LanguageServer } from '../'
-import { loadTypeDefinitionFiles } from './loadTypeDefinitions'
+} from 'vscode-languageserver-protocol/browser';
+import { LanguageServer } from '..';
+import { loadTypeDefinitionFiles } from './loadTypeDefinitions';
 
 export class PyrightLanguageServer extends LanguageServer {
   /**
@@ -13,13 +13,13 @@ export class PyrightLanguageServer extends LanguageServer {
    * @returns the pyright language server.
    */
   static async initialize() {
-    const worker = new PyrightWorker()
+    const worker = new PyrightWorker();
 
     // Launch pyright language server
     worker.postMessage({
       type: 'browser/boot',
       mode: 'foreground',
-    })
+    });
 
     return new PyrightLanguageServer({
       languageId: 'python',
@@ -31,6 +31,6 @@ export class PyrightLanguageServer extends LanguageServer {
       initializationOptions: {
         files: await loadTypeDefinitionFiles(),
       },
-    })
+    });
   }
 }

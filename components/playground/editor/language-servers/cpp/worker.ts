@@ -8,12 +8,11 @@ import {
   BrowserMessageReader,
   BrowserMessageWriter,
 } from 'vscode-languageserver-protocol/browser';
-import { JsonStream, LF } from './JsonStream';
-import { WORKSPACE_PATH } from '../../workspace';
+import { JsonStream, LF } from './json-stream';
+import { WORKSPACE_PATH } from '../../config/workspace';
 
 declare const self: DedicatedWorkerGlobalScope;
 
-const SHOW_LOGS = import.meta.env.DEV;
 const COMPILE_ARGS = ['-xc++', '-std=c++2b', '-pedantic-errors', '-Wall'];
 const FLAGS = [
   ...COMPILE_ARGS,
@@ -50,9 +49,7 @@ const jsonStream = new JsonStream();
 function stdout(charCode: number) {
   const jsonOrNull = jsonStream.insert(charCode);
   if (jsonOrNull !== null) {
-    if (SHOW_LOGS) {
-      console.log('%c%s', 'color: green', jsonOrNull);
-    }
+    console.log('%c%s', 'color: green', jsonOrNull);
     writer.write(JSON.parse(jsonOrNull));
   }
 }
@@ -60,9 +57,7 @@ function stdout(charCode: number) {
 let stderrLine = '';
 function stderr(charCode: number) {
   if (charCode === LF) {
-    if (SHOW_LOGS) {
-      console.log('%c%s', 'color: darkorange', stderrLine);
-    }
+    console.log('%c%s', 'color: darkorange', stderrLine);
     stderrLine = '';
   } else {
     stderrLine += String.fromCharCode(charCode);
@@ -123,4 +118,5 @@ reader.listen((data) => {
   const delimiter = '\r\n';
   stdinChunks.push(header, delimiter, body);
   resolveStdinReady();
+  // console.log("%c%s", "color: red", `${header}${delimiter}${body}`);
 });
