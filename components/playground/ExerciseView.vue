@@ -20,7 +20,7 @@
           <div class="flex flex-col space-y-4 items-center justify-center">
             <NuxtImg
               class="mb-4"
-              src="/illustrations/empty-box.png"
+              src="/illustrations/empty-box.webp"
               placeholder
             />
             <h1 class="text-center">
