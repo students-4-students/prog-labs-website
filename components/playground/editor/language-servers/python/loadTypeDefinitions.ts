@@ -1,7 +1,6 @@
-import { loadAsync, type JSZipObject } from 'jszip'
-import typeDefinitionsUrl from '@/assets/python/stdlib-source-with-typeshed-pyi.zip?url'
+import { loadAsync, type JSZipObject } from 'jszip';
 
-const noTrailingSlash = ([name]: [string, JSZipObject]) => !name.endsWith('/')
+const noTrailingSlash = ([name]: [string, JSZipObject]) => !name.endsWith('/');
 
 /**
  * Reads content of a zip file using jszip.
@@ -13,17 +12,17 @@ async function readZipFile(
   sanitizeFileName: (filename: string) => string,
 ) {
   try {
-    const response = await fetch(url)
-    const data = await response.arrayBuffer()
-    const results: { [id: string]: string } = {}
-    const zip = await loadAsync(data)
-    const files = Object.entries(zip.files)
+    const response = await fetch(url);
+    const data = await response.arrayBuffer();
+    const results: { [id: string]: string } = {};
+    const zip = await loadAsync(data);
+    const files = Object.entries(zip.files);
     for (const [filename, file] of files.filter(noTrailingSlash))
-      results[sanitizeFileName(filename)] = await file.async('text')
-    return results
+      results[sanitizeFileName(filename)] = await file.async('text');
+    return results;
   } catch (error) {
-    console.error(error)
-    return {}
+    console.error(error);
+    return {};
   }
 }
 
@@ -33,6 +32,9 @@ async function readZipFile(
  */
 export async function loadTypeDefinitionFiles() {
   const tryPrependSlash = (filename: string) =>
-    filename.replace(/^(stdlib|stubs)/, '/$1')
-  return await readZipFile(typeDefinitionsUrl, tryPrependSlash)
+    filename.replace(/^(stdlib|stubs)/, '/$1');
+  return await readZipFile(
+    '/language-servers/python/stdlib-source-with-typeshed-pyi.zip',
+    tryPrependSlash,
+  );
 }

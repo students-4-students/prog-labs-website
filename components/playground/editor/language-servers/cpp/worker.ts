@@ -78,7 +78,7 @@ function onAbort() {
   self.reportError('clangd aborted');
 }
 
-const wasmBase = '/cpp/';
+const wasmBase = '/language-servers/cpp/';
 const wasmDataUrl = `${wasmBase}clangd.wasm`;
 
 const { default: Clangd } = await import(
