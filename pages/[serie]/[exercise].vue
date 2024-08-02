@@ -31,6 +31,7 @@
   });
 
   const route = useRoute();
+  const currentTab = ref('code');
   const exerciseName = route.params.exercise.toString();
   const serieName = route.params.serie.toString();
 
@@ -118,7 +119,7 @@
     <ResizablePanel>
       <ResizablePanelGroup id="code-terminal-group" direction="vertical">
         <ResizablePanel id="editor" :min-size="35">
-          <PlaygroundTabs default-value="code">
+          <PlaygroundTabs v-model="currentTab" default-value="code">
             <PlaygroundTabsList>
               <PlaygroundTabsTrigger value="code">
                 <template #icon>
@@ -147,24 +148,33 @@
                 </Button>
               </div>
             </PlaygroundTabsList>
-            <PlaygroundTabsContent value="code">
-              <PlaygroundEditor
-                v-if="playgroundData.exercise"
-                :language="playgroundData.language"
-                v-model="writtenCode"
-              />
-            </PlaygroundTabsContent>
-            <PlaygroundTabsContent value="correctedCode">
-              <PlaygroundEditor
-                v-if="playgroundData.exercise && correctedCode !== null"
-                :language="playgroundData.language"
-                :supportedLanguages="ALLOWED_LANGUAGES"
-                :highlighter="highlighter"
-                v-model:currentTheme="currentTheme"
-                v-model="correctedCode"
-                read-only
-              />
-            </PlaygroundTabsContent>
+            <KeepAlive>
+              <PlaygroundTabsContent
+                v-if="currentTab === 'code'"
+                value="code"
+                forceMount
+              >
+                <PlaygroundEditor
+                  v-if="playgroundData.language"
+                  :language="playgroundData.language"
+                  v-model="writtenCode"
+                />
+              </PlaygroundTabsContent>
+            </KeepAlive>
+            <KeepAlive>
+              <PlaygroundTabsContent
+                v-if="currentTab === 'correctedCode'"
+                value="correctedCode"
+                forceMount
+              >
+                <PlaygroundEditor
+                  v-if="playgroundData.language && correctedCode"
+                  :language="playgroundData.language"
+                  v-model="correctedCode"
+                  readOnly
+                />
+              </PlaygroundTabsContent>
+            </KeepAlive>
           </PlaygroundTabs>
         </ResizablePanel>
         <ResizableHandle id="editor" with-handle />

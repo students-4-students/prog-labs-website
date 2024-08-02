@@ -49,7 +49,9 @@ const jsonStream = new JsonStream();
 function stdout(charCode: number) {
   const jsonOrNull = jsonStream.insert(charCode);
   if (jsonOrNull !== null) {
-    console.log('%c%s', 'color: green', jsonOrNull);
+    if (import.meta.dev) {
+      console.log('%c%s', 'color: green', jsonOrNull);
+    }
     writer.write(JSON.parse(jsonOrNull));
   }
 }
@@ -57,7 +59,7 @@ function stdout(charCode: number) {
 let stderrLine = '';
 function stderr(charCode: number) {
   if (charCode === LF) {
-    console.log('%c%s', 'color: darkorange', stderrLine);
+    console.log(stderrLine);
     stderrLine = '';
   } else {
     stderrLine += String.fromCharCode(charCode);
@@ -103,7 +105,7 @@ clangd.FS.writeFile(
   JSON.stringify({ CompileFlags: { Add: FLAGS } }),
 );
 
-console.log('%c%s', 'font-size: 2em; color: green', 'clangd started');
+console.log('Clangd language server started');
 clangd.callMain([]);
 
 // Notify main thread that the worker is ready
