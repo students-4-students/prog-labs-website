@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+  import { PyrightLanguageServer } from './language-servers/python/pyright';
   import { ClangdLanguageServer } from '~/components/playground/editor/language-servers/cpp/clangd';
   import type { UserConfig } from 'monaco-editor-wrapper';
   import '@codingame/monaco-vscode-java-default-extension';
@@ -14,6 +15,7 @@
 
   const props = defineProps<{
     readOnly?: boolean;
+    language: AllowedLanguage;
     darkMode?: boolean;
   }>();
 
@@ -23,15 +25,19 @@
     colorMode.value === 'dark' ? darkTheme.id : lightTheme.id,
   );
 
+  const languageData = getCodeLanguageData(props.language);
+  const languageServer = await getLanguageServerFor(props.language);
+
   const config = computed<UserConfig>(() => ({
+    languageClientConfig: languageServer?.createMonacoConfig(),
     wrapperConfig: {
       editorAppConfig: {
         $type: 'extended',
         codeResources: {
           main: {
             text: '',
-            enforceLanguageId: 'cpp',
-            fileExt: 'cpp',
+            enforceLanguageId: props.language,
+            fileExt: languageData.fileExtension,
           },
         },
         userConfiguration: {
@@ -71,6 +77,25 @@
       },
     },
   }));
+
+  function getLanguageServerFor(
+    languageId: AllowedLanguage,
+  ): Promise<ClangdLanguageServer | PyrightLanguageServer> | null {
+    // Don't start a language server if the user cannot modify the code
+    if (props.readOnly) return null;
+
+    switch (languageId) {
+      case 'cpp': {
+        return ClangdLanguageServer.initialize();
+      }
+      case 'python': {
+        return PyrightLanguageServer.initialize();
+      }
+      default: {
+        return null;
+      }
+    }
+  }
 </script>
 
 <template>
