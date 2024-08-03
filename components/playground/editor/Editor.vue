@@ -15,11 +15,7 @@
   import { useWorkerFactory } from 'monaco-editor-wrapper/workerFactory';
   import EditorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
   import type { LoggerConfig } from 'monaco-languageclient/tools';
-  import {
-    darkTheme,
-    lightTheme,
-    themeExtension,
-  } from '~/components/playground/editor/extensions/themes';
+  import { darkTheme, lightTheme, themeExtension } from './extensions/themes';
   import { WORKSPACE_PATH } from './config/workspace';
   import type { ClangdLanguageServer } from './language-servers/cpp/clangd';
   import type { PyrightLanguageServer } from './language-servers/python/pyright';
