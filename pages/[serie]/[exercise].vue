@@ -58,6 +58,26 @@
     },
   );
 
+  // Make the written code persists even after page reloads
+  if (playgroundData.value.exercise) {
+    const playgroundState = usePlaygroundStateStore();
+
+    // Set the default editor code based on the previous playground state
+    if (playgroundState.exercisePath === playgroundData.value.exercise?._path) {
+      writtenCode.value = playgroundState.writtenCode;
+    } else {
+      playgroundState.setCurrentExercisePath(
+        playgroundData.value.exercise._path,
+      );
+    }
+
+    // Automatically save the written code in the playground state
+    watch(writtenCode, (code) => {
+      playgroundState.setWrittenCode(code);
+    });
+  }
+
+  // Load previous and next exercises
   const { data: surroundingExercises } = useAsyncData<ParsedContent[]>(
     `${serieName}-${exerciseName}-navigation`,
     async () => await loadSurroundingExercises(playgroundData.value),
