@@ -22,8 +22,6 @@ runtime:
   stdout:
 ---
 
-![Java logo](https://kinsta.com/wp-content/uploads/2023/01/Java-logo.png)
-
 ## Introduction au Java 👨‍💻
 
 Bienvenue au cours de programmation de Students 4 Students ! 🎉

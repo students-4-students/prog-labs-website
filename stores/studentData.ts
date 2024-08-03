@@ -46,10 +46,7 @@ export function getCodeLanguageData(language: AllowedLanguage) {
       };
     }
     default: {
-      return {
-        name: null,
-        fileExtension: null,
-      };
+      throw new Error('No language data found for language: ' + language);
     }
   }
 }

@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: false,
@@ -7,7 +9,6 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'shadcn-nuxt',
     '@nuxtjs/tailwindcss',
-    'nuxt-monaco-editor',
     '@nuxt/content',
     '@vueuse/nuxt',
     'nuxt-lucide-icons',
@@ -15,6 +16,41 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxtjs/google-fonts',
   ],
+
+  vite: {
+    build: {
+      target: 'es2022',
+    },
+    worker: {
+      format: 'es',
+    },
+    resolve: {
+      dedupe: ['monaco-editor', 'vscode'],
+    },
+    plugins: [
+      // Allow SharedArrayBuffer use in development
+      {
+        name: 'configure-response-headers',
+        configureServer: (server) => {
+          server.middlewares.use((_req, res, next) => {
+            res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
+            res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+            next();
+          });
+        },
+      },
+    ],
+  },
+
+  routeRules: {
+    // Allow SharedArrayBuffer use in production
+    '/**': {
+      headers: {
+        'Cross-Origin-Embedder-Policy': 'require-corp',
+        'Cross-Origin-Opener-Policy': 'same-origin',
+      },
+    },
+  },
 
   shadcn: {
     /**
@@ -49,10 +85,6 @@ export default defineNuxtConfig({
       'JetBrains+Mono': '200..800',
     },
     display: 'swap',
-  },
-
-  monacoEditor: {
-    locale: 'fr',
   },
 
   compatibilityDate: '2024-07-04',
