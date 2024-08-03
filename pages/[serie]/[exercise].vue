@@ -63,7 +63,10 @@
     const playgroundState = usePlaygroundStateStore();
 
     // Set the default editor code based on the previous playground state
-    if (playgroundState.exercisePath === playgroundData.value.exercise?._path) {
+    if (
+      playgroundState.writtenCode &&
+      playgroundState.exercisePath === playgroundData.value.exercise?._path
+    ) {
       writtenCode.value = playgroundState.writtenCode;
     } else {
       playgroundState.setCurrentExercisePath(
