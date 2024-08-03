@@ -69,6 +69,7 @@
     ) {
       writtenCode.value = playgroundState.writtenCode;
     } else {
+      playgroundState.setWrittenCode(writtenCode.value);
       playgroundState.setCurrentExercisePath(
         playgroundData.value.exercise._path,
       );
