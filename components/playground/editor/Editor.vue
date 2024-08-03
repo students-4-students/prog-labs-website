@@ -21,8 +21,8 @@
     themeExtension,
   } from '~/components/playground/editor/extensions/themes';
   import { WORKSPACE_PATH } from './config/workspace';
-  import { ClangdLanguageServer } from './language-servers/cpp/clangd';
-  import { PyrightLanguageServer } from './language-servers/python/pyright';
+  import type { ClangdLanguageServer } from './language-servers/cpp/clangd';
+  import type { PyrightLanguageServer } from './language-servers/python/pyright';
 
   const props = defineProps<{
     readOnly?: boolean;
@@ -165,18 +165,24 @@
     wrapper.dispose();
   });
 
-  function getLanguageServerFor(
+  async function getLanguageServerFor(
     languageId: AllowedLanguage,
-  ): Promise<ClangdLanguageServer | PyrightLanguageServer> | null {
+  ): Promise<ClangdLanguageServer | PyrightLanguageServer | null> {
     // Don't start a language server if the user cannot modify the code
     if (props.readOnly) return null;
 
     switch (languageId) {
       case 'cpp': {
-        return ClangdLanguageServer.initialize();
+        const { ClangdLanguageServer } = await import(
+          './language-servers/cpp/clangd.js'
+        );
+        return await ClangdLanguageServer.initialize();
       }
       case 'python': {
-        return PyrightLanguageServer.initialize();
+        const { PyrightLanguageServer } = await import(
+          './language-servers/python/pyright.js'
+        );
+        return await PyrightLanguageServer.initialize();
       }
       default: {
         return null;
