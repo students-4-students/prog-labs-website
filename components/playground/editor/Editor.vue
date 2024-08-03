@@ -51,6 +51,7 @@
       },
       userConfiguration: {
         json: JSON.stringify({
+          'editor.autoClosingBrackets': 'always',
           'editor.bracketPairColorization.enabled': false,
         }),
       },
