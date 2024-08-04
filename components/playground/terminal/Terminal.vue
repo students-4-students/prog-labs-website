@@ -12,7 +12,7 @@
   } from 'shiki';
   import { shikiToXterm } from './shiki-to-xterm';
   import { type LanguageData } from '~/stores/studentData';
-  import { type CompilationResult } from '~/plugins/godbolt';
+  import { type CompilationResult, godboltBus } from '~/plugins/godbolt';
 
   const props = defineProps<{
     highlighter: HighlighterGeneric<BundledLanguage, BundledTheme>;
@@ -89,8 +89,7 @@
     }
   };
 
-  const { $godboltBus } = useNuxtApp();
-  $godboltBus.$on('run_code', runCode);
+  godboltBus.on('run_code', runCode);
 
   const container = ref();
   // Automatically resize the terminal when the container is resized.
@@ -107,7 +106,7 @@
         variant="ghost"
         size="icon"
         class="rounded-none border-r"
-        @click="$godboltBus.$emit('run_code')"
+        @click="godboltBus.emit('run_code')"
         title="Exécuter le code"
       >
         <LucidePlay class="w-4 h-4" />

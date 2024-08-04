@@ -1,3 +1,5 @@
+import mitt from 'mitt';
+
 export type CompilationResult = {
   code: string;
   timedOut: boolean;
@@ -6,17 +8,15 @@ export type CompilationResult = {
   didExecute: boolean;
 };
 
-import mitt from 'mitt';
-const emitter = mitt();
+type godboltEventBus = {
+  run_code: void;
+};
+
+export const godboltBus = mitt<godboltEventBus>();
 
 export default defineNuxtPlugin((nuxtApp) => {
   const baseURL = 'https://godbolt.org/api';
   const timeout = 6000;
-
-  nuxtApp.provide('godboltBus', {
-    $on: emitter.on,
-    $emit: emitter.emit,
-  });
 
   return {
     provide: {
