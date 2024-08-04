@@ -17,8 +17,9 @@
   const props = defineProps<{
     highlighter: HighlighterGeneric<BundledLanguage, BundledTheme>;
     selectedCode: string;
-    languageData: LanguageData;
     selected: string;
+    validator: object;
+    languageData: LanguageData;
   }>();
 
   const currentTheme = defineModel<BundledTheme>('currentTheme');
@@ -73,14 +74,26 @@
       props.languageData.name != null &&
       props.languageData.compilerId != null
     ) {
+      const tests = props.validator.getTests();
       try {
-        const result: CompilationResult = await $compile(
-          props.languageData.name,
-          props.languageData.compilerId,
-          props.selectedCode.value,
-        );
-        terminal.writeln(result.stdout.map((o) => o.text).join('\n'));
-        terminal.writeln(result.stderr.map((o) => o.text).join('\n'));
+        for (const test of tests) {
+          terminal.writeln('=== New test ===');
+
+          const result: CompilationResult = await $compile(
+            props.languageData.name,
+            props.languageData.compilerId,
+            props.selectedCode.value,
+            [test.input.toString()],
+          );
+
+          terminal.writeln('Wanted: ' + test.input);
+
+          terminal.writeln('Obtained: ');
+          terminal.writeln(result.stdout.map((o) => o.text).join('\n'));
+
+          terminal.writeln('Error: ');
+          terminal.writeln(result.stderr.map((o) => o.text).join('\n'));
+        }
       } catch (e) {
         terminal.writeln('Une erreur est arrivée lors de la compilation');
       }

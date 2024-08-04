@@ -42,6 +42,76 @@
     selectedTab.value == 'code' ? writtenCode : correctedCode,
   );
 
+  const validator = {
+    solver: null,
+    unresolvedTests: [],
+
+    set(data: object) {
+      if (typeof data == null) return;
+
+      this.solver = eval?.(`"use strict";(${data.solver})`);
+      this.unresolvedTests = data.tests;
+    },
+
+    evaluateInSolver(str: string) {
+      const extractedAttributes = { ...validator.solver };
+
+      // Change properties as if they are called from the solver
+      for (const key in extractedAttributes) {
+        if (typeof extractedAttributes[key] === 'function') {
+          extractedAttributes[key] = extractedAttributes[key].bind(this.solver);
+        }
+      }
+
+      // Attributes are used as arguments to their names
+      const argNames = Object.keys(extractedAttributes);
+      const argValues = argNames.map((key) => extractedAttributes[key]);
+
+      // Call in the context of the solver
+      const func = new Function(...argNames, `"use strict";return (${str});`);
+
+      return func(...argValues);
+    },
+
+    resolveTest(test: object) {
+      if ('output' in test) {
+        return [
+          {
+            input: test.input,
+            output: test.output,
+          },
+        ];
+      }
+
+      let input = test.input;
+      const shouldBeResolved = !(test.resolved ?? true);
+
+      if (shouldBeResolved) {
+        input = validator.evaluateInSolver(input);
+      }
+
+      const multiple = test.multiple ?? false;
+      if (!multiple) {
+        input = [input];
+      }
+
+      const tests = [];
+      for (const individualInput of input) {
+        const individualTest = {
+          input: individualInput,
+          output: validator.solver.solve(individualInput),
+        };
+        tests.push(individualTest);
+      }
+
+      return tests;
+    },
+
+    getTests() {
+      return this.unresolvedTests.flatMap(this.resolveTest);
+    },
+  };
+
   /**
    * Load the content for the current exercise.
    */
@@ -93,11 +163,14 @@
       writtenCode.value = exercise.code.default;
       correctedCode.value = exercise.code.corrected;
     }
+
+    validator.set(exercise?.validation);
+
     return exercise;
   }
 
   // Load the content for the current exercise asynchronously
-  const { data: exerciseData } = await useAsyncData(
+  const { data: exerciseData, error } = await useAsyncData(
     `${serieName}-${exerciseName}-${sectionCode.value}`,
     loadExercise,
     {
@@ -222,6 +295,7 @@
               :currentTheme="currentTheme"
               :selected="selectedTab"
               :selectedCode="selectedCode"
+              :validator="validator"
               :languageData="userLanguageData"
             />
           </div>

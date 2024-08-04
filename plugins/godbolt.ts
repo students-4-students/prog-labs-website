@@ -24,11 +24,15 @@ export default defineNuxtPlugin((nuxtApp) => {
         language: string,
         compiler: string,
         code: string,
+        params: String[],
       ): Promise<CompilationResult> => {
         const data = {
           source: code,
           compiler: compiler,
           options: {
+            executeParameters: {
+              args: params,
+            },
             compilerOptions: {
               executorRequest: true,
             },

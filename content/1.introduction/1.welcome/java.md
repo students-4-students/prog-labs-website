@@ -28,6 +28,19 @@ code:
 runtime:
   stdin:
   stdout:
+
+validation:
+  solver: >
+    {
+        manyTests(n) { return [this.test(n-1), this.test(n), this.test(n+1)] },
+        test: (n) => 2*n,
+        solve: (n) => n,
+    }
+  tests:
+    - { input: 1, output: 1 }
+    - { input: 1 }
+    - { input: 'test(3)', resolved: false }
+    - { input: 'manyTests(3)', resolved: false, multiple: true }
 ---
 
 ![Java logo](https://kinsta.com/wp-content/uploads/2023/01/Java-logo.png)
