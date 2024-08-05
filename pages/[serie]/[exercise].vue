@@ -31,6 +31,7 @@
   });
 
   const route = useRoute();
+  const currentTab = ref('code');
   const exerciseName = route.params.exercise.toString();
   const serieName = route.params.serie.toString();
 
@@ -57,6 +58,30 @@
     },
   );
 
+  // Make the written code persists even after page reloads
+  if (playgroundData.value.exercise) {
+    const playgroundState = usePlaygroundStateStore();
+
+    // Set the default editor code based on the previous playground state
+    if (
+      playgroundState.writtenCode &&
+      playgroundState.exercisePath === playgroundData.value.exercise?._path
+    ) {
+      writtenCode.value = playgroundState.writtenCode;
+    } else {
+      playgroundState.setWrittenCode(writtenCode.value);
+      playgroundState.setCurrentExercisePath(
+        playgroundData.value.exercise._path,
+      );
+    }
+
+    // Automatically save the written code in the playground state
+    watch(writtenCode, (code) => {
+      playgroundState.setWrittenCode(code);
+    });
+  }
+
+  // Load previous and next exercises
   const { data: surroundingExercises } = useAsyncData<ParsedContent[]>(
     `${serieName}-${exerciseName}-navigation`,
     async () => await loadSurroundingExercises(playgroundData.value),
@@ -118,7 +143,7 @@
     <ResizablePanel>
       <ResizablePanelGroup id="code-terminal-group" direction="vertical">
         <ResizablePanel id="editor" :min-size="35">
-          <PlaygroundTabs default-value="code">
+          <PlaygroundTabs v-model="currentTab" default-value="code">
             <PlaygroundTabsList>
               <PlaygroundTabsTrigger value="code">
                 <template #icon>
@@ -147,27 +172,33 @@
                 </Button>
               </div>
             </PlaygroundTabsList>
-            <PlaygroundTabsContent value="code">
-              <PlaygroundEditor
-                v-if="playgroundData.exercise"
-                :language="playgroundData.language"
-                :supportedLanguages="ALLOWED_LANGUAGES"
-                :highlighter="highlighter"
-                v-model:currentTheme="currentTheme"
-                v-model="writtenCode"
-              />
-            </PlaygroundTabsContent>
-            <PlaygroundTabsContent value="correctedCode">
-              <PlaygroundEditor
-                v-if="playgroundData.exercise && correctedCode !== null"
-                :language="playgroundData.language"
-                :supportedLanguages="ALLOWED_LANGUAGES"
-                :highlighter="highlighter"
-                v-model:currentTheme="currentTheme"
-                v-model="correctedCode"
-                read-only
-              />
-            </PlaygroundTabsContent>
+            <KeepAlive>
+              <PlaygroundTabsContent
+                v-if="currentTab === 'code'"
+                value="code"
+                forceMount
+              >
+                <PlaygroundEditor
+                  v-if="playgroundData.language"
+                  :language="playgroundData.language"
+                  v-model="writtenCode"
+                />
+              </PlaygroundTabsContent>
+            </KeepAlive>
+            <KeepAlive>
+              <PlaygroundTabsContent
+                v-if="currentTab === 'correctedCode'"
+                value="correctedCode"
+                forceMount
+              >
+                <PlaygroundEditor
+                  v-if="playgroundData.language && correctedCode"
+                  :language="playgroundData.language"
+                  v-model="correctedCode"
+                  readOnly
+                />
+              </PlaygroundTabsContent>
+            </KeepAlive>
           </PlaygroundTabs>
         </ResizablePanel>
         <ResizableHandle id="editor" with-handle />

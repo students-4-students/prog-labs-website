@@ -7,7 +7,6 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'shadcn-nuxt',
     '@nuxtjs/tailwindcss',
-    'nuxt-monaco-editor',
     '@nuxt/content',
     '@vueuse/nuxt',
     'nuxt-lucide-icons',
@@ -15,6 +14,28 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxtjs/google-fonts',
   ],
+
+  vite: {
+    build: {
+      target: 'es2022',
+    },
+    worker: {
+      format: 'es',
+    },
+    resolve: {
+      dedupe: ['monaco-editor', 'vscode'],
+    },
+  },
+
+  routeRules: {
+    // Allow SharedArrayBuffer use in production
+    '/**': {
+      headers: {
+        'Cross-Origin-Embedder-Policy': 'require-corp',
+        'Cross-Origin-Opener-Policy': 'same-origin',
+      },
+    },
+  },
 
   shadcn: {
     /**
@@ -49,10 +70,6 @@ export default defineNuxtConfig({
       'JetBrains+Mono': '200..800',
     },
     display: 'swap',
-  },
-
-  monacoEditor: {
-    locale: 'fr',
   },
 
   compatibilityDate: '2024-07-04',

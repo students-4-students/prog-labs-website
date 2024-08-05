@@ -13,6 +13,15 @@ export type PayloadData =
       exercise: null;
     };
 
+/**
+ * Loads the serie and exercise data from the server.
+ *
+ * @param serieName - The name of the serie
+ * @param exerciseName - The name of the exercise
+ * @param language - The code language of the exercise
+ * @param defaultFallbackLanguage - The default fallback language
+ * @returns The exercise and serie data with the final code language used.
+ */
 export async function loadExerciseData(
   serieName: string,
   exerciseName: string,
@@ -52,6 +61,16 @@ export async function loadExerciseData(
   };
 }
 
+/**
+ * Loads an exercise into the playground.
+ *
+ * @param serieName - The name of the serie
+ * @param exerciseName - The name of the exercise
+ * @param language - The code language of the exercise
+ * @param writtenCode - The model for the written code
+ * @param correctedCode - The model for the corrected code
+ * @returns The exercise and serie data with the final code language used.
+ */
 export async function loadExerciseIntoPlayground(
   serieName: string,
   exerciseName: string,
@@ -78,20 +97,7 @@ export async function loadExerciseIntoPlayground(
   if (data.exercise) {
     // Load the corrected code
     correctedCode.value = data.exercise.code?.corrected;
-
-    const playgroundState = usePlaygroundStateStore();
-    // Set the default editor code based on the previous playground state
-    if (playgroundState.exercisePath !== data.exercise._path) {
-      playgroundState.setCurrentExercisePath(data.exercise._path);
-      writtenCode.value = data.exercise.code?.default ?? '';
-    } else {
-      writtenCode.value = playgroundState.writtenCode ?? '';
-    }
-
-    // Automatically save the written code in the playground state
-    watch(writtenCode, (code) => {
-      playgroundState.setWrittenCode(code);
-    });
+    writtenCode.value = data.exercise.code?.default;
 
     // Update the page title and meta tags
     useContentHead(data.exercise);
@@ -100,6 +106,14 @@ export async function loadExerciseIntoPlayground(
   return data;
 }
 
+/**
+ * Loads the previous and next exercises.
+ *
+ * @param params - The playground data
+ * @param params.exercise - The current exercise data
+ * @param params.language - The code language of the exercise
+ * @returns The surrounding exercises data
+ */
 export async function loadSurroundingExercises({
   exercise,
   language,
@@ -114,6 +128,15 @@ export async function loadSurroundingExercises({
   return [];
 }
 
+/**
+ * Gets the URL of the exercise.
+ *
+ * @param path - The path of the exercise.
+ * @returns The URL of the exercise.
+ */
 export function getExerciseUrl(path: string | undefined) {
+  // Since the path is relative to the code language,
+  // we need to remove the last part because it is
+  // automatically added by the playground.
   return path?.slice(0, path.lastIndexOf('/'));
 }
