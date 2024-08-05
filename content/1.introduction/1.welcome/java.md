@@ -61,7 +61,3 @@ public class Main {
 Les mots précédées de `//` sont ignorés, et sont des commentaires du code.
 
 Et maintenant, comment exécuter notre code ? Dns chaque éditeur de code dont ce site, il existe un petit bouton prévu à cet effet, généralement un bouton "Play" (une flèche orientée vers la droite), situé en haut à droite de l’éditeur.
-
-#### Crédits
-
-Cette série a été rédigée par Emmanuel Omont.
