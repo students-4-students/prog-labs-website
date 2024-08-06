@@ -181,13 +181,13 @@
         const { ClangdLanguageServer } = await import(
           './language-servers/cpp/clangd.js'
         );
-        return await ClangdLanguageServer.initialize();
+        return await ClangdLanguageServer.initialize().catch(() => null);
       }
       case 'python': {
         const { PyrightLanguageServer } = await import(
           './language-servers/python/pyright.js'
         );
-        return await PyrightLanguageServer.initialize();
+        return await PyrightLanguageServer.initialize().catch(() => null);
       }
       default: {
         return null;
