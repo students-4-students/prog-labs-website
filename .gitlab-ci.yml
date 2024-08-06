@@ -4,8 +4,15 @@ variables:
   FOLDER_TO_BUILD: "."
 
 stages:
+  - trigger
   - build
   - docker-push
+
+trigger-pipeline:
+  stage: trigger
+  script:
+    - echo "Manual trigger to start the pipeline."
+  when: manual
 
 .docker-stage:
   image: $DOCKER_IMAGE
