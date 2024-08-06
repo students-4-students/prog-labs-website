@@ -29,9 +29,9 @@ export default defineNuxtConfig({
 
   nitro: {
     preset: 'bun',
-    compressPublicAssets: {
-      brotli: true,
-    },
+    // compressPublicAssets: {
+    //   brotli: true,
+    // },
   },
 
   routeRules: {
