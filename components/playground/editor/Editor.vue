@@ -33,8 +33,10 @@
   const writtenCode = defineModel<string>();
 
   // ------------------[ Language server ]-------------------
-  const languageServer = await getLanguageServerFor(props.language);
   const languageData = getCodeLanguageData(props.language);
+  const languageServer = await getLanguageServerFor(props.language).catch(
+    () => null,
+  );
 
   // ------------[ Monaco Editor Wrapper config ]------------
   const wrapperConfig = computed<WrapperConfig>(() => ({
@@ -181,13 +183,13 @@
         const { ClangdLanguageServer } = await import(
           './language-servers/cpp/clangd.js'
         );
-        return await ClangdLanguageServer.initialize().catch(() => null);
+        return await ClangdLanguageServer.initialize();
       }
       case 'python': {
         const { PyrightLanguageServer } = await import(
           './language-servers/python/pyright.js'
         );
-        return await PyrightLanguageServer.initialize().catch(() => null);
+        return await PyrightLanguageServer.initialize();
       }
       default: {
         return null;
