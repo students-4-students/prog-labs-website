@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <Dialog v-model="$attrs">
+  <Dialog>
     <DialogContent>
       <DialogHeader>
         <NuxtImg

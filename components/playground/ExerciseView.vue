@@ -19,10 +19,14 @@
             <LucideUsers class="h-4 mr-1" />
             À propos
           </Button>
-          <Button variant="outline" size="lg">
-            <LucideCircleHelp class="h-4 mr-1" />
-            J'ai besoin d'aide
-          </Button>
+          <PlaygroundDialogNeedHelp>
+            <template #trigger>
+              <Button variant="outline" size="lg">
+                <LucideCircleHelp class="h-4 mr-1" />
+                J'ai besoin d'aide
+              </Button>
+            </template>
+          </PlaygroundDialogNeedHelp>
         </div>
       </ScrollArea>
       <template #empty>
