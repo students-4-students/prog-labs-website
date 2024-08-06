@@ -39,7 +39,21 @@
           v-else
         />
       </a>
+
       <div class="flex items-center md:order-2 space-x-2 rtl:space-x-reverse">
+        <TooltipProvider v-if="!isPlayground">
+          <Tooltip>
+            <TooltipTrigger>
+              <Button variant="outline" size="icon">
+                <LucideCircleHelp class="w-4 h-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>À propos</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+
         <OnBoardingSectionDialog>
           <template v-if="!isPlayground" #trigger>
             <Button variant="outline">
@@ -102,10 +116,19 @@
           {{ nextExerciseUrl ? 'Exercice suivant' : 'Aucun exercice suivant' }}
         </Button>
 
-        <Button variant="ghost" size="icon" @click="switchColorMode">
-          <LucideSun v-if="isDarkMode" />
-          <LucideMoon v-else />
-        </Button>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              <Button variant="ghost" size="icon" @click="switchColorMode">
+                <LucideSun v-if="isDarkMode" />
+                <LucideMoon v-else />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{{ isDarkMode ? 'Mode clair' : 'Mode sombre' }}</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </div>
     </div>
   </nav>
