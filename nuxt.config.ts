@@ -27,12 +27,25 @@ export default defineNuxtConfig({
     },
   },
 
+  nitro: {
+    preset: 'bun',
+    compressPublicAssets: {
+      brotli: true,
+    },
+  },
+
   routeRules: {
     // Allow SharedArrayBuffer use in production
     '/**': {
       headers: {
         'Cross-Origin-Embedder-Policy': 'require-corp',
         'Cross-Origin-Opener-Policy': 'same-origin',
+      },
+    },
+    // Cache language servers
+    '/language-servers/**': {
+      headers: {
+        'Cache-Control': `max-age=${14 * 24 * 60 * 60 * 1000}, public`,
       },
     },
   },
@@ -73,8 +86,4 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2024-07-04',
-
-  nitro: {
-    preset: 'bun',
-  },
 });
