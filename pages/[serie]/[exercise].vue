@@ -30,8 +30,10 @@
     langs: ALLOWED_LANGUAGES,
   });
 
-  const route = useRoute();
+  const wantsToSeeCorrectedCode = ref(false);
   const currentTab = ref('code');
+
+  const route = useRoute();
   const exerciseName = route.params.exercise.toString();
   const serieName = route.params.serie.toString();
 
@@ -151,15 +153,22 @@
                 </template>
                 {{ editorTabName }}
               </PlaygroundTabsTrigger>
-              <PlaygroundTabsTrigger
-                value="correctedCode"
-                :disabled="correctedCode == null"
+              <PlaygroundDialogCorrectedCodeWarning
+                @acknowledge-warning="wantsToSeeCorrectedCode = true"
+                :only-keep-trigger="wantsToSeeCorrectedCode"
               >
-                <template #icon>
-                  <LucideBook />
+                <template #trigger>
+                  <PlaygroundTabsTrigger
+                    value="correctedCode"
+                    :disabled="correctedCode == null"
+                  >
+                    <template #icon>
+                      <LucideBook />
+                    </template>
+                    Code corrigé
+                  </PlaygroundTabsTrigger>
                 </template>
-                Code corrigé
-              </PlaygroundTabsTrigger>
+              </PlaygroundDialogCorrectedCodeWarning>
               <!-- Add bottom border to the rest of the bar -->
               <div class="flex border-b grow h-full items-center justify-start">
                 <Button
@@ -195,6 +204,9 @@
                   v-if="playgroundData.language && correctedCode"
                   :language="playgroundData.language"
                   v-model="correctedCode"
+                  :class="{
+                    'blur-monaco-editor-code': !wantsToSeeCorrectedCode,
+                  }"
                   readOnly
                 />
               </PlaygroundTabsContent>
@@ -214,3 +226,10 @@
     </ResizablePanel>
   </ResizablePanelGroup>
 </template>
+
+<style lang="css">
+  /* Only blur the code and not the lines */
+  .blur-monaco-editor-code .monaco-editor .overflow-guard .vs {
+    @apply blur-sm pointer-events-none;
+  }
+</style>

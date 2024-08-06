@@ -19,11 +19,14 @@
   import { WORKSPACE_PATH } from './config/workspace';
   import type { ClangdLanguageServer } from './language-servers/cpp/clangd';
   import type { PyrightLanguageServer } from './language-servers/python/pyright';
+  import type { HTMLAttributes } from 'vue';
+  import { cn } from '@/lib/utils';
 
   const props = defineProps<{
     readOnly?: boolean;
     language: AllowedLanguage;
     darkMode?: boolean;
+    class?: HTMLAttributes['class'];
   }>();
 
   const colorMode = useColorMode();
@@ -49,6 +52,7 @@
         json: JSON.stringify({
           'editor.autoClosingBrackets': 'always',
           'editor.bracketPairColorization.enabled': false,
+          'editor.stickyScroll.enabled': false,
         }),
       },
       editorOptions: {
@@ -58,6 +62,10 @@
         fontWeight: '400',
         minimap: {
           enabled: false,
+        },
+        padding: {
+          top: 16,
+          bottom: 16,
         },
         readOnly: props.readOnly,
       },
@@ -189,5 +197,5 @@
 </script>
 
 <template>
-  <div ref="monacoRef" class="grow p-4 pl-0" />
+  <div ref="monacoRef" :class="cn('grow', props.class)" />
 </template>

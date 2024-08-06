@@ -1,5 +1,19 @@
+<script setup lang="ts">
+  const props = defineProps<{
+    onlyKeepTrigger?: boolean;
+  }>();
+
+  const emit = defineEmits<{
+    (e: 'acknowledgeWarning'): void;
+  }>();
+</script>
+
 <template>
-  <Dialog v-model="$attrs">
+  <slot v-if="props.onlyKeepTrigger" name="trigger" />
+  <Dialog v-bind="$attrs" v-else>
+    <DialogTrigger as-child>
+      <slot name="trigger" />
+    </DialogTrigger>
     <DialogContent>
       <DialogHeader>
         <DialogTitle>Attention</DialogTitle>
@@ -11,7 +25,7 @@
       </DialogHeader>
 
       <DialogFooter>
-        <Button size="default">Oui</Button>
+        <Button @click="emit('acknowledgeWarning')" size="default">Oui</Button>
         <Button size="default" variant="outline">
           Non, je souhaite continuer à chercher
         </Button>
