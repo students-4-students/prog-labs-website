@@ -26,9 +26,11 @@
 
       <DialogFooter>
         <Button @click="emit('acknowledgeWarning')" size="default">Oui</Button>
-        <Button size="default" variant="outline">
-          Non, je souhaite continuer à chercher
-        </Button>
+        <DialogClose as-child>
+          <Button size="default" variant="outline">
+            Non, je souhaite continuer à chercher
+          </Button>
+        </DialogClose>
       </DialogFooter>
     </DialogContent>
   </Dialog>

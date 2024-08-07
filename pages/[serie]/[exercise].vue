@@ -30,8 +30,13 @@
     langs: ALLOWED_LANGUAGES,
   });
 
+  enum EditorTab {
+    Code = 'code',
+    CorrectedCode = 'correctedCode',
+  }
+
   const wantsToSeeCorrectedCode = ref(false);
-  const currentTab = ref('code');
+  const currentTab = ref(EditorTab.Code);
 
   const route = useRoute();
   const exerciseName = route.params.exercise.toString();
@@ -145,9 +150,9 @@
     <ResizablePanel>
       <ResizablePanelGroup id="code-terminal-group" direction="vertical">
         <ResizablePanel id="editor" :min-size="35">
-          <PlaygroundTabs v-model="currentTab" default-value="code">
+          <PlaygroundTabs v-model="currentTab" :default-value="EditorTab.Code">
             <PlaygroundTabsList>
-              <PlaygroundTabsTrigger value="code">
+              <PlaygroundTabsTrigger :value="EditorTab.Code">
                 <template #icon>
                   <LucideCode />
                 </template>
@@ -159,7 +164,7 @@
               >
                 <template #trigger>
                   <PlaygroundTabsTrigger
-                    value="correctedCode"
+                    :value="EditorTab.CorrectedCode"
                     :disabled="correctedCode == null"
                   >
                     <template #icon>
@@ -183,8 +188,8 @@
             </PlaygroundTabsList>
             <KeepAlive>
               <PlaygroundTabsContent
-                v-if="currentTab === 'code'"
-                value="code"
+                v-if="currentTab === EditorTab.Code"
+                :value="EditorTab.Code"
                 forceMount
               >
                 <PlaygroundEditor
@@ -196,8 +201,8 @@
             </KeepAlive>
             <KeepAlive>
               <PlaygroundTabsContent
-                v-if="currentTab === 'correctedCode'"
-                value="correctedCode"
+                v-if="currentTab === EditorTab.CorrectedCode"
+                :value="EditorTab.CorrectedCode"
                 forceMount
               >
                 <PlaygroundEditor
@@ -229,7 +234,7 @@
 
 <style lang="css">
   /* Only blur the code and not the lines */
-  .blur-monaco-editor-code .monaco-editor .overflow-guard .vs {
+  .blur-monaco-editor-code .monaco-editor .overflow-guard .editor-scrollable {
     @apply blur-sm pointer-events-none;
   }
 </style>
