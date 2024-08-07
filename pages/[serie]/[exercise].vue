@@ -7,6 +7,7 @@
     loadSurroundingExercises,
     type PayloadData,
   } from './loadExercise';
+  import Runner from '~/components/playground/runner/Runner.vue';
 
   definePageMeta({
     layout: 'playground',
@@ -216,10 +217,7 @@
         <ResizableHandle id="editor" with-handle />
         <ResizablePanel id="terminal" :default-size="30" class="min-h-12">
           <div class="flex flex-col h-full">
-            <PlaygroundTerminal
-              :highlighter="highlighter"
-              :currentTheme="currentTheme"
-            />
+            <Runner />
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>
