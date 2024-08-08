@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia';
 
 export interface PlaygroundState {
-  exercisePath?: string;
-  writtenCode?: string;
+  exercisePath: string | undefined;
+  writtenCode: string | undefined;
 }
 
 export const usePlaygroundStateStore = defineStore({

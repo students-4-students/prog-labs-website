@@ -120,7 +120,7 @@ export const Sections: Record<SectionCode, SectionData> = {
 };
 
 export interface StudentData {
-  sectionCode?: SectionCode;
+  sectionCode: SectionCode | undefined;
 }
 
 export const useStudentDataStore = defineStore({

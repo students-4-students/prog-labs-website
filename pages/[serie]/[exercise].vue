@@ -93,6 +93,7 @@
     `${serieName}-${exerciseName}-navigation`,
     async () => await loadSurroundingExercises(playgroundData.value),
     {
+      watch: [sectionCode],
       default(): ParsedContent[] {
         return [];
       },
