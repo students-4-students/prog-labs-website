@@ -2,7 +2,7 @@
   import type { ParsedContent } from '@nuxt/content';
   import {
     getExerciseUrl,
-    loadExerciseIntoPlayground,
+    loadExerciseData,
     loadSurroundingExercises,
     type PayloadData,
   } from './loadExercise';
@@ -15,6 +15,8 @@
     Code = 'code',
     CorrectedCode = 'correctedCode',
   }
+
+  const nuxtApp = useNuxtApp();
 
   const wantsToSeeCorrectedCode = ref(false);
   const currentTab = ref(EditorTab.Code);
@@ -35,24 +37,34 @@
   const { data: playgroundData } = await useAsyncData<PayloadData>(
     `${serieName}-${exerciseName}-${sectionCode.value}`,
     async () =>
-      await loadExerciseIntoPlayground(
+      await loadExerciseData(
         serieName,
         exerciseName,
         codeLanguage.value,
-        writtenCode,
-        correctedCode,
+        'python',
       ),
     {
       watch: [sectionCode],
+      getCachedData(key) {
+        return nuxtApp.payload.data[key] || nuxtApp.static.data[key];
+      },
       default() {
         return { language: null, serie: null, exercise: null };
       },
     },
   );
 
-  // Make the written code persists even after page reloads
+  // Load the content for the current exercise ands
+  // make the written code persists even after page reloads
   if (playgroundData.value.exercise) {
     const playgroundState = usePlaygroundStateStore();
+
+    // Load the corrected code
+    correctedCode.value = playgroundData.value.exercise.code?.corrected;
+    writtenCode.value = playgroundData.value.exercise.code?.default;
+
+    // Update the page title and meta tags
+    useContentHead(playgroundData.value.exercise);
 
     // Set the default editor code based on the previous playground state
     if (
@@ -79,6 +91,9 @@
     async () => await loadSurroundingExercises(playgroundData.value),
     {
       watch: [sectionCode],
+      getCachedData(key) {
+        return nuxtApp.payload.data[key] || nuxtApp.static.data[key];
+      },
       default(): ParsedContent[] {
         return [];
       },
@@ -207,7 +222,7 @@
         <ResizableHandle id="editor" with-handle />
         <ResizablePanel id="terminal" :default-size="30" class="min-h-12">
           <div class="flex flex-col h-full">
-            <PlaygroundTerminal :currentTheme="currentTheme" />
+            <PlaygroundTerminal />
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>

@@ -5,6 +5,8 @@
     title: 'Exercices',
   });
 
+  const nuxtApp = useNuxtApp();
+
   const studentData = useStudentDataStore();
   const { codeLanguage } = storeToRefs(studentData);
   // Temporary banner code
@@ -18,15 +20,24 @@
    * @returns The series that matches the filter
    */
   function queryAllSeries(filter: QueryBuilderWhere) {
-    return useAsyncData(`all-series-${JSON.stringify(filter)}`, async () => {
-      // Try to fetch the serie from the server
-      // await new Promise((resolve) => setTimeout(resolve, 5000));
-      return await queryContent()
-        // Use _dir: '' to only include series
-        // which are at the root of the 'content/' folder
-        .where({ _dir: '', ...filter })
-        .find();
-    });
+    return useAsyncData(
+      `all-series-${JSON.stringify(filter)}`,
+      async () => {
+        // Try to fetch the serie from the server
+        // await new Promise((resolve) => setTimeout(resolve, 5000));
+        return await queryContent()
+          .only(['_path', 'title', 'description', 'fallbackLanguage'])
+          // Use _dir: '' to only include series
+          // which are at the root of the 'content/' folder
+          .where({ _dir: '', ...filter })
+          .find();
+      },
+      {
+        getCachedData(key) {
+          return nuxtApp.payload.data[key] || nuxtApp.static.data[key];
+        },
+      },
+    );
   }
 
   const EXPECTED_SERIES_NB = 2;

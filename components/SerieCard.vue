@@ -2,8 +2,13 @@
   import type { ParsedContent } from '@nuxt/content';
 
   const props = defineProps<{
-    serieData: ParsedContent;
+    serieData: Pick<
+      ParsedContent,
+      '_path' | 'title' | 'description' | 'fallbackLanguage'
+    >;
   }>();
+
+  const nuxtApp = useNuxtApp();
 
   const EXPECTED_EXERCISES_NB = 6;
   const { data: exercises, status: exercisesStatus } = useAsyncData(
@@ -11,6 +16,7 @@
     async () => {
       // Load all exercises from the serie
       const allExercises = await queryContent(<string>props.serieData._path)
+        .only(['_path'])
         .where({
           _dir: { $ne: '' }, // Only fetch exercises
         })
@@ -27,6 +33,11 @@
           // Remove the language from the path
           _path: exercise._path?.substring(0, exercise._path?.lastIndexOf('/')),
         }));
+    },
+    {
+      getCachedData(key) {
+        return nuxtApp.payload.data[key] || nuxtApp.static.data[key];
+      },
     },
   );
 </script>
