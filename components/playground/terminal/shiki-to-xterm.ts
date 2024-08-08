@@ -1,12 +1,13 @@
 import type { ITheme } from '@xterm/xterm';
-import type { BundledLanguage, BundledTheme, HighlighterGeneric } from 'shiki';
+import type { BundledTheme } from 'shiki';
+import type { HighlighterCore } from 'shiki/core';
 
 /**
  * Converts a TextMate theme to an xterm.js theme.
  * @param themeName The name of the theme.
  */
 export function shikiToXterm(
-  highlighter: HighlighterGeneric<BundledLanguage, BundledTheme>,
+  highlighter: HighlighterCore,
   themeName: BundledTheme,
 ): ITheme {
   // Get the theme from Shiki

@@ -5,22 +5,21 @@
   import { ClipboardAddon } from '@xterm/addon-clipboard';
   import { FitAddon } from '@xterm/addon-fit';
   import { Unicode11Addon } from '@xterm/addon-unicode11';
-  import { createHighlighter, type BundledTheme } from 'shiki';
+  import { createHighlighterCore } from 'shiki/core';
   import { shikiToXterm } from './shiki-to-xterm';
-
-  const themes: Record<'light' | 'dark', BundledTheme> = {
-    light: 'github-light',
-    dark: 'github-dark',
-  };
+  import getWasm from 'shiki/wasm';
 
   const colorMode = useColorMode();
   const currentTheme = computed(() =>
-    colorMode.value === 'dark' ? themes.dark : themes.light,
+    colorMode.value === 'dark' ? 'github-dark' : 'github-light-default',
   );
 
-  const highlighter = await createHighlighter({
-    themes: Object.values(themes),
-    langs: ALLOWED_LANGUAGES,
+  const highlighter = await createHighlighterCore({
+    themes: [
+      import('shiki/themes/github-dark.mjs'),
+      import('shiki/themes/github-light-default.mjs'),
+    ],
+    loadWasm: getWasm,
   });
 
   const terminal = new Terminal({
