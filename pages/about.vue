@@ -1,3 +1,5 @@
+<script setup lang="ts"></script>
+
 <template>
   <div class="flex flex-col 2xl:flex-row px-4 md:px-8 py-8 w-full h-full gap-4">
     <div class="flex flex-col basis-7/12 gap-y-8">
@@ -12,13 +14,17 @@
           eiusmod aliquip.
         </p>
       </div>
-      <div class="flex flex-wrap gap-16">
-        <AboutInfo title="Développeur">
-          <template #icon>
-            <LucideLaptop />
-          </template>
-          Lorem Ipsum
-        </AboutInfo>
+      <AboutCategory>
+        <template #icon>
+          <LucideLaptop />
+        </template>
+        Développeurs
+      </AboutCategory>
+      <div class="flex flex-wrap gap-4">
+        <AboutInfo> Lorem Ipsum Lorem Ipsum </AboutInfo>
+        <AboutInfo> Lorem Ipsum </AboutInfo>
+        <AboutInfo> Lorem Ipsum </AboutInfo>
+        <AboutInfo> Lorem Ipsum </AboutInfo>
       </div>
     </div>
     <div class="flex basis-5/12">
