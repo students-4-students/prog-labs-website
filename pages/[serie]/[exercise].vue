@@ -1,6 +1,5 @@
 <script setup lang="ts">
   import type { ParsedContent } from '@nuxt/content';
-  import { createHighlighter, type BundledTheme } from 'shiki';
   import {
     getExerciseUrl,
     loadExerciseIntoPlayground,
@@ -10,24 +9,6 @@
 
   definePageMeta({
     layout: 'playground',
-  });
-
-  const studentData = useStudentDataStore();
-  const { codeLanguage, sectionCode } = storeToRefs(studentData);
-
-  const themes: Record<'light' | 'dark', BundledTheme> = {
-    light: 'github-light',
-    dark: 'github-dark',
-  };
-
-  const colorMode = useColorMode();
-  const currentTheme = computed(() =>
-    colorMode.value === 'dark' ? themes.dark : themes.light,
-  );
-
-  const highlighter = await createHighlighter({
-    themes: Object.values(themes),
-    langs: ALLOWED_LANGUAGES,
   });
 
   enum EditorTab {
@@ -45,6 +26,10 @@
   // Store the code written in each editor and set its default value
   const writtenCode = defineModel<string>('writtenCode');
   const correctedCode = defineModel<string>('correctedCode');
+
+  // Load & save student data
+  const studentData = useStudentDataStore();
+  const { codeLanguage, sectionCode } = storeToRefs(studentData);
 
   // Load the content for the current exercise asynchronously
   const { data: playgroundData } = await useAsyncData<PayloadData>(
@@ -222,10 +207,7 @@
         <ResizableHandle id="editor" with-handle />
         <ResizablePanel id="terminal" :default-size="30" class="min-h-12">
           <div class="flex flex-col h-full">
-            <PlaygroundTerminal
-              :highlighter="highlighter"
-              :currentTheme="currentTheme"
-            />
+            <PlaygroundTerminal :currentTheme="currentTheme" />
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>
