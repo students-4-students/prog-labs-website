@@ -143,7 +143,7 @@
       :default-size="30"
       class="min-w-[27.5rem]"
     >
-      <PlaygroundExerciseView
+      <LazyPlaygroundExerciseView
         :exerciseData="<ParsedContent>playgroundData.exercise"
       />
     </ResizablePanel>
@@ -222,7 +222,7 @@
         <ResizableHandle id="editor" with-handle />
         <ResizablePanel id="terminal" :default-size="30" class="min-h-12">
           <div class="flex flex-col h-full">
-            <PlaygroundTerminal />
+            <LazyPlaygroundTerminal />
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>
