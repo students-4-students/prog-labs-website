@@ -193,7 +193,7 @@
                 :value="EditorTab.Code"
                 forceMount
               >
-                <PlaygroundEditor
+                <LazyPlaygroundEditor
                   v-if="playgroundData.language"
                   :language="playgroundData.language"
                   v-model="writtenCode"
@@ -206,7 +206,7 @@
                 :value="EditorTab.CorrectedCode"
                 forceMount
               >
-                <PlaygroundEditor
+                <LazyPlaygroundEditor
                   v-if="playgroundData.language && correctedCode"
                   :language="playgroundData.language"
                   v-model="correctedCode"
