@@ -19,6 +19,20 @@ export default defineNuxtConfig({
   vite: {
     build: {
       target: 'es2022',
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            const chunks = ['shiki', '@xterm'];
+            if (id.includes('/node_modules/')) {
+              for (const chunkName of chunks) {
+                if (id.includes(chunkName)) {
+                  return chunkName;
+                }
+              }
+            }
+          },
+        },
+      },
     },
     worker: {
       format: 'es',
@@ -42,10 +56,8 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    // compressPublicAssets: true,
     preset: 'bun',
-    // compressPublicAssets: {
-    //   brotli: true,
-    // },
   },
 
   routeRules: {
@@ -80,10 +92,10 @@ export default defineNuxtConfig({
     highlight: {
       theme: {
         // Default theme (same as single string)
-        default: 'github-light',
+        default: 'github-light-default',
         dark: 'github-dark',
       },
-      langs: ['c', 'cpp', 'java', 'python'],
+      langs: ['cpp', 'java', 'python'],
     },
   },
 
