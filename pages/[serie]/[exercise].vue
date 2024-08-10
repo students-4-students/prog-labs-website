@@ -193,11 +193,13 @@
                 :value="EditorTab.Code"
                 forceMount
               >
-                <LazyPlaygroundEditor
-                  v-if="playgroundData.language"
-                  :language="playgroundData.language"
-                  v-model="writtenCode"
-                />
+                <DelayHydration>
+                  <LazyPlaygroundEditor
+                    v-if="playgroundData.language"
+                    :language="playgroundData.language"
+                    v-model="writtenCode"
+                  />
+                </DelayHydration>
               </PlaygroundTabsContent>
             </KeepAlive>
             <KeepAlive>
@@ -206,15 +208,17 @@
                 :value="EditorTab.CorrectedCode"
                 forceMount
               >
-                <LazyPlaygroundEditor
-                  v-if="playgroundData.language && correctedCode"
-                  :language="playgroundData.language"
-                  v-model="correctedCode"
-                  :class="{
-                    'blur-monaco-editor-code': !wantsToSeeCorrectedCode,
-                  }"
-                  readOnly
-                />
+                <DelayHydration>
+                  <LazyPlaygroundEditor
+                    v-if="playgroundData.language && correctedCode"
+                    :language="playgroundData.language"
+                    v-model="correctedCode"
+                    :class="{
+                      'blur-monaco-editor-code': !wantsToSeeCorrectedCode,
+                    }"
+                    readOnly
+                  />
+                </DelayHydration>
               </PlaygroundTabsContent>
             </KeepAlive>
           </PlaygroundTabs>
