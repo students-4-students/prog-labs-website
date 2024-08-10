@@ -112,5 +112,12 @@ export default defineNuxtConfig({
     display: 'swap',
   },
 
+  vitalizer: {
+    delayHydration: {
+      // Load heavy components only when the page content has been loaded
+      hydrateOnEvents: ['DOMContentLoaded'],
+    },
+  },
+
   compatibilityDate: '2024-07-04',
 });
