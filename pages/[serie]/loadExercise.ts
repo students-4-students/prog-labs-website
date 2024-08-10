@@ -13,6 +13,8 @@ export type PayloadData =
       exercise: null;
     };
 
+export type TestSpec = { input: string; expectedOutput: string };
+
 /**
  * Loads the serie and exercise data from the server.
  *
@@ -77,6 +79,7 @@ export async function loadExerciseIntoPlayground(
   language: AllowedLanguage | undefined,
   writtenCode: ModelRef<string | undefined, string>,
   correctedCode: ModelRef<string | undefined, string>,
+  tests: Ref<TestSpec[] | undefined>,
 ) {
   // Check if the student has selected a language
   if (language === undefined) {
@@ -101,6 +104,11 @@ export async function loadExerciseIntoPlayground(
 
     // Update the page title and meta tags
     useContentHead(data.exercise);
+
+    tests.value = data.exercise.tests ?? [];
+    if (!tests.value) {
+      console.warn('No tests found for this exercise');
+    }
   }
 
   return data;

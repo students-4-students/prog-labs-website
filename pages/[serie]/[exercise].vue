@@ -6,6 +6,7 @@
     loadExerciseIntoPlayground,
     loadSurroundingExercises,
     type PayloadData,
+    type TestSpec,
   } from './loadExercise';
   import Runner from '~/components/playground/runner/Runner.vue';
 
@@ -42,6 +43,10 @@
   const writtenCode = defineModel<string>('writtenCode');
   const correctedCode = defineModel<string>('correctedCode');
 
+  const tests = ref<TestSpec[] | undefined>();
+
+  const isCompleted = ref(false);
+
   // Load the content for the current exercise asynchronously
   const { data: playgroundData } = await useAsyncData<PayloadData>(
     `${serieName}-${exerciseName}-${sectionCode.value}`,
@@ -52,6 +57,7 @@
         codeLanguage.value,
         writtenCode,
         correctedCode,
+        tests,
       ),
     {
       watch: [sectionCode],
@@ -125,10 +131,11 @@
     is-playground
   />
   <!-- Modals -->
-  <!-- <PlaygroundDialogExerciseCompletion
+  <PlaygroundDialogExerciseCompletion
     :nextExerciseUrl="surroundingExerciseUrls[1]"
-    default-open
-  /> -->
+    :open="isCompleted"
+    @openChange="isCompleted = $event"
+  />
   <!-- Playground -->
   <ResizablePanelGroup direction="horizontal" class="flex w-full h-full">
     <ResizablePanel
@@ -215,10 +222,21 @@
           </PlaygroundTabs>
         </ResizablePanel>
         <ResizableHandle id="editor" with-handle />
-        <ResizablePanel id="terminal" :default-size="30" class="min-h-12">
-          <div class="flex flex-col h-full">
-            <Runner />
-          </div>
+        <ResizablePanel
+          id="terminal"
+          :min-size="25"
+          :default-size="35"
+          :max-size="80"
+          class="min-h-12"
+        >
+          <Runner
+            v-if="tests"
+            :testSpecs="tests"
+            :code="writtenCode ?? ''"
+            :language="codeLanguage ?? ''"
+            :enabled="currentTab === 'code' && writtenCode !== undefined"
+            @success="isCompleted = true"
+          />
         </ResizablePanel>
       </ResizablePanelGroup>
     </ResizablePanel>

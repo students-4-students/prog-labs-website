@@ -20,6 +20,14 @@ code:
 runtime:
   stdin:
   stdout:
+
+tests:
+  - input: 'a'
+    expectedOutput: 'aaa'
+  - input: 'b'
+    expectedOutput: 'bbb'
+  - input: 'c'
+    expectedOutput: 'ccc'
 ---
 
 ## Introduction au Java 👨‍💻
