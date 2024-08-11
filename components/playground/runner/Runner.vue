@@ -11,7 +11,7 @@
 
   const props = defineProps<{
     testSpecs: TestSpec[];
-    code: string;
+    writtenCode: string | undefined;
     enabled: boolean;
     language: AllowedLanguage;
   }>();
@@ -21,7 +21,7 @@
   }>();
 
   const selectedTab = ref<`test-${number}`>('test-0');
-  const { testSpecs, code, language, enabled } = toRefs(props);
+  const { testSpecs, writtenCode: code, language, enabled } = toRefs(props);
 
   const isRunning = ref(false);
   const run = ref<
@@ -64,6 +64,11 @@
    * Runs the tests of the current exercise.
    */
   function runTests() {
+    // Don't execute code if there's none
+    if (!code.value) {
+      return;
+    }
+
     isRunning.value = true;
 
     // An aborted controller cannot be reused
