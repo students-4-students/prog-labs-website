@@ -5,6 +5,7 @@ export default defineNuxtConfig({
 
   modules: [
     '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
     'shadcn-nuxt',
     '@nuxtjs/tailwindcss',
     '@nuxt/content',
@@ -13,11 +14,26 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxtjs/color-mode',
     '@nuxtjs/google-fonts',
+    'nuxt-vitalizer',
   ],
 
   vite: {
     build: {
       target: 'es2022',
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            const chunks = ['shiki', '@xterm'];
+            if (id.includes('/node_modules/')) {
+              for (const chunkName of chunks) {
+                if (id.includes(chunkName)) {
+                  return chunkName;
+                }
+              }
+            }
+          },
+        },
+      },
     },
     worker: {
       format: 'es',
@@ -25,13 +41,24 @@ export default defineNuxtConfig({
     resolve: {
       dedupe: ['monaco-editor', 'vscode'],
     },
+    plugins: [
+      // Allow SharedArrayBuffer use in development
+      {
+        name: 'configure-response-headers',
+        configureServer: (server) => {
+          server.middlewares.use((_req, res, next) => {
+            res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
+            res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+            next();
+          });
+        },
+      },
+    ],
   },
 
   nitro: {
+    // compressPublicAssets: true,
     preset: 'bun',
-    // compressPublicAssets: {
-    //   brotli: true,
-    // },
   },
 
   routeRules: {
@@ -66,10 +93,10 @@ export default defineNuxtConfig({
     highlight: {
       theme: {
         // Default theme (same as single string)
-        default: 'github-light',
+        default: 'github-light-default',
         dark: 'github-dark',
       },
-      langs: ['c', 'cpp', 'java', 'python'],
+      langs: ['cpp', 'java', 'python'],
     },
   },
 
@@ -83,6 +110,13 @@ export default defineNuxtConfig({
       'JetBrains+Mono': '200..800',
     },
     display: 'swap',
+  },
+
+  vitalizer: {
+    delayHydration: {
+      // Load heavy components only when the page content has been loaded
+      hydrateOnEvents: ['DOMContentLoaded'],
+    },
   },
 
   compatibilityDate: '2024-07-04',

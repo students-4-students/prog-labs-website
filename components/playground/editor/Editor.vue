@@ -15,12 +15,16 @@
   import { useWorkerFactory } from 'monaco-editor-wrapper/workerFactory';
   import EditorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
   import type { LoggerConfig } from 'monaco-languageclient/tools';
-  import { darkTheme, lightTheme, themeExtension } from './extensions/themes';
   import { WORKSPACE_PATH } from './config/workspace';
   import type { ClangdLanguageServer } from './language-servers/cpp/clangd';
   import type { PyrightLanguageServer } from './language-servers/python/pyright';
   import type { HTMLAttributes } from 'vue';
   import { cn } from '@/lib/utils';
+  import {
+    whenGithubThemesReady,
+    githubLightThemeId,
+    githubDarkThemeId,
+  } from './extensions/themes';
 
   const props = defineProps<{
     readOnly?: boolean;
@@ -43,6 +47,7 @@
     editorAppConfig: {
       $type: 'extended',
       useDiffEditor: false,
+      awaitExtensionReadiness: [whenGithubThemesReady],
       codeResources: {
         main: {
           text: '',
@@ -71,8 +76,6 @@
         },
         readOnly: props.readOnly,
       },
-      // Temporary workaround for the second instance of monaco
-      extensions: props.readOnly ? [] : [themeExtension],
     },
     serviceConfig: {
       userServices: {
@@ -161,7 +164,8 @@
     watch(
       colorMode,
       () => {
-        const theme = colorMode.value === 'dark' ? darkTheme.id : lightTheme.id;
+        const theme =
+          colorMode.value === 'dark' ? githubDarkThemeId : githubLightThemeId;
         editor.setTheme(theme);
       },
       { immediate: true },
@@ -201,3 +205,12 @@
 <template>
   <div ref="monacoRef" :class="cn('grow', props.class)" />
 </template>
+
+<style lang="css">
+  .monaco-editor {
+    --vscode-editorGutter-background: hsl(var(--background));
+    --vscode-editor-background: hsl(var(--background));
+    --vscode-editorLineNumber-foreground: hsl(var(--foreground) / 0.3);
+    --vscode-editorLineNumber-activeForeground: hsl(var(--foreground));
+  }
+</style>

@@ -1,9 +1,8 @@
 <script setup lang="ts">
   import type { ParsedContent } from '@nuxt/content';
-  import { createHighlighter, type BundledTheme } from 'shiki';
   import {
     getExerciseUrl,
-    loadExerciseIntoPlayground,
+    loadExerciseData,
     loadSurroundingExercises,
     type PayloadData,
     type TestSpec,
@@ -14,26 +13,15 @@
     layout: 'playground',
   });
 
-  const studentData = useStudentDataStore();
-  const { codeLanguage, sectionCode } = storeToRefs(studentData);
+  enum EditorTab {
+    Code = 'code',
+    CorrectedCode = 'correctedCode',
+  }
 
-  const themes: Record<'light' | 'dark', BundledTheme> = {
-    light: 'github-light',
-    dark: 'github-dark',
-  };
-
-  const colorMode = useColorMode();
-  const currentTheme = computed(() =>
-    colorMode.value === 'dark' ? themes.dark : themes.light,
-  );
-
-  const highlighter = await createHighlighter({
-    themes: Object.values(themes),
-    langs: ALLOWED_LANGUAGES,
-  });
+  const nuxtApp = useNuxtApp();
 
   const wantsToSeeCorrectedCode = ref(false);
-  const currentTab = ref('code');
+  const currentTab = ref(EditorTab.Code);
 
   const route = useRoute();
   const exerciseName = route.params.exercise.toString();
@@ -44,32 +32,46 @@
   const correctedCode = defineModel<string>('correctedCode');
 
   const tests = ref<TestSpec[] | undefined>();
-
   const isCompleted = ref(false);
+
+  // Load & save student data
+  const studentData = useStudentDataStore();
+  const { codeLanguage, sectionCode } = storeToRefs(studentData);
 
   // Load the content for the current exercise asynchronously
   const { data: playgroundData } = await useAsyncData<PayloadData>(
     `${serieName}-${exerciseName}-${sectionCode.value}`,
     async () =>
-      await loadExerciseIntoPlayground(
+      await loadExerciseData(
         serieName,
         exerciseName,
         codeLanguage.value,
-        writtenCode,
-        correctedCode,
-        tests,
+        'python',
       ),
     {
       watch: [sectionCode],
+      getCachedData(key) {
+        return nuxtApp.payload.data[key] || nuxtApp.static.data[key];
+      },
       default() {
         return { language: null, serie: null, exercise: null };
       },
     },
   );
 
-  // Make the written code persists even after page reloads
+  // Load the content for the current exercise ands
+  // make the written code persists even after page reloads
   if (playgroundData.value.exercise) {
     const playgroundState = usePlaygroundStateStore();
+
+    // Load tests for this exercise
+    tests.value = playgroundData.value.exercise.tests ?? [];
+    // Load the corrected code
+    correctedCode.value = playgroundData.value.exercise.code?.corrected;
+    writtenCode.value = playgroundData.value.exercise.code?.default;
+
+    // Update the page title and meta tags
+    useContentHead(playgroundData.value.exercise);
 
     // Set the default editor code based on the previous playground state
     if (
@@ -95,6 +97,10 @@
     `${serieName}-${exerciseName}-navigation`,
     async () => await loadSurroundingExercises(playgroundData.value),
     {
+      watch: [sectionCode],
+      getCachedData(key) {
+        return nuxtApp.payload.data[key] || nuxtApp.static.data[key];
+      },
       default(): ParsedContent[] {
         return [];
       },
@@ -145,7 +151,7 @@
       :default-size="30"
       class="min-w-[27.5rem]"
     >
-      <PlaygroundExerciseView
+      <LazyPlaygroundExerciseView
         :exerciseData="<ParsedContent>playgroundData.exercise"
       />
     </ResizablePanel>
@@ -153,9 +159,9 @@
     <ResizablePanel>
       <ResizablePanelGroup id="code-terminal-group" direction="vertical">
         <ResizablePanel id="editor" :min-size="35">
-          <PlaygroundTabs v-model="currentTab" default-value="code">
+          <PlaygroundTabs v-model="currentTab" :default-value="EditorTab.Code">
             <PlaygroundTabsList>
-              <PlaygroundTabsTrigger value="code">
+              <PlaygroundTabsTrigger :value="EditorTab.Code">
                 <template #icon>
                   <LucideCode />
                 </template>
@@ -167,7 +173,7 @@
               >
                 <template #trigger>
                   <PlaygroundTabsTrigger
-                    value="correctedCode"
+                    :value="EditorTab.CorrectedCode"
                     :disabled="correctedCode == null"
                   >
                     <template #icon>
@@ -191,32 +197,36 @@
             </PlaygroundTabsList>
             <KeepAlive>
               <PlaygroundTabsContent
-                v-if="currentTab === 'code'"
-                value="code"
+                v-if="currentTab === EditorTab.Code"
+                :value="EditorTab.Code"
                 forceMount
               >
-                <PlaygroundEditor
-                  v-if="playgroundData.language"
-                  :language="playgroundData.language"
-                  v-model="writtenCode"
-                />
+                <DelayHydration>
+                  <LazyPlaygroundEditor
+                    v-if="playgroundData.language"
+                    :language="playgroundData.language"
+                    v-model="writtenCode"
+                  />
+                </DelayHydration>
               </PlaygroundTabsContent>
             </KeepAlive>
             <KeepAlive>
               <PlaygroundTabsContent
-                v-if="currentTab === 'correctedCode'"
-                value="correctedCode"
+                v-if="currentTab === EditorTab.CorrectedCode"
+                :value="EditorTab.CorrectedCode"
                 forceMount
               >
-                <PlaygroundEditor
-                  v-if="playgroundData.language && correctedCode"
-                  :language="playgroundData.language"
-                  v-model="correctedCode"
-                  :class="{
-                    'blur-monaco-editor-code': !wantsToSeeCorrectedCode,
-                  }"
-                  readOnly
-                />
+                <DelayHydration>
+                  <LazyPlaygroundEditor
+                    v-if="playgroundData.language && correctedCode"
+                    :language="playgroundData.language"
+                    v-model="correctedCode"
+                    :class="{
+                      'blur-monaco-editor-code': !wantsToSeeCorrectedCode,
+                    }"
+                    readOnly
+                  />
+                </DelayHydration>
               </PlaygroundTabsContent>
             </KeepAlive>
           </PlaygroundTabs>
@@ -233,7 +243,7 @@
           <Runner
             v-if="playgroundData.exercise"
             :testSpecs="tests"
-            :code="writtenCode ?? ''"
+            :writtenCode="writtenCode"
             :language="playgroundData.language"
             :enabled="currentTab === 'code' && writtenCode !== undefined"
             @success="isCompleted = true"
@@ -246,7 +256,7 @@
 
 <style lang="css">
   /* Only blur the code and not the lines */
-  .blur-monaco-editor-code .monaco-editor .overflow-guard .vs {
+  .blur-monaco-editor-code .monaco-editor .overflow-guard .editor-scrollable {
     @apply blur-sm pointer-events-none;
   }
 </style>
