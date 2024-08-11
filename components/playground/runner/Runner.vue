@@ -1,31 +1,27 @@
 <script lang="ts" setup>
   import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'radix-vue';
-  import { cn } from '~/lib/utils';
   import Terminal from './Terminal.vue';
   import type { TestSpec } from '~/pages/[serie]/loadExercise';
 
-  const compilers = {
+  const compilers: Record<AllowedLanguage, string> = {
     cpp: 'gcc6502_1110',
     java: 'java2100',
     python: 'python312',
   } as const;
 
-  const selectedTab = ref('test0');
-
   const props = defineProps<{
     testSpecs: TestSpec[];
     code: string;
     enabled: boolean;
-    language: string;
+    language: AllowedLanguage;
   }>();
 
   const emit = defineEmits<{
     (e: 'success'): void;
   }>();
 
-  const testSpecs = toRef(props, 'testSpecs');
-  const code = toRef(props, 'code');
-  const language = toRef(props, 'language');
+  const selectedTab = ref<`test-${number}`>('test-0');
+  const { testSpecs, code, language, enabled } = toRefs(props);
 
   const isRunning = ref(false);
   const run = ref<
@@ -37,7 +33,8 @@
         }[];
       }
     | undefined
-  >(undefined);
+  >();
+
   watch(testSpecs, () => {
     run.value = undefined;
   });
@@ -61,10 +58,18 @@
     });
   });
 
-  const abortController = new AbortController();
+  let abortController = new AbortController();
 
+  /**
+   * Runs the tests of the current exercise.
+   */
   function runTests() {
     isRunning.value = true;
+
+    // An aborted controller cannot be reused
+    if (abortController.signal.aborted) {
+      abortController = new AbortController();
+    }
 
     const runId = Math.random().toString(36).slice(2);
     run.value = {
@@ -77,13 +82,11 @@
 
     for (let i = 0; i < testSpecs.value.length; i++) {
       const testSpec = testSpecs.value[i];
-
       const baseURL = 'https://godbolt.org/api';
+      const compiler = compilers[language.value];
 
-      const compiler = compilers[language.value as keyof typeof compilers];
-
-      fetch(`${baseURL}/compiler/${compiler}/compile`, {
-        method: 'post',
+      $fetch(`${baseURL}/compiler/${compiler}/compile`, {
+        method: 'POST',
         body: JSON.stringify({
           source: code.value,
           compiler,
@@ -108,10 +111,12 @@
           'Content-Type': 'application/json;charset=UTF-8',
         },
         signal: abortController.signal,
-      })
-        .then((response) => response.json())
-        .then(({ timedOut, stdout, stderr, didExecute }) => {
-          if (run.value?.runId !== runId) return;
+        async onResponse({ response }) {
+          const { timedOut, stdout, stderr, didExecute } = response._data;
+
+          if (run.value?.runId !== runId) {
+            return;
+          }
 
           const output = [...stdout, ...stderr].map((l) => l.text).join('\n');
 
@@ -125,73 +130,64 @@
             output,
           };
 
-          if (
-            run.value.results.every((result) => result.status !== 'running')
-          ) {
-            isRunning.value = false;
-          }
+          // Determine if the tests have all been executed or not
+          isRunning.value = run.value.results.some(
+            ({ status }) => status === 'running',
+          );
 
-          if (run.value.results.every((result) => result.status === 'passed')) {
+          // Determine if all tests were passed
+          if (run.value.results.every(({ status }) => status === 'passed')) {
             emit('success');
           }
-        });
+        },
+      });
     }
   }
 
+  /**
+   * Cancels the ongoing test execution.
+   */
   function abort() {
     isRunning.value = false;
     run.value = undefined;
-    abortController.abort();
+    abortController.abort('User aborted');
   }
 </script>
 
 <template>
   <div class="bg-accent h-full antialiased">
     <TabsRoot
-      default-value="test0"
-      orientation="vertical"
+      default-value="test-0"
+      orientation="horizontal"
       v-model="selectedTab"
-      class="flex h-full"
+      class="flex flex-col h-full"
     >
-      <TabsList class="flex flex-col w-44 h-full" aria-label="Tests">
-        <div class="p-3">
-          <Button
-            v-if="!isRunning"
-            class="w-full"
-            variant="default"
-            size="lg"
-            @click="runTests"
-            :disabled="!enabled"
-          >
+      <TabsList
+        class="flex items-center w-full px-4 py-3 gap-3"
+        aria-label="Tests"
+      >
+        <Button
+          :variant="isRunning ? 'outline' : 'default'"
+          @click="isRunning ? abort() : runTests()"
+          :disabled="!enabled"
+        >
+          <span class="contents" v-if="!isRunning">
             <LucidePlay class="w-4 h-4 mr-1" />
-            Exécuter
-          </Button>
-          <Button
-            v-if="isRunning"
-            class="w-full"
-            variant="outline"
-            size="lg"
-            @click="abort"
-          >
-            <span class="contents text-red-600 dark:text-red-400">
-              <LucideCircleStop class="w-4 h-4 mr-1" />
-              Annuler
-            </span>
-          </Button>
-        </div>
+            Exécuter le code
+          </span>
+          <span class="contents" v-else>
+            <LucideCircleStop
+              class="w-4 h-4 mr-1 text-red-600 dark:text-red-400"
+            />
+            Annuler
+          </span>
+        </Button>
 
-        <div class="flex flex-1 flex-col overflow-y-auto p-3 pt-0">
+        <div class="flex h-full">
           <TabsTrigger
             v-for="(test, index) in tests"
-            :value="`test${index}`"
-            :class="
-              cn(
-                'flex gap-2 items-center px-4 py-3 w-full text-left justify-start rounded-xl border transition-colors font-medium',
-                selectedTab === `test${index}`
-                  ? 'bg-background text-slate-800 dark:text-slate-200'
-                  : 'border-transparent text-slate-600 dark:text-slate-400',
-              )
-            "
+            :value="`test-${index}`"
+            class="h-full flex gap-2 items-center px-4 py-2 text-left text-sm justify-start rounded-lg font-medium data-[state='active']:bg-background data-[state='active']:border"
           >
             <LucideMinus
               v-if="test.status === 'idle'"
@@ -218,39 +214,35 @@
           </TabsTrigger>
         </div>
       </TabsList>
-      <div class="p-3 pl-0 flex-1 h-full">
+
+      <div class="mx-4 flex-1 h-full">
         <TabsContent
           v-for="(test, index) in tests"
-          :value="`test${index}`"
-          class="bg-background h-full rounded-xl border overflow-y-auto overflow-x-hidden"
+          :value="`test-${index}`"
+          class="bg-background h-full rounded-t-lg p-5"
         >
-          <div class="p-6">
-            <div class="flex flex-col gap-6">
-              <Terminal v-if="test.input !== undefined" title="Entrée">
-                {{ test.input }}
-              </Terminal>
-              <Terminal v-if="test.actual !== undefined" title="Sortie">
-                <div
-                  :class="
-                    test.actual !== test.expectedOutput &&
-                    'text-red-800 dark:text-red-400'
-                  "
-                >
-                  {{ test.actual }}
-                </div>
-              </Terminal>
-              <Terminal
-                v-if="
-                  test.expectedOutput !== undefined &&
-                  test.expectedOutput !== test.actual
+          <div class="flex flex-col gap-4">
+            <Terminal v-if="test.input" title="Texte entré">
+              {{ test.input }}
+            </Terminal>
+            <Terminal
+              v-if="test.expectedOutput && test.expectedOutput !== test.actual"
+              title="Résultat attendu"
+            >
+              <div class="text-green-800 dark:text-green-400">
+                {{ test.expectedOutput }}
+              </div>
+            </Terminal>
+            <Terminal v-if="test.actual" title="Résultat produit">
+              <div
+                :class="
+                  test.actual !== test.expectedOutput &&
+                  'text-red-800 dark:text-red-400'
                 "
-                title="Sortie attendue"
               >
-                <div class="text-green-800 dark:text-green-400">
-                  {{ test.expectedOutput }}
-                </div>
-              </Terminal>
-            </div>
+                {{ test.actual }}
+              </div>
+            </Terminal>
           </div>
         </TabsContent>
       </div>

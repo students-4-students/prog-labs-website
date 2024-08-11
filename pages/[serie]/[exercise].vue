@@ -223,6 +223,7 @@
         </ResizablePanel>
         <ResizableHandle id="editor" with-handle />
         <ResizablePanel
+          v-if="tests && tests?.length !== 0"
           id="terminal"
           :min-size="25"
           :default-size="35"
@@ -230,10 +231,10 @@
           class="min-h-12"
         >
           <Runner
-            v-if="tests"
+            v-if="playgroundData.exercise"
             :testSpecs="tests"
             :code="writtenCode ?? ''"
-            :language="codeLanguage ?? ''"
+            :language="playgroundData.language"
             :enabled="currentTab === 'code' && writtenCode !== undefined"
             @success="isCompleted = true"
           />

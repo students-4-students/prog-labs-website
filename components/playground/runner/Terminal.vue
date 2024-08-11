@@ -6,11 +6,11 @@
 
 <template>
   <div>
-    <h5 class="mb-2 font-medium text-slate-700 dark:text-gray-400">
+    <h5 class="mb-2 font-medium">
       {{ title }}
     </h5>
     <pre
-      class="bg-slate-100 dark:bg-zinc-800 p-3 rounded border whitespace-break-spaces"
+      class="p-4 rounded-lg border whitespace-break-spaces shadow-xl shadow-accent/45 dark:shadow-black/5"
     ><slot /></pre>
   </div>
 </template>
