@@ -12,6 +12,8 @@ export type PayloadData =
       exercise: null;
     };
 
+export type TestSpec = { input: string; expectedOutput: string };
+
 /**
  * Loads the serie and exercise data from the server.
  *

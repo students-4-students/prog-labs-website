@@ -5,6 +5,7 @@
     loadExerciseData,
     loadSurroundingExercises,
     type PayloadData,
+    type TestSpec,
   } from './loadExercise';
 
   definePageMeta({
@@ -28,6 +29,9 @@
   // Store the code written in each editor and set its default value
   const writtenCode = defineModel<string>('writtenCode');
   const correctedCode = defineModel<string>('correctedCode');
+
+  const tests = ref<TestSpec[] | undefined>();
+  const isCompleted = ref(false);
 
   // Load & save student data
   const studentData = useStudentDataStore();
@@ -59,6 +63,8 @@
   if (playgroundData.value.exercise) {
     const playgroundState = usePlaygroundStateStore();
 
+    // Load tests for this exercise
+    tests.value = playgroundData.value.exercise.tests ?? [];
     // Load the corrected code
     correctedCode.value = playgroundData.value.exercise.code?.corrected;
     writtenCode.value = playgroundData.value.exercise.code?.default;
@@ -130,10 +136,11 @@
     is-playground
   />
   <!-- Modals -->
-  <!-- <PlaygroundDialogExerciseCompletion
+  <PlaygroundDialogExerciseCompletion
     :nextExerciseUrl="surroundingExerciseUrls[1]"
-    default-open
-  /> -->
+    :open="isCompleted"
+    @openChange="isCompleted = $event"
+  />
   <!-- Playground -->
   <ResizablePanelGroup direction="horizontal" class="flex w-full h-full">
     <ResizablePanel
@@ -224,10 +231,22 @@
           </PlaygroundTabs>
         </ResizablePanel>
         <ResizableHandle id="editor" with-handle />
-        <ResizablePanel id="terminal" :default-size="30" class="min-h-12">
-          <div class="flex flex-col h-full">
-            <LazyPlaygroundTerminal />
-          </div>
+        <ResizablePanel
+          v-if="tests && tests?.length !== 0"
+          id="terminal"
+          :min-size="25"
+          :default-size="35"
+          :max-size="80"
+          class="min-h-12"
+        >
+          <PlaygroundTestsRunner
+            v-if="playgroundData.exercise"
+            :testSpecs="tests"
+            :writtenCode="writtenCode"
+            :language="playgroundData.language"
+            :enabled="currentTab === 'code' && writtenCode !== undefined"
+            @success="isCompleted = true"
+          />
         </ResizablePanel>
       </ResizablePanelGroup>
     </ResizablePanel>
