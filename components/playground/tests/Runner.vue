@@ -1,6 +1,5 @@
 <script lang="ts" setup>
   import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'radix-vue';
-  import Terminal from './ResultView.vue';
   import type { TestSpec } from '~/pages/[serie]/loadExercise';
 
   const compilers: Record<AllowedLanguage, string> = {
@@ -227,18 +226,18 @@
           class="bg-background h-full rounded-t-lg p-5"
         >
           <div class="flex flex-col gap-4">
-            <PlaygroundRunnerResultView v-if="test.input" title="Texte entré">
+            <PlaygroundTestsResultView v-if="test.input" title="Texte entré">
               {{ test.input }}
-            </PlaygroundRunnerResultView>
-            <PlaygroundRunnerResultView
+            </PlaygroundTestsResultView>
+            <PlaygroundTestsResultView
               v-if="test.expectedOutput && test.expectedOutput !== test.actual"
               title="Résultat attendu"
             >
               <div class="text-green-800 dark:text-green-400">
                 {{ test.expectedOutput }}
               </div>
-            </PlaygroundRunnerResultView>
-            <PlaygroundRunnerResultView
+            </PlaygroundTestsResultView>
+            <PlaygroundTestsResultView
               v-if="test.actual"
               title="Résultat produit"
             >
@@ -250,7 +249,7 @@
               >
                 {{ test.actual }}
               </div>
-            </PlaygroundRunnerResultView>
+            </PlaygroundTestsResultView>
           </div>
         </TabsContent>
       </div>

@@ -7,7 +7,6 @@
     type PayloadData,
     type TestSpec,
   } from './loadExercise';
-  import Runner from '~/components/playground/runner/Runner.vue';
 
   definePageMeta({
     layout: 'playground',
@@ -240,7 +239,7 @@
           :max-size="80"
           class="min-h-12"
         >
-          <Runner
+          <PlaygroundTestsRunner
             v-if="playgroundData.exercise"
             :testSpecs="tests"
             :writtenCode="writtenCode"
