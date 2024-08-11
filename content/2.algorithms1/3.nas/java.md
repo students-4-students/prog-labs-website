@@ -49,7 +49,6 @@ code:
         }
     }
 
-
 runtime:
   stdin:
   stdout:
@@ -57,9 +56,8 @@ runtime:
 
 ### Enoncé
 
-NAS est un est des nombreux food-trucks prochent du Rolex, alors que vous faites la queue à midi, vous souhaitez écrire un algorithme pour estimer le temps d’attente dans la queue. 
+NAS est un est des nombreux food-trucks prochent du Rolex, alors que vous faites la queue à midi, vous souhaitez écrire un algorithme pour estimer le temps d’attente dans la queue.
 
 La queue est représentée par une chaine de charactères comme suit,
 
-“_ _ _ _ - _ _ _ ”, oû “_” représente une personne qui attend, tandis que “-” représente votre position dans la queue, on estime le temps de la prise d’une commande comme étant d’environ 1 minutes et 30 secondes, écrivez un programme qui estime votre temps d’attente.
-
+“\_ \_ \_ _ - _ \_ _ ”, oû “_” représente une personne qui attend, tandis que “-” représente votre position dans la queue, on estime le temps de la prise d’une commande comme étant d’environ 1 minutes et 30 secondes, écrivez un programme qui estime votre temps d’attente.

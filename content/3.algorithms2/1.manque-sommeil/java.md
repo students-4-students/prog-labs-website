@@ -12,7 +12,7 @@ code:
             int n = scanner.nextInt(); // lire la chaine de caractère
             // à compléte 
             }
-    } 
+    }
   corrected: |
     import java.util.Scanner;
 
@@ -29,7 +29,6 @@ code:
             }     
         }
     }
-
 
 runtime:
   stdin:
@@ -58,4 +57,3 @@ Si **n** est :
 - \> 7 afficher “Bien joué !”
 - = 7 afficher “Suffisant”
 - < 7 afficher “Il faut dormir plus”
-

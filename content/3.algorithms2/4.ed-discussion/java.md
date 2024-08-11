@@ -28,7 +28,6 @@ code:
 
         }
     }
-				
 
   corrected: |
     import java.util.Scanner;
@@ -92,7 +91,7 @@ code:
 
         }
     }    
-    
+
     // Le but de cet exo est de vous apprendre à bien lire un énoncé aussi long et extraire toutes les 
     // informations pertinentes pour résoudre un problème
     // De plus, le problème vous introduit un outil très utile pendant votre ba1 et votre parcours à l'EPFL en général
@@ -103,6 +102,7 @@ runtime:
   stdin:
   stdout:
 ---
+
 ### Enoncé
 
 Ed Discussion est un site de questions réponses pour les étudiants utilisé ici à l'EPFL pour tous les cours.
@@ -125,11 +125,11 @@ De plus on connait la “routine” de nos 3 étudiants :
 
 ### Objectif
 
-on va vous donner le nombre de questions disponibles* chaque jour et le nombre de questions posées par chaque étudiant. 
+on va vous donner le nombre de questions disponibles\* chaque jour et le nombre de questions posées par chaque étudiant.
 
 Le but est de trouver qui a le plus de points/semaine, si égalité afficher Raoul par défaut
 
-**les questions disponibles n'incluent pas les questions posées par ces 3 étudiants*
+\*_les questions disponibles n'incluent pas les questions posées par ces 3 étudiants_
 
 ### Indice
 

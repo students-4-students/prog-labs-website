@@ -145,13 +145,13 @@ Ceci est le logo de notre chère EPFL
 
 ![EPFL logo](https://www.epfl.ch/about/overview/wp-content/uploads/2020/07/logo-epfl.png)
 
-Stylé non ? 
+Stylé non ?
 
 Il le sera plus sur la console, let’s go, on le dessine ensemble.
 
 ### Objectif
 
-On vous donnera les 3 premières lettres soit EPF, et vous allez terminer le reste (On sait que vous êtes assez intelligent pour devinez laquelle choisir pour réussir l’exo) 
+On vous donnera les 3 premières lettres soit EPF, et vous allez terminer le reste (On sait que vous êtes assez intelligent pour devinez laquelle choisir pour réussir l’exo)
 
 ### Entrées :
 

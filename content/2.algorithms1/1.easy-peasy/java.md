@@ -35,7 +35,6 @@ code:
     // - Se familiariser avec les instructions conditionnelles, notamment avec l’ordre des vérifications
     // - Apprendre le modulo “%”
 
-
 runtime:
   stdin:
   stdout:
@@ -44,10 +43,12 @@ runtime:
 # Easy-peasy
 
 ### Enoncé
+
 on cherche a retrouver tous les nombres multiples de 3, 5 et 15 entre 1 et 100 (exclus)
-- Si le nombre est multiple de 3 on affiche "easy" 
-- Si le nombre est multiple de 5 on affiche "peasy" 
-- Si le nombre est multiple de 15 on affiche "easy-peasy" 
+
+- Si le nombre est multiple de 3 on affiche "easy"
+- Si le nombre est multiple de 5 on affiche "peasy"
+- Si le nombre est multiple de 15 on affiche "easy-peasy"
 - Sinon on affiche rien
 
 ### Exemple
@@ -58,8 +59,4 @@ on cherche a retrouver tous les nombres multiples de 3, 5 et 15 entre 1 et 100 (
 
 ### Objectif
 
-Ce code qu’on vous donne doit être corrigé, trouvez cette petite faille.   
-
-
-
-
+Ce code qu’on vous donne doit être corrigé, trouvez cette petite faille.
