@@ -4,14 +4,14 @@ description: 'Une rapide présentation du site de S4S Prog.'
 
 code:
   default: |
-    public class Main {
+    class Main {
       public static void main(String[] args) {
         System.out.println("Hello EPFL"); // affiche "Hello EPFL"
       }
     }
   corrected: |
     // voilà le code corrigé (identique dans cet exemple)
-    public class Main {
+    class Main {
       public static void main(String[] args) {
         System.out.println("Hello EPFL"); // affiche "Hello EPFL"
       }
