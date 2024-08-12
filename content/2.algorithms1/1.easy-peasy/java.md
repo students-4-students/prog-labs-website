@@ -40,7 +40,7 @@ runtime:
   stdout:
 ---
 
-# Easy-peasy
+!
 
 ### Enoncé
 
