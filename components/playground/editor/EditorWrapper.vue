@@ -18,20 +18,16 @@
   import { WORKSPACE_PATH } from './config/workspace';
   import type { ClangdLanguageServer } from './language-servers/cpp/clangd';
   import type { PyrightLanguageServer } from './language-servers/python/pyright';
-  import type { HTMLAttributes } from 'vue';
   import { cn } from '@/lib/utils';
   import {
     whenGithubThemesReady,
     githubLightThemeId,
     githubDarkThemeId,
   } from './extensions/themes';
+  import type { EditorEmits, EditorProps } from '.';
 
-  const props = defineProps<{
-    readOnly?: boolean;
-    language: AllowedLanguage;
-    darkMode?: boolean;
-    class?: HTMLAttributes['class'];
-  }>();
+  const props = defineProps<EditorProps>();
+  const emit = defineEmits<EditorEmits>();
 
   const colorMode = useColorMode();
   const writtenCode = defineModel<string>();
@@ -122,6 +118,8 @@
 
   onMounted(async () => {
     await wrapper.initAndStart(userConfig.value, monacoRef.value!);
+
+    emit('update:load');
 
     // Initialize monaco when the html element is available
     watch(userConfig, async (newConfig, oldConfig) => {
