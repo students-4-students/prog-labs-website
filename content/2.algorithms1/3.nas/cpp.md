@@ -77,11 +77,11 @@ code:
 
 tests:
   - input: |
-      _ _ _ _ * _ _ _
+      ____*___
     expectedOutput: |-
       Temps d'attente estimé : 4 minute(s) et 30 seconde(s).
   - input: |
-      _ _ _ _ _ _ *
+      ______*
     expectedOutput: |-
       Temps d'attente estimé : 0 minute(s) et 0 seconde(s).
 ---
