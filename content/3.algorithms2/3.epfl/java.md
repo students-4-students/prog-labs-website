@@ -1,65 +1,19 @@
 ---
-title: 'Java : EPFL'
-description: 'todo '
+title: 'Dessiner EPFL'
+description: "Dessinez le logo de l'EPFL dans la console."
 
 code:
   default: |
     import java.util.Scanner;
 
-    public class Main {
+    class Main {
         public static void main(String[] args) {
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Entrez la hauteur maximale des lettres : ");
+            // n est la hauteur du L
             int n = scanner.nextInt();
 
             for (int i = 0; i < n; i++) {
-            
-                // print E
-                if (i == 0 || i == n - 1 || i == n / 2) {
-                    for (int j = 0; j < n; j++) {
-                        System.out.print("*");
-                    }
-                } else {
-                    System.out.print("*");
-                    for (int j = 1; j < n; j++) {
-                        System.out.print(" ");
-                    }
-                }
-                
-                System.out.print("  "); // espace entre les lettres
-                // print P
-                if (i == 0 || i == n / 2) {
-                    for (int j = 0; j < n - 2; j++) {
-                        System.out.print("*");
-                    }
-                    System.out.print(" ");
-                } else if (i < n / 2) {
-                    System.out.print("*");
-                    for (int j = 1; j < n - 2; j++) {
-                        System.out.print(" ");
-                    }
-                    System.out.print("*");
-                } else {
-                    System.out.print("*");
-                    for (int j = 1; j < n - 1; j++) {
-                        System.out.print(" ");
-                    }
-                }
-                
-                System.out.print("  "); // espace entre les lettres
-                // print F
-                if (i == 0 || i == n / 2) {
-                    for (int j = 0; j < n - 1; j++) {
-                        System.out.print("*");
-                    }
-                } else {
-                    System.out.print("*");
-                    for (int j = 1; j < n - 1; j++) {
-                        System.out.print(" ");
-                    }
-                }
-                System.out.print("  "); // espace entre les lettres
-                // compléter le L
+                // compléter le dessin du L
             }
         }
     }
@@ -67,10 +21,9 @@ code:
   corrected: |
     import java.util.Scanner;
 
-    public class Main {
+    class Main {
         public static void main(String[] args) {
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Entrez la hauteur maximale des lettres : ");
             int n = scanner.nextInt();
 
             for (int i = 0; i < n; i++) {
@@ -130,42 +83,55 @@ code:
         }
     }
 
-runtime:
-  stdin:
-  stdout:
+tests:
+  - input: '7'
+    expectedOutput: |-
+      *
+      *
+      *
+      *
+      *
+      *
+      *******
+  - input: '10'
+    expectedOutput: |-
+      *
+      *
+      *
+      *
+      *
+      *
+      *
+      *
+      *
+      **********
 ---
+
+![EPFL](/banner/epfl.png)
 
 ### Enoncé
 
-Il existe deux très grande université en Suisse connu à l’échelle internationale sui sont :
+Il existe deux très grande université en Suisse connu à l’échelle internationale qui sont :
 
 l’EPFZ (**École polytechnique fédérale de Zurich)** et l’EPFL (**École polytechnique fédérale de Lausanne).** On vous félicite d’avoir fait le bon choix.
 
-Ceci est le logo de notre chère EPFL
+Voilà le logo de l’EPFL :
 
-![EPFL logo](https://www.epfl.ch/about/overview/wp-content/uploads/2020/07/logo-epfl.png)
+![EPFL](/banner/epfl_logo.png)
 
-Stylé non ?
-
-Il le sera plus sur la console, let’s go, on le dessine ensemble.
+Il sera encore plus stylé sur la console, dessinons-le ensemble :)
 
 ### Objectif
 
-On vous donnera les 3 premières lettres soit EPF, et vous allez terminer le reste (On sait que vous êtes assez intelligent pour devinez laquelle choisir pour réussir l’exo)
+On vous donne les 3 premières lettres soit EPF, occupez-vous uniquement de dessiner le L manquant.
 
-### Entrées :
+### Entrées
 
-**n** (Entier) : la hauteur maximale des lettres
+- **n** (Entier) : la hauteur maximale des lettres
 
-### Exemples de tests :
+**Exemples de tests :**
 
-**Entrées** :
-
-```java
-7
-```
-
-**Sortie**
+Si n = `7`, votre programme doit renvoyer (ne prenez que le L en compte) :
 
 ```java
 *******  *****   ******  *
@@ -176,3 +142,8 @@ On vous donnera les 3 premières lettres soit EPF, et vous allez terminer le res
 *        *       *       *
 *******  *       *       *******
 ```
+
+<details>
+  <summary>Indice</summary>
+  Qu’est-ce qu’un `L`? c’est `n-1` lignes d’une étoile, puis une ligne de `n` étoiles :)
+</details>
