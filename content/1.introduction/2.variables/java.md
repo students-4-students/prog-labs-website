@@ -1,6 +1,6 @@
 ---
-title: 'Java : Affichage'
-description: 'Afficher du contenu dans le terminal.'
+title: 'Variables'
+description: 'Déclarez des variables.'
 
 code:
   default: |
@@ -8,6 +8,7 @@ code:
       public static void main(String[] args){
 
         // complétez le code ici
+
         
       }
     }
@@ -22,9 +23,9 @@ code:
       }
     }
 
-runtime:
-  stdin:
-  stdout:
+tests:
+  - input: ''
+    expectedOutput: ''
 ---
 
 ### Objectif
