@@ -7,13 +7,14 @@ code:
     class Main {
         public static void main(String[] args) {
             for (int i = 1; i < 100; i++) {
-            // le modulo "%" renvoit le reste de la division de i par 3
-            if (i % 3 == 0) {
-                System.out.println("easy");
-            } else if (i % 5 == 0) {
-                System.out.println("peasy");
-            } else if (i % 15 == 0) {
-                System.out.println("easy-peasy");
+                // le modulo "%" renvoit le reste de la division de i par 3
+                if (i % 3 == 0) {
+                    System.out.println("easy");
+                } else if (i % 5 == 0) {
+                    System.out.println("peasy");
+                } else if (i % 15 == 0) {
+                    System.out.println("easy-peasy");
+                }
             }
         }
     }
