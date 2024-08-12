@@ -7,31 +7,30 @@ code:
     import java.util.Scanner;
 
     class Main {
-      public static void main(String[] args){
-        // ne faites pas attention à ces deux lignes
-        // elles servent à initialiser les variables
-        // (voir le cours)
-        Scanner scanner = new Scanner(System.in);
-        int a = scanner.nextInt();
-        
-        // complétez le code
-        
-      }
+        public static void main(String[] args){
+            // ne faites pas attention à ces deux lignes
+            // elles servent à initialiser les variables
+            // (voir le cours)
+            Scanner scanner = new Scanner(System.in);
+            int a = scanner.nextInt();
+            
+            // complétez le code
+
+        }
     }
   corrected: |
     import java.util.Scanner;
 
     class Main {
-      public static void main(String[] args){
-        // ne faites pas attention à ces deux lignes
-        // elles servent à initialiser les variables
-        // (voir le cours)
-        Scanner scanner = new Scanner(System.in);
-        int a = scanner.nextInt();
-        
-        System.out.println(a);
-        
-      }
+        public static void main(String[] args){
+            // ne faites pas attention à ces deux lignes
+            // elles servent à initialiser les variables
+            // (voir le cours)
+            Scanner scanner = new Scanner(System.in);
+            int a = scanner.nextInt();
+            
+            System.out.println(a);
+        }
     }
 
 tests:

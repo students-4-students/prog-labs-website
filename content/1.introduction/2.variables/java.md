@@ -5,22 +5,22 @@ description: 'Déclarez des variables.'
 code:
   default: |
     class Main {
-      public static void main(String[] args){
+        public static void main(String[] args){
 
         // complétez le code ici
 
         
-      }
+        }
     }
   corrected: |
     class Main {
-      public static void main(String[] args){
-      
-        String a = "Salut";
-        int b = 42;
-        boolean c = true;
+        public static void main(String[] args){
+        
+            String a = "Salut";
+            int b = 42;
+            boolean c = true;
 
-      }
+        }
     }
 
 tests:
