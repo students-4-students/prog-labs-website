@@ -40,7 +40,7 @@ code:
     }
 
 tests:
-  - input: |-
+  - input: |
       42
       256
       Hello
@@ -49,7 +49,7 @@ tests:
       10752
       298
       HelloEPFL
-  - input: |-
+  - input: |
       1
       2
       Salut
