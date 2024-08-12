@@ -18,9 +18,9 @@
       <DialogHeader>
         <DialogTitle>Attention</DialogTitle>
         <DialogDescription>
-          Laboris commodo cillum est laborum nulla do nulla eu velit. Eu ullamco
-          nostrud ex adipisicing duis ad cupidatat. Consectetur ex esse occaecat
-          pariatur.
+          Avez-vous déjà passé du temps à chercher la solution par vous-même ?
+          Passer du temps à chercher maintenant auprès d'assistants est le plus
+          productif pour vous !
         </DialogDescription>
       </DialogHeader>
 
