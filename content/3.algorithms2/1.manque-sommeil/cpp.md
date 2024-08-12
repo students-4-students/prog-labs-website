@@ -4,32 +4,35 @@ description: 'todo'
 
 code:
   default: |
-    import java.util.Scanner;
+    #include <iostream>
+    using namespace std;
 
-    class Main {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
-            int n = scanner.nextInt(); // lire la chaine de caractère
-            
-            // à compléter
-        }
+    int main() {       
+      int n (0); // lire la chaine de caractère  
+      cin >> n;      
+      
+      // à compléter    
+
+      return 0;
     }
 
   corrected: |
-    import java.util.Scanner;
+    #include <iostream>
+    using namespace std;
 
-    class Main {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
-            int n = scanner.nextInt(); // lire le nombre d'heure de sommeil d'Adam
-            if(n == 8) {
-                System.out.println("Suffisant");
-            } else if(n < 8) {
-                System.out.println("Il faut dormir plus");
-            } else {
-                System.out.println("Bravo !");
-            }     
-        }
+    int main() {       
+      int n (0); // lire la chaine de caractère  
+      cin >> n;      
+      
+      if(n == 8) {
+        cout << "Suffisant" << endl;
+      } else if(n < 8) {
+        cout << "Il faut dormir plus" << endl;
+      } else {
+        cout << "Bravo !" << endl;
+      }      
+
+      return 0;
     }
 
 tests:
