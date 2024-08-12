@@ -53,7 +53,7 @@
 
 <template>
   <div class="flex flex-col gap-y-6 px-4 md:px-8 py-4">
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-4 lg:gap-6">
       <div class="space-y-1">
         <h2 class="flex items-baseline text-4xl font-bold tracking-normal">
           Exercices disponibles
@@ -67,7 +67,7 @@
         </p>
       </div>
       <div class="flex flex-col">
-        <div class="flex flex-col md:flex-row gap-6 flex-wrap">
+        <div class="flex flex-col md:flex-row gap-4 xl:gap-6 flex-wrap">
           <SerieCardSkeleton
             v-if="seriesStatus === 'pending'"
             v-for="_ in EXPECTED_SERIES_NB"
@@ -76,7 +76,7 @@
             v-for="serie in series"
             v-else
             :serieData="serie"
-            class="sm:min-w-[21rem] max-w-[31rem]"
+            class="sm:min-w-[28rem] max-w-[32rem]"
           >
             <template #banner>
               <NuxtImg
