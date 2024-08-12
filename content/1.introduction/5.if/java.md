@@ -21,7 +21,7 @@ code:
   corrected: |
     import java.util.Scanner;
 
-    public class Main {
+    class Main {
         public static void main(String[] args){
             // ne faites pas attention à ces deux lignes
             // elles servent à initialiser les variables
