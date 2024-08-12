@@ -70,7 +70,7 @@ code:
         tempsEstimeSec = tempsEstimeSec % 60;
 
         // Affichage du temps d'attente estimé
-        cout << "Temps d'attente estimé : " << tempsEstimeMin << " minute(s) et " << tempsEstimeSec << " seconde(s)." << endl;
+        cout << "Temps d'attente : " << tempsEstimeMin << " minute(s) et " << tempsEstimeSec << " seconde(s)." << endl;
         
         return 0;
     }
@@ -79,11 +79,11 @@ tests:
   - input: |
       ____*___
     expectedOutput: |-
-      Temps d'attente estimé : 4 minute(s) et 30 seconde(s).
+      Temps d'attente : 4 minute(s) et 30 seconde(s).
   - input: |
       ______*
     expectedOutput: |-
-      Temps d'attente estimé : 0 minute(s) et 0 seconde(s).
+      Temps d'attente : 0 minute(s) et 0 seconde(s).
 ---
 
 ![NAS](/banner/nas.png)
@@ -106,7 +106,7 @@ Pour une queue telle que :
 
 Votre programme doit afficher :
 
-`Temps d'attente estimé : 4 minute(s) et 30 seconde(s).`
+`Temps d'attente : 4 minute(s) et 30 seconde(s).`
 
 Pensez donc à effectuer les calculs pour convertir votre résultat en minutes et secondes.
 

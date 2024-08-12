@@ -46,17 +46,17 @@ code:
     tempsEstimeSec = tempsEstimeSec % 60
 
     # Affichage du temps d'attente estimé
-    print("Temps d'attente estimé : " + str(tempsEstimeMin) + " minute(s) et " + str(tempsEstimeSec) + " seconde(s).")
+    print("Temps d'attente : " + str(tempsEstimeMin) + " minute(s) et " + str(tempsEstimeSec) + " seconde(s).")
 
 tests:
   - input: |
       _ _ _ _ * _ _ _
     expectedOutput: |-
-      Temps d'attente estimé : 4 minute(s) et 30 seconde(s).
+      Temps d'attente : 4 minute(s) et 30 seconde(s).
   - input: |
       _ _ _ _ _ _ *
     expectedOutput: |-
-      Temps d'attente estimé : 0 minute(s) et 0 seconde(s).
+      Temps d'attente : 0 minute(s) et 0 seconde(s).
 ---
 
 ![NAS](/banner/nas.png)
