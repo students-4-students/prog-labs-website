@@ -21,8 +21,8 @@ code:
 
     int main() {
 
-        int a (42);
         string b ("Salut");
+        int a (42);
         bool c (true);
         
         return 0;
