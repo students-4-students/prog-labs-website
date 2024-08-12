@@ -240,7 +240,12 @@
             :writtenCode="writtenCode"
             :language="playgroundData.language"
             :enabled="currentTab === 'code' && writtenCode !== undefined"
-            @success="isCompleted = true"
+            @success="
+              () => {
+                isCompleted = true;
+                wantsToSeeCorrectedCode = true;
+              }
+            "
           />
         </ResizablePanel>
       </ResizablePanelGroup>
