@@ -16,7 +16,7 @@
     async () => {
       // Load all exercises from the serie
       const allExercises = await queryContent(<string>props.serieData._path)
-        .only(['_path'])
+        .only(['_path', 'title'])
         .where({
           _dir: { $ne: '' }, // Only fetch exercises
         })
@@ -43,42 +43,40 @@
 </script>
 
 <template>
-  <Card class="flex flex-col w-full grow max-w-[520px]">
+  <Card class="flex flex-col flex-1">
     <CardHeader class="flex items-start grow">
       <slot name="banner" />
       <CardTitle>
         {{ serieData.title }}
       </CardTitle>
-      <CardDescription>
+      <CardDescription class="text-justify">
         {{ serieData.description }}
       </CardDescription>
     </CardHeader>
-    <CardContent class="flex flex-1 basis-0 flex-wrap gap-2">
+    <CardContent
+      v-if="exercises && exercises.length > 0"
+      class="grid grid-cols-2 xl:grid-cols-3 gap-1"
+    >
       <Skeleton
-        class="h-11 w-36 grow dark:bg-background"
+        class="h-11 dark:bg-background"
         v-if="exercisesStatus === 'pending'"
         v-for="_ in EXPECTED_EXERCISES_NB"
       />
-      <!-- Fallback when there's no exercises -->
-      <Button
-        v-else-if="exercises && exercises.length === 0"
-        variant="secondary"
-        size="lg"
-        class="grow"
-        disabled
-      >
-        Aucun exercice disponible pour le moment
-      </Button>
       <!-- Exercises buttons -->
       <Button
+        v-for="(exercise, i) in exercises"
         v-else
         variant="secondary"
         size="lg"
-        class="grow"
-        v-for="(exercise, i) in exercises"
         @click="navigateTo(exercise._path)"
       >
-        Exercice n°{{ i + 1 }}
+        {{ i + 1 }}. {{ exercise.title }}
+      </Button>
+    </CardContent>
+    <CardContent v-else class="flex">
+      <!-- Fallback when there's no exercises -->
+      <Button variant="secondary" size="lg" class="grow" disabled>
+        Aucun exercice disponible pour le moment
       </Button>
     </CardContent>
   </Card>

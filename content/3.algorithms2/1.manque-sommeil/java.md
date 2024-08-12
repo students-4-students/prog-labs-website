@@ -1,5 +1,5 @@
 ---
-title: 'Java : Manque de Sommeil'
+title: 'Manque de Sommeil'
 description: 'todo'
 
 code:

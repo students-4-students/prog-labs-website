@@ -22,6 +22,6 @@
   onMounted(() => {
     setTimeout(() => {
       displayLoader.value = true;
-    }, 500);
+    }, 1000);
   });
 </script>

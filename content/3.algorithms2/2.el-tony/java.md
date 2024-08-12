@@ -1,5 +1,5 @@
 ---
-title: 'Java : El Tony'
+title: 'El Tony'
 description: 'todo '
 
 code:
