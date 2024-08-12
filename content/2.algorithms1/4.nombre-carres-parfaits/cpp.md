@@ -8,41 +8,41 @@ code:
     using namespace std;
 
     int main() {
-      int n (0); 
-      cin >> n;
+        int n (0); 
+        cin >> n;
             
-      int count (0);        
-      for (int i (0); i <= n; i++) {  
+        int count (0);        
+        for (int i (0); i <= n; i++) {  
                 
-        // à compléter...        
+            // à compléter...        
         
-      }        
-      
-      cout << count << endl;
+        }        
+        
+        cout << count << endl;
 
-      return 0;
+        return 0;
     }
   corrected: |
     #include <iostream>
     using namespace std;
 
     int main() {
-      int n (0); 
-      cin >> n;
-            
-      int count (0); 
-            
-      for (int i (0); i <= n; i++) {  
-        for (int j (0); j <= i; j++) {
-          if (j * j == i) {
-            count++;
-          }
-        }
-      }        
-      
-      cout << count << endl;
+        int n (0); 
+        cin >> n;
+                
+        int count (0); 
+                
+        for (int i (0); i <= n; i++) {  
+            for (int j (0); j <= i; j++) {
+                if (j * j == i) {
+                    count++;
+                }
+            }
+        }        
 
-      return 0;
+        cout << count << endl;
+
+        return 0;
     }
 
 tests:

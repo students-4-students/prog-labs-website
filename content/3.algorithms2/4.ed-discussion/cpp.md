@@ -8,28 +8,28 @@ code:
     using namespace std;
 
     int main() {
-      // Les questions posées par chaque etudiant sont des constantes
-      int QUESTIONS_POSEES_ARSENE (5);
-      int QUESTIONS_POSEES_RAOUL (1);
-      int QUESTIONS_POSEES_GANIMARD (0);
-      
-      // les points initiaux sont à 0 au debut 
-      int pointsArsene (0); 
-      int pointsRaoul (0);
-      int pointsGanimard (0);
-      for (int i (0); i < 7; i++) {
-          // Jour numéro i
-          // Le programme lit les questions disponibles ce jour-ci
-          int questionsDisponibles (0); // lire le nombre de questions disponibles ce jour la
-          int allQuestions (questionsDisponibles + QUESTIONS_POSEES_RAOUL + QUESTIONS_POSEES_GANIMARD + QUESTIONS_POSEES_ARSENE);
-          
-          // à compléter la gestion de la logique du problème
-          
-      }
-      
-      // a compléter : trouvez l'étudiant avec le plus de point (afficher Raoul par défaut en cas d'égalité)
+        // Les questions posées par chaque etudiant sont des constantes
+        int QUESTIONS_POSEES_ARSENE (5);
+        int QUESTIONS_POSEES_RAOUL (1);
+        int QUESTIONS_POSEES_GANIMARD (0);
+        
+        // les points initiaux sont à 0 au debut 
+        int pointsArsene (0); 
+        int pointsRaoul (0);
+        int pointsGanimard (0);
+        for (int i (0); i < 7; i++) {
+            // Jour numéro i
+            // Le programme lit les questions disponibles ce jour-ci
+            int questionsDisponibles (0); // lire le nombre de questions disponibles ce jour la
+            int allQuestions (questionsDisponibles + QUESTIONS_POSEES_RAOUL + QUESTIONS_POSEES_GANIMARD + QUESTIONS_POSEES_ARSENE);
+            
+            // à compléter la gestion de la logique du problème
+            
+        }
+        
+        // a compléter : trouvez l'étudiant avec le plus de point (afficher Raoul par défaut en cas d'égalité)
 
-      return 0;
+        return 0;
     }
 
   corrected: |
@@ -37,65 +37,65 @@ code:
     using namespace std;
 
     int main() {
-      // Les questions posées par chaque etudiant sont des constantes
-      int QUESTIONS_POSEES_ARSENE (5);
-      int QUESTIONS_POSEES_RAOUL (1);
-      int QUESTIONS_POSEES_GANIMARD (0);
-      
-      // les points initiaux sont à 0 au debut 
-      int pointsArsene (0); 
-      int pointsRaoul (0);
-      int pointsGanimard (0);
-      for (int i (0); i < 7; i++) {
-          // Jour numéro i
-          // Le programme lit les questions disponibles ce jour-ci
-          int questionsDisponibles (0); // lire le nombre de questions disponibles ce jour la
-          cin >> questionsDisponibles;
-          int allQuestions (questionsDisponibles + QUESTIONS_POSEES_RAOUL + QUESTIONS_POSEES_GANIMARD + QUESTIONS_POSEES_ARSENE);
-          
-          // gestion de la logique
-      
-          if(i == 0 or i == 4) { // si c'est lundi ou vendredi c'est Ganimard qui répond à toutes les questions
-              pointsGanimard += allQuestions - QUESTIONS_POSEES_GANIMARD;
-          } else {
-          // Il existe deux cas : les questions disponibles inférieur à 5 et les questions dispo supérieurs ou égale à 5
-              if(questionsDisponibles < 5){
-                  // Le cas < 5
-                  // On sait que Raoul va répondre à 5 questions, la question qui se pose est  :
-                  // Raoul va répondre aux questions de Arsène ou ceux des autres étudiants ?
-                  // l'énoncé nous dit que Raoul répond aux autres étudiants avant celles de Raoul
-                  // (Ganimard ne pose pas de questions du coup on ne le compte pas) 
-                  // Si on a moins de 5 questions des autres étudiants, Raoul va répondre à toutes les
-                  // questions disponibles et quelques questions de Arsène 
-                  // --> Arsène va avoir moins de points négatifs.
-                  pointsArsene -= (5 - questionsDisponibles);
-                  questionsDisponibles = 0;
-              } else {
-                  // Ici, Raoul répond qu'aux questions des autres étudiants
-                  // Arsène va répondre a toutes ses propres questions
-                  pointsArsene -= 5;
-                  questionsDisponibles -= 5;
-              }
-              // on est sur que chaque jour Raoul a +5, car il y a toujours 5 ou plus questions disponibles 
-              // puisque Arsène pose 5 questions à lui tout seul
-              pointsRaoul += 5;
-              // ajouter le reste des questions disponibles
-              pointsArsene += questionsDisponibles;
-              // Arsène est le seul à répondre aux questions de Raoul si Ganimard ne le fait pas
-              pointsArsene += QUESTIONS_POSEES_RAOUL;
-          }
-      }
-      
-      // trouver l'étudiant avec le plus de point (afficher Raoul par défaut en cas d'égalité)
-      if (pointsArsene > pointsGanimard and pointsArsene > pointsRaoul) {
-          cout << "Arsene" << endl;
-      } else if (pointsGanimard > pointsRaoul and pointsGanimard > pointsArsene) {
-          cout << "Ganimard" << endl;
-      } else {
-          cout << "Raoul" << endl;
-      }
-      
-      return 0;
+        // Les questions posées par chaque etudiant sont des constantes
+        int QUESTIONS_POSEES_ARSENE (5);
+        int QUESTIONS_POSEES_RAOUL (1);
+        int QUESTIONS_POSEES_GANIMARD (0);
+        
+        // les points initiaux sont à 0 au debut 
+        int pointsArsene (0); 
+        int pointsRaoul (0);
+        int pointsGanimard (0);
+        for (int i (0); i < 7; i++) {
+            // Jour numéro i
+            // Le programme lit les questions disponibles ce jour-ci
+            int questionsDisponibles (0); // lire le nombre de questions disponibles ce jour la
+            cin >> questionsDisponibles;
+            int allQuestions (questionsDisponibles + QUESTIONS_POSEES_RAOUL + QUESTIONS_POSEES_GANIMARD + QUESTIONS_POSEES_ARSENE);
+            
+            // gestion de la logique
+        
+            if(i == 0 or i == 4) { // si c'est lundi ou vendredi c'est Ganimard qui répond à toutes les questions
+                pointsGanimard += allQuestions - QUESTIONS_POSEES_GANIMARD;
+            } else {
+                // Il existe deux cas : les questions disponibles inférieur à 5 et les questions dispo supérieurs ou égale à 5
+                if(questionsDisponibles < 5){
+                    // Le cas < 5
+                    // On sait que Raoul va répondre à 5 questions, la question qui se pose est  :
+                    // Raoul va répondre aux questions de Arsène ou ceux des autres étudiants ?
+                    // l'énoncé nous dit que Raoul répond aux autres étudiants avant celles de Raoul
+                    // (Ganimard ne pose pas de questions du coup on ne le compte pas) 
+                    // Si on a moins de 5 questions des autres étudiants, Raoul va répondre à toutes les
+                    // questions disponibles et quelques questions de Arsène 
+                    // --> Arsène va avoir moins de points négatifs.
+                    pointsArsene -= (5 - questionsDisponibles);
+                    questionsDisponibles = 0;
+                } else {
+                    // Ici, Raoul répond qu'aux questions des autres étudiants
+                    // Arsène va répondre a toutes ses propres questions
+                    pointsArsene -= 5;
+                    questionsDisponibles -= 5;
+                }
+                // on est sur que chaque jour Raoul a +5, car il y a toujours 5 ou plus questions disponibles 
+                // puisque Arsène pose 5 questions à lui tout seul
+                pointsRaoul += 5;
+                // ajouter le reste des questions disponibles
+                pointsArsene += questionsDisponibles;
+                // Arsène est le seul à répondre aux questions de Raoul si Ganimard ne le fait pas
+                pointsArsene += QUESTIONS_POSEES_RAOUL;
+            }
+        }
+        
+        // trouver l'étudiant avec le plus de point (afficher Raoul par défaut en cas d'égalité)
+        if (pointsArsene > pointsGanimard and pointsArsene > pointsRaoul) {
+            cout << "Arsene" << endl;
+        } else if (pointsGanimard > pointsRaoul and pointsGanimard > pointsArsene) {
+            cout << "Ganimard" << endl;
+        } else {
+            cout << "Raoul" << endl;
+        }
+        
+        return 0;
     }
 
     // Le but de cet exo est de vous apprendre à bien lire un énoncé aussi long et extraire toutes les 

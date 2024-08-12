@@ -9,14 +9,14 @@ code:
 
     int main() {
 
-      int jourDebut (0); // lire le jour de debut
-      cin >> jourDebut;
-      int jourFin (0); // lire le jour de fin
-      cin >> jourFin;
+        int jourDebut (0); // lire le jour de debut
+        cin >> jourDebut;
+        int jourFin (0); // lire le jour de fin
+        cin >> jourFin;
             
-      // à compléter
+        // à compléter
 
-      return 0;
+        return 0;
     }
   corrected: |
     #include <iostream>
@@ -24,15 +24,15 @@ code:
 
     int main() {
 
-      int jourDebut (0); // lire le jour de debut
-      cin >> jourDebut;
-      int jourFin (0); // lire le jour de fin
-      cin >> jourFin;
+        int jourDebut (0); // lire le jour de debut
+        cin >> jourDebut;
+        int jourFin (0); // lire le jour de fin
+        cin >> jourFin;
             
-      int nbJour (jourFin - jourDebut + 1);
-      cout << ((nbJour + 1) * nbJour) / 2 << endl;
+        int nbJour (jourFin - jourDebut + 1);
+        cout << ((nbJour + 1) * nbJour) / 2 << endl;
 
-      return 0;
+        return 0;
     }
 
     // L’informatique et la programmation

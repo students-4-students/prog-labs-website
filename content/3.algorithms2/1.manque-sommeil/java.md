@@ -22,9 +22,9 @@ code:
         public static void main(String[] args) {
             Scanner scanner = new Scanner(System.in);
             int n = scanner.nextInt(); // lire le nombre d'heure de sommeil d'Adam
-            if(n == 8) {
+            if (n == 8) {
                 System.out.println("Suffisant");
-            } else if(n < 8) {
+            } else if (n < 8) {
                 System.out.println("Il faut dormir plus");
             } else {
                 System.out.println("Bravo !");

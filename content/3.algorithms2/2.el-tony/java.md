@@ -13,7 +13,6 @@ code:
             int jourFin = scanner.nextInt(); // lire le jour de fin
             
             // à compléter
-            
         }
     }
   corrected: |

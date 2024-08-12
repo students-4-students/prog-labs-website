@@ -8,12 +8,12 @@ code:
     using namespace std;
 
     int main() {       
-      int n (0); // lire la chaine de caractère  
-      cin >> n;      
-      
-      // à compléter    
+        int n (0); // lire la chaine de caractère  
+        cin >> n;      
+        
+        // à compléter    
 
-      return 0;
+        return 0;
     }
 
   corrected: |
@@ -21,18 +21,18 @@ code:
     using namespace std;
 
     int main() {       
-      int n (0); // lire la chaine de caractère  
-      cin >> n;      
-      
-      if(n == 8) {
-        cout << "Suffisant" << endl;
-      } else if(n < 8) {
-        cout << "Il faut dormir plus" << endl;
-      } else {
-        cout << "Bravo !" << endl;
-      }      
+        int n (0); // lire la chaine de caractère  
+        cin >> n;      
+        
+        if(n == 8) {
+            cout << "Suffisant" << endl;
+        } else if(n < 8) {
+            cout << "Il faut dormir plus" << endl;
+        } else {
+            cout << "Bravo !" << endl;
+        }      
 
-      return 0;
+        return 0;
     }
 
 tests:
