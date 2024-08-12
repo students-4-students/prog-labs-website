@@ -4,7 +4,9 @@ description: 'Faites des calculs avec des variables.'
 
 code:
   default: |
-    public class Main(){
+    import java.util.Scanner;
+
+    class Main {
       public static void main(String[] args){
         // ignorez ces lignes
         // elles servent à initialiser les variables
@@ -21,7 +23,9 @@ code:
       }
     }
   corrected: |
-    public class Main(){
+    import java.util.Scanner;
+
+    class Main {
       public static void main(String[] args){
         // ne faites pas attention à ces deux lignes
         // elles servent à initialiser les variables
