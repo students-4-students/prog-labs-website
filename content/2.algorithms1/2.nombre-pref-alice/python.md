@@ -4,25 +4,13 @@ description: 'Manipuler les boucle for'
 
 code:
   default: |
-    class Main {
-        public static void main(String[] args) {
-            for (int i = ... ; ... ; ...) {
-                if (i != 78) {
-                    // à compléter
-                }
-            }
-        }
-    }
+    for i in range(..., ..., ...):
+    if i != 78:
+        # à compléter
   corrected: |
-    class Main {
-        public static void main(String[] args) {
-            for (int i = 0; i <= 99; i += 3) {
-                if (i != 78) {
-                    System.out.println(i);
-                }
-            }
-        }
-    }
+    for i in range(0, 100, 3):
+        if i != 78:
+            print(i)
 
 tests:
   - input: ''
@@ -94,10 +82,9 @@ Vous devez avoir une seule contrainte dans la boucle for qui est celle de vérif
   <summary>Indice</summary>
     Rappelez-vous qu’une boucle `for` est de cette forme. Il pourrait être intéressant de modifier un peu l’incrémentation que vous avez vu en cours…
 
-    ```java
-    for (initialisation ; condition ; incrémentation) {
-        // instructions à répéter
-    }
+    ```python
+    for i in range(début, fin, pas):
+        # instruction à répéter
     ```
 
 </details>
