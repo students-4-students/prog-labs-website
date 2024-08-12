@@ -28,21 +28,21 @@ code:
     print(texte1 + texte2) # on peut aussi stocker le résultat dans une variable intermédiaire
 
 tests:
-  - input: |
+  - input: |-
       42
       256
       Hello
       EPFL
-    expectedOutput: |
+    expectedOutput: |-
       10752
       298
       HelloEPFL
-  - input: |
+  - input: |-
       1
       2
       Salut
       EPFL
-    expectedOutput: |
+    expectedOutput: |-
       2
       3
       SalutEPFL
