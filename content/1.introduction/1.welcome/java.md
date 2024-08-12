@@ -17,18 +17,14 @@ code:
       }
     }
 
-runtime:
-  stdin:
-  stdout:
-
 tests:
   - input: ''
     expectedOutput: 'Hello EPFL'
 ---
 
-![Java](/banner/intro.png)
+![Intro](/banner/intro.png)
 
-## Introduction au Java
+### Introduction au Java 👨‍💻
 
 Bienvenue au cours de programmation de Students 4 Students ! 🎉
 
@@ -55,11 +51,11 @@ Si vous êtes à l'aise vous pouvez ne pas lire le cours, mais prenez votre temp
 
 Même si ce TP est entièrement faisable en ligne, ne restez pas seul derrière votre ordinateur ! **Discutez entre participants, posez des questions aux assistants**… c’est ce qui vous fera le plus progresser !
 
-## Consigne
+### Consigne
 
 Lancez le code pré-écrit dans l'éditeur de code.
 
-## Cours
+### Cours
 
 En Java, on a besoin d’un morceau de code qui sera toujours présent avant d'écrire notre propre code. Vous comprendrez pourquoi il est utile plus tard dans le semestre 🙂
 

@@ -3,7 +3,7 @@
   import type { TestSpec } from '~/pages/[serie]/loadExercise';
 
   const compilers: Record<AllowedLanguage, string> = {
-    cpp: 'gcc6502_1110',
+    cpp: 'g142',
     java: 'java2100',
     python: 'python312',
   } as const;
