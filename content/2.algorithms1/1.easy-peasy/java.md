@@ -1,5 +1,5 @@
 ---
-title: 'Easy-peasy'
+title: 'Easy Peasy'
 description: 'déboggage.'
 
 code:
