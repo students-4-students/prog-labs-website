@@ -1,5 +1,5 @@
 ---
-title: 'Java : Bienvenue !'
+title: 'Bienvenue !'
 description: 'Une rapide présentation du site de S4S Prog.'
 
 code:

@@ -1,5 +1,5 @@
 ---
-title: 'Java : Easy-peasy'
+title: 'Easy-peasy'
 description: 'déboggage.'
 
 code:

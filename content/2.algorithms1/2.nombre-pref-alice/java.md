@@ -1,5 +1,5 @@
 ---
-title: "Java : Nombre préféré d'Alice"
+title: "Nombre d'Alice"
 description: 'Manipuler les boucle for'
 
 code:
