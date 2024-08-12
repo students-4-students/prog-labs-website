@@ -16,8 +16,8 @@ code:
     class Main {
       public static void main(String[] args){
       
-        String a = 42;
-        int b = "Salut";
+        String a = "Salut";
+        int b = 42;
         boolean c = true;
 
       }

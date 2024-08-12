@@ -6,8 +6,8 @@ code:
   default: |
     # écrire votre code ici
   corrected: |
-    a = 42
-    b = "Salut"
+    a = "Salut"
+    b = 42
     c = True
 
 tests:
