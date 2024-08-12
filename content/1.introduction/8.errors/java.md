@@ -58,7 +58,7 @@ L’objectif est maintenant de vous apprendre à identifier et à corriger des e
 Considérez le code suivant, dont le but est d’afficher `On est au nombre : 0` puis `On est au nombre : 1` , etc. pour tous les nombres de 0 à 9.
 
 ```java
-public class Main {
+class Main {
 	public static void main(String[] args) {
 		for (int i = 0; i < 10;) {
 			int nombreActuel = "On est au nombre : " + i;
