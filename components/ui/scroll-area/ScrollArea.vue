@@ -25,7 +25,9 @@
     v-bind="delegatedProps"
     :class="cn('relative overflow-hidden', props.class)"
   >
-    <ScrollAreaViewport class="h-full w-full rounded-[inherit] [&>div]:!block">
+    <ScrollAreaViewport
+      class="h-full w-full rounded-[inherit] [&>div]:!flex [&>div]:flex-col [&>div]:min-h-full"
+    >
       <slot />
     </ScrollAreaViewport>
     <ScrollBar />

@@ -223,34 +223,38 @@
         <TabsContent
           v-for="(test, index) in tests"
           :value="`test-${index}`"
-          class="bg-background h-full rounded-t-lg p-5"
+          class="h-full"
         >
-          <div class="flex flex-col gap-4">
-            <PlaygroundTestsResultView v-if="test.input" title="Texte entré">
-              {{ test.input }}
-            </PlaygroundTestsResultView>
-            <PlaygroundTestsResultView
-              v-if="test.expectedOutput && test.expectedOutput !== test.actual"
-              title="Résultat attendu"
-            >
-              <div class="text-green-800 dark:text-green-400">
-                {{ test.expectedOutput }}
-              </div>
-            </PlaygroundTestsResultView>
-            <PlaygroundTestsResultView
-              v-if="test.actual"
-              title="Résultat produit"
-            >
-              <div
-                :class="
-                  test.actual !== test.expectedOutput &&
-                  'text-red-800 dark:text-red-400'
+          <ScrollArea class="h-full rounded-t-lg overflow-auto">
+            <div class="flex flex-col grow gap-4 p-5 pb-20 bg-background">
+              <PlaygroundTestsResultView v-if="test.input" title="Texte entré">
+                {{ test.input }}
+              </PlaygroundTestsResultView>
+              <PlaygroundTestsResultView
+                v-if="
+                  test.expectedOutput && test.expectedOutput !== test.actual
                 "
+                title="Résultat attendu"
               >
-                {{ test.actual }}
-              </div>
-            </PlaygroundTestsResultView>
-          </div>
+                <div class="text-green-800 dark:text-green-400">
+                  {{ test.expectedOutput }}
+                </div>
+              </PlaygroundTestsResultView>
+              <PlaygroundTestsResultView
+                v-if="test.actual"
+                title="Résultat produit"
+              >
+                <div
+                  :class="
+                    test.actual !== test.expectedOutput &&
+                    'text-red-800 dark:text-red-400'
+                  "
+                >
+                  {{ test.actual }}
+                </div>
+              </PlaygroundTestsResultView>
+            </div>
+          </ScrollArea>
         </TabsContent>
       </div>
     </TabsRoot>

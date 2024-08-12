@@ -137,9 +137,10 @@
   />
   <!-- Modals -->
   <PlaygroundDialogExerciseCompletion
+    v-if="isCompleted"
     :nextExerciseUrl="surroundingExerciseUrls[1]"
-    :open="isCompleted"
     @openChange="isCompleted = $event"
+    default-open
   />
   <!-- Playground -->
   <ResizablePanelGroup direction="horizontal" class="flex w-full h-full">
@@ -157,7 +158,7 @@
     <ResizableHandle id="instructions" with-handle />
     <ResizablePanel>
       <ResizablePanelGroup id="code-terminal-group" direction="vertical">
-        <ResizablePanel id="editor" :min-size="35">
+        <ResizablePanel id="editor" :min-size="15">
           <PlaygroundTabs v-model="currentTab" :default-value="EditorTab.Code">
             <PlaygroundTabsList>
               <PlaygroundTabsTrigger :value="EditorTab.Code">
@@ -234,10 +235,8 @@
         <ResizablePanel
           v-if="tests && tests?.length !== 0"
           id="terminal"
-          :min-size="25"
           :default-size="35"
-          :max-size="80"
-          class="min-h-12"
+          class="min-h-16"
         >
           <PlaygroundTestsRunner
             v-if="playgroundData.exercise"
