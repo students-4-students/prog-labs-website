@@ -12,6 +12,9 @@
   const studentData = useStudentDataStore();
   const { section } = storeToRefs(studentData);
 
+  const isLoadingNextExercise = ref(false);
+  const isLoadingPreviousExercise = ref(false);
+
   const colorMode = useColorMode();
   const isDarkMode = computed(() => colorMode.value === 'dark');
   function switchColorMode() {
@@ -58,12 +61,25 @@
           <Tooltip>
             <TooltipTrigger>
               <Button
-                @click="navigateTo(previousExerciseUrl)"
-                :disabled="!previousExerciseUrl"
+                @click="
+                  () => {
+                    isLoadingPreviousExercise = true;
+                    navigateTo(previousExerciseUrl);
+                  }
+                "
+                :disabled="
+                  !previousExerciseUrl ||
+                  isLoadingPreviousExercise ||
+                  isLoadingNextExercise
+                "
                 variant="outline"
                 size="icon"
               >
-                <LucideChevronLeft class="w-4 h-4" />
+                <LucideLoaderCircle
+                  v-if="isLoadingPreviousExercise"
+                  class="w-4 h-4 animate-spin"
+                />
+                <LucideChevronLeft v-else class="w-4 h-4" />
               </Button>
             </TooltipTrigger>
             <TooltipContent>
@@ -93,12 +109,25 @@
 
         <Button
           v-if="isPlayground"
-          @click="navigateTo(nextExerciseUrl)"
-          :disabled="!nextExerciseUrl"
+          @click="
+            () => {
+              isLoadingNextExercise = true;
+              navigateTo(nextExerciseUrl);
+            }
+          "
+          :disabled="
+            !nextExerciseUrl ||
+            isLoadingPreviousExercise ||
+            isLoadingNextExercise
+          "
           variant="default"
           size="default"
         >
-          <LucideChevronRight class="w-4 h-4 mr-1" />
+          <LucideLoaderCircle
+            v-if="isLoadingNextExercise"
+            class="w-4 h-4 mr-1 animate-spin"
+          />
+          <LucideChevronRight v-else class="w-4 h-4 mr-1" />
           {{ nextExerciseUrl ? 'Exercice suivant' : 'Aucun exercice suivant' }}
         </Button>
 
