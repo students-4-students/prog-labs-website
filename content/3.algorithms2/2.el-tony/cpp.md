@@ -1,6 +1,6 @@
 ---
 title: 'El Tony'
-description: 'todo '
+description: 'Saurez-vous trouver une solution optimale... ?'
 
 code:
   default: |
@@ -58,7 +58,7 @@ tests:
 
 ### Enoncé
 
-Tony, étudiant en IC, est addict aux matés, cette addiction s'accentue de plus en plus pendant la période de révision (mois de Juillet uniquement).
+Tony, étudiant à l'EPFL, est addict aux matés, cette addiction s'accentue de plus en plus pendant la période de révision (mois de Juillet uniquement).
 
 Il boit chaque jour un maté de plus que le nombre de maté qu'il a bu la veille. Il commence par 1 maté le premier jour.
 
