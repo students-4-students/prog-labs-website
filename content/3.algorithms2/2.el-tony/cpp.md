@@ -4,30 +4,35 @@ description: 'todo '
 
 code:
   default: |
-    import java.util.Scanner;
+    #include <iostream>
+    using namespace std;
 
-    class Main {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
-            int jourDebut = scanner.nextInt(); // lire le jour de début
-            int jourFin = scanner.nextInt(); // lire le jour de fin
+    int main() {
+
+      int jourDebut (0); // lire le jour de debut
+      cin >> jourDebut;
+      int jourFin (0); // lire le jour de fin
+      cin >> jourFin;
             
-            // à compléter
-            
-        }
+      // à compléter
+
+      return 0;
     }
   corrected: |
-    import java.util.Scanner;
+    #include <iostream>
+    using namespace std;
 
-    class Main {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
-            int jourDebut = scanner.nextInt(); // lire le jour de debut
-            int jourFin = scanner.nextInt(); // lire le jour de fin
+    int main() {
+
+      int jourDebut (0); // lire le jour de debut
+      cin >> jourDebut;
+      int jourFin (0); // lire le jour de fin
+      cin >> jourFin;
             
-            int nbJour = jourFin - jourDebut + 1;
-            System.out.println( (nbJour + 1) * nbJour / 2 );
-        }
+      int nbJour (jourFin - jourDebut + 1);
+      cout << ((nbJour + 1) * nbJour) / 2 << endl;
+
+      return 0;
     }
 
     // L’informatique et la programmation
