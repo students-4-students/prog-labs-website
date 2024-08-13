@@ -25,6 +25,10 @@
     };
   }
 
+  useHead({
+    title: 'À propos',
+  });
+
   const data: AboutCategoryData[] = [
     {
       title: 'Responsable du projet & référent de cours',
