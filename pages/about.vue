@@ -15,6 +15,7 @@
     title: string;
     icon: any;
     members: (AboutCategoryMemberData | string)[];
+    photoUrl?: string | undefined;
     contact?: {
       email?: string;
       telegram?: string;
@@ -26,14 +27,19 @@
 
   const data: AboutCategoryData[] = [
     {
-      title: 'Référent de cours & Responsable',
+      title: 'Référent de cours',
       icon: LucideBook,
-      members: ['Simon'],
+      members: [
+        {
+          name: 'Simon',
+          photoUrl: '/team/simon.png',
+        },
+      ],
       contact: {
         email: 'smnlefort@gmail.com',
         telegram: '@androz2091',
         discord: '@androz2091',
-        linkedIn: 'simonlefort',
+        linkedIn: 'simon-lefort',
       },
     },
     {
@@ -55,12 +61,29 @@
     {
       title: 'Rédacteurs de la série 1',
       icon: LucidePenTool,
-      members: ['Emmanuel', 'Mehdi', 'Paolo', 'Blanche'],
+      members: [
+        'Emmanuel',
+        'Mehdi',
+        'Paolo',
+        {
+          name: 'Blanche',
+          photoUrl: '/team/blanche.png',
+        },
+      ],
     },
     {
       title: 'Rédacteurs de la série 2 et 3',
       icon: LucidePenTool,
-      members: ['Habib', 'Eliott', 'Ali', 'Paolo', 'Blanche'],
+      members: [
+        'Habib',
+        'Eliott',
+        'Ali',
+        'Paolo',
+        {
+          name: 'Blanche',
+          photoUrl: '/team/blanche.png',
+        },
+      ],
     },
   ];
 </script>
@@ -110,6 +133,7 @@
                 v-if="contact.linkedIn"
                 class="contact-element"
                 :href="`https://linkedin.com/in/${contact.linkedIn}`"
+                target="_blank"
               >
                 <NuxtImg src="/logos/linkedIn.svg" class="w-4 h-4 m-1" />
                 {{ contact.linkedIn }}
@@ -122,6 +146,7 @@
                 v-if="contact.github"
                 class="contact-element"
                 :href="`https://github.com/${contact.github}`"
+                target="_blank"
               >
                 <NuxtImg
                   src="/logos/github.svg"

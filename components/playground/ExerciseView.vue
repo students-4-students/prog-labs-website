@@ -26,7 +26,7 @@
           </Button>
           <Button variant="outline" size="lg">
             <LucideUsers class="h-4 mr-1" />
-            À propos
+            <NuxtLink to="/about"> Auteurs </NuxtLink>
           </Button>
         </div>
       </ScrollArea>
