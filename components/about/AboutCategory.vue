@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center space-x-4">
     <div
-      class="relative flex items-center justify-center text-background w-16 row-[span_2]"
+      class="relative flex items-center justify-center text-background w-12 row-[span_2]"
     >
       <div class="absolute">
         <slot name="icon" />
@@ -20,6 +20,8 @@
         />
       </svg>
     </div>
-    <h3 class="text-3xl text-primary font-semibold"><slot /></h3>
+    <h3 class="text-2xl text-primary font-semibold text-wrap max-w-80">
+      <slot />
+    </h3>
   </div>
 </template>

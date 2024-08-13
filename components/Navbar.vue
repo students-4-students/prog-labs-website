@@ -44,7 +44,11 @@
         <TooltipProvider v-if="!isPlayground">
           <Tooltip>
             <TooltipTrigger>
-              <Button variant="outline" size="icon">
+              <Button
+                @click="navigateTo('/about')"
+                variant="outline"
+                size="icon"
+              >
                 <LucideCircleHelp class="w-4 h-4" />
               </Button>
             </TooltipTrigger>
