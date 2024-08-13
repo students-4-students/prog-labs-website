@@ -45,7 +45,12 @@
     {
       title: 'Développeur principal & coordinateur web',
       icon: LucideFolderCode,
-      members: ['Maxence'],
+      members: [
+        {
+          name: 'Maxence',
+          photoUrl: '/team/maxence.png',
+        },
+      ],
       contact: {
         email: 'maxence.espagnet16@gmail.com',
         discord: '@max0253',
