@@ -20,7 +20,9 @@
         />
       </svg>
     </div>
-    <h3 class="text-2xl text-primary font-semibold text-wrap max-w-80">
+    <h3
+      class="text-2xl text-primary font-semibold text-wrap max-w-80 leading-7"
+    >
       <slot />
     </h3>
   </div>
