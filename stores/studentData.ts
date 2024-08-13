@@ -119,13 +119,17 @@ export const Sections: Record<SectionCode, SectionData> = {
   },
 };
 
+export interface StudentData {
+  sectionCode: SectionCode | undefined;
+}
+
 export const useStudentDataStore = defineStore({
   id: 'studentData',
-  state: () => ({
-    sectionCode: useLocalStorage<SectionCode | undefined>(
-      'section-code',
-      undefined,
-    ),
+  persist: {
+    storage: persistedState.localStorage,
+  },
+  state: (): StudentData => ({
+    sectionCode: undefined,
   }),
   getters: {
     section: (state) =>

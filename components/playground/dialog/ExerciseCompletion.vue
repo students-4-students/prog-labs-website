@@ -15,9 +15,7 @@
         />
         <DialogTitle>Exercice réussi !</DialogTitle>
         <DialogDescription>
-          Laboris commodo cillum est laborum nulla do nulla eu velit. Eu ullamco
-          nostrud ex adipisicing duis ad cupidatat. Consectetur ex esse occaecat
-          pariatur.
+          Bravo ! Votre code fonctionne exactement comme demandé.
         </DialogDescription>
       </DialogHeader>
 

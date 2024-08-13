@@ -13,7 +13,7 @@ export class ClangdLanguageServer extends LanguageServer {
    */
   static async initialize() {
     const worker = new ClangdWorker();
-    await LanguageServer.awaitWorkerLoad(worker);
+    await LanguageServer.awaitWorkerLoad(worker, 15000);
 
     return new ClangdLanguageServer({
       languageId: 'cpp',

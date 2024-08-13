@@ -33,3 +33,5 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+- ne pas mettre de tabs dans les codes, mais des espaces

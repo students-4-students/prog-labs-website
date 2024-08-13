@@ -24,9 +24,9 @@
           <LucideSwatchBook class="ml-2 h-5 w-5" />
         </AlertDialogTitle>
         <AlertDialogDescription>
-          Voluptate reprehenderit aute ullamco culpa consectetur laboris
-          voluptate ea proident ut. Reprehenderit occaecat dolore qui ad enim
-          dolor.
+          Bienvenue sur le site web de programmation de Students 4 Students !
+          Chaque section apprend un langage de programmation différent, veuillez
+          choisir celle dans laquelle vous êtes inscrits en BA1 ou CMS.
         </AlertDialogDescription>
       </AlertDialogHeader>
       <AlertDialogFooter>

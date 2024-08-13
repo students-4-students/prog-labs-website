@@ -1,5 +1,4 @@
 import type { ParsedContent } from '@nuxt/content';
-import type { ModelRef } from 'vue';
 
 export type PayloadData =
   | {
@@ -13,6 +12,8 @@ export type PayloadData =
       exercise: null;
     };
 
+export type TestSpec = { input: string; expectedOutput: string };
+
 /**
  * Loads the serie and exercise data from the server.
  *
@@ -25,9 +26,14 @@ export type PayloadData =
 export async function loadExerciseData(
   serieName: string,
   exerciseName: string,
-  language: AllowedLanguage,
+  language: AllowedLanguage | undefined,
   defaultFallbackLanguage: AllowedLanguage,
 ): Promise<PayloadData> {
+  // Check if the student has selected a code language
+  if (!language) {
+    return { serie: null, exercise: null, language: null };
+  }
+
   // Fetch the serie from the server
   const serieData = await queryContent(serieName)
     .findOne()
@@ -59,51 +65,6 @@ export async function loadExerciseData(
     serie: serieData,
     exercise: exerciseData,
   };
-}
-
-/**
- * Loads an exercise into the playground.
- *
- * @param serieName - The name of the serie
- * @param exerciseName - The name of the exercise
- * @param language - The code language of the exercise
- * @param writtenCode - The model for the written code
- * @param correctedCode - The model for the corrected code
- * @returns The exercise and serie data with the final code language used.
- */
-export async function loadExerciseIntoPlayground(
-  serieName: string,
-  exerciseName: string,
-  language: AllowedLanguage | undefined,
-  writtenCode: ModelRef<string | undefined, string>,
-  correctedCode: ModelRef<string | undefined, string>,
-) {
-  // Check if the student has selected a language
-  if (language === undefined) {
-    return {
-      language: null,
-      serie: null,
-      exercise: null,
-    };
-  }
-
-  const data = await loadExerciseData(
-    serieName,
-    exerciseName,
-    language,
-    'python',
-  );
-
-  if (data.exercise) {
-    // Load the corrected code
-    correctedCode.value = data.exercise.code?.corrected;
-    writtenCode.value = data.exercise.code?.default;
-
-    // Update the page title and meta tags
-    useContentHead(data.exercise);
-  }
-
-  return data;
 }
 
 /**

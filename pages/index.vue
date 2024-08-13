@@ -5,6 +5,8 @@
     title: 'Exercices',
   });
 
+  const nuxtApp = useNuxtApp();
+
   const studentData = useStudentDataStore();
   const { codeLanguage } = storeToRefs(studentData);
   // Temporary banner code
@@ -18,15 +20,24 @@
    * @returns The series that matches the filter
    */
   function queryAllSeries(filter: QueryBuilderWhere) {
-    return useAsyncData(`all-series-${JSON.stringify(filter)}`, async () => {
-      // Try to fetch the serie from the server
-      // await new Promise((resolve) => setTimeout(resolve, 5000));
-      return await queryContent()
-        // Use _dir: '' to only include series
-        // which are at the root of the 'content/' folder
-        .where({ _dir: '', ...filter })
-        .find();
-    });
+    return useAsyncData(
+      `all-series-${JSON.stringify(filter)}`,
+      async () => {
+        // Try to fetch the serie from the server
+        // await new Promise((resolve) => setTimeout(resolve, 5000));
+        return await queryContent()
+          .only(['_path', 'title', 'description', 'fallbackLanguage'])
+          // Use _dir: '' to only include series
+          // which are at the root of the 'content/' folder
+          .where({ _dir: '', ...filter })
+          .find();
+      },
+      {
+        getCachedData(key) {
+          return nuxtApp.payload.data[key] || nuxtApp.static.data[key];
+        },
+      },
+    );
   }
 
   const EXPECTED_SERIES_NB = 2;
@@ -41,22 +52,35 @@
 </script>
 
 <template>
-  <div class="flex flex-col gap-y-12 px-4 md:px-8 py-8">
-    <div class="flex flex-col gap-5">
-      <h2 className="flex items-baseline text-4xl font-bold tracking-normal">
-        Exercices
-        <LucideBookCopy class="ml-3 w-6 h-6" />
-      </h2>
+  <div class="flex flex-col gap-y-6 px-4 md:px-8 py-4">
+    <div class="flex flex-col gap-4 lg:gap-6">
+      <div class="space-y-1">
+        <h2 class="flex items-baseline text-4xl font-bold tracking-normal">
+          Exercices disponibles
+          <LucideBookCopy class="ml-3 w-6 h-6" />
+        </h2>
+        <p class="text-xl text-foreground/75 xl:max-w-[70%]">
+          Lors du 1er TP, concentrez-vous sur la série de syntaxe, puis
+          commencez 1 ou 2 algorithmes et terminez les autres lors du 2ᵉ TP. Pas
+          d'inquiétude si tout n'est pas fini : les séries d'exercices de l'EPFL
+          dépassent souvent le temps imparti.
+        </p>
+      </div>
       <div class="flex flex-col">
-        <div class="flex flex-col md:flex-row gap-8 flex-wrap">
+        <div class="flex flex-col md:flex-row gap-4 xl:gap-6 flex-wrap">
           <SerieCardSkeleton
             v-if="seriesStatus === 'pending'"
             v-for="_ in EXPECTED_SERIES_NB"
           />
-          <SerieCard v-else v-for="serie in series" :serieData="serie">
+          <SerieCard
+            v-for="serie in series"
+            v-else
+            :serieData="serie"
+            class="sm:min-w-[28rem] max-w-[32rem]"
+          >
             <template #banner>
               <NuxtImg
-                class="w-full aspect-[16/10] mb-2 self-center object-contain"
+                class="w-full aspect-[16/8] -mt-4 mb-4 self-center object-contain"
                 :src="`/logos/stylized/${bannerFileName}.png`"
               />
             </template>
@@ -64,24 +88,23 @@
         </div>
       </div>
     </div>
-    <div class="flex flex-col space-y-5">
-      <h2 className="flex items-baseline text-4xl font-bold tracking-normal">
+    <div class="flex flex-col space-y-4">
+      <h2 class="flex items-baseline text-4xl font-bold tracking-normal">
         Partenaires
         <LucideHandshake class="ml-3 w-6 h-6" />
       </h2>
       <SerieCardSkeleton
         v-if="partnerSeriesStatus === 'pending'"
         v-for="_ in EXPECTED_PARTNER_SERIES_NB"
-        class="max-w-[760px]"
       />
       <SerieCard
         v-else
         v-for="partnerSerie in partnerSeries"
         :serieData="partnerSerie"
-        class="max-w-[760px]"
+        class="max-w-[47rem]"
       >
         <template #banner>
-          <NuxtImg class="h-28 mb-4 aspect-auto" src="/logos/polympiads.svg" />
+          <NuxtImg class="h-24 mb-4 aspect-auto" src="/logos/polympiads.svg" />
         </template>
       </SerieCard>
     </div>

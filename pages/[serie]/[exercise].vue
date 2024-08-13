@@ -1,37 +1,28 @@
 <script setup lang="ts">
   import type { ParsedContent } from '@nuxt/content';
-  import { createHighlighter, type BundledTheme } from 'shiki';
   import {
     getExerciseUrl,
-    loadExerciseIntoPlayground,
+    loadExerciseData,
     loadSurroundingExercises,
     type PayloadData,
+    type TestSpec,
   } from './loadExercise';
 
   definePageMeta({
     layout: 'playground',
   });
 
-  const studentData = useStudentDataStore();
-  const { codeLanguage, sectionCode } = storeToRefs(studentData);
+  enum EditorTab {
+    Code = 'code',
+    CorrectedCode = 'correctedCode',
+  }
 
-  const themes: Record<'light' | 'dark', BundledTheme> = {
-    light: 'github-light',
-    dark: 'github-dark',
-  };
+  const nuxtApp = useNuxtApp();
 
-  const colorMode = useColorMode();
-  const currentTheme = computed(() =>
-    colorMode.value === 'dark' ? themes.dark : themes.light,
-  );
-
-  const highlighter = await createHighlighter({
-    themes: Object.values(themes),
-    langs: ALLOWED_LANGUAGES,
-  });
+  const wantsToSeeCorrectedCode = ref(false);
+  const currentTab = ref(EditorTab.Code);
 
   const route = useRoute();
-  const currentTab = ref('code');
   const exerciseName = route.params.exercise.toString();
   const serieName = route.params.serie.toString();
 
@@ -39,28 +30,47 @@
   const writtenCode = defineModel<string>('writtenCode');
   const correctedCode = defineModel<string>('correctedCode');
 
+  const tests = ref<TestSpec[] | undefined>();
+  const isCompleted = ref(false);
+
+  // Load & save student data
+  const studentData = useStudentDataStore();
+  const { codeLanguage, sectionCode } = storeToRefs(studentData);
+
   // Load the content for the current exercise asynchronously
   const { data: playgroundData } = await useAsyncData<PayloadData>(
     `${serieName}-${exerciseName}-${sectionCode.value}`,
     async () =>
-      await loadExerciseIntoPlayground(
+      await loadExerciseData(
         serieName,
         exerciseName,
         codeLanguage.value,
-        writtenCode,
-        correctedCode,
+        'python',
       ),
     {
       watch: [sectionCode],
+      getCachedData(key) {
+        return nuxtApp.payload.data[key] || nuxtApp.static.data[key];
+      },
       default() {
         return { language: null, serie: null, exercise: null };
       },
     },
   );
 
-  // Make the written code persists even after page reloads
+  // Load the content for the current exercise ands
+  // make the written code persists even after page reloads
   if (playgroundData.value.exercise) {
     const playgroundState = usePlaygroundStateStore();
+
+    // Load tests for this exercise
+    tests.value = playgroundData.value.exercise.tests ?? [];
+    // Load the corrected code
+    correctedCode.value = playgroundData.value.exercise.code?.corrected;
+    writtenCode.value = playgroundData.value.exercise.code?.default;
+
+    // Update the page title and meta tags
+    useContentHead(playgroundData.value.exercise);
 
     // Set the default editor code based on the previous playground state
     if (
@@ -86,6 +96,10 @@
     `${serieName}-${exerciseName}-navigation`,
     async () => await loadSurroundingExercises(playgroundData.value),
     {
+      watch: [sectionCode],
+      getCachedData(key) {
+        return nuxtApp.payload.data[key] || nuxtApp.static.data[key];
+      },
       default(): ParsedContent[] {
         return [];
       },
@@ -122,10 +136,12 @@
     is-playground
   />
   <!-- Modals -->
-  <!-- <PlaygroundDialogExerciseCompletion
+  <PlaygroundDialogExerciseCompletion
+    v-if="isCompleted"
     :nextExerciseUrl="surroundingExerciseUrls[1]"
+    @openChange="isCompleted = $event"
     default-open
-  /> -->
+  />
   <!-- Playground -->
   <ResizablePanelGroup direction="horizontal" class="flex w-full h-full">
     <ResizablePanel
@@ -135,31 +151,38 @@
       :default-size="30"
       class="min-w-[27.5rem]"
     >
-      <PlaygroundExerciseView
+      <LazyPlaygroundExerciseView
         :exerciseData="<ParsedContent>playgroundData.exercise"
       />
     </ResizablePanel>
     <ResizableHandle id="instructions" with-handle />
     <ResizablePanel>
       <ResizablePanelGroup id="code-terminal-group" direction="vertical">
-        <ResizablePanel id="editor" :min-size="35">
-          <PlaygroundTabs v-model="currentTab" default-value="code">
+        <ResizablePanel id="editor" :min-size="15">
+          <PlaygroundTabs v-model="currentTab" :default-value="EditorTab.Code">
             <PlaygroundTabsList>
-              <PlaygroundTabsTrigger value="code">
+              <PlaygroundTabsTrigger :value="EditorTab.Code">
                 <template #icon>
                   <LucideCode />
                 </template>
                 {{ editorTabName }}
               </PlaygroundTabsTrigger>
-              <PlaygroundTabsTrigger
-                value="correctedCode"
-                :disabled="correctedCode == null"
+              <PlaygroundDialogCorrectedCodeWarning
+                @acknowledge-warning="wantsToSeeCorrectedCode = true"
+                :only-keep-trigger="wantsToSeeCorrectedCode"
               >
-                <template #icon>
-                  <LucideBook />
+                <template #trigger>
+                  <PlaygroundTabsTrigger
+                    :value="EditorTab.CorrectedCode"
+                    :disabled="correctedCode == null"
+                  >
+                    <template #icon>
+                      <LucideBook />
+                    </template>
+                    Code corrigé
+                  </PlaygroundTabsTrigger>
                 </template>
-                Code corrigé
-              </PlaygroundTabsTrigger>
+              </PlaygroundDialogCorrectedCodeWarning>
               <!-- Add bottom border to the rest of the bar -->
               <div class="flex border-b grow h-full items-center justify-start">
                 <Button
@@ -174,8 +197,8 @@
             </PlaygroundTabsList>
             <KeepAlive>
               <PlaygroundTabsContent
-                v-if="currentTab === 'code'"
-                value="code"
+                v-if="currentTab === EditorTab.Code"
+                :value="EditorTab.Code"
                 forceMount
               >
                 <PlaygroundEditor
@@ -187,14 +210,17 @@
             </KeepAlive>
             <KeepAlive>
               <PlaygroundTabsContent
-                v-if="currentTab === 'correctedCode'"
-                value="correctedCode"
+                v-if="currentTab === EditorTab.CorrectedCode"
+                :value="EditorTab.CorrectedCode"
                 forceMount
               >
                 <PlaygroundEditor
                   v-if="playgroundData.language && correctedCode"
                   :language="playgroundData.language"
                   v-model="correctedCode"
+                  :class="{
+                    'blur-monaco-editor-code': !wantsToSeeCorrectedCode,
+                  }"
                   readOnly
                 />
               </PlaygroundTabsContent>
@@ -202,15 +228,34 @@
           </PlaygroundTabs>
         </ResizablePanel>
         <ResizableHandle id="editor" with-handle />
-        <ResizablePanel id="terminal" :default-size="30" class="min-h-12">
-          <div class="flex flex-col h-full">
-            <PlaygroundTerminal
-              :highlighter="highlighter"
-              :currentTheme="currentTheme"
-            />
-          </div>
+        <ResizablePanel
+          v-if="tests && tests?.length !== 0"
+          id="terminal"
+          :default-size="35"
+          class="min-h-16"
+        >
+          <PlaygroundTestsRunner
+            v-if="playgroundData.exercise"
+            :testSpecs="tests"
+            :writtenCode="writtenCode"
+            :language="playgroundData.language"
+            :enabled="currentTab === 'code' && writtenCode !== undefined"
+            @success="
+              () => {
+                isCompleted = true;
+                wantsToSeeCorrectedCode = true;
+              }
+            "
+          />
         </ResizablePanel>
       </ResizablePanelGroup>
     </ResizablePanel>
   </ResizablePanelGroup>
 </template>
+
+<style lang="css">
+  /* Only blur the code and not the lines */
+  .blur-monaco-editor-code .monaco-editor .overflow-guard .editor-scrollable {
+    @apply blur-sm pointer-events-none;
+  }
+</style>
