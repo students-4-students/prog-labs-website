@@ -1,5 +1,10 @@
 <script setup lang="ts">
   import type { ParsedContent } from '@nuxt/content';
+  import {
+    ScrollAreaCorner,
+    ScrollAreaRoot,
+    ScrollAreaViewport,
+  } from 'radix-vue';
 
   const props = defineProps<{
     exerciseData: ParsedContent;

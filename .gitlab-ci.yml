@@ -1,7 +1,7 @@
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
-  DOCKER_IMAGE: "docker:latest"
-  FOLDER_TO_BUILD: "."
+  DOCKER_IMAGE: 'docker:latest'
+  FOLDER_TO_BUILD: '.'
 
 stages:
   - trigger
@@ -33,7 +33,6 @@ docker-build:
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
   when: on_success
-
 
 docker-push-latest:
   extends: .docker-stage

@@ -10,7 +10,7 @@
 
 <template>
   <AlertDialog :open="isOpen">
-    <AlertDialogTrigger @click="isOpen = true">
+    <AlertDialogTrigger @click="isOpen = true" as-child>
       <slot name="trigger" />
     </AlertDialogTrigger>
     <AlertDialogContent @escape-key-down.prevent trap-focus>
