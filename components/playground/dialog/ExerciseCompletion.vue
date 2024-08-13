@@ -2,6 +2,8 @@
   const props = defineProps<{
     nextExerciseUrl?: string;
   }>();
+
+  const isLoadingNextExercise = ref(false);
 </script>
 
 <template>
@@ -24,10 +26,19 @@
           Changer d'exercice
         </Button>
         <Button
-          :disabled="!props.nextExerciseUrl"
-          @click="navigateTo(props.nextExerciseUrl)"
+          :disabled="!props.nextExerciseUrl || isLoadingNextExercise"
+          @click="
+            () => {
+              isLoadingNextExercise = true;
+              navigateTo(props.nextExerciseUrl);
+            }
+          "
           size="default"
         >
+          <LucideLoaderCircle
+            v-if="isLoadingNextExercise"
+            class="w-4 h-4 mr-1 animate-spin"
+          />
           {{
             props.nextExerciseUrl
               ? 'Prochain exercice'
