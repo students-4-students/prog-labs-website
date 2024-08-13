@@ -27,7 +27,7 @@
 
   const data: AboutCategoryData[] = [
     {
-      title: 'Référent de cours',
+      title: 'Responsable du projet & référent de cours',
       icon: LucideBook,
       members: [
         {
@@ -59,7 +59,7 @@
       },
     },
     {
-      title: 'Développeurs',
+      title: 'Développeurs du site web',
       icon: LucideLaptop,
       members: ['Nicolas', 'Eliott', 'Antoine'],
     },
@@ -77,7 +77,7 @@
       ],
     },
     {
-      title: 'Rédacteurs de la série 2 et 3',
+      title: 'Rédacteurs des séries 2 & 3',
       icon: LucidePenTool,
       members: [
         'Habib',
