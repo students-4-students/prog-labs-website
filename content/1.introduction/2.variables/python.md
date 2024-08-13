@@ -78,4 +78,4 @@ variable = True # la variable est à présent de type 'bool'
 
 > Note : pour celles et ceux voulant aller plus loin, en Python il existe une instruction permetant de déterminer à tout moment du programme le type courant d’une variable, c’est l’instruction `type(...)`. Par exemple pour afficher le type d’une variable vous pouvez utiliser la ligne suivante `print(type(variable))`
 
-Maintenant, c’est à vous de jouer. Déclarez trois variables, que vous nommerez `a`, `b` et `c`, en mettant dans a, `42`, dans b, `Salut`, et dans c, `True`.
+Maintenant, c’est à vous de jouer !

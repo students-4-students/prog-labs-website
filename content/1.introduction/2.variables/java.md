@@ -100,4 +100,4 @@ nombre = "Salut"; // ne fonctionne pas !
 String text = 2; // ne fonctionne pas non plus !
 ```
 
-Maintenant, c’est à vous de jouer. Déclarez trois variables, que vous nommerez `a`, `b` et `c`, en mettant dans a, `42`, dans b, `Salut`, et dans c, `true`.
+Maintenant, c’est à vous de jouer !
