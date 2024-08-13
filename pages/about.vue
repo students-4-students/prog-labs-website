@@ -61,7 +61,14 @@
     {
       title: 'Développeurs du site web',
       icon: LucideLaptop,
-      members: ['Nicolas', 'Eliott', 'Antoine'],
+      members: [
+        {
+          name: 'Nicolas',
+          photoUrl: '/team/nicolas.png',
+        },
+        'Eliott',
+        'Antoine',
+      ],
     },
     {
       title: 'Rédacteurs de la série 1',
