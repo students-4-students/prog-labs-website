@@ -4,38 +4,25 @@ description: 'Saurez-vous trouver une solution optimale... ?'
 
 code:
   default: |
-    import java.util.Scanner;
+    jourDebut = int(input()) # lire le jour de début
+    jourFin = int(input()) # lire le jour de fin
 
-    class Main {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
-            int jourDebut = scanner.nextInt(); // lire le jour de début
-            int jourFin = scanner.nextInt(); // lire le jour de fin
-            
-            // à compléter
-        }
-    }
+    # à compléter
+
   corrected: |
-    import java.util.Scanner;
+    jourDebut = int(input()) # lire le jour de début
+    jourFin = int(input()) # lire le jour de fin
 
-    class Main {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
-            int jourDebut = scanner.nextInt(); // lire le jour de debut
-            int jourFin = scanner.nextInt(); // lire le jour de fin
-            
-            int nbJour = jourFin - jourDebut + 1;
-            System.out.println( (nbJour + 1) * nbJour / 2 );
-        }
-    }
+    nbJour = jourFin - jourDebut + 1
+    print( ((nbJour + 1) * nbJour) // 2)
 
-    // L’informatique et la programmation
-    // ce n'est pas que des boucles for et des conditions
-    // il faut savoir utiliser les outils, il y a beaucoup de maths
-    // et de logique relié à la programmation,
-    // il faut être attentif et trouver a chaque fois
-    // le moyen le plus efficace en temps et en mémoire pour résoudre un problème.
-    // La programmation c'est avant tout raisonner.
+    # L’informatique et la programmation
+    # ce n'est pas que des boucles for et des conditions
+    # il faut savoir utiliser les outils, il y a beaucoup de maths
+    # et de logique relié à la programmation,
+    # il faut être attentif et trouver a chaque fois
+    # le moyen le plus efficace en temps et en mémoire pour résoudre un problème.
+    # La programmation c'est avant tout raisonner.
 
 tests:
   - input: |

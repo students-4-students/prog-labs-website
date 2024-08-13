@@ -1,13 +1,15 @@
 ---
-title: 'Java : EPFL'
-description: 'todo '
+title: 'ED Discussion'
+description: 'Saurez-vous trouver qui a répondu aux plus de questions ?'
 
 code:
   default: |
     import java.util.Scanner;
 
-    public class Main {
+    class Main {
         public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            
             // Les questions posées par chaque etudiant sont des constantes
             int QUESTIONS_POSEES_RAOUL = 1;
             int QUESTIONS_POSEES_GANIMARD = 0;
@@ -17,8 +19,8 @@ code:
             int pointsGanimard = 0;
             int pointsArsene = 0;
             for (int i = 0; i < 7; i++) {
-                System.out.println("Jour numéro : " + i);
-                System.out.println("Nombre de questions disponibles : ");
+                // Jour numéro i
+                // Le programme lit les questions disponibles ce jour-ci
                 int questionsDisponibles = scanner.nextInt(); // lire le nombre de questions disponibles ce jour la
                 int allQuestions = questionsDisponibles + QUESTIONS_POSEES_RAOUL + QUESTIONS_POSEES_GANIMARD + QUESTIONS_POSEES_ARSENE;
                 // à compléter la gestion de la logique du problème
@@ -32,8 +34,10 @@ code:
   corrected: |
     import java.util.Scanner;
 
-    public class Main {
+    class Main {
         public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+
             // Les questions posées par chaque etudiant sont des constantes
             int QUESTIONS_POSEES_RAOUL = 1;
             int QUESTIONS_POSEES_GANIMARD = 0;
@@ -43,8 +47,8 @@ code:
             int pointsGanimard = 0;
             int pointsArsene = 0;
             for (int i = 0; i < 7; i++) {
-                System.out.println("Jour numéro : " + i);
-                System.out.println("Nombre de questions disponibles : ");
+                // Jour numéro i
+                // Le programme lit les questions disponibles ce jour-ci
                 int questionsDisponibles = scanner.nextInt(); // lire le nombre de questions disponibles ce jour la
                 int allQuestions = questionsDisponibles + QUESTIONS_POSEES_RAOUL + QUESTIONS_POSEES_GANIMARD + QUESTIONS_POSEES_ARSENE;
                  // gestion de la logique
@@ -82,7 +86,7 @@ code:
             }
             // trouver l'étudiant avec le plus de point (afficher Raoul par défaut en cas d'égalité)
             if (pointsArsene > pointsGanimard && pointsArsene > pointsRaoul) {
-            System.out.println("Arsene");
+                System.out.println("Arsene");
             } else if (pointsGanimard > pointsRaoul && pointsGanimard > pointsArsene) {
                 System.out.println("Ganimard");
             } else {
@@ -98,10 +102,37 @@ code:
     // à savoir Ed Discussion. Soyez actif. Lisez les, répondez aux et posez des, questions quand vous avez le  
     // temps, c'est toujours du bien et des connaissances de plus
 
-runtime:
-  stdin:
-  stdout:
+tests:
+  - input: |
+      2
+      9
+      3
+      9
+      9
+      19
+      17
+    expectedOutput: 'Raoul'
+  - input: |
+      99
+      100
+      45
+      10
+      123
+      8
+      65
+    expectedOutput: 'Ganimard'
+  - input: |
+      27
+      45
+      22
+      46
+      38
+      26
+      26
+    expectedOutput: 'Arsene'
 ---
+
+![ED](/banner/ed.png)
 
 ### Enoncé
 
@@ -109,9 +140,9 @@ Ed Discussion est un site de questions réponses pour les étudiants utilisé ic
 
 Les étudiants posent leurs questions librement, et, les assistants ou les professeurs répondent à ces questions.
 
-Les étudiants peuvent aussi répondre aux questions des autres et c’est même conseillé, ca vous permet d’assimiler mieux le cours et les séries.
+Les étudiants peuvent aussi répondre aux questions des autres et c’est même conseillé, ça vous permet d’assimiler mieux le cours et les séries.
 
-Arsène, Ganimard et Raoul sont trois étudiants en IC qui répondent souvent aux questions. Le but de cet exo est de trouver qui a répondu le plus de questions, cependant il y a quelques règles qu'ils ont posées pour eux-mêmes :
+Arsène, Ganimard et Raoul sont trois étudiants en IC qui répondent souvent aux questions. Le but de cet exo est de trouver qui a répondu aux plus de questions, cependant il y a quelques règles qu'ils ont posées pour eux-mêmes :
 
 - Si un étudiant répond à une question, il est le seul à pouvoir répondre à cette question et il a +1.
 - Si un étudiant pose une question et qu'il répond à sa propre question, il perd -1.
@@ -120,7 +151,7 @@ Arsène, Ganimard et Raoul sont trois étudiants en IC qui répondent souvent au
 De plus on connait la “routine” de nos 3 étudiants :
 
 - Arsène pose 5 questions/jour et il a fait un bot qui répond automatiquement à toutes les questions des autres étudiants (il est malhonnête) même à ses propres questions (C’est le seul qui le fait)
-- Raoul répond jusqu’à 5 questions/jour (si disponibles). Il a toujours l'avantage sur Arsène. Il pose 1 question/jour. **Raoul répond aux questions des autres étudiants avant celle de ces amis.**
+- Raoul répond jusqu’à 5 questions/jour (si disponibles). Il a toujours l'avantage sur Arsène. Il pose 1 question/jour. **Raoul répond aux questions des autres étudiants avant celles de ses amis.**
 - Ganimard répond que le lundi et le vendredi, mais, répond d'un coup à toutes les questions disponibles (il a toujours l'avantage sur Raoul et Arsène) et ne pose jamais de question.
 
 ### Objectif
@@ -129,12 +160,19 @@ on va vous donner le nombre de questions disponibles\* chaque jour et le nombre 
 
 Le but est de trouver qui a le plus de points/semaine, si égalité afficher Raoul par défaut
 
-\*_les questions disponibles n'incluent pas les questions posées par ces 3 étudiants_
+- \*les questions disponibles n'incluent pas les questions posées par ces 3 étudiants\*\*
 
 ### Indice
 
-jour 0 —> Lundi
+<details>
+  <summary>Indices</summary>
+    1. `i` représente le numéro du jour de la semaine… ! `0` est donc Lundi, `1` Mardi, etc.
+    2. le 3ème indice est un spoiler, prenez une feuille et un stylo et réfléchissez plus amplement à ce problème (piste : lisez bien l’énoncé, divisez les situations par étudiant, par jour et étudiez les dépendances qui existent entre les différents facteurs de l’exercice…)
+    3. Il y a plusieurs cas à gérer :
+    - le cas du Lundi et du Vendredi, où Ganimard seulement répond
+    - sinon
+        - Raoul a chaque jour (=/= Lundi, Vendredi) 5 points. Pourquoi ? son ami Arsène pose chaque jour 5 questions et Raoul a l’avantage sur Arsène (c.-à-d. il répond avant lui), donc il est sur d’avoir les 5 points chaque jour (=/= Lundi, Vendredi) malgré toutes les conditions.
+        - dans le cas où le nombre de questions disponibles est inférieur à 5 (dans ce cas Arsène va répondre à une partie de ses propres questions, points négatifs !)
+        - dans le cas où le nombre de questions disponibles est plus que 5, alors Arsène va répondre à ses 5 questions (points négatifs !) + le reste (les questions restantes après que Raoul ait répondu sur les 5 questions)  des “questions disponibles” (points positifs !)
 
-jour 1 —> Mardi
-
-…
+</details>

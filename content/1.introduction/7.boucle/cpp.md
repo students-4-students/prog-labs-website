@@ -8,16 +8,16 @@ code:
     using namespace std;
 
     int main() {        
-      // ne faites pas attention à ces deux lignes
-      // elles servent à initialiser les variables
-      // (voir le cours)
-          
-      int n (0);
-      cin >> n;
-      
-      // complétez le code
+        // ne faites pas attention à ces deux lignes
+        // elles servent à initialiser les variables
+        // (voir le cours)
+            
+        int n (0);
+        cin >> n;
+        
+        // complétez le code
 
-      return 0;
+        return 0;
     }
   corrected: |
     // Exercice principal
@@ -26,18 +26,18 @@ code:
 
     int main() {  
 
-      // ne faites pas attention à ces deux lignes
-      // elles servent à initialiser les variables
-      // (voir le cours)
-          
-      int n (0);
-      cin >> n;
-          
-      for (int i(1); i <= n; i += 1) {
+        // ne faites pas attention à ces deux lignes
+        // elles servent à initialiser les variables
+        // (voir le cours)
+            
+        int n (0);
+        cin >> n;
+            
+        for (int i(1); i <= n; i += 1) {
         cout << i << endl;
-      }
+        }
 
-      return 0;
+        return 0;
     }
 
     // Aller plus loin n°1
@@ -45,11 +45,11 @@ code:
     using namespace std;
 
     int main() {        
-      for (int i(2); i <= n; i += 2) {            
-        cout << i << endl;     
-      }    
+        for (int i(2); i <= n; i += 2) {            
+            cout << i << endl;     
+        }    
 
-      return 0;
+        return 0;
     }
 
     // ou alors...
@@ -57,17 +57,17 @@ code:
     using namespace std;
 
     int main() {        
-      for (int i(2); i <= n; i += 1) {  
-              
-      // si le reste de la division par 2 est 0          
-      // c'est que i = 2k + 0 donc i est pair !            
-        if (i % 2 == 0) {                
-          cout << i << endl;            
-        }       
-        
-      }    
+        for (int i(2); i <= n; i += 1) {  
+                
+            // si le reste de la division par 2 est 0          
+            // c'est que i = 2k + 0 donc i est pair !            
+            if (i % 2 == 0) {                
+                cout << i << endl;            
+            }
 
-      return 0;
+        }    
+
+        return 0;
     }
 
     // Aller plus loin n°2
@@ -75,11 +75,11 @@ code:
     using namespace std;
 
     int main() {        
-      for (int i(n); i >= 1; i -= 1) {            
-        cout << i << endl;        
-      }    
+        for (int i(n); i >= 1; i -= 1) {            
+            cout << i << endl;        
+        }    
 
-      return 0;
+        return 0;
     }
 
 tests:

@@ -5,7 +5,7 @@ description: 'Trouvez les problèmes dans le code donné.'
 code:
   default: |
     for i in range(10)
-      nombreActuel = "On est au nombre : " + i
+        nombreActuel = "On est au nombre : " + i
     print(nombreActuel)
   corrected: |
     '''

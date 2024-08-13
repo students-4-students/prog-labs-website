@@ -5,16 +5,16 @@ description: 'Une rapide présentation du site de S4S Prog.'
 code:
   default: |
     class Main {
-      public static void main(String[] args) {
-        System.out.println("Hello EPFL"); // affiche "Hello EPFL"
-      }
+        public static void main(String[] args) {
+            System.out.println("Hello EPFL"); // affiche "Hello EPFL"
+        }
     }
   corrected: |
     // voilà le code corrigé (identique dans cet exemple)
     class Main {
-      public static void main(String[] args) {
-        System.out.println("Hello EPFL"); // affiche "Hello EPFL"
-      }
+        public static void main(String[] args) {
+            System.out.println("Hello EPFL"); // affiche "Hello EPFL"
+        }
     }
 
 tests:

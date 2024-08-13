@@ -7,64 +7,64 @@ code:
     import java.util.Scanner;
 
     class Main {
-      public static void main(String[] args) {
-          // ne faites pas attention à ces deux lignes
-          // elles servent à initialiser les variables
-          // (voir le cours)
-          Scanner scanner = new Scanner(System.in);
-          int n = scanner.nextInt();
-          
-          // complétez le code
-      
-      }
+        public static void main(String[] args) {
+            // ne faites pas attention à ces deux lignes
+            // elles servent à initialiser les variables
+            // (voir le cours)
+            Scanner scanner = new Scanner(System.in);
+            int n = scanner.nextInt();
+            
+            // complétez le code
+        
+        }
     }
   corrected: |
     import java.util.Scanner;
 
     class Main {
-      public static void main(String[] args) {
-          // ne faites pas attention à ces deux lignes
-          // elles servent à initialiser les variables
-          // (voir le cours)
-          Scanner scanner = new Scanner(System.in);
-          int n = scanner.nextInt();
-          
-          // complétez le code
-          for (int i = 1; i <= n; i += 1) {
-            System.out.println(i);
-          }
-      }
+        public static void main(String[] args) {
+            // ne faites pas attention à ces deux lignes
+            // elles servent à initialiser les variables
+            // (voir le cours)
+            Scanner scanner = new Scanner(System.in);
+            int n = scanner.nextInt();
+            
+            // complétez le code
+            for (int i = 1; i <= n; i += 1) {
+                System.out.println(i);
+            }
+        }
     }
 
     // Aller plus loin n°1
     class Main {
-      public static void main(String[] args){
-        for (int i = 2; i <= n; i += 2) {
-          System.out.println(i);
+        public static void main(String[] args){
+            for (int i = 2; i <= n; i += 2) {
+                System.out.println(i);
+            }
         }
-      }
     }
 
     // ou alors... 
     class Main {
-      public static void main(String[] args){
-        for (int i = 2; i <= n; i += 1) {
-          // si le reste de la division par 2 est 0
-          // c'est que i = 2k + 0 donc i est pair !
-          if (i % 2 == 0) {
-            System.out.println(i);
-          }
+        public static void main(String[] args){
+            for (int i = 2; i <= n; i += 1) {
+                // si le reste de la division par 2 est 0
+                // c'est que i = 2k + 0 donc i est pair !
+                if (i % 2 == 0) {
+                    System.out.println(i);
+                }
+            }
         }
-      }
     }
 
     // Aller plus loin n°2
     class Main {
-      public static void main(String[] args){
-        for (int i = n; i >= 1; i -= 1) {
-          System.out.println(i);
+        public static void main(String[] args){
+            for (int i = n; i >= 1; i -= 1) {
+                System.out.println(i);
+            }
         }
-      }
     }
 
 tests:

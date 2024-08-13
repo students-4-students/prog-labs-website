@@ -4,24 +4,29 @@ description: 'Manipuler les boucle for'
 
 code:
   default: |
-    class Main {
-        public static void main(String[] args) {
-            for (int i = ... ; ... ; ...) {
-                if (i != 78) {
-                    // à compléter
-                }
-            }
-        }
+    #include <iostream>
+    using namespace std;
+
+    int main() {            
+        for (int i (..) ; ... ; ...) {    
+            if (i != 78) {    
+                // à compléter    
+            }            
+        } 
+        
+        return 0;     
     }
   corrected: |
-    class Main {
-        public static void main(String[] args) {
-            for (int i = 0; i <= 99; i += 3) {
-                if (i != 78) {
-                    System.out.println(i);
-                }
-            }
+    #include <iostream>
+    using namespace std;
+
+    int main() {            
+        for (int i (0); i <= 99; i += 3) {                
+            if (i != 78) {                    
+                cout << i << endl;      
+            }            
         }
+        return 0;
     }
 
 tests:
@@ -94,7 +99,7 @@ Vous devez avoir une seule contrainte dans la boucle for qui est celle de vérif
   <summary>Indice</summary>
     Rappelez-vous qu’une boucle `for` est de cette forme. Il pourrait être intéressant de modifier un peu l’incrémentation que vous avez vu en cours…
 
-    ```java
+    ```cpp
     for (initialisation ; condition ; incrémentation) {
         // instructions à répéter
     }

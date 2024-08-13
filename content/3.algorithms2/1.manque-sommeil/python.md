@@ -4,33 +4,19 @@ description: 'Adam a-t-il bien dormi ?'
 
 code:
   default: |
-    import java.util.Scanner;
+    n = int(input()) # lire le nombre d'heure de sommeil
 
-    class Main {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
-            int n = scanner.nextInt(); // lire la chaine de caractère
-            
-            // à compléter
-        }
-    }
+    # à compléter
 
   corrected: |
-    import java.util.Scanner;
+    n = int(input()) # lire le nombre d'heure de sommeil
 
-    class Main {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
-            int n = scanner.nextInt(); // lire le nombre d'heure de sommeil d'Adam
-            if (n == 8) {
-                System.out.println("Suffisant");
-            } else if (n < 8) {
-                System.out.println("Il faut dormir plus");
-            } else {
-                System.out.println("Bravo !");
-            }     
-        }
-    }
+    if n == 8:
+        print("Suffisant")
+    elif n < 8:
+        print("Il faut dormir plus")
+    else:
+        print("Bravo !")
 
 tests:
   - input: '8'
@@ -68,5 +54,5 @@ Si **n** est :
 
 <details>
   <summary>Indice</summary>
-    Utilisez un `if`, un `else if`, et un `else`.
+    Utilisez un `if`, un `elif`, et un `else`.
 </details>
