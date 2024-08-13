@@ -4,15 +4,21 @@ description: 'déboggage.'
 
 code:
   default: |
-    for (int i (1); i < 100; i++) {             
-        // le modulo "%" renvoit le reste de la division de i par 3      
-        if (i % 3 == 0) {          
-            cout << "easy" << endl;  
-        } else if (i % 5 == 0) {          
-            cout << "peasy" << endl;    
-        } else if (i % 15 == 0) {          
-            cout << "easy-peasy" << endl; 
-        }  
+    #include <iostream>
+    #include <string>
+    using namespace std;
+
+    int main() {
+        for (int i (1); i < 100; i++) {             
+            // le modulo "%" renvoit le reste de la division de i par 3      
+            if (i % 3 == 0) {          
+                cout << "easy" << endl;  
+            } else if (i % 5 == 0) {          
+                cout << "peasy" << endl;    
+            } else if (i % 15 == 0) {          
+                cout << "easy-peasy" << endl; 
+            }  
+        }
     }
 
   corrected: |
@@ -22,13 +28,19 @@ code:
     // divisible par 15 on est necessairement divisible
     // par 3. Le programme affichait donc "easy".
 
-    for (int i (1); i < 100; i++) {    
-        if (i % 15 == 0) {        
-            cout << "easy-peasy" << endl;   
-        } else if (i % 3 == 0) {        
-            cout << "easy" << endl;    
-        } else if (i % 5 == 0) {        
-            cout << "peasy" << endl;   
+    #include <iostream>
+    #include <string>
+    using namespace std;
+
+    int main() {
+        for (int i (1); i < 100; i++) {    
+            if (i % 15 == 0) {        
+                cout << "easy-peasy" << endl;   
+            } else if (i % 3 == 0) {        
+                cout << "easy" << endl;    
+            } else if (i % 5 == 0) {        
+                cout << "peasy" << endl;   
+            }
         }
     }
 
