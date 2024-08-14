@@ -75,7 +75,6 @@ Une boucle `for` peut être écrite comme suit :
 ```python
 for i in range(98):
 	# code à exécuter...
-}
 ```
 
 - `i` est une variable qui prendra successivement toutes les valeurs de la séquence générée par `range(98)`, c'est-à-dire de 0 à 97.
