@@ -10,12 +10,13 @@ code:
 
     int main() {        
         for (int i(0); i < 10;) {            
-            int nombreActuel ("On est au nombre : " + i);            
-            cout << nombreActuel << endl
-        }    
+            int nombreActuel ("On est au nombre : ");            
+            cout << nombreActuel << i << endl
+        }
 
         return 0;
     }
+
   corrected: |
     /*
     Il y a deux erreurs de compilation, et une erreur dans la conception du programme.
