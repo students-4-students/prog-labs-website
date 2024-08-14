@@ -3,6 +3,10 @@
 
   const isOpen = ref(false);
   const section = defineModel<SectionData | undefined>('section');
+
+  function sectionRepr(section: SectionData): string {
+    return `${section.name} (${section.code})`;
+  }
 </script>
 
 <template>
@@ -33,7 +37,7 @@
                 (data) => data[1].codeLanguage === codeLanguage,
               )"
               :key="id"
-              :value="data.name"
+              :value="sectionRepr(data)"
               @select="
                 (ev) => {
                   if (typeof ev.detail.value === 'string') {
@@ -43,7 +47,7 @@
                 }
               "
             >
-              {{ data.name }} ({{ data.code }})
+              {{ sectionRepr(data) }}
               <LucideCheck
                 :class="
                   cn(
