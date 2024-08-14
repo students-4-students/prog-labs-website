@@ -120,4 +120,15 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2024-07-04',
+
+  app: {
+    head: {
+      link: [
+        {
+          rel: 'icon',
+          href: '/favicon.png',
+        },
+      ],
+    },
+  },
 });
