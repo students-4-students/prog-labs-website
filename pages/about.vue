@@ -71,14 +71,17 @@
           photoUrl: '/team/nicolas.png',
         },
         'Eliott',
-        'Antoine',
+        'Antoine B.',
       ],
     },
     {
       title: 'Rédacteurs de la série 1',
       icon: LucidePenTool,
       members: [
-        'Emmanuel',
+        {
+          name: 'Emmanuel',
+          photoUrl: '/team/emmanuel.png',
+        },
         'Mehdi',
         'Paolo',
         {
@@ -114,6 +117,11 @@
           photoUrl: '/team/maeva.png',
         },
         'Arthur (3)',
+        {
+          name: 'Emmanuel (2)',
+          photoUrl: '/team/emmanuel.png',
+        },
+        'Antoine P. (1)',
       ],
     },
   ];
