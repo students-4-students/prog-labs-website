@@ -50,3 +50,9 @@
     </ContentRenderer>
   </div>
 </template>
+
+<style>
+  code {
+    font-variant-ligatures: none !important;
+  }
+</style>

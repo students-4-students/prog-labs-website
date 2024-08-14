@@ -106,7 +106,7 @@
       icon: LucidePenTool,
       members: [
         {
-          name: 'Fabrice (3)',
+          name: 'Fabrice (4)',
           photoUrl: '/team/fabrice.png',
         },
       ],

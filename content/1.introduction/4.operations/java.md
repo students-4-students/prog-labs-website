@@ -48,6 +48,7 @@ tests:
       256
       Hello
       EPFL
+
     expectedOutput: |-
       10752
       298
