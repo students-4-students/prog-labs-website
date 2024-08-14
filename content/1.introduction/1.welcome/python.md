@@ -60,7 +60,7 @@ Voici votre premier code Python a exécuter
 print("Hello EPFL")
 ```
 
-Les mots précédés de ‘#’ sont ignorés, et sont des commentaires du code, on peut donc écrire en français après les avoir ajouté, sans que cela cause un problème.
+Les mots précédées de `#` sont ignorés, et sont des commentaires du code (ils expliquent le code, on peut donc écrire en français après avoir ajouté `#`).
 
 Et maintenant, **comment exécuter notre code ?** Dans chaque éditeur de code dont ce site, il existe un petit bouton prévu à cet effet, généralement un bouton "Play" (une flèche orientée vers la droite), situé en haut à droite de l’éditeur.
 

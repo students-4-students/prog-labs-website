@@ -101,6 +101,16 @@
         },
       ],
     },
+    {
+      title: 'Chasseurs de bugs (nb.)',
+      icon: LucidePenTool,
+      members: [
+        {
+          name: 'Fabrice (3)',
+          photoUrl: '/team/fabrice.png',
+        },
+      ],
+    },
   ];
 </script>
 

@@ -72,7 +72,7 @@ class Main {
 }
 ```
 
-Les mots précédées de `//` sont ignorés, et sont des commentaires du code, on peut donc écrire en français après les avoir ajouté, sans que cela cause un problème.
+Les mots précédées de `//` sont ignorés, et sont des commentaires du code (ils expliquent le code, on peut donc écrire en français après avoir ajouté `//`).
 
 _Il est très recommandé de respecter l’indentation (des espaces pour faire ressortir chaque bloc de code). Ce n’est pas grave si vous ne comprenez pas pour le moment !_
 
