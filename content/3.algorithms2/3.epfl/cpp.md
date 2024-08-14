@@ -27,6 +27,25 @@ code:
     using namespace std;
 
     int main() {
+        int n (0);
+        cin >> n;
+
+        for (int i (0); i < n-1; i++) {
+            cout << "*"; 
+        }
+        for (int i (0); i < n; ++i) {
+            cout << "*";
+        }
+
+        return 0;
+    }
+
+    // pour aller plus loin, vous pouvez dessiner les lettres EPF !
+
+    #include <iostream>
+    using namespace std;
+
+    int main() {
         cout << "Entrez la hauteur maximale des lettres : ";
         int n (0);
         cin >> n;
@@ -84,7 +103,6 @@ code:
             } else {
                 cout << "*";
             }
-            cout << endl;
         }
 
         return 0;

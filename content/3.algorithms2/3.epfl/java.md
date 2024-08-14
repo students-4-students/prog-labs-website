@@ -26,6 +26,24 @@ code:
             Scanner scanner = new Scanner(System.in);
             int n = scanner.nextInt();
 
+            for (int i = 0; i < n-1; i++) {
+                // compléter le dessin du L
+                System.out.println("*"); 
+            }
+            for (int i = 0; i < n; ++i) {
+                System.out.print("*");
+            }
+        }
+    }
+
+    // pour aller plus loin, vous pouvez dessiner les lettres EPF !
+    import java.util.Scanner;
+
+    class Main {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            int n = scanner.nextInt();
+
             for (int i = 0; i < n; i++) {
                 // print E
                 if (i == 0 || i == n - 1 || i == n / 2) {
@@ -78,7 +96,6 @@ code:
                 } else {
                     System.out.print("*");
                 }
-                System.out.println();
             }
         }
     }

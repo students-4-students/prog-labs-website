@@ -13,6 +13,16 @@ code:
   corrected: |
     n = int(input())
 
+    for i in range(n-1):
+        # compléter le dessin du L
+        print("*")
+
+    for i in range(n):
+        print("*", end="")
+
+    # pour aller plus loin, vous pouvez dessiner les lettres EPF !
+    n = int(input())
+
     for i in range(n):
         # print E
         if i == 0 or i == n-1 or i == n // 2:
@@ -53,7 +63,6 @@ code:
                 print("*", end="")
         else:
             print("*", end="")
-        print() # ajouter retour à la ligne
 
 tests:
   - input: '7'
@@ -96,6 +105,8 @@ Il sera encore plus stylé sur la console, dessinons-le ensemble :)
 ### Objectif
 
 On vous donne les 3 premières lettres soit EPF, occupez-vous uniquement de dessiner le L manquant.
+
+Vous pourriez utiliser l'instruction `print("un texte...", end="")` qui affichera "un texte" sans retour à la ligne... !
 
 ### Entrées
 
