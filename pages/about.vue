@@ -113,6 +113,7 @@
           name: 'Maéva (4)',
           photoUrl: '/team/maeva.png',
         },
+        'Arthur (3)',
       ],
     },
   ];

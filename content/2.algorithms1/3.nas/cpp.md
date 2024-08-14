@@ -110,6 +110,8 @@ Votre programme doit afficher :
 
 Pensez donc à effectuer les calculs pour convertir votre résultat en minutes et secondes.
 
+> Attention, notez que le food-truck se trouve à droite. Dans l'exemple ci-dessus, il y a donc 3 personnes devant vous et non 4 !
+
 <details>
   <summary>Indice</summary>
     Cet exercice est difficile !
