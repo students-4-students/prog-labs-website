@@ -106,10 +106,13 @@
       icon: LucidePenTool,
       members: [
         {
-          name: 'Fabrice (5)',
+          name: 'Fabrice (6)',
           photoUrl: '/team/fabrice.png',
         },
-        'Maéva (3)',
+        {
+          name: 'Maéva (4)',
+          photoUrl: '/team/maeva.png',
+        },
       ],
     },
   ];
