@@ -5,30 +5,30 @@ description: 'Saurez-vous trouver qui a répondu aux plus de questions ?'
 code:
   default: |
     # les questions posées par chaque étudiant sont des constantes
-    QUESTIONS_POSEES_ARSENE = 5
+    QUESTIONS_POSEES_LUPIN = 5
     QUESTIONS_POSEES_RAOUL = 1
     QUESTIONS_POSEES_GANIMARD = 0
     # les points initiaux sont à 0 au debut
-    pointsArsene = 0
-    pointsRaoul = 0
-    pointsGanimard = 0
+    points_lupin = 0
+    points_raoul = 0
+    points_ganimard = 0
     for i in range(7):
         # Jour numéro i
         # Le programme lit les questions disponibles ce jour-ci
         questionsDisponibles = int(input()) # lire le nombre de questions disponibles ce jour là
-        allQuestions = questionsDisponibles + QUESTIONS_POSEES_RAOUL + QUESTIONS_POSEES_GANIMARD + QUESTIONS_POSEES_ARSENE
+        allQuestions = questionsDisponibles + QUESTIONS_POSEES_RAOUL + QUESTIONS_POSEES_GANIMARD + QUESTIONS_POSEES_LUPIN
         # à compléter : la gestion de la logique du problème
         
     # à compléter : trouvez l'étudiant avec le plus de point (afficher Raoul par défaut en cas d'égalité)
 
   corrected: |
     # les questions posées par chaque étudiant sont des constantes
-    QUESTIONS_POSEES_ARSENE = 5
+    QUESTIONS_POSEES_LUPIN = 5
     QUESTIONS_POSEES_RAOUL = 1
     QUESTIONS_POSEES_GANIMARD = 0
 
     # les points initiaux sont à 0 au début
-    points_arsene = 0
+    points_lupin = 0
     points_raoul = 0
     points_ganimard = 0
 
@@ -36,7 +36,7 @@ code:
         # Jour numéro i
         # Le programme lit les questions disponibles ce jour-ci
         questions_disponibles = int(input())  # lire le nombre de questions disponibles ce jour-là
-        all_questions = questions_disponibles + QUESTIONS_POSEES_RAOUL + QUESTIONS_POSEES_GANIMARD + QUESTIONS_POSEES_ARSENE
+        all_questions = questions_disponibles + QUESTIONS_POSEES_RAOUL + QUESTIONS_POSEES_GANIMARD + QUESTIONS_POSEES_LUPIN
         
         # gestion de la logique
         if i == 0 or i == 4:  # si c'est lundi ou vendredi c'est Ganimard qui répond à toutes les questions
@@ -46,32 +46,32 @@ code:
             if questions_disponibles < 5:
                 # Le cas < 5
                 # On sait que Raoul va répondre à 5 questions, la question qui se pose est :
-                # Raoul va répondre aux questions de Arsène ou ceux des autres étudiants ?
+                # Raoul va répondre aux questions de Lupin ou ceux des autres étudiants ?
                 # l'énoncé nous dit que Raoul répond aux autres étudiants avant celles de ses amis
                 # (Ganimard ne pose pas de questions du coup on ne le compte pas)
                 # Si on a moins de 5 questions des autres étudiants, Raoul va répondre à toutes les
-                # questions disponibles et quelques questions de Arsène
-                # --> Arsène va avoir moins de points négatifs.
-                points_arsene -= (5 - questions_disponibles)
+                # questions disponibles et quelques questions de Lupin
+                # --> Lupin va avoir moins de points négatifs.
+                points_lupin -= (5 - questions_disponibles)
                 questions_disponibles = 0
             else:
                 # Ici, Raoul répond qu'aux questions des autres étudiants
-                # Arsène va répondre à toutes ses propres questions
-                points_arsene -= 5
+                # Lupin va répondre à toutes ses propres questions
+                points_lupin -= 5
                 questions_disponibles -= 5
             
             # on est sûr que chaque jour Raoul a +5
-            # puisque Arsène pose 5 questions à lui tout seul
+            # puisque Lupin pose 5 questions à lui tout seul
             points_raoul += 5
             # ajouter le reste des questions disponibles
-            points_arsene += questionsDisponibles
-            # Arsène est le seul à répondre aux questions de Raoul si Ganimard ne le fait pas
-            points_arsene += QUESTIONS_POSEES_RAOUL
+            points_lupin += questionsDisponibles
+            # Lupin est le seul à répondre aux questions de Raoul si Ganimard ne le fait pas
+            points_lupin += QUESTIONS_POSEES_RAOUL
 
     # trouver l'étudiant avec le plus de points (afficher Raoul par défaut en cas d'égalité)
-    if (points_arsene > points_ganimard) and (points_arsene > points_raoul):
-        print("Arsene")
-    elif (points_ganimard > points_raoul) and (points_ganimard > points_arsene):
+    if (points_lupin > points_ganimard) and (points_lupin > points_raoul):
+        print("Lupin")
+    elif (points_ganimard > points_raoul) and (points_ganimard > points_lupin):
         print("Ganimard")
     else:
         print("Raoul")
@@ -109,7 +109,7 @@ tests:
       38
       26
       26
-    expectedOutput: 'Arsene'
+    expectedOutput: 'Lupin'
 ---
 
 ![ED](/banner/ed.png)
@@ -122,7 +122,7 @@ Les étudiants posent leurs questions librement, et, les assistants ou les profe
 
 Les étudiants peuvent aussi répondre aux questions des autres et c’est même conseillé, ça vous permet d’assimiler mieux le cours et les séries.
 
-Arsène, Ganimard et Raoul sont trois étudiants en IC qui répondent souvent aux questions. Le but de cet exo est de trouver qui a répondu aux plus de questions, cependant il y a quelques règles qu'ils ont posées pour eux-mêmes :
+Lupin, Ganimard et Raoul sont trois étudiants en IC qui répondent souvent aux questions. Le but de cet exo est de trouver qui a répondu aux plus de questions, cependant il y a quelques règles qu'ils ont posées pour eux-mêmes :
 
 - Si un étudiant répond à une question, il est le seul à pouvoir répondre à cette question et il a +1.
 - Si un étudiant pose une question et qu'il répond à sa propre question, il perd -1.
@@ -130,9 +130,9 @@ Arsène, Ganimard et Raoul sont trois étudiants en IC qui répondent souvent au
 
 De plus on connait la “routine” de nos 3 étudiants :
 
-- Arsène pose 5 questions/jour et il a fait un bot qui répond automatiquement à toutes les questions des autres étudiants (il est malhonnête) même à ses propres questions (C’est le seul qui le fait)
-- Raoul répond jusqu’à 5 questions/jour (si disponibles). Il a toujours l'avantage sur Arsène. Il pose 1 question/jour. **Raoul répond aux questions des autres étudiants avant celles de ses amis.**
-- Ganimard ne répond que le lundi et le vendredi, mais, répond d'un coup à toutes les questions disponibles (il a toujours l'avantage sur Raoul et Arsène) et ne pose jamais de question.
+- Lupin pose 5 questions/jour et il a fait un bot qui répond automatiquement à toutes les questions des autres étudiants (il est malhonnête) même à ses propres questions (C’est le seul qui le fait)
+- Raoul répond jusqu’à 5 questions/jour (si disponibles). Il a toujours l'avantage sur Lupin. Il pose 1 question/jour. **Raoul répond aux questions des autres étudiants avant celles de ses amis.**
+- Ganimard ne répond que le lundi et le vendredi, mais, répond d'un coup à toutes les questions disponibles (il a toujours l'avantage sur Raoul et Lupin) et ne pose jamais de question.
 
 ### Objectif
 
@@ -151,8 +151,8 @@ Le but est de trouver qui a le plus de points/semaine, si égalité afficher Rao
     3. Il y a plusieurs cas à gérer :
     - le cas du Lundi et du Vendredi, où Ganimard seulement répond
     - sinon
-        - Raoul a chaque jour (=/= Lundi, Vendredi) 5 points. Pourquoi ? son ami Arsène pose chaque jour 5 questions et Raoul a l’avantage sur Arsène (c.-à-d. il répond avant lui), donc il est sur d’avoir les 5 points chaque jour (=/= Lundi, Vendredi) malgré toutes les conditions.
-        - dans le cas où le nombre de questions disponibles est inférieur à 5 (dans ce cas Arsène va répondre à une partie de ses propres questions, points négatifs !)
-        - dans le cas où le nombre de questions disponibles est plus que 5, alors Arsène va répondre à ses 5 questions (points négatifs !) + le reste (les questions restantes après que Raoul ait répondu sur les 5 questions)  des “questions disponibles” (points positifs !)
+        - Raoul a chaque jour (=/= Lundi, Vendredi) 5 points. Pourquoi ? son ami Lupin pose chaque jour 5 questions et Raoul a l’avantage sur Lupin (c.-à-d. il répond avant lui), donc il est sur d’avoir les 5 points chaque jour (=/= Lundi, Vendredi) malgré toutes les conditions.
+        - dans le cas où le nombre de questions disponibles est inférieur à 5 (dans ce cas Lupin va répondre à une partie de ses propres questions, points négatifs !)
+        - dans le cas où le nombre de questions disponibles est plus que 5, alors Lupin va répondre à ses 5 questions (points négatifs !) + le reste (les questions restantes après que Raoul ait répondu sur les 5 questions)  des “questions disponibles” (points positifs !)
 
 </details>

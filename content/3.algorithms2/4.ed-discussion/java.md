@@ -13,16 +13,16 @@ code:
             // Les questions posées par chaque etudiant sont des constantes
             int QUESTIONS_POSEES_RAOUL = 1;
             int QUESTIONS_POSEES_GANIMARD = 0;
-            int QUESTIONS_POSEES_ARSENE = 5;
+            int QUESTIONS_POSEES_LUPIN = 5;
             // les points initilas sont à 0 au debut 
             int pointsRaoul = 0;
             int pointsGanimard = 0;
-            int pointsArsene = 0;
+            int pointsLupin = 0;
             for (int i = 0; i < 7; i++) {
                 // Jour numéro i
                 // Le programme lit les questions disponibles ce jour-ci
                 int questionsDisponibles = scanner.nextInt(); // lire le nombre de questions disponibles ce jour la
-                int allQuestions = questionsDisponibles + QUESTIONS_POSEES_RAOUL + QUESTIONS_POSEES_GANIMARD + QUESTIONS_POSEES_ARSENE;
+                int allQuestions = questionsDisponibles + QUESTIONS_POSEES_RAOUL + QUESTIONS_POSEES_GANIMARD + QUESTIONS_POSEES_LUPIN;
                 // à compléter la gestion de la logique du problème
                 
             }
@@ -41,16 +41,16 @@ code:
             // Les questions posées par chaque etudiant sont des constantes
             int QUESTIONS_POSEES_RAOUL = 1;
             int QUESTIONS_POSEES_GANIMARD = 0;
-            int QUESTIONS_POSEES_ARSENE = 5;
+            int QUESTIONS_POSEES_LUPIN = 5;
             // les points initilas sont à 0 au debut 
             int pointsRaoul = 0;
             int pointsGanimard = 0;
-            int pointsArsene = 0;
+            int pointsLupin = 0;
             for (int i = 0; i < 7; i++) {
                 // Jour numéro i
                 // Le programme lit les questions disponibles ce jour-ci
                 int questionsDisponibles = scanner.nextInt(); // lire le nombre de questions disponibles ce jour la
-                int allQuestions = questionsDisponibles + QUESTIONS_POSEES_RAOUL + QUESTIONS_POSEES_GANIMARD + QUESTIONS_POSEES_ARSENE;
+                int allQuestions = questionsDisponibles + QUESTIONS_POSEES_RAOUL + QUESTIONS_POSEES_GANIMARD + QUESTIONS_POSEES_LUPIN;
                  // gestion de la logique
 
                 if(i == 0 || i == 4) { // si c'est lundi ou vendredi c'est Ganimard qui répond à toutes les questions
@@ -66,28 +66,28 @@ code:
                         // Si on a moins de 5 questions des autres étudiants, Raoul va répondre à toutes les
                         // questions disponibles et quelques questions de Arséne 
                         // --> Arsène va avoir moins de points négatives.
-                        pointsArsene -= (5 - questionsDisponibles);
+                        pointsLupin -= (5 - questionsDisponibles);
                         questionsDisponibles = 0;
                     }else{
                         // Ici, Raoul répond qu'aux questions des qutres étudiants
                         // Arsène va répondre a toutes ses propres queestions
-                        pointsArsene -= 5;
+                        pointsLupin -= 5;
                         questionsDisponibles -= 5;
                     }
                     // on est sur que chaque jour Raoul a +5, car il y a toujours 5 ou plus questions disponibles 
                     // puisque Arsène à lui tout seul pose 5 questions
                     pointsRaoul += 5;
                     // ajouter le reste des questions disponibles
-                    pointsArsene += questionsDisponibles;
+                    pointsLupin += questionsDisponibles;
                     // Arsène est le seul à répondre aux questions de Raoul si Ganimard ne le fait pas
-                    pointsArsene += QUESTIONS_POSEES_RAOUL;
+                    pointsLupin += QUESTIONS_POSEES_RAOUL;
         
                 }
             }
             // trouver l'étudiant avec le plus de point (afficher Raoul par défaut en cas d'égalité)
-            if (pointsArsene > pointsGanimard && pointsArsene > pointsRaoul) {
-                System.out.println("Arsene");
-            } else if (pointsGanimard > pointsRaoul && pointsGanimard > pointsArsene) {
+            if (pointsLupin > pointsGanimard && pointsLupin > pointsRaoul) {
+                System.out.println("Lupin");
+            } else if (pointsGanimard > pointsRaoul && pointsGanimard > pointsLupin) {
                 System.out.println("Ganimard");
             } else {
                 System.out.println("Raoul");
@@ -129,7 +129,7 @@ tests:
       38
       26
       26
-    expectedOutput: 'Arsene'
+    expectedOutput: 'Lupin'
 ---
 
 ![ED](/banner/ed.png)
