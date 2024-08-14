@@ -48,7 +48,7 @@ Nous avons vu comment déclarez des variables, apprenons maintenant comment affi
 
 Affichez le contenu de la variable `a`.
 
-Attention, le code à compléter contient 3 lignes qu'il ne faut pas modifier (`scanner`). Elles servent à donner des valeurs aléatoires à la variable `a` pour que nous puissions tester automatiquement si votre code fonctionne pour plusieurs valeurs différentes. Ignorez-les pour cette semaine de pré-rentrée, vous verrez ça plus tard :)
+Attention, le code à compléter contient 3 lignes qu'il ne faut pas modifier (`scanner`). Elles servent à donner des valeurs à la variable `a` pour que nous puissions tester automatiquement si votre code fonctionne pour plusieurs valeurs différentes. Ignorez-les pour cette semaine de pré-rentrée, vous verrez ça plus tard :)
 
 ### Cours
 
