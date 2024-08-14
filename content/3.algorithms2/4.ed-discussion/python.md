@@ -28,22 +28,22 @@ code:
     QUESTIONS_POSEES_GANIMARD = 0
 
     # les points initiaux sont à 0 au début
-    pointsArsene = 0
-    pointsRaoul = 0
-    pointsGanimard = 0
+    points_arsene = 0
+    points_raoul = 0
+    points_ganimard = 0
 
     for i in range(7):
         # Jour numéro i
         # Le programme lit les questions disponibles ce jour-ci
-        questionsDisponibles = int(input())  # lire le nombre de questions disponibles ce jour-là
-        allQuestions = questionsDisponibles + QUESTIONS_POSEES_RAOUL + QUESTIONS_POSEES_GANIMARD + QUESTIONS_POSEES_ARSENE
+        questions_disponibles = int(input())  # lire le nombre de questions disponibles ce jour-là
+        all_questions = questions_disponibles + QUESTIONS_POSEES_RAOUL + QUESTIONS_POSEES_GANIMARD + QUESTIONS_POSEES_ARSENE
         
         # gestion de la logique
         if i == 0 or i == 4:  # si c'est lundi ou vendredi c'est Ganimard qui répond à toutes les questions
-            pointsGanimard += allQuestions - QUESTIONS_POSEES_GANIMARD
+            points_ganimard += all_questions - QUESTIONS_POSEES_GANIMARD
         else:
             # Il existe deux cas : les questions disponibles inférieur à 5 et les questions dispo supérieurs ou égale à 5
-            if questionsDisponibles < 5:
+            if questions_disponibles < 5:
                 # Le cas < 5
                 # On sait que Raoul va répondre à 5 questions, la question qui se pose est :
                 # Raoul va répondre aux questions de Arsène ou ceux des autres étudiants ?
@@ -52,26 +52,26 @@ code:
                 # Si on a moins de 5 questions des autres étudiants, Raoul va répondre à toutes les
                 # questions disponibles et quelques questions de Arsène
                 # --> Arsène va avoir moins de points négatifs.
-                pointsArsene -= (5 - questionsDisponibles)
-                questionsDisponibles = 0
+                points_arsene -= (5 - questions_disponibles)
+                questions_disponibles = 0
             else:
                 # Ici, Raoul répond qu'aux questions des autres étudiants
                 # Arsène va répondre à toutes ses propres questions
-                pointsArsene -= 5
-                questionsDisponibles -= 5
+                points_arsene -= 5
+                questions_disponibles -= 5
             
             # on est sûr que chaque jour Raoul a +5
             # puisque Arsène pose 5 questions à lui tout seul
-            pointsRaoul += 5
+            points_raoul += 5
             # ajouter le reste des questions disponibles
-            pointsArsene += questionsDisponibles
+            points_arsene += questionsDisponibles
             # Arsène est le seul à répondre aux questions de Raoul si Ganimard ne le fait pas
-            pointsArsene += QUESTIONS_POSEES_RAOUL
+            points_arsene += QUESTIONS_POSEES_RAOUL
 
     # trouver l'étudiant avec le plus de points (afficher Raoul par défaut en cas d'égalité)
-    if (pointsArsene > pointsGanimard) and (pointsArsene > pointsRaoul):
+    if (points_arsene > points_ganimard) and (points_arsene > points_raoul):
         print("Arsene")
-    elif (pointsGanimard > pointsRaoul) and (pointsGanimard > pointsArsene):
+    elif (points_ganimard > points_raoul) and (points_ganimard > points_arsene):
         print("Ganimard")
     else:
         print("Raoul")

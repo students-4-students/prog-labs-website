@@ -11,42 +11,42 @@ code:
 
     for i in range(len(queue)):
         # cette ligne permet de récupérer le caractère actuel
-        characterActuel = queue[i]
+        character_actuel = queue[i]
         
         # que faire si le caractère est * ?
-        if characterActuel == "*":
+        if character_actuel == "*":
             
         # si le charactère est _ ?
-        elif characterActuel == "_":
+        elif character_actuel == "_":
 
   corrected: |
     # chaine de caractères représentant la queue
     queue = input()
 
     # Initialisation du compteur de personnes
-    nombrePersonnes = 0
-    apresMoi = False
+    nombre_personnes = 0
+    apres_moi = False
 
     for i in range(len(queue)):
         # cette ligne permet de récupérer le caractère actuel
-        characterActuel = queue[i]
+        character_actuel = queue[i]
         
         # que faire si le caractère est * ?
-        if characterActuel == "*":
-            apresMoi = True
+        if character_actuel == "*":
+            apres_moi = True
         # si le charactère est _ ?
-        elif characterActuel == "_":
-            if apresMoi: nombrePersonnes += 1 # equivalent à nombrePersonnes = nombrePersonnes + 1
+        elif character_actuel == "_":
+            if apres_moi: nombre_personnes += 1 # equivalent à nombre_personnes = nombre_personnes + 1
 
     # Estimer le temps d'attente en secondes
-    tempsEstimeSec = nombrePersonnes * 90 # 90 secondes par personnes
+    temps_estime_sec = nombre_personnes * 90 # 90 secondes par personnes
 
     # Convertir le temps d'attente en minutes et secondes
-    tempsEstimeMin = tempsEstimeSec // 60 # attention bien faire une division entière ici
-    tempsEstimeSec = tempsEstimeSec % 60
+    temps_estime_min = temps_estime_sec // 60 # attention bien faire une division entière ici
+    temps_estime_sec = temps_estime_sec % 60
 
     # Affichage du temps d'attente estimé
-    print("Temps d'attente : " + str(tempsEstimeMin) + " minute(s) et " + str(tempsEstimeSec) + " seconde(s).")
+    print("Temps d'attente : " + str(temps_estime_min) + " minute(s) et " + str(temps_estime_sec) + " seconde(s).")
 
 tests:
   - input: |

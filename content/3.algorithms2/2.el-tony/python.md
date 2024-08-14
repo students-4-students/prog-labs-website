@@ -4,17 +4,17 @@ description: 'Saurez-vous trouver une solution optimale... ?'
 
 code:
   default: |
-    jourDebut = int(input()) # lire le jour de début
-    jourFin = int(input()) # lire le jour de fin
+    jour_debut = int(input()) # lire le jour de début
+    jour_fin = int(input()) # lire le jour de fin
 
     # à compléter
 
   corrected: |
-    jourDebut = int(input()) # lire le jour de début
-    jourFin = int(input()) # lire le jour de fin
+    jour_debut = int(input()) # lire le jour de début
+    jour_fin = int(input()) # lire le jour de fin
 
-    nbJour = jourFin - jourDebut + 1
-    print( ((nbJour + 1) * nbJour) // 2)
+    nb_jour = jour_fin - jour_debut + 1
+    print( ((nb_jour + 1) * nb_jour) // 2)
 
     # L’informatique et la programmation
     # ce n'est pas que des boucles for et des conditions
@@ -49,7 +49,7 @@ Il faut trouver le nombre de maté dans la pyramide de cannettes.
 
 ### Exemple
 
-Si `jourDebut` vaut `3` et `jourFin` vaut `5`, alors votre programme doit renvoyer 6 . En effet :
+Si `jour_debut` vaut `3` et `jour_fin` vaut `5`, alors votre programme doit renvoyer 6 . En effet :
 
 Si on est le jour 1 (le 3 juillet), Tony a bu 1 maté
 
