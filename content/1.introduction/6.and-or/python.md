@@ -44,10 +44,10 @@ De même, on veut souvent vérifier si des combinaisons de conditions sont vraie
 
 Vous disposez de deux variables contenant des nombres :
 
-- une variable `heure`
+- une variable `heures`
 - une variable `minutes`
 
-Vérifiez si la variable `heure` contient `8` et la variable `minutes` contient `15` alors affichez `Good morning EPFL` sinon affichez simplement `EPFL`.
+Vérifiez si la variable `heures` contient `8` et la variable `minutes` contient `15` alors affichez `Good morning EPFL` sinon affichez simplement `EPFL`.
 
 ### Cours
 
