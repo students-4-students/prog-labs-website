@@ -71,7 +71,7 @@
           photoUrl: '/team/nicolas.png',
         },
         'Eliott',
-        'Antoine',
+        'Antoine B.',
       ],
     },
     {
@@ -121,6 +121,7 @@
           name: 'Emmanuel (2)',
           photoUrl: '/team/emmanuel.png',
         },
+        'Antoine P. (1)',
       ],
     },
   ];
