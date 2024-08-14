@@ -27,12 +27,10 @@
               <LucideCircleHelp class="h-4 mr-1" />
               J'ai besoin d'aide
             </Button>
-            <NuxtLink to="/about">
-              <Button variant="outline" size="lg">
-                <LucideUsers class="h-4 mr-1" />
-                Auteurs
-              </Button>
-            </NuxtLink>
+            <Button variant="outline" size="lg" @click="navigateTo('/about')">
+              <LucideUsers class="h-4 mr-1" />
+              Auteurs
+            </Button>
           </div>
         </ScrollAreaViewport>
         <ScrollBar />
