@@ -58,7 +58,7 @@ Deux nombres se trouvent dans les variables `nombre1` et `nombre2`.
 
 Affichez à l’aide de `print`, dans l’ordre :
 
-- le résultat de la multiplication de ces deux nombres
+- le résultat de la multiplication de ces deux nombres (déjà fait pour vous)
 - le résultat de l’addition de ces deux nombres
 
 Deux textes sont stockés dans les variables `texte1` et `texte2`.
