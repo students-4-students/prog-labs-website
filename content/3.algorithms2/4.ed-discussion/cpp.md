@@ -21,6 +21,8 @@ code:
             // Jour numéro i
             // Le programme lit les questions disponibles ce jour-ci
             int questionsDisponibles (0); // lire le nombre de questions disponibles ce jour la
+            cin >> questionsDisponibles;
+        
             int allQuestions (questionsDisponibles + QUESTIONS_POSEES_RAOUL + QUESTIONS_POSEES_GANIMARD + QUESTIONS_POSEES_ARSENE);
             
             // à compléter la gestion de la logique du problème
@@ -148,13 +150,13 @@ Arsène, Ganimard et Raoul sont trois étudiants en IC qui répondent souvent au
 
 - Si un étudiant répond à une question, il est le seul à pouvoir répondre à cette question et il a +1.
 - Si un étudiant pose une question et qu'il répond à sa propre question, il perd -1.
-- On répond que lorsqu'on est sûr de la réponse, le premier objectif est d'aider autrui et non pas de gagner des points.
+- On ne répond que lorsqu'on est sûr de la réponse, le premier objectif est d'aider autrui et non pas de gagner des points.
 
 De plus on connait la “routine” de nos 3 étudiants :
 
 - Arsène pose 5 questions/jour et il a fait un bot qui répond automatiquement à toutes les questions des autres étudiants (il est malhonnête) même à ses propres questions (C’est le seul qui le fait)
 - Raoul répond jusqu’à 5 questions/jour (si disponibles). Il a toujours l'avantage sur Arsène. Il pose 1 question/jour. **Raoul répond aux questions des autres étudiants avant celles de ses amis.**
-- Ganimard répond que le lundi et le vendredi, mais, répond d'un coup à toutes les questions disponibles (il a toujours l'avantage sur Raoul et Arsène) et ne pose jamais de question.
+- Ganimard ne répond que le lundi et le vendredi, mais, répond d'un coup à toutes les questions disponibles (il a toujours l'avantage sur Raoul et Arsène) et ne pose jamais de question.
 
 ### Objectif
 
