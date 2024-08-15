@@ -4,6 +4,7 @@
     LucideBook,
     LucideFolderCode,
     LucidePenTool,
+    LucideBug,
   } from 'lucide-vue-next';
 
   interface AboutCategoryMemberData {
@@ -106,7 +107,7 @@
     },
     {
       title: 'Chasseurs de bugs (nb.)',
-      icon: LucidePenTool,
+      icon: LucideBug,
       members: [
         {
           name: 'Fabrice (6)',
