@@ -5,11 +5,8 @@ description: 'Déclarez des variables.'
 code:
   default: |
     class Main {
-        public static void main(String[] args){
-
-        // complétez le code ici
-
-        
+        public static void main(String[] args) {
+          // complétez le code ici
         }
     }
   corrected: |

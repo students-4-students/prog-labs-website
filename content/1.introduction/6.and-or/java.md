@@ -7,7 +7,7 @@ code:
     import java.util.Scanner;
 
     class Main {
-        public static void main(String[] args){
+        public static void main(String[] args) {
             // ne faites pas attention à ces deux lignes
             // elles servent à initialiser les variables
             // (voir le cours)
@@ -16,14 +16,13 @@ code:
             int minutes = scanner.nextInt();
             
             // complétez le code
-
         }
     }
   corrected: |
     import java.util.Scanner;
 
     class Main {
-        public static void main(String[] args){
+        public static void main(String[] args) {
             // ne faites pas attention à ces deux lignes
             // elles servent à initialiser les variables
             // (voir le cours)
@@ -31,7 +30,7 @@ code:
             int heures = scanner.nextInt();
             int minutes = scanner.nextInt();
             
-            if (heures == 8 && minutes == 15){
+            if (heures == 8 && minutes == 15) {
                 System.out.println("Good morning EPFL");
             } else {
                 System.out.println("EPFL");

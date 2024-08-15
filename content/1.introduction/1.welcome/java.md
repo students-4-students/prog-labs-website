@@ -61,13 +61,10 @@ En Java, on a besoin d’un morceau de code qui sera toujours présent avant d'�
 
 ```java
 class Main {
-		public static void main(String[] args){
-
+		public static void main(String[] args) {
 				// on met notre code ici !
 				// par exemple on peut mettre l'instruction suivante :
-
 				System.out.println("Hello EPFL"); // affiche "Hello EPFL"
-
 		}
 }
 ```
