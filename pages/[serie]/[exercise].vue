@@ -239,7 +239,9 @@
             :testSpecs="tests"
             :writtenCode="writtenCode"
             :language="playgroundData.language"
-            :enabled="currentTab === 'code' && writtenCode !== undefined"
+            :enabled="
+              currentTab === EditorTab.Code && writtenCode !== undefined
+            "
             @success="
               () => {
                 isCompleted = true;
