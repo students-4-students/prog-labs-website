@@ -6,7 +6,7 @@
 </script>
 
 <template>
-  <div class="flex flex-col space-y-1 w-24">
+  <div class="flex flex-col space-y-1 w-28">
     <NuxtImg
       class="border rounded-lg"
       :src="props.photoUrl ?? '/person-placeholder.png'"
