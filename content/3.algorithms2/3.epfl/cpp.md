@@ -136,7 +136,7 @@ tests:
 
 ### Enoncé
 
-Il existe deux très grande université en Suisse connu à l’échelle internationale qui sont :
+Il existe deux très grandes universités en Suisse connues à l’échelle internationale qui sont :
 
 l’EPFZ (**École polytechnique fédérale de Zurich)** et l’EPFL (**École polytechnique fédérale de Lausanne).** On vous félicite d’avoir fait le bon choix.
 

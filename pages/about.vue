@@ -118,7 +118,7 @@
         },
         'Arthur (3)',
         {
-          name: 'Emmanuel (2)',
+          name: 'Emmanuel (3)',
           photoUrl: '/team/emmanuel.png',
         },
         'Antoine P. (1)',
