@@ -144,35 +144,44 @@ Les étudiants peuvent aussi répondre aux questions des autres et c’est même
 
 Arsène, Ganimard et Raoul sont trois étudiants à l'EPFL qui répondent souvent aux questions. Le but de cet exo est de trouver qui a répondu aux plus de questions, cependant il y a quelques règles qu'ils ont posées pour eux-mêmes :
 
-- Si un étudiant répond à une question, il est le seul à pouvoir répondre à cette question et il a +1.
+Lupin, Ganimard et Raoul sont trois amis à l'EPFL qui répondent souvent aux questions. Le but de cet exo est de trouver qui a répondu aux plus de questions, cependant il y a quelques règles qu'ils ont posées pour eux-mêmes :
+
+- Il ne peut y avoir qu'une réponse par question. Chaque réponse rapporte +1 à l'étudiant qui a répondu.
 - Si un étudiant pose une question et qu'il répond à sa propre question, il perd -1.
 - On ne répond que lorsqu'on est sûr de la réponse, le premier objectif est d'aider autrui et non pas de gagner des points.
 
 De plus on connait la “routine” de nos 3 étudiants :
 
-- Arsène pose 5 questions/jour et il a fait un bot qui répond automatiquement à toutes les questions des autres étudiants (il est malhonnête) même à ses propres questions (C’est le seul qui le fait)
-- Raoul répond jusqu’à 5 questions/jour (si disponibles). Il a toujours l'avantage sur Arsène. Il pose 1 question/jour. **Raoul répond aux questions des autres étudiants avant celles de ses amis.**
-- Ganimard ne répond que le lundi et le vendredi, mais, répond d'un coup à toutes les questions disponibles (il a toujours l'avantage sur Raoul et Arsène) et ne pose jamais de question.
+- Lupin pose 5 questions/jour et il a fait un bot qui répond automatiquement à toutes les questions des autres étudiants (il est malhonnête) même à ses propres questions.
+- Raoul répond jusqu’à 5 questions/jour (si disponibles). Il a toujours l'avantage sur Lupin. Il pose 1 question/jour. **Raoul répond aux questions des autres étudiants avant celles de ses amis.** Raoul ne répond jamais à ses propres questions.
+- Ganimard ne répond que le lundi et le vendredi, mais, répond d'un coup à toutes les questions disponibles (il a toujours l'avantage sur Raoul et Lupin) et ne pose jamais de question.
 
 ### Objectif
 
-on va vous donner le nombre de questions disponibles\* chaque jour et le nombre de questions posées par chaque étudiant.
+Nous allons vous donner le nombre de questions disponibles\* chaque jour et le nombre de questions posées par chaque étudiant.
 
-Le but est de trouver qui a le plus de points/semaine, si égalité afficher Raoul par défaut
+Le but est de trouver qui a le plus de points/semaine (et si égalité, afficher Raoul par défaut)
 
-- \*les questions disponibles n'incluent pas les questions posées par ces 3 étudiants\*\*
+- \*les questions disponibles n'incluent pas les questions posées par ces 3 étudiants données dans l'énoncé.
 
 ### Indice
 
 <details>
-  <summary>Indices</summary>
+  <summary>Indice 1</summary>
     1. `i` représente le numéro du jour de la semaine… ! `0` est donc Lundi, `1` Mardi, etc.
+</details>
+
+<details>
+  <summary>Indice 2</summary>
     2. le 3ème indice est un spoiler, prenez une feuille et un stylo et réfléchissez plus amplement à ce problème (piste : lisez bien l’énoncé, divisez les situations par étudiant, par jour et étudiez les dépendances qui existent entre les différents facteurs de l’exercice…)
+</details>
+
+<details>
+    <summary>Indice 3</summary>
     3. Il y a plusieurs cas à gérer :
     - le cas du Lundi et du Vendredi, où Ganimard seulement répond
     - sinon
-        - Raoul a chaque jour (=/= Lundi, Vendredi) 5 points. Pourquoi ? son ami Arsène pose chaque jour 5 questions et Raoul a l’avantage sur Arsène (c.-à-d. il répond avant lui), donc il est sur d’avoir les 5 points chaque jour (=/= Lundi, Vendredi) malgré toutes les conditions.
-        - dans le cas où le nombre de questions disponibles est inférieur à 5 (dans ce cas Arsène va répondre à une partie de ses propres questions, points négatifs !)
-        - dans le cas où le nombre de questions disponibles est plus que 5, alors Arsène va répondre à ses 5 questions (points négatifs !) + le reste (les questions restantes après que Raoul ait répondu sur les 5 questions)  des “questions disponibles” (points positifs !)
-
+        - Raoul a chaque jour (=/= Lundi, Vendredi) 5 points. Pourquoi ? son ami Lupin pose chaque jour 5 questions et Raoul a l’avantage sur Lupin (c.-à-d. il répond avant lui), donc il est sur d’avoir les 5 points chaque jour (=/= Lundi, Vendredi) malgré toutes les conditions.
+        - dans le cas où le nombre de questions disponibles est inférieur à 5 (dans ce cas Lupin va répondre à une partie de ses propres questions, points négatifs !)
+        - dans le cas où le nombre de questions disponibles est plus que 5, alors Lupin va répondre à ses 5 questions (points négatifs !) + le reste (les questions restantes après que Raoul ait répondu sur les 5 questions)  des “questions disponibles” (points positifs !)
 </details>
