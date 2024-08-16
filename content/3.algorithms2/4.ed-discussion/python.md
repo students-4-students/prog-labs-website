@@ -122,7 +122,7 @@ Les étudiants posent leurs questions librement, et, les assistants ou les profe
 
 Les étudiants peuvent aussi répondre aux questions des autres et c’est même conseillé, ça vous permet d’assimiler mieux le cours et les séries.
 
-Lupin, Ganimard et Raoul sont trois étudiants en IC qui répondent souvent aux questions. Le but de cet exo est de trouver qui a répondu aux plus de questions, cependant il y a quelques règles qu'ils ont posées pour eux-mêmes :
+Lupin, Ganimard et Raoul sont trois étudiants à l'EPFL qui répondent souvent aux questions. Le but de cet exo est de trouver qui a répondu aux plus de questions, cependant il y a quelques règles qu'ils ont posées pour eux-mêmes :
 
 - Si un étudiant répond à une question, il est le seul à pouvoir répondre à cette question et il a +1.
 - Si un étudiant pose une question et qu'il répond à sa propre question, il perd -1.
