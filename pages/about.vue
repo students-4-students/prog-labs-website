@@ -72,7 +72,10 @@
           photoUrl: '/team/nicolas.png',
         },
         'Eliott',
-        'Antoine B.',
+        {
+          name: 'Antoine B.',
+          photoUrl: '/team/antoine-b.png',
+        },
       ],
     },
     {
@@ -154,8 +157,10 @@
           </AboutCategory>
           <div class="flex flex-wrap gap-2">
             <AboutInfo
-              :name="member.photoUrl !== undefined ? member.name : member"
-              :photoUrl="member.photoUrl"
+              :name="typeof member === 'string' ? member : member.name"
+              :photoUrl="
+                typeof member === 'string' ? undefined : member.photoUrl
+              "
               v-for="member in members"
             />
             <div
