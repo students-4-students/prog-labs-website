@@ -3,6 +3,35 @@
 
   const isOpen = ref(false);
   const section = defineModel<SectionData | undefined>('section');
+
+  /**
+   * Appends the section abbreviation to the section name.
+   * @param section The section data.
+   * @return The name of the section with its abbreviation.
+   */
+  function getSectionRepresentation(section: SectionData): string {
+    return `${section.name} (${section.code})`;
+  }
+
+  /**
+   * Filters the sections based on the search term.
+   * @param list the list of section representations.
+   * @param searchTerm the term typed by the user.
+   * @return the list of sections that match the search term.
+   */
+  function filterFunction(list: string[], searchTerm: string) {
+    return list.filter((section) => {
+      const sectionWithoutAccents = section
+        .normalize('NFD')
+        .replace(/\p{Diacritic}/gu, '')
+        .toLowerCase();
+
+      return (
+        sectionWithoutAccents.includes(searchTerm.toLowerCase()) ||
+        section.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    });
+  }
 </script>
 
 <template>
@@ -19,7 +48,7 @@
       </Button>
     </PopoverTrigger>
     <PopoverContent class="p-1 w-80" prioritizePosition>
-      <Command>
+      <Command :filter-function="filterFunction">
         <CommandInput class="h-9" placeholder="Cherche ta section..." />
         <CommandEmpty>Aucune section n'est disponible.</CommandEmpty>
         <CommandList>
@@ -33,7 +62,7 @@
                 (data) => data[1].codeLanguage === codeLanguage,
               )"
               :key="id"
-              :value="data.name"
+              :value="getSectionRepresentation(data)"
               @select="
                 (ev) => {
                   if (typeof ev.detail.value === 'string') {
@@ -43,7 +72,7 @@
                 }
               "
             >
-              {{ data.name }} ({{ data.code }})
+              {{ getSectionRepresentation(data) }}
               <LucideCheck
                 :class="
                   cn(
