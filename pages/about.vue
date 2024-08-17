@@ -180,7 +180,7 @@
               </a>
               <div v-if="contact.telegram" class="contact-element">
                 <NuxtImg src="/logos/telegram.svg" class="w-4 h-4 m-1 mr-0" />
-                <LucideDiscord class="h-4" />{{ contact.telegram }}
+                {{ contact.telegram }}
               </div>
               <a
                 v-if="contact.github"
