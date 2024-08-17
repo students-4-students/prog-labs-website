@@ -71,7 +71,10 @@
           name: 'Nicolas',
           photoUrl: '/team/nicolas.png',
         },
-        'Eliott',
+        {
+          name: 'Eliott',
+          photoUrl: '/team/eliott.png',
+        },
         {
           name: 'Antoine B.',
           photoUrl: '/team/antoine-b.png',
