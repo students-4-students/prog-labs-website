@@ -1,9 +1,6 @@
 'use strict';
 var Module = {};
 var initializedJS = false;
-function assert(condition, text) {
-  if (!condition) abort('Assertion failed: ' + text);
-}
 function threadPrintErr() {
   var text = Array.prototype.slice.call(arguments).join(' ');
   console.error(text);
@@ -16,12 +13,8 @@ function threadAlert() {
     threadId: Module['_pthread_self'](),
   });
 }
-var out = () => {
-  throw 'out() is not defined in worker.js.';
-};
 var err = threadPrintErr;
 self.alert = threadAlert;
-var dbg = threadPrintErr;
 Module['instantiateWasm'] = (info, receiveInstance) => {
   var module = Module['wasmModule'];
   Module['wasmModule'] = null;
@@ -52,7 +45,6 @@ function handleMessage(e) {
       }
       Module['wasmMemory'] = e.data.wasmMemory;
       Module['buffer'] = Module['wasmMemory'].buffer;
-      Module['workerID'] = e.data.workerID;
       Module['ENVIRONMENT_IS_PTHREAD'] = true;
       (e.data.urlOrBlob
         ? import(e.data.urlOrBlob)
@@ -61,7 +53,6 @@ function handleMessage(e) {
     } else if (e.data.cmd === 'run') {
       Module['__emscripten_thread_init'](e.data.pthread_ptr, 0, 0, 1);
       Module['__emscripten_thread_mailbox_await'](e.data.pthread_ptr);
-      assert(e.data.pthread_ptr);
       Module['establishStackSpace']();
       Module['PThread'].receiveObjectTransfer(e.data);
       Module['PThread'].threadInitTLS();
@@ -89,8 +80,6 @@ function handleMessage(e) {
       err(e.data);
     }
   } catch (ex) {
-    err(`worker.js onmessage() captured an uncaught exception: ${ex}`);
-    if (ex?.stack) err(ex.stack);
     Module['__emscripten_thread_crashed']?.();
     throw ex;
   }
