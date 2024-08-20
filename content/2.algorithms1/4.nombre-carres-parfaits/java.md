@@ -63,7 +63,6 @@ Ecrivez un programme qui retourne le nombre de carrés parfaits entre 0 et n (in
 
 Si n = 10, alors votre programme doit afficher `4`.
 
-<details>
-  <summary>Indice</summary>
-  Utilisez deux boucles for : une pour parcourir les nombres de 0 à n et une autre pour chercher s’il existe une racine entière de ces nombres.
-</details>
+::hint
+Utilisez deux boucles for : une pour parcourir les nombres de 0 à n et une autre pour chercher s’il existe une racine entière de ces nombres.
+::

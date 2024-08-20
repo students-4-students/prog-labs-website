@@ -168,7 +168,6 @@ Si n = `7`, votre programme doit renvoyer (ne prenez que le L en compte) :
 *******  *       *       *******
 ```
 
-<details>
-  <summary>Indice</summary>
-  Qu’est-ce qu’un `L`? c’est `n-1` lignes d’une étoile, puis une ligne de `n` étoiles :)
-</details>
+::hint
+Qu’est-ce qu’un `L`? c’est `n-1` lignes d’une étoile, puis une ligne de `n` étoiles :)
+::

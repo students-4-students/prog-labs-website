@@ -8,14 +8,14 @@ code:
     durees = list(map(int, input().split()))
     nb_restaurants = int(input())
     durees_restaurants = list(map(int, input().split()))
-    
+
     # Complétez le code pour calculer et afficher les arrêts où se trouvent les restaurants
   corrected: |
     nb_arrets = int(input())
     durees = list(map(int, input().split()))
     nb_restaurants = int(input())
     durees_restaurants = list(map(int, input().split()))
-    
+
     # On calcule la liste des distances aux arrêts comme dans l'exercice précédent.
     # Cette fois-ci, on la stocke au lieu de l'afficher
     durees_aux_arrets = [0] * (nb_arrets - 1) # On créé une liste de 0 de taille nbArrets - 1
@@ -30,15 +30,15 @@ code:
             # Si c'est le bon arrêt, on l'affiche
             if (durees_aux_arrets[i_fin] == durees_restaurants[i_restaurant]):
                 print(i_fin + 1) # On ajoute + 1 à cause de la 0-indexation
-    
+
     # Solution et implémentation du bonus
-    
+
     # On réutilise le code du corrigé du bonus précédent
     temps_actuel = 0
     durees_aux_arrets = [0] * (nb_arrets - 1)
     for i_fin in range(1, nb_arrets):
         temps_actuel += durees[i_fin - 1]
-    
+
         durees_aux_arrets[i_fin - 1] = temps_actuel
             
     # Pour chaque restaurant
@@ -129,30 +129,44 @@ Son ami lui a transmit 3 restaurants et la liste durees_restaurants est [7, 3, 9
 
 ### Bonus
 
-Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque _nb\_arrets = 100'000_ en utilisant moins de 10'000'000 opérations ?
+Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque _nb_arrets = 100'000_ en utilisant moins de 10'000'000 opérations ?
 
 Vous pouvez supposer que vous savez résoudre l'exercice précédent en moins de 1'000'000 d'opérations.
 
-<details>
-  <summary>Indice 1</summary>
-    Que pouvez vous dire de la liste dureesAuxArrets, représentant les mêmes valeurs que celles affichées dans l’exercice précédent ?
-</details>
-<details>
-  <summary>Indice 2</summary>
-    Les valeurs dans la liste durees_restaurants sont strictement croissantes.
-</details>
-<details>
-  <summary>Indice 3</summary>
-    Est-ce que la méthode de rechercher parmi les éléments un par un est la meilleure ?
-</details>
-<details>
-  <summary>Indice 4</summary>
-    Que faites vous lorsque vous cherchez un mot dans un dictionnaire ? Pouvez-vous l’adapter en algorithme ? 
-</details>
-<details>
-  <summary>Solution des indices</summary>
-    Vous pouvez utiliser une dichotomie sur le tableau de l'exercice précédent.
-</details>
+::hint
+Que pouvez vous dire de la liste dureesAuxArrets, représentant les mêmes valeurs que celles affichées dans l’exercice précédent ?
+
+#title
+Indice n°1
+::
+
+::hint
+Les valeurs dans la liste durees_restaurants sont strictement croissantes.
+
+#title
+Indice n°2
+::
+
+::hint
+Est-ce que la méthode de rechercher parmi les éléments un par un est la meilleure ?
+
+#title
+Indice n°3
+::
+
+::hint
+Que faites vous lorsque vous cherchez un mot dans un dictionnaire ? Pouvez-vous l’adapter en algorithme ?
+
+#title
+Indice n°4
+::
+
+::hint
+Vous pouvez utiliser une dichotomie sur le tableau de l'exercice précédent.
+
+#title
+Solution des indices
+::
 
 Afin de réaliser ce bonus, vous pourriez avoir besoin d'utiliser un autre type de boucle, les boucles `while`. Celles-ci peuvent être construites de la manière suivante :
 

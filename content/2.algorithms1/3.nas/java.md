@@ -102,12 +102,10 @@ Pensez donc à effectuer les calculs pour convertir votre résultat en minutes e
 
 > Attention, notez que le food-truck se trouve à droite. Dans l'exemple ci-dessus, il y a donc 3 personnes devant vous et non 4 !
 
-<details>
-  <summary>Indice</summary>
-    Cet exercice est difficile !
+::hint
+Cet exercice est difficile !
 
-    Vous pourriez sauvegarder dans une variable de type `boolean` le fait que votre position dans la queue est passée ou non, pour savoir s’il faut ajouter le temps ou non dans la boucle.
+Vous pourriez sauvegarder dans une variable de type `boolean` le fait que votre position dans la queue est passée ou non, pour savoir s’il faut ajouter le temps ou non dans la boucle.
 
-    Pour convertir en minutes et secondes, utilisez une division puis l’opérateur modulo, `%`.
-
-</details>
+Pour convertir en minutes et secondes, utilisez une division puis l’opérateur modulo, `%`.
+::

@@ -66,7 +66,6 @@ Si **n** est :
 - égal à 8 afficher “Suffisant”
 - inférieur à 8 afficher “Il faut dormir plus”
 
-<details>
-  <summary>Indice</summary>
-    Utilisez un `if`, un `else if`, et un `else`.
-</details>
+::hint
+Utilisez un `if`, un `else if`, et un `else`.
+::
