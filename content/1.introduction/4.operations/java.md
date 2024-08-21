@@ -13,6 +13,7 @@ code:
             Scanner scanner = new Scanner(System.in);
             int nombre1 = scanner.nextInt();
             int nombre2 = scanner.nextInt();
+            scanner.skip("\n"); // advance to next line
             
             String texte1 = scanner.nextLine();
             String texte2 = scanner.nextLine();
@@ -32,6 +33,7 @@ code:
             Scanner scanner = new Scanner(System.in);
             int nombre1 = scanner.nextInt();
             int nombre2 = scanner.nextInt();
+            scanner.skip("\n"); // advance to next line
             
             String texte1 = scanner.nextLine();
             String texte2 = scanner.nextLine();
