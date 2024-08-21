@@ -89,6 +89,9 @@
       const baseURL = 'https://godbolt.org/api';
       const compiler = compilers[language.value];
 
+      const testSpecInput =
+        testSpec.input.length === 0 ? '' : testSpec.input.trim() + '\n';
+
       $fetch(`${baseURL}/compiler/${compiler}/compile`, {
         method: 'POST',
         body: JSON.stringify({
@@ -104,10 +107,10 @@
             tools: [],
             executeParameters: {
               args: '',
-              stdin: testSpec.input,
+              stdin: testSpecInput,
             },
           },
-          lang: language,
+          lang: language.value,
           allowStoreCodeDebug: true,
         }),
         headers: {
