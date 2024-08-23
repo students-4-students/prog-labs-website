@@ -22,29 +22,26 @@
       </DialogHeader>
 
       <DialogFooter>
-        <Button size="default" variant="outline" @click="navigateTo('/')">
-          Changer d'exercice
-        </Button>
-        <Button
-          :disabled="!props.nextExerciseUrl || isLoadingNextExercise"
-          @click="
-            () => {
-              isLoadingNextExercise = true;
-              navigateTo(props.nextExerciseUrl);
-            }
-          "
-          size="default"
-        >
-          <LucideLoaderCircle
-            v-if="isLoadingNextExercise"
-            class="w-4 h-4 mr-1 animate-spin"
-          />
-          {{
-            props.nextExerciseUrl
-              ? 'Prochain exercice'
-              : 'Aucun prochain exercice'
-          }}
-        </Button>
+        <NuxtLink to="/">
+          <Button size="default" variant="outline"> Changer d'exercice </Button>
+        </NuxtLink>
+        <NuxtLink :to="props.nextExerciseUrl">
+          <Button
+            :disabled="!props.nextExerciseUrl || isLoadingNextExercise"
+            @click="isLoadingNextExercise = true"
+            size="default"
+          >
+            <LucideLoaderCircle
+              v-if="isLoadingNextExercise"
+              class="w-4 h-4 mr-1 animate-spin"
+            />
+            {{
+              props.nextExerciseUrl
+                ? 'Prochain exercice'
+                : 'Aucun prochain exercice'
+            }}
+          </Button>
+        </NuxtLink>
       </DialogFooter>
     </DialogContent>
   </Dialog>

@@ -63,15 +63,16 @@
         v-for="_ in EXPECTED_EXERCISES_NB"
       />
       <!-- Exercises buttons -->
-      <Button
+      <NuxtLink
         v-for="(exercise, i) in exercises"
         v-else
-        variant="secondary"
-        size="lg"
-        @click="navigateTo(exercise._path)"
+        :to="exercise._path"
+        class="contents"
       >
-        {{ i + 1 }}. {{ exercise.title }}
-      </Button>
+        <Button variant="secondary" size="lg">
+          {{ i + 1 }}. {{ exercise.title }}
+        </Button>
+      </NuxtLink>
     </CardContent>
     <CardContent v-else class="flex">
       <!-- Fallback when there's no exercises -->
