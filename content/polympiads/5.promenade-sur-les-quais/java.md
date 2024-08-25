@@ -114,11 +114,11 @@ tests:
 
 ### Enoncé
 
-Notre voyageur a trouvé dans l’un des nombreux livres faisant office de guide touristique une balade sur les quais qu’il souhaite effectuer. Malheureusement, il a tâché son livre lors d’une pause café récente, et ne parvient plus à retrouver l’endroit sur la carte. Cependant, il a réussi à lire que la balade commençait et se finissait à deux des arrêts d’une ligne de métro, et qu’il faudrait _tempsTrajet_ minutes pour faire le trajet entre ces deux arrêts. Pouvez-vous l’aider en retrouvant l’arrêt de début et l’arrêt de fin ?
+Notre voyageur a trouvé dans l’un des nombreux livres faisant office de guide touristique une balade sur les quais qu’il souhaite effectuer. Malheureusement, il a tâché son livre lors d’une pause café récente, et ne parvient plus à retrouver l’endroit sur la carte. Cependant, il a réussi à lire que la balade commençait et se finissait à deux des arrêts d’une ligne de métro, et qu’il faudrait `tempsTrajet` minutes pour faire le trajet entre ces deux arrêts. Pouvez-vous l’aider en retrouvant l’arrêt de début et l’arrêt de fin ?
 
 ### Consigne
 
-Nous allons utiliser la même modélisation que dans les exercices précédents, et on vous donnera une variable supplémentaire, _tempsTrajet_ représentant le temps de trajet entre les deux arrêts qu’on cherche.
+Nous allons utiliser la même modélisation que dans les exercices précédents, et on vous donnera une variable supplémentaire, `tempsTrajet` représentant le temps de trajet entre les deux arrêts qu’on cherche.
 
 Vous devez afficher 2 nombres, les indices des deux arrêts. Vous devrez les afficher de sorte à ce que le plus petit soit affiché en premier. Les deux nombres devront être affichés sur une ligne, séparés par un espace. Il est garanti qu’il existe une unique paire satisfaisant cette propriété.
 
@@ -132,11 +132,11 @@ On va supposer que le temps du trajet est de 6 minutes, et on sait alors que le 
 
 ### Bonus 1
 
-Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque _nbArrets = 1'000_ en utilisant moins de 10'000'000 opérations ?
+Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque `nbArrets = 1000` en utilisant moins de 10'000'000 opérations ?
 
 ### Bonus 2
 
-Le second code qui résout le Bonus 1 est toujours plutôt lent, seriez vous capable de trouver une solution qui fonctionne lorsque _nbArrets = 100'000_ en utilisant moins de 10'000'000 opérations ?
+Le second code qui résout le Bonus 1 est toujours plutôt lent, seriez vous capable de trouver une solution qui fonctionne lorsque `nbArrets = 100000` en utilisant moins de 10'000'000 opérations ?
 
 ::hint
 Que pouvez-vous dire sur un trajet trop long ou trop court ?

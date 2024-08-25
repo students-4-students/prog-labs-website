@@ -67,7 +67,7 @@ Notre voyageur est maintenant indécis, il ne sait pas à quel arrêt il souhait
 
 ### Objectif
 
-Nous allons utiliser la même modélisation que dans l’exercice précédent. Vous devrez afficher _nb_arrets_ - 1 nombres sur _nb_arrets_ - 1 lignes. Le premier d’entre eux doit représenter le temps pour rejoindre le deuxième arrêt. Le second doit représenter le temps pour rejoindre le troisième arrêt, etc...
+Nous allons utiliser la même modélisation que dans l’exercice précédent. Vous devrez afficher `nb_arrets` - 1 nombres sur `nb_arrets` - 1 lignes. Le premier d’entre eux doit représenter le temps pour rejoindre le deuxième arrêt. Le second doit représenter le temps pour rejoindre le troisième arrêt, etc...
 
 ### Exemple
 
@@ -79,10 +79,10 @@ Dans ce cas, le tableau donné en entrée est [3, 4, 2], et les temps pour rejoi
 
 ### Bonus
 
-Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque _nb_arrets = 100'000_ en utilisant moins de 10'000'000 opérations ?
+Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque `nb_arrets = 100000` en utilisant moins de 10'000'000 opérations ?
 
 ::hint
-Que pouvez vous dire du calcul du temps de trajet entre l’arrêt 0 et l’arrêt i_fin ?
+Que pouvez vous dire du calcul du temps de trajet entre l’arrêt 0 et l’arrêt `i_fin` ?
 
 #title
 Indice n°1
@@ -96,14 +96,14 @@ Indice n°2
 ::
 
 ::hint
-Essayez d’exprimer le temps de trajet entre l’arrêt 0 et l’arrêt i_fin + 1 à partir de celui entre l’arrêt 0 et l’arrêt i_fin ? Que pouvez-vous faire de cette information ?
+Essayez d’exprimer le temps de trajet entre l’arrêt 0 et l’arrêt `i_fin` + 1 à partir de celui entre l’arrêt 0 et l’arrêt `i_fin` ? Que pouvez-vous faire de cette information ?
 
 #title
 Indice n°3
 ::
 
 ::hint
-Le temps de trajet entre l'arrêt 0 et l'arrêt i_fin + 1 est égal au temps de trajet entre l'arrêt 0 et l'arrêt i_fin plus le temps de trajet entre l'arrêt i_fin et l'arrêt i_fin + 1. De cette manière, vous pouvez calculer en une opération le résultat à partir du précédent.
+Le temps de trajet entre l'arrêt 0 et l'arrêt `i_fin` + 1 est égal au temps de trajet entre l'arrêt 0 et l'arrêt `i_fin` plus le temps de trajet entre l'arrêt `i_fin` et l'arrêt `i_fin` + 1. De cette manière, vous pouvez calculer en une opération le résultat à partir du précédent.
 
 #title
 Solution des indices

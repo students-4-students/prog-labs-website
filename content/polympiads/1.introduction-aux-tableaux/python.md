@@ -70,9 +70,9 @@ tableau[3] = somme
 
 ### Consigne
 
-Afin de vous familiariser avec les tableaux, on va vous donner un tableau d’entiers dans la variable _tableau_ avec _nb_elements_ éléments.
+Afin de vous familiariser avec les tableaux, on va vous donner un tableau d’entiers dans la variable `tableau` avec `nb_elements` éléments.
 
-On vous donne aussi deux indices _indice_depart_ et _indice_fin_. Vous devez remplacer la valeur à l’indice _indice_fin_ par la valeur à l’indice _indice_depart_, à laquelle vous devez ajouter 1.
+On vous donne aussi deux indices `indice_depart` et `indice_fin`. Vous devez remplacer la valeur à l’indice `indice_fin` par la valeur à l’indice `indice_depart`, à laquelle vous devez ajouter 1.
 
 ### Exemple
 

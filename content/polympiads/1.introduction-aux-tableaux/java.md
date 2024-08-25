@@ -110,9 +110,9 @@ class Main {
 
 ### Consigne
 
-Afin de vous familiariser avec les tableaux, on va vous donner un tableau d’entiers dans la variable _tableau_ avec _nbElements_ éléments.
+Afin de vous familiariser avec les tableaux, on va vous donner un tableau d’entiers dans la variable `tableau` avec `nbElements` éléments.
 
-On vous donne aussi deux indices _indiceDepart_ et _indiceFin_. Vous devez remplacer la valeur à l’indice _indiceFin_ par la valeur à l’indice _indiceDepart_, à laquelle vous devez ajouter 1.
+On vous donne aussi deux indices `indiceDepart` et `indiceFin`. Vous devez remplacer la valeur à l’indice `indiceFin` par la valeur à l’indice `indiceDepart`, à laquelle vous devez ajouter 1.
 
 ### Exemple
 

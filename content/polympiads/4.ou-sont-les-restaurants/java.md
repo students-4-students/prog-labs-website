@@ -148,9 +148,9 @@ Notre voyageur est toujours aussi indécis, cependant, son ami lui a conseillé 
 
 ### Consigne
 
-Nous allons utiliser la même modélisation que dans l’exercice précédent. De plus, on vous donnera accès à deux variables nbRestaurants, le nombre de restaurants, et dureesRestaurants, un tableau d’entier, où chacun d’entre eux représente la durée pour rejoindre le restaurant.
+Nous allons utiliser la même modélisation que dans l’exercice précédent. De plus, on vous donnera accès à deux variables `nbRestaurants`, le nombre de restaurants, et `dureesRestaurants`, un tableau d’entier, où chacun d’entre eux représente la durée pour rejoindre le restaurant.
 
-Vous devez afficher nbRestaurants entiers, les indices des arrêts associés à chaque restaurant. Ainsi, le premier entier devra être l’identifiant de l’arrêt qu’on peut rejoindre en dureesRestaurants[0] minutes depuis le premier arrêt, le second entier sera celui qu’on peut rejoindre en dureesRestaurants[1] minutes, etc…
+Vous devez afficher `nbRestaurants` entiers, les indices des arrêts associés à chaque restaurant. Ainsi, le premier entier devra être l’identifiant de l’arrêt qu’on peut rejoindre en `dureesRestaurants[0]` minutes depuis le premier arrêt, le second entier sera celui qu’on peut rejoindre en `dureesRestaurants[1]` minutes, etc…
 
 De plus, on vous garanti que l’arrêt spécifique de chaque restaurant existe et que ce ne sera pas l’arrêt 0.
 
@@ -160,11 +160,11 @@ Par exemple, on peut considérer la ligne suivante avec 4 arrêts de métro.
 
 ![Graph](/polympiads/graph-metro-polympiads.png)
 
-Son ami lui a transmit 3 restaurants et la liste dureesRestaurants est [7, 3, 9]. On peut alors se rendre compte que le premier restaurant est nécessairement à l’arrêt 2, le second à l’arrêt 1 et le dernier au terminus, vous devez donc afficher sur 3 lignes les chiffres 2, 1 et 3. En effet, si on prend l’exemple du premier restaurant, situé à 7 minutes de l’arrêt 0, il ne peut s’agir que de l’arrêt 2, les deux autres arrêts étant respectivement à 3 et 9 minutes de l’arrêt 0.
+Son ami lui a transmit 3 restaurants et la liste `dureesRestaurants` est [7, 3, 9]. On peut alors se rendre compte que le premier restaurant est nécessairement à l’arrêt 2, le second à l’arrêt 1 et le dernier au terminus, vous devez donc afficher sur 3 lignes les chiffres 2, 1 et 3. En effet, si on prend l’exemple du premier restaurant, situé à 7 minutes de l’arrêt 0, il ne peut s’agir que de l’arrêt 2, les deux autres arrêts étant respectivement à 3 et 9 minutes de l’arrêt 0.
 
 ### Bonus
 
-Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque _nbArrets = 100'000_ en utilisant moins de 10'000'000 opérations ?
+Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque `nbArrets = 100000` en utilisant moins de 10'000'000 opérations ?
 
 Vous pouvez supposer que vous savez résoudre l'exercice précédent en moins de 1'000'000 d'opérations.
 
@@ -176,7 +176,7 @@ Indice n°1
 ::
 
 ::hint
-Les valeurs dans la liste dureesRestaurants sont strictement croissantes.
+Les valeurs dans la liste `dureesRestaurants` sont strictement croissantes.
 
 #title
 Indice n°2

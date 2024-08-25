@@ -66,7 +66,7 @@ Lors de ce premier exercice, on va chercher à calculer le temps nécessaire pou
 
 ### Objectif
 
-Nous allons modéliser la ligne de métro comme une ligne unidirectionnelle contenant _nbArrets_ arrêts, numérotés de 0 à _nbArrets_ - 1. Le métro se déplace de l’arrêt 0 à l’arrêt _nbArrets_ - 1 en passant par tous les arrêts au milieu, dans l’ordre de la numérotation. De plus, on vous donne en entrée une liste _durees_, où le i-ème élément représente la durée du trajet entre l’arrêt i et l’arrêt i + 1. Vous partez de l’arrêt 0 et le terminus est l’arrêt _nbArrets_ - 1. Affichez la durée pour rejoindre le terminus.
+Nous allons modéliser la ligne de métro comme une ligne unidirectionnelle contenant `nbArrets` arrêts, numérotés de 0 à `nbArrets` - 1. Le métro se déplace de l’arrêt 0 à l’arrêt `nbArrets` - 1 en passant par tous les arrêts au milieu, dans l’ordre de la numérotation. De plus, on vous donne en entrée une liste `durees`, où le i-ème élément représente la durée du trajet entre l’arrêt i et l’arrêt i + 1. Vous partez de l’arrêt 0 et le terminus est l’arrêt `nbArrets` - 1. Affichez la durée pour rejoindre le terminus.
 
 ### Exemple
 

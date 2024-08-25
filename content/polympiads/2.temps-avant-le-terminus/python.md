@@ -6,18 +6,18 @@ code:
   default: |
     nb_arrets = int(input())
     durees = list(map(int, input().split()))
-    
+
     # Complétez le code pour calculer et afficher le temps pour atteindre le terminus
   corrected: |
     nb_arrets = int(input())
     durees = list(map(int, input().split()))
-    
+
     # On calcule la somme des éléments dans le tableau durees, qui nous donne
     # Le résultat attendu.
     temps_au_terminus = 0
     for i_arret in range(nb_arrets - 1):
         temps_au_terminus += durees[i_arret]
-    
+
     # On affiche la durée
     print(temps_au_terminus)
 
@@ -40,11 +40,11 @@ La ligne M1 est l’une des lignes principales du réseau de transport qui perme
 
 Dans cette série, nous allons nous intéresser à différentes questions qu’un voyageur pourrait se poser lorsqu’il se trouve dans une ligne de métro, et allons essayer d’y répondre algorithmiquement.
 
-Lors de ce premier exercice, on va chercher à calculer le temps nécessaire pour se rendre du départ de la ligne à son terminus. 
+Lors de ce premier exercice, on va chercher à calculer le temps nécessaire pour se rendre du départ de la ligne à son terminus.
 
 ### Objectif
 
-Nous allons modéliser la ligne de métro comme une ligne unidirectionnelle contenant _nb\_arrets_ arrêts, numérotés de 0 à _nb\_arrets_ - 1. Le métro se déplace de l’arrêt 0 à l’arrêt _nb\_arrets_ - 1 en passant par tous les arrêts au milieu, dans l’ordre de la numérotation. De plus, on vous donne en entrée une liste _durees_, où le i-ème élément représente la durée du trajet entre l’arrêt i et l’arrêt i + 1. Vous partez de l’arrêt 0 et le terminus est l’arrêt _nb\_arrets_ - 1. Affichez la durée pour rejoindre le terminus.
+Nous allons modéliser la ligne de métro comme une ligne unidirectionnelle contenant `nb_arrets` arrêts, numérotés de 0 à `nb_arrets` - 1. Le métro se déplace de l’arrêt 0 à l’arrêt `nb_arrets` - 1 en passant par tous les arrêts au milieu, dans l’ordre de la numérotation. De plus, on vous donne en entrée une liste `durees`, où le i-ème élément représente la durée du trajet entre l’arrêt i et l’arrêt i + 1. Vous partez de l’arrêt 0 et le terminus est l’arrêt `nb_arrets` - 1. Affichez la durée pour rejoindre le terminus.
 
 ### Exemple
 
