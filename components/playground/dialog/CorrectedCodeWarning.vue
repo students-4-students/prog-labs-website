@@ -5,6 +5,7 @@
 
   const emit = defineEmits<{
     (e: 'acknowledgeWarning'): void;
+    (e: 'returnToExercise'): void;
   }>();
 </script>
 
@@ -25,9 +26,15 @@
       </DialogHeader>
 
       <DialogFooter>
-        <Button @click="emit('acknowledgeWarning')" size="default">Oui</Button>
+        <Button @click="emit('acknowledgeWarning')" size="default">
+          Oui, je veux voir la correction
+        </Button>
         <DialogClose as-child>
-          <Button size="default" variant="outline">
+          <Button
+            size="default"
+            variant="outline"
+            @click="emit('returnToExercise')"
+          >
             Non, je souhaite continuer à chercher
           </Button>
         </DialogClose>

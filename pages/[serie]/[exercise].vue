@@ -169,6 +169,7 @@
               </PlaygroundTabsTrigger>
               <PlaygroundDialogCorrectedCodeWarning
                 @acknowledge-warning="wantsToSeeCorrectedCode = true"
+                @return-to-exercise="currentTab = EditorTab.Code"
                 :only-keep-trigger="wantsToSeeCorrectedCode"
               >
                 <template #trigger>
