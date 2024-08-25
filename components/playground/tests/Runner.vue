@@ -1,5 +1,6 @@
 <script lang="ts" setup>
   import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'radix-vue';
+  import { cn } from '~/lib/utils';
   import type { TestSpec } from '~/pages/[serie]/loadExercise';
 
   const compilers: Record<AllowedLanguage, string> = {
@@ -27,7 +28,7 @@
     | {
         runId: string;
         results: {
-          status: 'passed' | 'failed' | 'running';
+          status: 'passed' | 'failed' | 'running' | 'timedout';
           output?: string;
         }[];
       }
@@ -125,10 +126,11 @@
           const output = [...stdout, ...stderr].map((l) => l.text).join('\n');
 
           run.value.results[i] = {
-            status:
-              didExecute &&
-              !timedOut &&
-              output === testSpecs.value[i].expectedOutput
+            status: timedOut
+              ? 'timedout'
+              : didExecute &&
+                  !timedOut &&
+                  output === testSpecs.value[i].expectedOutput
                 ? 'passed'
                 : 'failed',
             output,
@@ -213,6 +215,11 @@
               class="w-4 h-4 text-red-500"
               title="Test échoué"
             />
+            <LucideTimerOff
+              v-if="test.status === 'timedout'"
+              class="w-4 h-4 text-red-500"
+              title="Test échoué"
+            />
 
             Test {{ index + 1 }}
           </TabsTrigger>
@@ -227,31 +234,53 @@
         >
           <ScrollArea class="h-full rounded-t-lg overflow-auto">
             <div class="flex flex-col grow gap-4 p-5 pb-20 bg-background">
-              <PlaygroundTestsResultView v-if="test.input" title="Texte entré">
-                {{ test.input }}
+              <PlaygroundTestsResultView
+                v-if="test.input !== undefined"
+                title="Texte entré"
+              >
+                <pre class="p-4 whitespace-break-spaces">{{ test.input }}</pre>
               </PlaygroundTestsResultView>
               <PlaygroundTestsResultView
                 v-if="
-                  test.expectedOutput && test.expectedOutput !== test.actual
+                  test.expectedOutput !== undefined &&
+                  test.expectedOutput !== test.actual
                 "
                 title="Résultat attendu"
               >
                 <div class="text-green-800 dark:text-green-400">
-                  {{ test.expectedOutput }}
+                  <pre class="p-4 whitespace-break-spaces">{{
+                    test.expectedOutput
+                  }}</pre>
                 </div>
               </PlaygroundTestsResultView>
               <PlaygroundTestsResultView
-                v-if="test.actual"
+                v-if="test.actual !== undefined"
                 title="Résultat produit"
               >
                 <div
-                  :class="
-                    test.actual !== test.expectedOutput &&
-                    'text-red-800 dark:text-red-400'
-                  "
+                  class="p-4 grid gap-2 grid-cols-[auto_1fr] items-center text-red-800 dark:text-red-400"
+                  v-if="test.status === 'timedout'"
                 >
-                  {{ test.actual }}
+                  <LucideTimerOff class="w-5 h-5" />
+                  <div>
+                    <p>L’exécution du programme ne s’est pas finie à temps.</p>
+                    <p class="text-sm">
+                      Vérifie que ton programme ne soit pas coincé dans une
+                      boucle infinie.
+                    </p>
+                  </div>
                 </div>
+                <pre
+                  v-else
+                  :class="
+                    cn(
+                      'p-4 whitespace-break-spaces',
+                      test.actual !== test.expectedOutput &&
+                        'text-red-800 dark:text-red-400',
+                    )
+                  "
+                  >{{ test.actual }}</pre
+                >
               </PlaygroundTestsResultView>
             </div>
           </ScrollArea>
