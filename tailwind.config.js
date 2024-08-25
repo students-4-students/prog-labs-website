@@ -63,6 +63,7 @@ module.exports = {
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
+          dark: 'hsl(var(--accent-dark))',
         },
         popover: {
           DEFAULT: 'hsl(var(--popover))',
@@ -106,4 +107,17 @@ module.exports = {
     },
   },
   plugins: [animate, typography],
+  content: [
+    `components/**/*.{vue,js,ts}`,
+    `layouts/**/*.vue`,
+    `pages/**/*.vue`,
+    `composables/**/*.{js,ts}`,
+    `plugins/**/*.{js,ts}`,
+    `utils/**/*.{js,ts}`,
+    `App.{js,ts,vue}`,
+    `app.{js,ts,vue}`,
+    `Error.{js,ts,vue}`,
+    `error.{js,ts,vue}`,
+    `app.config.{js,ts}`,
+  ],
 };

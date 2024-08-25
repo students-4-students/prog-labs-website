@@ -158,7 +158,9 @@ De plus, on vous garanti que l’arrêt spécifique de chaque restaurant existe 
 
 Par exemple, on peut considérer la ligne suivante avec 4 arrêts de métro.
 
+::dark-background
 ![Graph](/polympiads/graph-metro-polympiads.png)
+::
 
 Son ami lui a transmit 3 restaurants et la liste `dureesRestaurants` est [7, 3, 9]. On peut alors se rendre compte que le premier restaurant est nécessairement à l’arrêt 2, le second à l’arrêt 1 et le dernier au terminus, vous devez donc afficher sur 3 lignes les chiffres 2, 1 et 3. En effet, si on prend l’exemple du premier restaurant, situé à 7 minutes de l’arrêt 0, il ne peut s’agir que de l’arrêt 2, les deux autres arrêts étant respectivement à 3 et 9 minutes de l’arrêt 0.
 
