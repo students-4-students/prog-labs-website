@@ -38,15 +38,20 @@
         </DialogDescription>
       </DialogHeader>
 
-      <DialogFooter>
-        <Button @click="emit('acknowledgeWarning')" size="default">
-          Oui, je veux voir la correction
-        </Button>
+      <DialogFooter class="sm:flex-col gap-2 justify-end">
         <DialogClose as-child>
-          <Button size="default" variant="outline">
+          <Button size="default">
             Non, je souhaite continuer à chercher
           </Button>
         </DialogClose>
+        <Button
+          @click="emit('acknowledgeWarning')"
+          size="sm"
+          variant="outline"
+          class="opacity-75 hover:opacity-100 text-xs"
+        >
+          Oui, je veux voir la correction
+        </Button>
       </DialogFooter>
     </DialogContent>
   </Dialog>
