@@ -29,6 +29,7 @@ code:
         // ne faites pas attention à ces deux lignes    
         // elles servent à initialiser les variables    
         // (voir le cours)    
+        
         int a (0);
         cin >> a; 
         

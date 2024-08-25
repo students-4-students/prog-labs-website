@@ -34,10 +34,10 @@ code:
   corrected: |
     #include <iostream>
     #include <string>
+
     using namespace std;
 
     int main() {
-
         // Chaîne de caractères représentant la queue        
         string queue ("");
         cin >> queue;

@@ -54,6 +54,7 @@ code:
             // Le programme lit les questions disponibles ce jour-ci
             int questionsDisponibles (0); // lire le nombre de questions disponibles ce jour la
             cin >> questionsDisponibles;
+            
             int allQuestions (questionsDisponibles + QUESTIONS_POSEES_RAOUL + QUESTIONS_POSEES_GANIMARD + QUESTIONS_POSEES_LUPIN);
             
             // gestion de la logique

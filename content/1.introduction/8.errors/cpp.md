@@ -21,13 +21,9 @@ code:
   corrected: |
     /*
     Il y a deux erreurs de compilation, et une erreur dans la conception du programme.
-
     Le type de `nombreActuel` est mal défini, `string nombreActuel ("On est au nombre : ");` au lieu de `int`.
-
     Il manque un point-virgule à la fin de l’instruction `cout <<  << endl` .
-
     Le code fourni affiche, sans arrêt, `On est au nombre : 0`.
-
     L’erreur est due au fait que l’on ne met pas à jour notre compteur.
     */
 
