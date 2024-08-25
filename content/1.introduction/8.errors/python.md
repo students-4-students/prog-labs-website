@@ -6,7 +6,8 @@ code:
   default: |
     for i in range(10)
         nombre_actuel = "On est au nombre : " + i
-    print(nombre_actuel)
+
+        print(nombre_actuel)
   corrected: |
     '''
     Il y a deux erreurs de compilation, et une erreur dans la conception du programme.
@@ -22,6 +23,7 @@ code:
 
     for i in range(10):
         nombre_actuel = "On est au nombre : " + str(i)
+        
         print(nombre_actuel)
 
 tests:

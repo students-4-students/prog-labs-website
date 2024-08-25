@@ -86,14 +86,15 @@ code:
             int iPlusPetit = - 1;
             int iPlusGrandOuEgal = nbArrets - 1;
             while (iPlusGrandOuEgal - iPlusPetit > 1) {
-              // On prend le milieu entre les deux
+                // On prend le milieu entre les deux
                 int iMilieu = (iPlusPetit + iPlusGrandOuEgal) / 2;
                     
                 // On évalue s'il est plus grand ou égal ou inférieur et on le stocke dans la bonne variable
                 // En fonction. De cette manière, on divise par deux la taille de notre intervalle comme
                 // On a choisi le milieu.
-                if (dureesAuxArrets2[iMilieu] >= dureesRestaurants[iRestaurant])
+                if (dureesAuxArrets2[iMilieu] >= dureesRestaurants[iRestaurant]) {
                     iPlusGrandOuEgal = iMilieu;
+                }
                 else iPlusPetit = iMilieu;
             }
                 

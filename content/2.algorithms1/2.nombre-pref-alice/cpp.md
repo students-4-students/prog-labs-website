@@ -5,6 +5,7 @@ description: 'Manipuler les boucle for'
 code:
   default: |
     #include <iostream>
+
     using namespace std;
 
     int main() {            
@@ -18,6 +19,7 @@ code:
     }
   corrected: |
     #include <iostream>
+
     using namespace std;
 
     int main() {            

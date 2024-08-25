@@ -8,7 +8,6 @@ code:
 
     class Main {
         public static void main(String[] args) {
-      
             Scanner scanner = new Scanner(System.in);
             int n = scanner.nextInt();
             int count = 0;
@@ -25,7 +24,6 @@ code:
 
     class Main {
         public static void main(String[] args) {
-      
             Scanner scanner = new Scanner(System.in);
             int n = scanner.nextInt();
             int count = 0;

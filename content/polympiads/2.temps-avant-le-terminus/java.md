@@ -5,7 +5,7 @@ description: 'Calculez la durée pour rejoindre le terminus de la ligne de métr
 code:
   default: |
     import java.util.Scanner;
-    
+
     class Main {
         public static void main (String[] args) {
             Scanner sc = new Scanner(System.in);
@@ -19,7 +19,7 @@ code:
     }
   corrected: |
     import java.util.Scanner;
-    
+
     class Main {
         public static void main (String[] args) {
             Scanner sc = new Scanner(System.in);
@@ -31,8 +31,9 @@ code:
             // On calcule la somme des éléments dans le tableau durees, qui nous donne
             // Le résultat attendu.
             int tempsAuTerminus = 0;
-            for (int iTrajet = 0; iTrajet < nbArrets - 1; iTrajet ++)
+            for (int iTrajet = 0; iTrajet < nbArrets - 1; iTrajet ++) {
                 tempsAuTerminus += durees[iTrajet];
+            }
             
             System.out.println(tempsAuTerminus);
         }
@@ -57,7 +58,7 @@ La ligne M1 est l’une des lignes principales du réseau de transport qui perme
 
 Dans cette série, nous allons nous intéresser à différentes questions qu’un voyageur pourrait se poser lorsqu’il se trouve dans une ligne de métro, et allons essayer d’y répondre algorithmiquement.
 
-Lors de ce premier exercice, on va chercher à calculer le temps nécessaire pour se rendre du départ de la ligne à son terminus. 
+Lors de ce premier exercice, on va chercher à calculer le temps nécessaire pour se rendre du départ de la ligne à son terminus.
 
 ### Objectif
 

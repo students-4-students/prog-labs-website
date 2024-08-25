@@ -12,7 +12,9 @@ code:
             
             int nbArrets = sc.nextInt();
             int[] durees = new int[nbArrets - 1];
-            for (int i = 0; i < durees.length; i ++) durees[i] = sc.nextInt();
+            for (int i = 0; i < durees.length; i ++) {
+                durees[i] = sc.nextInt();
+            }
 
             int tempsTrajet = sc.nextInt();
             
@@ -28,7 +30,9 @@ code:
             
             int nbArrets = sc.nextInt();
             int[] durees = new int[nbArrets - 1];
-            for (int i = 0; i < durees.length; i ++) durees[i] = sc.nextInt();
+            for (int i = 0; i < durees.length; i ++) {
+                durees[i] = sc.nextInt();
+            }
 
             int tempsTrajet = sc.nextInt();
             

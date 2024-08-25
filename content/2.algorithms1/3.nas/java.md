@@ -26,14 +26,12 @@ code:
                 
                 }
             }
-
         }
     }
   corrected: |
     import java.util.Scanner;
 
     class EstimationTempsAttente {
-
         public static void main(String[] args) {
             Scanner scanner = new Scanner(System.in);
             // Chaîne de caractères représentant la queue

@@ -5,10 +5,10 @@ description: "Affichez le contenu d'une variable."
 code:
   default: |
     #include <iostream>
+
     using namespace std;
 
     int main() {     
-
         // ne faites pas attention à ces deux lignes    
         // elles servent à initialiser les variables    
         // (voir le cours)  
@@ -22,6 +22,7 @@ code:
     }
   corrected: |
     #include <iostream>
+
     using namespace std;
 
     int main() {        

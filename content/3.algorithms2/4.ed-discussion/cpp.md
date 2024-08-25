@@ -5,6 +5,7 @@ description: 'Saurez-vous trouver qui a répondu aux plus de questions ?'
 code:
   default: |
     #include <iostream>
+
     using namespace std;
 
     int main() {
@@ -26,7 +27,6 @@ code:
             int allQuestions (questionsDisponibles + QUESTIONS_POSEES_RAOUL + QUESTIONS_POSEES_GANIMARD + QUESTIONS_POSEES_LUPIN);
             
             // à compléter la gestion de la logique du problème
-            
         }
         
         // a compléter : trouvez l'étudiant avec le plus de point (afficher Raoul par défaut en cas d'égalité)
@@ -36,6 +36,7 @@ code:
 
   corrected: |
     #include <iostream>
+
     using namespace std;
 
     int main() {

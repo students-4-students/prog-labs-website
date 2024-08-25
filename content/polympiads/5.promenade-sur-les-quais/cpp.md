@@ -27,6 +27,7 @@ code:
     #include <iostream>
 
     using namespace std;
+
     int main () {
         int nbArrets;
         cin >> nbArrets;

@@ -26,8 +26,8 @@ code:
                 // à compléter la gestion de la logique du problème
                 
             }
+            
             // a compléter : trouvez l'étudiant avec le plus de point (afficher Raoul par défaut en cas d'égalité)
-
         }
     }
 
@@ -68,7 +68,7 @@ code:
                         // --> Arsène va avoir moins de points négatives.
                         pointsLupin -= (5 - questionsDisponibles);
                         questionsDisponibles = 0;
-                    }else{
+                    } else {
                         // Ici, Raoul répond qu'aux questions des qutres étudiants
                         // Arsène va répondre a toutes ses propres queestions
                         pointsLupin -= 5;

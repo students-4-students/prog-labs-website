@@ -5,8 +5,8 @@ description: 'Manipuler les boucle for'
 code:
   default: |
     for i in range(..., ..., ...):
-    if i != 78:
-        # à compléter
+        if i != 78:
+            # à compléter
   corrected: |
     for i in range(0, 100, 3):
         if i != 78:

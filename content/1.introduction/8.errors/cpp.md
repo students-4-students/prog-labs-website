@@ -6,6 +6,7 @@ code:
   default: |
     #include <iostream>
     #include <string>
+
     using namespace std;
 
     int main() {        
@@ -32,6 +33,7 @@ code:
 
     #include <iostream>
     #include <string>
+
     using namespace std;
 
     int main() {        
