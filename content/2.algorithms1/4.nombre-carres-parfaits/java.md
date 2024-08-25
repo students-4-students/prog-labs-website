@@ -13,7 +13,7 @@ code:
             int count = 0;
 
             for (int i = 0; i <= n; i++) {
-              // à compléter...
+                // à compléter...
             }
 
             System.out.println(count);   

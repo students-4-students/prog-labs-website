@@ -12,10 +12,14 @@ code:
             
             int nbArrets = sc.nextInt();
             int[] durees = new int[nbArrets - 1];
-            for (int i = 0; i < durees.length; i ++) durees[i] = sc.nextInt();
+            for (int i = 0; i < durees.length; i ++) {
+                durees[i] = sc.nextInt();
+            }
             int nbRestaurants = sc.nextInt();
             int[] dureesRestaurants = new int[nbRestaurants];
-            for (int i = 0; i < nbRestaurants; i ++) dureesRestaurants[i] = sc.nextInt();
+            for (int i = 0; i < nbRestaurants; i ++) {
+                dureesRestaurants[i] = sc.nextInt();
+            }
             
             // Complétez le code pour calculer et afficher les arrêts où se trouvent les restaurants
         }
@@ -29,17 +33,23 @@ code:
             
             int nbArrets = sc.nextInt();
             int[] durees = new int[nbArrets - 1];
-            for (int i = 0; i < durees.length; i ++) durees[i] = sc.nextInt();
+            for (int i = 0; i < durees.length; i ++) {
+                durees[i] = sc.nextInt();
+            }
             int nbRestaurants = sc.nextInt();
             int[] dureesRestaurants = new int[nbRestaurants];
-            for (int i = 0; i < nbRestaurants; i ++) dureesRestaurants[i] = sc.nextInt();
+            for (int i = 0; i < nbRestaurants; i ++) {
+                dureesRestaurants[i] = sc.nextInt();
+            }
             
             // On calcule la liste des distances aux arrêts comme dans l'exercice précédent.
             // Cette fois-ci, on la stocke au lieu de l'afficher
             int[] dureesAuxArrets = new int[nbArrets - 1];
-            for (int i = 0; i < nbArrets - 1; i ++)
-                for (int j = 0; j <= i; j ++)
+            for (int i = 0; i < nbArrets - 1; i ++) {
+                for (int j = 0; j <= i; j ++) {
                     dureesAuxArrets[i] += durees[j];
+                }
+            }
             
             // Pour chaque restaurant
             for (int iRestaurant = 0; iRestaurant < nbRestaurants; iRestaurant ++) {
@@ -73,7 +83,7 @@ code:
                 int iPlusPetit = - 1;
                 int iPlusGrandOuEgal = nbArrets - 1;
                 while (iPlusGrandOuEgal - iPlusPetit > 1) {
-                  // On prend le milieu entre les deux
+                    // On prend le milieu entre les deux
                     int iMilieu = (iPlusPetit + iPlusGrandOuEgal) / 2;
                     
                     // On évalue s'il est plus grand ou égal ou inférieur et on le stocke dans la bonne variable

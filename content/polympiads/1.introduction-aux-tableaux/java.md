@@ -5,13 +5,15 @@ description: 'Créez et manipulez des tableaux.'
 code:
   default: |
     import java.util.Scanner;
-    
+
     class Main { 
         public static void main (String[] args) {
             Scanner sc = new Scanner(System.in);
             int nbElements = sc.nextInt();
             int[] tableau  = new int[nbElements];
-            for (int i = 0; i < nbElements; i ++) tableau[i] = sc.nextInt();
+            for (int i = 0; i < nbElements; i ++) {
+                tableau[i] = sc.nextInt();
+            }
             
             int indiceDepart = sc.nextInt();
             int indiceFin    = sc.nextInt();
@@ -27,13 +29,14 @@ code:
     }
   corrected: |
     import java.util.Scanner;
-    
+
     class Main { 
         public static void main (String[] args) {
             Scanner sc = new Scanner(System.in);
             int nbElements = sc.nextInt();
             int[] tableau  = new int[nbElements];
-            for (int i = 0; i < nbElements; i ++) tableau[i] = sc.nextInt();
+            for (int i = 0; i < nbElements; i ++) 
+                tableau[i] = sc.nextInt();
             
             int indiceDepart = sc.nextInt();
             int indiceFin    = sc.nextInt();
@@ -61,7 +64,7 @@ tests:
       1 2 4 8
       1 3
     expectedOutput: |-
-      1 2 4 3 
+      1 2 4 3
 ---
 
 ### Introduction aux tableaux
@@ -70,9 +73,9 @@ Dans cet exercice, nous allons aborder l’un des éléments fondamentaux de l�
 
 Un tableau peut être représenté comme une séquence finie d’éléments. On appelle la taille de ce tableau le nombre d’éléments de celui-ci, et on associe le premier élément à l’indice 0, le second à l’indice 1, etc... Par exemple, la séquence finie [1, 2, 3, 2] est représentée par la table
 
-| Indice | 0 | 1 | 2 | 3 |
-| ------ | - | - | - | - |
-| Valeur | 1 | 2 | 3 | 2 |
+| Indice | 0   | 1   | 2   | 3   |
+| ------ | --- | --- | --- | --- |
+| Valeur | 1   | 2   | 3   | 2   |
 
 Ici, on a choisi un tableau de nombres, mais on aurait pu imaginer un tableau de caractères comme [’H’, ‘e’, ‘l’, ‘l’, ‘o’], équivalent à la chaîne "Hello", ou même un tableau contenant d’autres types d’objets. L’intérêt d’un tableau est que ses éléments sont modifiables, et on peut changer la valeur associée à un indice. Voici quelques exemples de syntaxes pour les tableaux
 

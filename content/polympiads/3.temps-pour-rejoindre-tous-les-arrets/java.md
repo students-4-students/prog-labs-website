@@ -12,7 +12,9 @@ code:
             
             int nbArrets = sc.nextInt();
             int[] durees = new int[nbArrets - 1];
-            for (int i = 0; i < durees.length; i ++) durees[i] = sc.nextInt();
+            for (int i = 0; i < durees.length; i ++) {
+                durees[i] = sc.nextInt();
+            }
             
             // Complétez le code pour calculer et afficher le temps pour atteindre tous les arrêts
         }
@@ -26,7 +28,9 @@ code:
             
             int nbArrets = sc.nextInt();
             int[] durees = new int[nbArrets - 1];
-            for (int i = 0; i < durees.length; i ++) durees[i] = sc.nextInt();
+            for (int i = 0; i < durees.length; i ++) {
+                durees[i] = sc.nextInt();
+            }
             
             // Pour chaque fin de trajet
             for (int iFin = 1; iFin < nbArrets; iFin ++) {

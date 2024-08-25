@@ -20,11 +20,13 @@ code:
     }
 
   corrected: |
-    // Vérifiez bien l'ordre des conditions !
-    // Ici, on verifiait que i était divisible par 3
-    // avant d'etre divisible par 15 ! Or si on est
-    // divisible par 15 on est necessairement divisible
-    // par 3. Le programme affichait donc "easy".
+    /*
+    Vérifiez bien l'ordre des conditions !
+    Ici, on verifiait que i était divisible par 3
+    avant d'etre divisible par 15 ! Or si on est
+    divisible par 15 on est necessairement divisible
+    par 3. Le programme affichait donc "easy".
+    */
 
     class Main {
         public static void main(String[] args) {

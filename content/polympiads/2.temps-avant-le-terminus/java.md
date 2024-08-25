@@ -12,7 +12,9 @@ code:
             
             int nbArrets = sc.nextInt();
             int[] durees = new int[nbArrets - 1];
-            for (int i = 0; i < durees.length; i ++) durees[i] = sc.nextInt();
+            for (int i = 0; i < durees.length; i ++) {
+                durees[i] = sc.nextInt();
+            }
             
             // Complétez le code pour calculer et afficher le temps pour atteindre le terminus
         }
@@ -26,7 +28,9 @@ code:
             
             int nbArrets = sc.nextInt();
             int[] durees = new int[nbArrets - 1];
-            for (int i = 0; i < durees.length; i ++) durees[i] = sc.nextInt();
+            for (int i = 0; i < durees.length; i ++) {
+                durees[i] = sc.nextInt();
+            }
             
             // On calcule la somme des éléments dans le tableau durees, qui nous donne
             // Le résultat attendu.
