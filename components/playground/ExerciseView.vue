@@ -27,10 +27,12 @@
               <LucideCircleHelp class="h-4 mr-1" />
               J'ai besoin d'aide
             </Button>
-            <Button variant="outline" size="lg" @click="navigateTo('/about')">
-              <LucideUsers class="h-4 mr-1" />
-              Auteurs
-            </Button>
+            <NuxtLink to="/about">
+              <Button variant="outline" size="lg">
+                <LucideUsers class="h-4 mr-1" />
+                Auteurs
+              </Button>
+            </NuxtLink>
           </div>
         </ScrollAreaViewport>
         <ScrollBar />
@@ -47,9 +49,9 @@
             <h1 class="text-center">
               Oups, il semblerait cet exercice n'existe pas.
             </h1>
-            <Button @click="navigateTo('/')">
-              Choisir un autre exercice
-            </Button>
+            <NuxtLink to="/">
+              <Button> Choisir un autre exercice </Button>
+            </NuxtLink>
           </div>
         </div>
       </template>
