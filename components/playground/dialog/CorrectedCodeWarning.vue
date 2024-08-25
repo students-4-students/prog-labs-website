@@ -14,6 +14,8 @@
     if (!opened.value && !doNotTriggerCloseEvent) {
       emit('returnToExercise');
     }
+
+    doNotTriggerCloseEvent = false;
   });
 
   function acknowledgeWarning() {
@@ -45,7 +47,7 @@
           </Button>
         </DialogClose>
         <Button
-          @click="emit('acknowledgeWarning')"
+          @click="acknowledgeWarning()"
           size="sm"
           variant="outline"
           class="opacity-75 hover:opacity-100 text-xs"
