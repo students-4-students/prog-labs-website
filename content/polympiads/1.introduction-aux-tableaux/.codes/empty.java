@@ -5,7 +5,9 @@ class Main {
 		Scanner sc = new Scanner(System.in);
 		int nbElements = sc.nextInt();
 		int[] tableau  = new int[nbElements];
-		for (int i = 0; i < nbElements; i ++) tableau[i] = sc.nextInt();
+		for (int i = 0; i < nbElements; i ++) {
+			tableau[i] = sc.nextInt();
+		}
 		
 		int indiceDepart = sc.nextInt();
 		int indiceFin    = sc.nextInt();

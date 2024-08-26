@@ -50,6 +50,8 @@ Nous allons modéliser la ligne de métro comme une ligne unidirectionnelle cont
 
 Par exemple, on peut considérer la ligne suivante avec 4 arrêts de métro. Ici, la ligne de métro est représentée par une chaîne partant du départ de la ligne, avec l’arrêt 0 et passant par les arrêts 1 et 2 puis par l’arrêt 3. Les durées affichées représentent le temps pour se déplacer d’un arrêt au suivant.
 
+::dark-background
 ![Graph](/polympiads/graph-metro-polympiads.png)
+::
 
 Dans ce cas, le tableau donné en entrée est [3, 4, 2], , et le temps pour rejoindre le terminus est de 9 minutes, et vous devez afficher la chaîne "9".

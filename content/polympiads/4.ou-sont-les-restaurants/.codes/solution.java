@@ -14,9 +14,11 @@ class Main {
 		// On calcule la liste des distances aux arrêts comme dans l'exercice précédent.
 		// Cette fois-ci, on la stocke au lieu de l'afficher
 		int[] dureesAuxArrets = new int[nbArrets - 1];
-		for (int i = 0; i < nbArrets - 1; i ++)
-			for (int j = 0; j <= i; j ++)
+		for (int i = 0; i < nbArrets - 1; i ++) {
+			for (int j = 0; j <= i; j ++) {
 				dureesAuxArrets[i] += durees[j];
+			}
+		}
 		
 		// Pour chaque restaurant
 		for (int iRestaurant = 0; iRestaurant < nbRestaurants; iRestaurant ++) {
@@ -56,9 +58,11 @@ class Main {
 				// On évalue s'il est plus grand ou égal ou inférieur et on le stocke dans la bonne variable
 				// En fonction. De cette manière, on divise par deux la taille de notre intervalle comme
 				// On a choisi le milieu.
-				if (dureesAuxArrets2[iMilieu] >= dureesRestaurants[iRestaurant])
+				if (dureesAuxArrets2[iMilieu] >= dureesRestaurants[iRestaurant]) {
 					iPlusGrandOuEgal = iMilieu;
-				else iPlusPetit = iMilieu;
+				} else { 
+					iPlusPetit = iMilieu;
+				}
 			}
 			
 			// Or on ne peut diviser qu'au plus log2(nbArrets) fois par deux notre intervalle,

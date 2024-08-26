@@ -48,10 +48,13 @@ code:
 
         // Ici, on récupère la valeur
         int valeurDepart = tableau[indiceDepart];
+        
         // On calcule la valeur qu'on souhaite stocker dans le tableau
         int valeurFin = valeurDepart + 1;
+        
         // On la stocke dans le tableau à l'indice de fin
         tableau[indiceFin] = valeurFin;
+        
         // On aurait aussi pu écrire
         // tableau[indiceFin] = tableau[indiceDepart] + 1;
 
@@ -103,8 +106,10 @@ int main () {
 
     // on peut alors calculer si on le souhaite la somme des deux premières valeurs
     int somme = tableau[0] + tableau[1];
+
     // on peut alors le stocker dans la quatrième case du tableau
     tableau[3] = somme;
+
     // notre nouvelle séquence est alors [1, 2, 3, 3]
     // on aurait aussi pu écrire tout sur une seule ligne
     // tableau[3] = tableau[0] + tableau[1];

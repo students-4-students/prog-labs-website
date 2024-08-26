@@ -35,18 +35,22 @@ code:
             Scanner sc = new Scanner(System.in);
             int nbElements = sc.nextInt();
             int[] tableau  = new int[nbElements];
-            for (int i = 0; i < nbElements; i ++) 
+            for (int i = 0; i < nbElements; i ++) {
                 tableau[i] = sc.nextInt();
+            }
             
             int indiceDepart = sc.nextInt();
             int indiceFin    = sc.nextInt();
             
             // Ici, on récupère la valeur
             int valeurDepart = tableau[indiceDepart];
+            
             // On calcule la valeur qu'on souhaite stocker dans le tableau
             int valeurFin = valeurDepart + 1;
+            
             // On la stocke dans le tableau à l'indice de fin
             tableau[indiceFin] = valeurFin;
+            
             // On aurait aussi pu écrire
             // tableau[indiceFin] = tableau[indiceDepart] + 1;
             
@@ -84,6 +88,7 @@ class Main {
     public static void main (String[] args) {
         // créé une variable tableau de type tableau d'entier et de taille 4,
         int[] tableau = new int[4];
+
         // ici 4 aurait aussi pu être une variable ou une expression
         // On stocke la séquence [1, 2, 3, 2] dans le tableau
         tableau[0] = 1;
@@ -97,8 +102,10 @@ class Main {
 
         // on peut alors calculer si on le souhaite la somme des deux premières valeurs
         int somme = tableau[0] + tableau[1];
+
         // on peut alors le stocker dans la quatrième case du tableau
         tableau[3] = somme;
+
         // notre nouvelle séquence est alors [1, 2, 3, 3]
         // on aurait aussi pu écrire tout sur une seule ligne
         // tableau[3] = tableau[0] + tableau[1];

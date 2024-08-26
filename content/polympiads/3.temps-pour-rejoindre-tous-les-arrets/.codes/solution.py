@@ -5,7 +5,8 @@ durees = list(map(int, input().split()))
 for i_fin in range(1, nb_arrets - 1):
     # On calcule le temps de trajet à la fin
     temps_a_fin = 0
-    for i_arret in range(i_fin): temps_a_fin += durees[i_arret]
+    for i_arret in range(i_fin): 
+        temps_a_fin += durees[i_arret]
     
     # On affiche le temps
     print(temps_a_fin)

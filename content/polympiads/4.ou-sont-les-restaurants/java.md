@@ -33,14 +33,10 @@ code:
             
             int nbArrets = sc.nextInt();
             int[] durees = new int[nbArrets - 1];
-            for (int i = 0; i < durees.length; i ++) {
-                durees[i] = sc.nextInt();
-            }
+            for (int i = 0; i < durees.length; i ++) durees[i] = sc.nextInt();
             int nbRestaurants = sc.nextInt();
             int[] dureesRestaurants = new int[nbRestaurants];
-            for (int i = 0; i < nbRestaurants; i ++) {
-                dureesRestaurants[i] = sc.nextInt();
-            }
+            for (int i = 0; i < nbRestaurants; i ++) dureesRestaurants[i] = sc.nextInt();
             
             // On calcule la liste des distances aux arrêts comme dans l'exercice précédent.
             // Cette fois-ci, on la stocke au lieu de l'afficher
@@ -83,15 +79,17 @@ code:
                 int iPlusPetit = - 1;
                 int iPlusGrandOuEgal = nbArrets - 1;
                 while (iPlusGrandOuEgal - iPlusPetit > 1) {
-                    // On prend le milieu entre les deux
+                  // On prend le milieu entre les deux
                     int iMilieu = (iPlusPetit + iPlusGrandOuEgal) / 2;
                     
                     // On évalue s'il est plus grand ou égal ou inférieur et on le stocke dans la bonne variable
                     // En fonction. De cette manière, on divise par deux la taille de notre intervalle comme
                     // On a choisi le milieu.
-                    if (dureesAuxArrets2[iMilieu] >= dureesRestaurants[iRestaurant])
+                    if (dureesAuxArrets2[iMilieu] >= dureesRestaurants[iRestaurant]) {
                         iPlusGrandOuEgal = iMilieu;
-                    else iPlusPetit = iMilieu;
+                    } else { 
+                        iPlusPetit = iMilieu;
+                    }
                 }
                 
                 // Or on ne peut diviser qu'au plus log2(nbArrets) fois par deux notre intervalle,
@@ -148,9 +146,9 @@ Notre voyageur est toujours aussi indécis, cependant, son ami lui a conseillé 
 
 ### Consigne
 
-Nous allons utiliser la même modélisation que dans l’exercice précédent. De plus, on vous donnera accès à deux variables `nbRestaurants`, le nombre de restaurants, et `dureesRestaurants`, un tableau d’entier, où chacun d’entre eux représente la durée pour rejoindre le restaurant.
+Nous allons utiliser la même modélisation que dans l’exercice précédent. De plus, on vous donnera accès à deux variables nbRestaurants, le nombre de restaurants, et dureesRestaurants, un tableau d’entier, où chacun d’entre eux représente la durée pour rejoindre le restaurant.
 
-Vous devez afficher `nbRestaurants` entiers, les indices des arrêts associés à chaque restaurant. Ainsi, le premier entier devra être l’identifiant de l’arrêt qu’on peut rejoindre en `dureesRestaurants[0]` minutes depuis le premier arrêt, le second entier sera celui qu’on peut rejoindre en `dureesRestaurants[1]` minutes, etc…
+Vous devez afficher nbRestaurants entiers, les indices des arrêts associés à chaque restaurant. Ainsi, le premier entier devra être l’identifiant de l’arrêt qu’on peut rejoindre en dureesRestaurants[0] minutes depuis le premier arrêt, le second entier sera celui qu’on peut rejoindre en dureesRestaurants[1] minutes, etc…
 
 De plus, on vous garanti que l’arrêt spécifique de chaque restaurant existe et que ce ne sera pas l’arrêt 0.
 
@@ -162,11 +160,11 @@ Par exemple, on peut considérer la ligne suivante avec 4 arrêts de métro.
 ![Graph](/polympiads/graph-metro-polympiads.png)
 ::
 
-Son ami lui a transmit 3 restaurants et la liste `dureesRestaurants` est [7, 3, 9]. On peut alors se rendre compte que le premier restaurant est nécessairement à l’arrêt 2, le second à l’arrêt 1 et le dernier au terminus, vous devez donc afficher sur 3 lignes les chiffres 2, 1 et 3. En effet, si on prend l’exemple du premier restaurant, situé à 7 minutes de l’arrêt 0, il ne peut s’agir que de l’arrêt 2, les deux autres arrêts étant respectivement à 3 et 9 minutes de l’arrêt 0.
+Son ami lui a transmit 3 restaurants et la liste dureesRestaurants est [7, 3, 9]. On peut alors se rendre compte que le premier restaurant est nécessairement à l’arrêt 2, le second à l’arrêt 1 et le dernier au terminus, vous devez donc afficher sur 3 lignes les chiffres 2, 1 et 3. En effet, si on prend l’exemple du premier restaurant, situé à 7 minutes de l’arrêt 0, il ne peut s’agir que de l’arrêt 2, les deux autres arrêts étant respectivement à 3 et 9 minutes de l’arrêt 0.
 
 ### Bonus
 
-Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque `nbArrets = 100000` en utilisant moins de 10'000'000 opérations ?
+Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque `nbArrets = 100'000` en utilisant moins de 10'000'000 opérations ?
 
 Vous pouvez supposer que vous savez résoudre l'exercice précédent en moins de 1'000'000 d'opérations.
 
@@ -178,7 +176,7 @@ Indice n°1
 ::
 
 ::hint
-Les valeurs dans la liste `dureesRestaurants` sont strictement croissantes.
+Les valeurs dans la liste dureesRestaurants sont strictement croissantes.
 
 #title
 Indice n°2
@@ -198,7 +196,7 @@ Que faites vous lorsque vous cherchez un mot dans un dictionnaire ? Pouvez-vous 
 Indice n°4
 ::
 
-::hint
+::solution
 Vous pouvez utiliser une dichotomie sur le tableau de l'exercice précédent.
 
 #title

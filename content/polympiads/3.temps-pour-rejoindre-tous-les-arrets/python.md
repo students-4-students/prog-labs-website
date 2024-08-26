@@ -73,13 +73,15 @@ Nous allons utiliser la même modélisation que dans l’exercice précédent. V
 
 Par exemple, on peut considérer la ligne suivante avec 4 arrêts de métro.
 
+::dark-background
 ![Graph](/polympiads/graph-metro-polympiads.png)
+::
 
 Dans ce cas, le tableau donné en entrée est [3, 4, 2], et les temps pour rejoindre les arrêts 1, 2 et 3 sont respectivement 3, 7 et 9 et vous devez donc afficher 3 lignes avec respectivement les chiffres 3, 7 et 9.
 
 ### Bonus
 
-Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque `nb_arrets = 100000` en utilisant moins de 10'000'000 opérations ?
+Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque `nb_arrets = 100'000` en utilisant moins de 10'000'000 opérations ?
 
 ::hint
 Que pouvez vous dire du calcul du temps de trajet entre l’arrêt 0 et l’arrêt `i_fin` ?
@@ -96,14 +98,14 @@ Indice n°2
 ::
 
 ::hint
-Essayez d’exprimer le temps de trajet entre l’arrêt 0 et l’arrêt `i_fin` + 1 à partir de celui entre l’arrêt 0 et l’arrêt `i_fin` ? Que pouvez-vous faire de cette information ?
+Essayez d’exprimer le temps de trajet entre l’arrêt 0 et l’arrêt `i_fin + 1` à partir de celui entre l’arrêt 0 et l’arrêt `i_fin` ? Que pouvez-vous faire de cette information ?
 
 #title
 Indice n°3
 ::
 
-::hint
-Le temps de trajet entre l'arrêt 0 et l'arrêt `i_fin` + 1 est égal au temps de trajet entre l'arrêt 0 et l'arrêt `i_fin` plus le temps de trajet entre l'arrêt `i_fin` et l'arrêt `i_fin` + 1. De cette manière, vous pouvez calculer en une opération le résultat à partir du précédent.
+::solution
+Le temps de trajet entre l'arrêt 0 et l'arrêt `i_fin + 1` est égal au temps de trajet entre l'arrêt 0 et l'arrêt `i_fin` plus le temps de trajet entre l'arrêt `i_fin` et l'arrêt `i_fin + 1`. De cette manière, vous pouvez calculer en une opération le résultat à partir du précédent.
 
 #title
 Solution des indices

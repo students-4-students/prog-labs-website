@@ -92,17 +92,19 @@ Vous devez afficher 2 nombres, les indices des deux arrêts. Vous devrez les aff
 
 Par exemple, on peut considérer la ligne suivante avec 4 arrêts de métro.
 
+::dark-background
 ![Graph](/polympiads/graph-metro-polympiads.png)
+::
 
 On va supposer que le temps du trajet est de 6 minutes, et on sait alors que le trajet va de l’arrêt 1 à l’arrêt 3, et vous devez afficher "1 3".
 
 ### Bonus 1
 
-Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque `nb_arrets = 1000` en utilisant moins de 10'000'000 opérations ?
+Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque `nb_arrets = 1'000` en utilisant moins de 10'000'000 opérations ?
 
 ### Bonus 2
 
-Le second code qui résout le Bonus 1 est toujours plutôt lent, seriez vous capable de trouver une solution qui fonctionne lorsque `nb_arrets = 100000` en utilisant moins de 10'000'000 opérations ?
+Le second code qui résout le Bonus 1 est toujours plutôt lent, seriez vous capable de trouver une solution qui fonctionne lorsque `nb_arrets = 100'000` en utilisant moins de 10'000'000 opérations ?
 
 ::hint
 Que pouvez-vous dire sur un trajet trop long ou trop court ?
@@ -118,7 +120,7 @@ Quels sont les candidats raisonnables pour un trajet solution lorsque le trajet 
 Indice n°2
 ::
 
-::hint
+::solution
 Supposons que le trajet est trop court, alors deux trajets raisonnables sont de lui ajouter l'arrêt juste à droite ou juste à gauche. Dans le cas où il est trop long, on lui retire celui le plus à gauche ou celui le plus à droite.
 
 #title
@@ -138,7 +140,7 @@ Existe-t-il une manière d'itérer sur une suite de trajets candidats, en s'assu
 Indice n°4
 ::
 
-::hint
+::solution
 Nous allons utiliser une technique classique appelée la technique de la fenêtre glissante. On va supposer qu'on connaît un trajet candidat représenté par l'intervalle [left; right] et son temps de trajet. Si celui-ci est trop court, on va s'intéresser au candidat [left + 1; right], sinon on va s'intéresser au candidat [left; right + 1]. La preuve que cette stratégie trouve toujours la solution est laissée en exercice et si vous pensez l'avoir, n'hésitez pas à venir en discuter avec un membre de Polympiads !
 
 #title

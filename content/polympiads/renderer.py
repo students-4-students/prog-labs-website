@@ -50,7 +50,7 @@ def get_style (lang: str):
             A = "_"
             for c in x:
                 if c == "\\": 
-                    A = "\\_"
+                    A = "_"
                     continue
                 if ord('A') <= ord(c) <= ord('Z'):
                     R.append(A)
