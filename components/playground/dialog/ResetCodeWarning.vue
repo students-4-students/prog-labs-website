@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  // TODO : remove code duplication with CorrectedCodeWarning
   const emit = defineEmits<{
     (e: 'acknowledgeWarning'): void;
     (e: 'returnToExercise'): void;
