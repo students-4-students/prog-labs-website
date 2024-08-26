@@ -2,6 +2,7 @@
   import { TabsContent, TabsList, TabsRoot, TabsTrigger } from 'radix-vue';
   import { cn } from '~/lib/utils';
   import type { TestSpec } from '~/pages/[serie]/loadExercise';
+  import * as monaco from 'monaco-editor';
 
   const compilers: Record<AllowedLanguage, string> = {
     cpp: 'g142',
@@ -17,7 +18,9 @@
   }>();
 
   const emit = defineEmits<{
-    (e: 'success'): void;
+    success: [];
+    runStart: [];
+    runEnd: [markers: monaco.editor.IMarkerData[]];
   }>();
 
   const selectedTab = ref<`test-${number}`>('test-0');
@@ -90,6 +93,8 @@
       const baseURL = 'https://godbolt.org/api';
       const compiler = compilers[language.value];
 
+      emit('runStart');
+
       $fetch(`${baseURL}/compiler/${compiler}/compile`, {
         method: 'POST',
         body: JSON.stringify({
@@ -117,13 +122,47 @@
         },
         signal: abortController.signal,
         async onResponse({ response }) {
-          const { timedOut, stdout, stderr, didExecute } = response._data;
-
+          const { timedOut, stdout, stderr, buildResult, didExecute } =
+            response._data;
           if (run.value?.runId !== runId) {
             return;
           }
 
-          const output = [...stdout, ...stderr].map((l) => l.text).join('\n');
+          const outputSources = [
+            ...buildResult.stderr,
+            ...buildResult.stdout,
+            ...stderr,
+            ...stdout,
+          ];
+
+          const output = outputSources
+            .map((l) => l.text)
+            .join('\n')
+            // Remove ANSI escape codes
+            // https://stackoverflow.com/a/29497680/4652564
+            .replace(
+              /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g,
+              '',
+            );
+
+          // Show errors
+          emit(
+            'runEnd',
+            outputSources
+              .map((l) => l.tag)
+              .filter(Boolean)
+              .map(({ line, column, endcolumn, text, severity, file }) => ({
+                // https://github.com/compiler-explorer/compiler-explorer/blob/53c04b26af9c5597660cc71fa8e6ab4e8d7f2a0b/static/panes/editor.ts#L1539
+
+                severity,
+                message: text,
+
+                startLineNumber: line ?? 0,
+                endLineNumber: line ?? 0,
+                startColumn: column ?? 0,
+                endColumn: endcolumn ?? Infinity,
+              })),
+          );
 
           run.value.results[i] = {
             status: timedOut

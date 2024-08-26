@@ -168,6 +168,14 @@
       },
       { immediate: true },
     );
+
+    // Add markers (errors…)
+    watch(props.markers, () => {
+      const textModels = wrapper.getTextModels();
+      if (textModels && textModels.text) {
+        editor.setModelMarkers(textModels.text, 'EditorWrapper', props.markers);
+      }
+    });
   });
 
   onUnmounted(() => {
