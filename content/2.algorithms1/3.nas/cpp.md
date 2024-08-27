@@ -46,7 +46,7 @@ code:
                 
         // Initialisation du compteur de personnes
         int nombrePersonnes (0);
-        bool apresMoi (false);     
+        bool avantMoi (false);     
         
         // Parcours de chaque caractère dans la chaîne queue
         for (int i (0); i < queue.length(); i++) {    
@@ -54,10 +54,10 @@ code:
             // cette ligne permet de récupérer le caractère actuel                
             char characterActuel (queue[i]);         
             if (characterActuel == '*') {            
-                apresMoi = true;
+                avantMoi = true;
                         
             } else if (characterActuel == '_') {            
-                if (apresMoi) nombrePersonnes++;
+                if (avantMoi) nombrePersonnes++;
             }        
                 
         }    
