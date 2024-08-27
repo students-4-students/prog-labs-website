@@ -84,7 +84,6 @@ La pyramide qu’il a pu faire durant la période d’examen
 O   O   O
 ```
 
-<details>
-  <summary>Indice</summary>
-  Êtes-vous sûr que la boucle `for` est le meilleur moyen de résoudre ce problème… ?
-</details>
+::hint
+Êtes-vous sûr que la boucle `for` est le meilleur moyen de résoudre ce problème… ?
+::

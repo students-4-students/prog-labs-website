@@ -107,7 +107,7 @@
               stdin: testSpec.input,
             },
           },
-          lang: language,
+          lang: language.value,
           allowStoreCodeDebug: true,
         }),
         headers: {

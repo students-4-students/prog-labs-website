@@ -6,9 +6,9 @@ code:
   default: |
     #include <vector>
     #include <iostream>
-    
+
     using namespace std;
-    
+
     int main () {
         int nbArrets;
         cin >> nbArrets;
@@ -16,15 +16,15 @@ code:
         for (int i = 0; i < durees.size(); i ++) {
             cin >> durees[i];
         }
-    
+
         // Complétez le code pour calculer et afficher le temps pour atteindre tous les arrêts
     }
   corrected: |
     #include <vector>
     #include <iostream>
-    
+
     using namespace std;
-    
+
     int main () {
         int nbArrets;
         cin >> nbArrets;
@@ -32,7 +32,7 @@ code:
         for (int i = 0; i < durees.size(); i ++) {
             cin >> durees[i];
         }
-    
+
         // Pour chaque fin de trajet
         for (int iFin = 1; iFin < nbArrets; iFin ++) {
             // On calcule le temps de trajet à la fin
@@ -44,7 +44,7 @@ code:
             // On affiche le temps
             cout << tempsAFin << endl;
         }
-    
+
         // BONUS
         
         // Pour chaque fin de trajet
@@ -101,19 +101,30 @@ Dans ce cas, le tableau donné en entrée est [3, 4, 2], et les temps pour rejoi
 
 Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque _nbArrets = 100'000_ en utilisant moins de 10'000'000 opérations ?
 
-<details>
-  <summary>Indice 1</summary>
-    Que pouvez vous dire du calcul du temps de trajet entre l’arrêt 0 et l’arrêt iFin ?
-</details>
-<details>
-  <summary>Indice 2</summary>
-    Existe-t-il une redondance lors du calcul des temps de trajet ?
-</details>
-<details>
-  <summary>Indice 3</summary>
-    Essayez d’exprimer le temps de trajet entre l’arrêt 0 et l’arrêt iFin + 1 à partir de celui entre l’arrêt 0 et l’arrêt iFin ? Que pouvez-vous faire de cette information ?
-</details>
-<details>
-  <summary>Solution des indices</summary>
-    Le temps de trajet entre l'arrêt 0 et l'arrêt iFin + 1 est égal au temps de trajet entre l'arrêt 0 et l'arrêt iFin plus le temps de trajet entre l'arrêt iFin et l'arrêt iFin + 1. De cette manière, vous pouvez calculer en une opération le résultat à partir du précédent.
-</details>
+::hint
+Que pouvez vous dire du calcul du temps de trajet entre l’arrêt 0 et l’arrêt iFin ?
+
+#title
+Indice n°1
+::
+
+::hint
+Existe-t-il une redondance lors du calcul des temps de trajet ?
+
+#title
+Indice n°2
+::
+
+::hint
+Essayez d’exprimer le temps de trajet entre l’arrêt 0 et l’arrêt iFin + 1 à partir de celui entre l’arrêt 0 et l’arrêt iFin ? Que pouvez-vous faire de cette information ?
+
+#title
+Indice n°3
+::
+
+::hint
+Le temps de trajet entre l'arrêt 0 et l'arrêt iFin + 1 est égal au temps de trajet entre l'arrêt 0 et l'arrêt iFin plus le temps de trajet entre l'arrêt iFin et l'arrêt iFin + 1. De cette manière, vous pouvez calculer en une opération le résultat à partir du précédent.
+
+#title
+Solution des indices
+::

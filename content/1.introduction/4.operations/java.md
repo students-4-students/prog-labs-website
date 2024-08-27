@@ -7,12 +7,14 @@ code:
     import java.util.Scanner;
 
     class Main {
-        public static void main(String[] args){
+        public static void main(String[] args) {
             // ignorez ces lignes
             // elles servent à initialiser les variables
             Scanner scanner = new Scanner(System.in);
             int nombre1 = scanner.nextInt();
             int nombre2 = scanner.nextInt();
+            
+            scanner.nextLine(); // advance to next line
             
             String texte1 = scanner.nextLine();
             String texte2 = scanner.nextLine();
@@ -25,7 +27,7 @@ code:
     import java.util.Scanner;
 
     class Main {
-        public static void main(String[] args){
+        public static void main(String[] args) {
             // ne faites pas attention à ces deux lignes
             // elles servent à initialiser les variables
             // (voir le cours)
@@ -33,12 +35,14 @@ code:
             int nombre1 = scanner.nextInt();
             int nombre2 = scanner.nextInt();
             
+            scanner.nextLine(); // advance to next line
+            
             String texte1 = scanner.nextLine();
             String texte2 = scanner.nextLine();
             
-            System.out.println(nombre1 * nombre2); //on peut aussi stocker le résultat dans une variable intermédiaire
-            System.out.println(nombre1 + nombre2); //on peut aussi stocker le résultat dans une variable intermédiaire
-            System.out.println(texte1 + texte2); //on peut aussi stocker le résultat dans une variable intermédiaire
+            System.out.println(nombre1 * nombre2); // on peut aussi stocker le résultat dans une variable intermédiaire
+            System.out.println(nombre1 + nombre2); // on peut aussi stocker le résultat dans une variable intermédiaire
+            System.out.println(texte1 + texte2); // on peut aussi stocker le résultat dans une variable intermédiaire
         }
     }
 

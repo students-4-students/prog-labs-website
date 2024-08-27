@@ -6,12 +6,12 @@ code:
   default: |
     nb_arrets = int(input())
     durees = list(map(int, input().split()))
-    
+
     # Complétez le code pour calculer et afficher le temps pour atteindre tous les arrêts
   corrected: |
     nb_arrets = int(input())
     durees = list(map(int, input().split()))
-    
+
     # Pour chaque fin
     for i_fin in range(1, nb_arrets - 1):
         # On calcule le temps de trajet à la fin
@@ -20,20 +20,20 @@ code:
         
         # On affiche le temps
         print(temps_a_fin)
-    
-    
+
+
     # BONUS
-    
+
     nb_arrets = int(input())
     durees = list(map(int, input().split()))
-    
+
     temps_a_fin = 0
-    
+
     # Pour chaque fin
     for i_fin in range(1, nb_arrets - 1):
         # On augmente le temps par rapport au temps précédent (voir les indices)
         temps_a_fin += durees[i_fin - 1]
-    
+
         # On affiche le temps
         print(temps_a_fin)
 
@@ -66,7 +66,7 @@ Notre voyageur est maintenant indécis, il ne sait pas à quel arrêt il souhait
 
 ### Objectif
 
-Nous allons utiliser la même modélisation que dans l’exercice précédent. Vous devrez afficher _nb\_arrets_ - 1 nombres sur _nb\_arrets_ - 1 lignes. Le premier d’entre eux doit représenter le temps pour rejoindre le deuxième arrêt. Le second doit représenter le temps pour rejoindre le troisième arrêt, etc...
+Nous allons utiliser la même modélisation que dans l’exercice précédent. Vous devrez afficher _nb_arrets_ - 1 nombres sur _nb_arrets_ - 1 lignes. Le premier d’entre eux doit représenter le temps pour rejoindre le deuxième arrêt. Le second doit représenter le temps pour rejoindre le troisième arrêt, etc...
 
 ### Exemple
 
@@ -78,21 +78,32 @@ Dans ce cas, le tableau donné en entrée est [3, 4, 2], et les temps pour rejoi
 
 ### Bonus
 
-Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque _nb\_arrets = 100'000_ en utilisant moins de 10'000'000 opérations ?
+Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque _nb_arrets = 100'000_ en utilisant moins de 10'000'000 opérations ?
 
-<details>
-  <summary>Indice 1</summary>
-    Que pouvez vous dire du calcul du temps de trajet entre l’arrêt 0 et l’arrêt i_fin ?
-</details>
-<details>
-  <summary>Indice 2</summary>
-    Existe-t-il une redondance lors du calcul des temps de trajet ?
-</details>
-<details>
-  <summary>Indice 3</summary>
-    Essayez d’exprimer le temps de trajet entre l’arrêt 0 et l’arrêt i_fin + 1 à partir de celui entre l’arrêt 0 et l’arrêt i_fin ? Que pouvez-vous faire de cette information ?
-</details>
-<details>
-  <summary>Solution des indices</summary>
-    Le temps de trajet entre l'arrêt 0 et l'arrêt i_fin + 1 est égal au temps de trajet entre l'arrêt 0 et l'arrêt i_fin plus le temps de trajet entre l'arrêt i_fin et l'arrêt i_fin + 1. De cette manière, vous pouvez calculer en une opération le résultat à partir du précédent.
-</details>
+::hint
+Que pouvez vous dire du calcul du temps de trajet entre l’arrêt 0 et l’arrêt i_fin ?
+
+#title
+Indice n°1
+::
+
+::hint
+Existe-t-il une redondance lors du calcul des temps de trajet ?
+
+#title
+Indice n°2
+::
+
+::hint
+Essayez d’exprimer le temps de trajet entre l’arrêt 0 et l’arrêt i_fin + 1 à partir de celui entre l’arrêt 0 et l’arrêt i_fin ? Que pouvez-vous faire de cette information ?
+
+#title
+Indice n°3
+::
+
+::hint
+Le temps de trajet entre l'arrêt 0 et l'arrêt i_fin + 1 est égal au temps de trajet entre l'arrêt 0 et l'arrêt i_fin plus le temps de trajet entre l'arrêt i_fin et l'arrêt i_fin + 1. De cette manière, vous pouvez calculer en une opération le résultat à partir du précédent.
+
+#title
+Solution des indices
+::

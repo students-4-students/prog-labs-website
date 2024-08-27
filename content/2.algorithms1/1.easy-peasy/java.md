@@ -116,7 +116,6 @@ Ce code qu’on vous donne doit être corrigé, trouvez cette petite faille.
 
 **Bien sûr, la correction n’est pas unique, deux codes différents peuvent aboutir au même résultat !**
 
-<details>
-  <summary>Indice</summary>
-    Attention à l’ordre des conditions ! Si une condition `if` est vérifiée, les `else if` ou  `else` qui suivent ne sont pas exécutés, même si leur condition est aussi vérifiée.
-</details>
+::hint
+Attention à l’ordre des conditions ! Si une condition `if` est vérifiée, les `else if` ou `else` qui suivent ne sont pas exécutés, même si leur condition est aussi vérifiée.
+::
