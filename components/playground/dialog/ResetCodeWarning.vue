@@ -46,7 +46,9 @@
           Oui
         </Button>
         <DialogClose as-child>
-          <Button size="default" class="flex-grow"> Non </Button>
+          <Button size="default" class="flex-grow" variant="outline">
+            Non
+          </Button>
         </DialogClose>
       </DialogFooter>
     </DialogContent>
