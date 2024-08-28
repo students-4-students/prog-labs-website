@@ -127,6 +127,10 @@
       writtenCode.value = exercise.code?.default ?? '';
     }
   }
+
+  const editable = computed(() => {
+    return currentTab.value === EditorTab.Code;
+  });
 </script>
 
 <template>
@@ -191,7 +195,12 @@
                   "
                 >
                   <template #trigger>
-                    <Button variant="outline" size="sm" class="ml-1">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      class="ml-1"
+                      :disabled="!editable"
+                    >
                       <LucideRotateCcw class="w-3 h-3" />
                     </Button>
                   </template>
@@ -242,9 +251,7 @@
             :testSpecs="tests"
             :writtenCode="writtenCode"
             :language="playgroundData.language"
-            :enabled="
-              currentTab === EditorTab.Code && writtenCode !== undefined
-            "
+            :enabled="editable && writtenCode !== undefined"
             @success="
               () => {
                 isCompleted = true;
