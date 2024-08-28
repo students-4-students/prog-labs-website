@@ -5,12 +5,28 @@
 
   const emit = defineEmits<{
     (e: 'acknowledgeWarning'): void;
+    (e: 'returnToExercise'): void;
   }>();
+
+  const opened = defineModel<boolean>();
+  let doNotTriggerCloseEvent = false;
+  watch(opened, () => {
+    if (!opened.value && !doNotTriggerCloseEvent) {
+      emit('returnToExercise');
+    }
+
+    doNotTriggerCloseEvent = false;
+  });
+
+  function acknowledgeWarning() {
+    doNotTriggerCloseEvent = true;
+    emit('acknowledgeWarning');
+  }
 </script>
 
 <template>
   <slot v-if="props.onlyKeepTrigger" name="trigger" />
-  <Dialog v-bind="$attrs" v-else>
+  <Dialog v-bind="$attrs" v-model:open="opened" v-else>
     <DialogTrigger as-child>
       <slot name="trigger" />
     </DialogTrigger>
@@ -24,13 +40,13 @@
         </DialogDescription>
       </DialogHeader>
 
-      <DialogFooter>
-        <Button @click="emit('acknowledgeWarning')" size="default">Oui</Button>
-        <DialogClose as-child>
-          <Button size="default" variant="outline">
-            Non, je souhaite continuer à chercher
-          </Button>
+      <DialogFooter class="gap-2 justify-end">
+        <DialogClose as-childs>
+          <Button size="default"> Je souhaite continuer à chercher </Button>
         </DialogClose>
+        <Button @click="acknowledgeWarning()" variant="outline">
+          Je veux voir la correction
+        </Button>
       </DialogFooter>
     </DialogContent>
   </Dialog>

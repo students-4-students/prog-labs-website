@@ -39,15 +39,15 @@ code:
 
             // Initialisation du compteur de personnes
             int nombrePersonnes = 0;
-            boolean apresMoi = false;
+            boolean avantMoi = false;
 
             // Parcours de chaque caractère dans la chaîne queue
             for (int i = 0; i < queue.length(); i++) {
                 char characterActuel = queue.charAt(i);
                 if (characterActuel == '*') {
-                    apresMoi = true;
+                    avantMoi = true;
                 } else if (characterActuel == '_') {
-                    if (apresMoi) nombrePersonnes++;
+                    if (avantMoi) nombrePersonnes++;
                 }
             }
 
