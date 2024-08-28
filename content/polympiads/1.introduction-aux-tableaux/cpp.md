@@ -6,13 +6,13 @@ code:
   default: |
     #include <iostream>
     #include <vector>
-    
+
     using namespace std;
-    
+
     int main () {
         int nbElements;
         cin >> nbElements;
-    
+
         vector<int> tableau(nbElements);
         for (int iElement = 0; iElement < nbElements; iElement ++) {
             cin >> tableau[iElement];
@@ -20,24 +20,24 @@ code:
         
         int indiceDepart, indiceFin;
         cin >> indiceDepart >> indiceFin;
-    
+
         // Implémentez ce que demande la consigne
-    
+
         for (int iElement = 0; iElement < nbElements; iElement ++) {
             cout << tableau[iElement] << " ";
         }
     }
-    
+
   corrected: |
     #include <iostream>
     #include <vector>
-    
+
     using namespace std;
-    
+
     int main () {
         int nbElements;
         cin >> nbElements;
-    
+
         vector<int> tableau(nbElements);
         for (int iElement = 0; iElement < nbElements; iElement ++) {
             cin >> tableau[iElement];
@@ -45,21 +45,23 @@ code:
         
         int indiceDepart, indiceFin;
         cin >> indiceDepart >> indiceFin;
-    
+
         // Ici, on récupère la valeur
         int valeurDepart = tableau[indiceDepart];
+        
         // On calcule la valeur qu'on souhaite stocker dans le tableau
         int valeurFin = valeurDepart + 1;
+        
         // On la stocke dans le tableau à l'indice de fin
         tableau[indiceFin] = valeurFin;
+        
         // On aurait aussi pu écrire
         // tableau[indiceFin] = tableau[indiceDepart] + 1;
-    
+
         for (int iElement = 0; iElement < nbElements; iElement ++) {
             cout << tableau[iElement] << " ";
         }
     }
-    
 
 tests:
   - input: |
@@ -67,7 +69,7 @@ tests:
       1 2 4 8
       1 3
     expectedOutput: |-
-      1 2 4 3 
+      1 2 4 3
 ---
 
 ### Introduction aux tableaux
@@ -76,9 +78,9 @@ Dans cet exercice, nous allons aborder l’un des éléments fondamentaux de l�
 
 Un tableau peut être représenté comme une séquence finie d’éléments. On appelle la taille de ce tableau le nombre d’éléments de celui-ci, et on associe le premier élément à l’indice 0, le second à l’indice 1, etc... Par exemple, la séquence finie [1, 2, 3, 2] est représentée par la table
 
-| Indice | 0 | 1 | 2 | 3 |
-| ------ | - | - | - | - |
-| Valeur | 1 | 2 | 3 | 2 |
+| Indice | 0   | 1   | 2   | 3   |
+| ------ | --- | --- | --- | --- |
+| Valeur | 1   | 2   | 3   | 2   |
 
 Ici, on a choisi un tableau de nombres, mais on aurait pu imaginer un tableau de caractères comme [’H’, ‘e’, ‘l’, ‘l’, ‘o’], équivalent à la chaîne "Hello", ou même un tableau contenant d’autres types d’objets. L’intérêt d’un tableau est que ses éléments sont modifiables, et on peut changer la valeur associée à un indice. Voici quelques exemples de syntaxes pour les tableaux
 
@@ -104,8 +106,10 @@ int main () {
 
     // on peut alors calculer si on le souhaite la somme des deux premières valeurs
     int somme = tableau[0] + tableau[1];
+
     // on peut alors le stocker dans la quatrième case du tableau
     tableau[3] = somme;
+
     // notre nouvelle séquence est alors [1, 2, 3, 3]
     // on aurait aussi pu écrire tout sur une seule ligne
     // tableau[3] = tableau[0] + tableau[1];
@@ -116,9 +120,9 @@ int main () {
 
 ### Consigne
 
-Afin de vous familiariser avec les tableaux, on va vous donner un tableau d’entiers dans la variable _tableau_ avec _nbElements_ éléments.
+Afin de vous familiariser avec les tableaux, on va vous donner un tableau d’entiers dans la variable `tableau` avec `nbElements` éléments.
 
-On vous donne aussi deux indices _indiceDepart_ et _indiceFin_. Vous devez remplacer la valeur à l’indice _indiceFin_ par la valeur à l’indice _indiceDepart_, à laquelle vous devez ajouter 1.
+On vous donne aussi deux indices `indiceDepart` et `indiceFin`. Vous devez remplacer la valeur à l’indice `indiceFin` par la valeur à l’indice `indiceDepart`, à laquelle vous devez ajouter 1.
 
 ### Exemple
 

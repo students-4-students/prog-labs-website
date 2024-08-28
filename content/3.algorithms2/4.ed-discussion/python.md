@@ -8,10 +8,12 @@ code:
     QUESTIONS_POSEES_LUPIN = 5
     QUESTIONS_POSEES_RAOUL = 1
     QUESTIONS_POSEES_GANIMARD = 0
+
     # les points initiaux sont à 0 au debut
     points_lupin = 0
     points_raoul = 0
     points_ganimard = 0
+
     for i in range(7):
         # Jour numéro i
         # Le programme lit les questions disponibles ce jour-ci
@@ -76,11 +78,13 @@ code:
     else:
         print("Raoul")
 
-    # Le but de cet exo est de vous apprendre à bien lire un énoncé aussi long et extraire toutes les
-    # informations pertinentes pour résoudre un problème.
-    # De plus, le problème vous introduit un outil très utile pendant votre ba1 et votre parcours à l'EPFL en général
-    # à savoir Ed Discussion. Soyez actif. Lisez les, répondez et posez des questions quand vous avez le
-    # temps, c'est toujours bien et des connaissances de plus.
+    '''
+    Le but de cet exo est de vous apprendre à bien lire un énoncé aussi long et extraire toutes les
+    informations pertinentes pour résoudre un problème.
+    De plus, le problème vous introduit un outil très utile pendant votre ba1 et votre parcours à l'EPFL en général
+    à savoir Ed Discussion. Soyez actif. Lisez les, répondez et posez des questions quand vous avez le
+    temps, c'est toujours bien et des connaissances de plus.
+    '''
 
 tests:
   - input: |

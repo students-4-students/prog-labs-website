@@ -68,13 +68,11 @@ En C++, on a besoin d’un morceau de code qui sera toujours présent avant d’
 using namespace std;
 
 int main() {
+    // on met notre code ici !
+    // par exemple on peut mettre l'instruction suivante :
+    cout << "Hello EPFL" << endl; // affiche "Hello EPFL"
 
-	// on met notre code ici !
-	// par exemple on peut mettre l'instruction suivante :
-
-	cout << "Hello EPFL" << endl; // affiche "Hello EPFL"
-
-	return 0;
+    return 0;
 }
 ```
 

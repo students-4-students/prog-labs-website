@@ -5,6 +5,7 @@ description: 'Utilisez une boucle pour répéter du code.'
 code:
   default: |
     #include <iostream>
+
     using namespace std;
 
     int main() {        
@@ -22,10 +23,10 @@ code:
   corrected: |
     // Exercice principal
     #include <iostream>
+
     using namespace std;
 
     int main() {  
-
         // ne faites pas attention à ces deux lignes
         // elles servent à initialiser les variables
         // (voir le cours)
@@ -34,7 +35,7 @@ code:
         cin >> n;
             
         for (int i(1); i <= n; i += 1) {
-        cout << i << endl;
+            cout << i << endl;
         }
 
         return 0;
@@ -42,6 +43,7 @@ code:
 
     // Aller plus loin n°1
     #include <iostream>
+
     using namespace std;
 
     int main() {        
@@ -54,17 +56,16 @@ code:
 
     // ou alors...
     #include <iostream>
+
     using namespace std;
 
     int main() {        
-        for (int i(2); i <= n; i += 1) {  
-                
+        for (int i(2); i <= n; i += 1) {      
             // si le reste de la division par 2 est 0          
             // c'est que i = 2k + 0 donc i est pair !            
             if (i % 2 == 0) {                
                 cout << i << endl;            
             }
-
         }    
 
         return 0;
@@ -72,6 +73,7 @@ code:
 
     // Aller plus loin n°2
     #include <iostream>
+
     using namespace std;
 
     int main() {        

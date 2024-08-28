@@ -6,29 +6,27 @@ code:
   default: |
     #include <iostream>
     #include <string>
+
     using namespace std;
 
     int main() {
-
         // Chaîne de caractères représentant la queue        
         string queue ("");
         cin >> queue;
                 
         // à compléter        
         
-        for (int i (0); i < queue.length(); i++) {    
-                    
+        for (int i (0); i < queue.length(); i++) {                  
             // cette ligne permet de récupérer le caractère actuel                
             char characterActuel (queue[i]);
                         
-                // que faire si le caractère est * ?            
-                if (characterActuel == '*') {            
-                    
-                // si le caractère est _ ?            
-                } else if (characterActuel == '_') {            
+            // que faire si le caractère est * ?            
+            if (characterActuel == '*') {            
                 
-                }        
-                
+            // si le caractère est _ ?            
+            } else if (characterActuel == '_') {            
+            
+            }             
         }  
         
         return 0;
@@ -36,10 +34,10 @@ code:
   corrected: |
     #include <iostream>
     #include <string>
+
     using namespace std;
 
     int main() {
-
         // Chaîne de caractères représentant la queue        
         string queue ("");
         cin >> queue;
@@ -49,17 +47,14 @@ code:
         bool avantMoi (false);     
         
         // Parcours de chaque caractère dans la chaîne queue
-        for (int i (0); i < queue.length(); i++) {    
-                    
+        for (int i (0); i < queue.length(); i++) {            
             // cette ligne permet de récupérer le caractère actuel                
             char characterActuel (queue[i]);         
             if (characterActuel == '*') {            
-                avantMoi = true;
-                        
+                avantMoi = true;            
             } else if (characterActuel == '_') {            
-                if (avantMoi) nombrePersonnes++;
-            }        
-                
+                if (apresMoi) nombrePersonnes++;
+            }            
         }    
         
         // Estimer le temps d'attente en secondes

@@ -12,10 +12,14 @@ code:
             
             int nbArrets = sc.nextInt();
             int[] durees = new int[nbArrets - 1];
-            for (int i = 0; i < durees.length; i ++) durees[i] = sc.nextInt();
+            for (int i = 0; i < durees.length; i ++) {
+                durees[i] = sc.nextInt();
+            }
             int nbRestaurants = sc.nextInt();
             int[] dureesRestaurants = new int[nbRestaurants];
-            for (int i = 0; i < nbRestaurants; i ++) dureesRestaurants[i] = sc.nextInt();
+            for (int i = 0; i < nbRestaurants; i ++) {
+                dureesRestaurants[i] = sc.nextInt();
+            }
             
             // Complétez le code pour calculer et afficher les arrêts où se trouvent les restaurants
         }
@@ -37,9 +41,11 @@ code:
             // On calcule la liste des distances aux arrêts comme dans l'exercice précédent.
             // Cette fois-ci, on la stocke au lieu de l'afficher
             int[] dureesAuxArrets = new int[nbArrets - 1];
-            for (int i = 0; i < nbArrets - 1; i ++)
-                for (int j = 0; j <= i; j ++)
+            for (int i = 0; i < nbArrets - 1; i ++) {
+                for (int j = 0; j <= i; j ++) {
                     dureesAuxArrets[i] += durees[j];
+                }
+            }
             
             // Pour chaque restaurant
             for (int iRestaurant = 0; iRestaurant < nbRestaurants; iRestaurant ++) {
@@ -79,9 +85,11 @@ code:
                     // On évalue s'il est plus grand ou égal ou inférieur et on le stocke dans la bonne variable
                     // En fonction. De cette manière, on divise par deux la taille de notre intervalle comme
                     // On a choisi le milieu.
-                    if (dureesAuxArrets2[iMilieu] >= dureesRestaurants[iRestaurant])
+                    if (dureesAuxArrets2[iMilieu] >= dureesRestaurants[iRestaurant]) {
                         iPlusGrandOuEgal = iMilieu;
-                    else iPlusPetit = iMilieu;
+                    } else { 
+                        iPlusPetit = iMilieu;
+                    }
                 }
                 
                 // Or on ne peut diviser qu'au plus log2(nbArrets) fois par deux notre intervalle,
@@ -148,13 +156,15 @@ De plus, on vous garanti que l’arrêt spécifique de chaque restaurant existe 
 
 Par exemple, on peut considérer la ligne suivante avec 4 arrêts de métro.
 
+::dark-background
 ![Graph](/polympiads/graph-metro-polympiads.png)
+::
 
 Son ami lui a transmit 3 restaurants et la liste dureesRestaurants est [7, 3, 9]. On peut alors se rendre compte que le premier restaurant est nécessairement à l’arrêt 2, le second à l’arrêt 1 et le dernier au terminus, vous devez donc afficher sur 3 lignes les chiffres 2, 1 et 3. En effet, si on prend l’exemple du premier restaurant, situé à 7 minutes de l’arrêt 0, il ne peut s’agir que de l’arrêt 2, les deux autres arrêts étant respectivement à 3 et 9 minutes de l’arrêt 0.
 
 ### Bonus
 
-Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque _nbArrets = 100'000_ en utilisant moins de 10'000'000 opérations ?
+Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque `nbArrets = 100'000` en utilisant moins de 10'000'000 opérations ?
 
 Vous pouvez supposer que vous savez résoudre l'exercice précédent en moins de 1'000'000 d'opérations.
 
@@ -186,7 +196,7 @@ Que faites vous lorsque vous cherchez un mot dans un dictionnaire ? Pouvez-vous 
 Indice n°4
 ::
 
-::hint
+::solution
 Vous pouvez utiliser une dichotomie sur le tableau de l'exercice précédent.
 
 #title

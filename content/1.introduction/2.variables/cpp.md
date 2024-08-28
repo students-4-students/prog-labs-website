@@ -6,10 +6,10 @@ code:
   default: |
     #include <iostream>
     #include <string>
+
     using namespace std;
 
     int main() {
-
         // complétez le code ici   
         
         return 0;
@@ -17,10 +17,10 @@ code:
   corrected: |
     #include <iostream>
     #include <string>
+
     using namespace std;
 
     int main() {
-
         string a ("Salut");
         int b (42);
         bool c (true);

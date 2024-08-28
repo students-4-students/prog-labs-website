@@ -14,15 +14,17 @@ code:
     jour_fin = int(input()) # lire le jour de fin
 
     nb_jour = jour_fin - jour_debut + 1
-    print( ((nb_jour + 1) * nb_jour) // 2)
+    print(((nb_jour + 1) * nb_jour) // 2)
 
-    # L’informatique et la programmation
-    # ce n'est pas que des boucles for et des conditions
-    # il faut savoir utiliser les outils, il y a beaucoup de maths
-    # et de logique relié à la programmation,
-    # il faut être attentif et trouver a chaque fois
-    # le moyen le plus efficace en temps et en mémoire pour résoudre un problème.
-    # La programmation c'est avant tout raisonner.
+    '''
+    L’informatique et la programmation
+    ce n'est pas que des boucles for et des conditions
+    il faut savoir utiliser les outils, il y a beaucoup de maths
+    et de logique relié à la programmation,
+    il faut être attentif et trouver a chaque fois
+    le moyen le plus efficace en temps et en mémoire pour résoudre un problème.
+    La programmation c'est avant tout raisonner.
+    '''
 
 tests:
   - input: |

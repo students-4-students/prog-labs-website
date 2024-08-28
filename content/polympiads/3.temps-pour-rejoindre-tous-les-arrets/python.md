@@ -16,7 +16,8 @@ code:
     for i_fin in range(1, nb_arrets - 1):
         # On calcule le temps de trajet à la fin
         temps_a_fin = 0
-        for i_arret in range(i_fin): temps_a_fin += durees[i_arret]
+        for i_arret in range(i_fin): 
+            temps_a_fin += durees[i_arret]
         
         # On affiche le temps
         print(temps_a_fin)
@@ -66,22 +67,24 @@ Notre voyageur est maintenant indécis, il ne sait pas à quel arrêt il souhait
 
 ### Objectif
 
-Nous allons utiliser la même modélisation que dans l’exercice précédent. Vous devrez afficher _nb_arrets_ - 1 nombres sur _nb_arrets_ - 1 lignes. Le premier d’entre eux doit représenter le temps pour rejoindre le deuxième arrêt. Le second doit représenter le temps pour rejoindre le troisième arrêt, etc...
+Nous allons utiliser la même modélisation que dans l’exercice précédent. Vous devrez afficher `nb_arrets` - 1 nombres sur `nb_arrets` - 1 lignes. Le premier d’entre eux doit représenter le temps pour rejoindre le deuxième arrêt. Le second doit représenter le temps pour rejoindre le troisième arrêt, etc...
 
 ### Exemple
 
 Par exemple, on peut considérer la ligne suivante avec 4 arrêts de métro.
 
+::dark-background
 ![Graph](/polympiads/graph-metro-polympiads.png)
+::
 
 Dans ce cas, le tableau donné en entrée est [3, 4, 2], et les temps pour rejoindre les arrêts 1, 2 et 3 sont respectivement 3, 7 et 9 et vous devez donc afficher 3 lignes avec respectivement les chiffres 3, 7 et 9.
 
 ### Bonus
 
-Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque _nb_arrets = 100'000_ en utilisant moins de 10'000'000 opérations ?
+Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque `nb_arrets = 100'000` en utilisant moins de 10'000'000 opérations ?
 
 ::hint
-Que pouvez vous dire du calcul du temps de trajet entre l’arrêt 0 et l’arrêt i_fin ?
+Que pouvez vous dire du calcul du temps de trajet entre l’arrêt 0 et l’arrêt `i_fin` ?
 
 #title
 Indice n°1
@@ -95,14 +98,14 @@ Indice n°2
 ::
 
 ::hint
-Essayez d’exprimer le temps de trajet entre l’arrêt 0 et l’arrêt i_fin + 1 à partir de celui entre l’arrêt 0 et l’arrêt i_fin ? Que pouvez-vous faire de cette information ?
+Essayez d’exprimer le temps de trajet entre l’arrêt 0 et l’arrêt `i_fin + 1` à partir de celui entre l’arrêt 0 et l’arrêt `i_fin` ? Que pouvez-vous faire de cette information ?
 
 #title
 Indice n°3
 ::
 
-::hint
-Le temps de trajet entre l'arrêt 0 et l'arrêt i_fin + 1 est égal au temps de trajet entre l'arrêt 0 et l'arrêt i_fin plus le temps de trajet entre l'arrêt i_fin et l'arrêt i_fin + 1. De cette manière, vous pouvez calculer en une opération le résultat à partir du précédent.
+::solution
+Le temps de trajet entre l'arrêt 0 et l'arrêt `i_fin + 1` est égal au temps de trajet entre l'arrêt 0 et l'arrêt `i_fin` plus le temps de trajet entre l'arrêt `i_fin` et l'arrêt `i_fin + 1`. De cette manière, vous pouvez calculer en une opération le résultat à partir du précédent.
 
 #title
 Solution des indices
