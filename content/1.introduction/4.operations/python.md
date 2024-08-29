@@ -68,7 +68,7 @@ Affichez le résultat de la concaténation de ces deux chaînes de caractères
 
 Dans ce cours, nous allons voir des opérateurs dits “arithmétiques”, ceux qui renvoient un résultat de même type que les variables sur lesquelles vous les appliquez.
 
-On va commencer par les opérations applicables sont les nombres entiers (les `Integer` en anglais, donc les variables de type `int`). Il en existe 5 principales :
+On va commencer par les opérations applicables sur les nombres entiers (les `Integer` en anglais, donc les variables de type `int`). Il en existe 5 principales :
 
 - L’addition (comme en math), avec le signe `+`
 - La soustraction (comme en math), avec le signe `-`
