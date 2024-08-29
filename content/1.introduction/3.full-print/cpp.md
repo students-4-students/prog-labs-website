@@ -57,7 +57,7 @@ Attention, le code à compléter contient 3 lignes qu’il ne faut pas modifier 
 
 ### Cours
 
-Pour cela, utilisons l’instruction `cout << ... << endl` vu rapidement dans le premier exercice. Elle s’utilise comme ceci :
+Pour cela, utilisons l’instruction `cout << ... << endl` vue rapidement dans le premier exercice. Elle s’utilise comme ceci :
 
 ```cpp
 cout << "Hello EPFL" << endl; // affiche Hello EPFL
