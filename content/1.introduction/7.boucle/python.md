@@ -78,12 +78,12 @@ for i in range(98):
 ```
 
 - `i` est une variable qui prendra successivement toutes les valeurs de la séquence générée par `range(98)`, c'est-à-dire de 0 à 97.
-- `in` indique que la variable `i` va prendre toutes les valeurs comprise dans `range(98)` (_range_ en anglais veut dire interval)
-- l’instruction `range(98)` crée un interval de valeur que `i` va prendre qui commence à 0 inclus et qui se finit à 98 exclus et le “pas” de l’interval est 1 ( `i` prend d’abord la valeur 0 puis 1 puis 2, etc), ce qui ce traduit dans la boucle dans le fait que `i` est incrémentée par 1 à chaque itération de la boucle
+- `in` indique que la variable `i` va prendre toutes les valeurs comprise dans `range(98)` (_range_ en anglais veut dire intervalle)
+- l’instruction `range(98)` crée un intervalle de valeur que `i` va prendre qui commence à 0 inclus et qui se finit à 98 exclu et le “pas” de l’intervalle est 1 ( `i` prend d’abord la valeur 0 puis 1 puis 2, etc), ce qui se traduit dans la boucle dans le fait que `i` est incrémentée par 1 à chaque itération de la boucle
 
-> Note : la syntaxe plus générale de range est la suivant : `range(début, fin, pas)` où `*début*` est la valeur initiale (incluse) de l’interval, `*fin*` la valeur finale (exclue) de l’interval et `*pas*` détermine l'incrément entre chaque valeur successive de la séquence.
+> Note : la syntaxe plus générale de range est la suivante : `range(début, fin, pas)` où `*début*` est la valeur initiale (incluse) de l’intervalle, `*fin*` la valeur finale (exclue) de l’intervalle et `*pas*` détermine l'incrément entre chaque valeur successive de la séquence.
 >
-> Par exemple `range(2, 11, 2)` crée l’interval suivant : $[2, 4, 6, 8, 10]$
+> Par exemple `range(2, 11, 2)` crée l’intervalle suivant : $[2, 4, 6, 8, 10]$
 >
 > Vous pouvez choisir d’indiquer uniquement la fin (comme dans l’exemple de boucle ci-dessus) ou uniquement le début et la fin ou encore le début et la fin et le pas (comme dans l’exemple précédent). La valeur par défaut pour le début est 0 et la valeur de pas par défaut est 1.
 
