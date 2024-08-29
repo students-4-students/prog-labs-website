@@ -68,6 +68,8 @@ Utilisez une boucle `for` pour afficher tous les nombres entiers compris entre 1
 
 ⭐ modifiez votre boucle pour afficher tous les nombres entiers compris entre 1 et n (inclus) par ordre décroissant.
 
+> _Attention, les tests automatiques ne vérifient que la première partie de l'exercice !_
+
 ### Cours
 
 Une boucle `for` peut être écrite comme suit :
