@@ -221,9 +221,7 @@
             Exécuter le code
           </span>
           <span class="contents" v-else>
-            <LucideCircleStop
-              class="w-4 h-4 mr-1 text-red-600 dark:text-red-400"
-            />
+            <LucideCircleStop class="w-4 h-4 mr-1 text-destructive" />
             Annuler
           </span>
         </Button>
@@ -232,7 +230,7 @@
           <TabsTrigger
             v-for="(test, index) in tests"
             :value="`test-${index}`"
-            class="h-full flex gap-2 items-center px-4 py-2 text-left text-sm justify-start rounded-lg font-medium data-[state='active']:bg-background data-[state='active']:border"
+            class="h-full flex gap-1 items-center px-4 py-2 text-left text-sm justify-start rounded-lg font-medium data-[state='active']:bg-background data-[state='active']:border"
           >
             <LucideMinus
               v-if="test.status === 'idle'"
@@ -246,17 +244,17 @@
             />
             <LucideCircleCheck
               v-if="test.status === 'passed'"
-              class="w-4 h-4 text-emerald-500"
+              class="w-4 h-4 text-success"
               title="Test réussi"
             />
             <LucideCircleX
               v-if="test.status === 'failed'"
-              class="w-4 h-4 text-red-500"
+              class="w-4 h-4 text-destructive"
               title="Test échoué"
             />
             <LucideTimerOff
               v-if="test.status === 'timedout'"
-              class="w-4 h-4 text-red-500"
+              class="w-4 h-4 text-destructive"
               title="Test échoué"
             />
 
@@ -271,7 +269,7 @@
           :value="`test-${index}`"
           class="h-full"
         >
-          <ScrollArea class="h-full rounded-t-lg overflow-auto">
+          <ScrollArea class="h-full rounded-t-lg overflow-auto border">
             <div class="flex flex-col grow gap-4 p-5 pb-20 bg-background">
               <PlaygroundTestsResultView v-if="test.input" title="Texte entré">
                 <pre class="p-4 whitespace-break-spaces">{{ test.input }}</pre>
@@ -283,7 +281,7 @@
                 "
                 title="Résultat attendu"
               >
-                <div class="text-green-800 dark:text-green-400">
+                <div class="text-success">
                   <pre class="p-4 whitespace-break-spaces">{{
                     test.expectedOutput
                   }}</pre>
@@ -294,12 +292,14 @@
                 title="Résultat produit"
               >
                 <div
-                  class="p-4 grid gap-2 grid-cols-[auto_1fr] items-center text-red-800 dark:text-red-400"
+                  class="p-4 grid gap-3 grid-cols-[auto_1fr] items-center text-destructive"
                   v-if="test.status === 'timedout'"
                 >
-                  <LucideTimerOff class="w-5 h-5" />
+                  <LucideTimerOff class="w-6 h-6" />
                   <div>
-                    <p>L’exécution du programme ne s’est pas finie à temps.</p>
+                    <p class="font-medium">
+                      L’exécution du programme ne s’est pas terminée à temps.
+                    </p>
                     <p class="text-sm">
                       Vérifie que ton programme ne soit pas coincé dans une
                       boucle infinie.
@@ -310,9 +310,8 @@
                   v-else
                   :class="
                     cn(
-                      'p-4 whitespace-break-spaces',
-                      test.actual !== test.expectedOutput &&
-                        'text-red-800 dark:text-red-400',
+                      'p-4 whitespace-break-spaces text-success',
+                      test.actual !== test.expectedOutput && 'text-destructive',
                     )
                   "
                   >{{ test.actual }}</pre
