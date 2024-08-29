@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import type { ParsedContent } from '@nuxt/content';
+  import * as monaco from 'monaco-editor';
   import {
     getExerciseUrl,
     loadExerciseData,
@@ -32,6 +33,9 @@
 
   const tests = ref<TestSpec[] | undefined>();
   const isCompleted = ref(false);
+
+  const markers = reactive<monaco.editor.IMarkerData[]>([]);
+  const changesSinceLastRun = ref(true);
 
   // Load & save student data
   const studentData = useStudentDataStore();
@@ -85,9 +89,13 @@
       );
     }
 
-    // Automatically save the written code in the playground state
     watch(writtenCode, (code) => {
+      // Automatically save the written code in the playground state
       playgroundState.setWrittenCode(code);
+
+      // Hide markers because they might be outdated
+      changesSinceLastRun.value = true;
+      markers.splice(0);
     });
   }
 
@@ -128,9 +136,16 @@
     }
   }
 
-  const editable = computed(() => {
-    return currentTab.value === EditorTab.Code;
-  });
+  function onRunStart() {
+    markers.splice(0);
+    changesSinceLastRun.value = false;
+  }
+
+  function onRunEnd(newMarkers: monaco.editor.IMarkerData[]) {
+    if (!changesSinceLastRun.value) {
+      markers.splice(0, markers.length, ...newMarkers);
+    }
+  }
 </script>
 
 <template>
@@ -218,6 +233,7 @@
                   v-if="playgroundData.language"
                   :language="playgroundData.language"
                   v-model="writtenCode"
+                  :markers="markers"
                 />
               </PlaygroundTabsContent>
             </KeepAlive>
@@ -235,6 +251,7 @@
                     'blur-monaco-editor-code': !wantsToSeeCorrectedCode,
                   }"
                   readOnly
+                  :markers="[]"
                 />
               </PlaygroundTabsContent>
             </KeepAlive>
@@ -261,6 +278,8 @@
                 wantsToSeeCorrectedCode = true;
               }
             "
+            @run-start="onRunStart"
+            @run-end="onRunEnd"
           />
         </ResizablePanel>
       </ResizablePanelGroup>

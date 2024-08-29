@@ -9,8 +9,10 @@
     <h5 class="mb-2 font-medium">
       {{ title }}
     </h5>
-    <pre
-      class="p-4 rounded-lg border whitespace-break-spaces shadow-xl shadow-accent/45 dark:shadow-black/5"
-    ><slot /></pre>
+    <div
+      class="rounded-lg border shadow-xl shadow-accent/45 dark:shadow-black/5 overflow-x-hidden"
+    >
+      <slot />
+    </div>
   </div>
 </template>
