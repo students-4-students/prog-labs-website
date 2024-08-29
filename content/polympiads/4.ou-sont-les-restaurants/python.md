@@ -8,14 +8,14 @@ code:
     durees = list(map(int, input().split()))
     nb_restaurants = int(input())
     durees_restaurants = list(map(int, input().split()))
-
+    
     # Complétez le code pour calculer et afficher les arrêts où se trouvent les restaurants
   corrected: |
     nb_arrets = int(input())
     durees = list(map(int, input().split()))
     nb_restaurants = int(input())
     durees_restaurants = list(map(int, input().split()))
-
+    
     # On calcule la liste des distances aux arrêts comme dans l'exercice précédent.
     # Cette fois-ci, on la stocke au lieu de l'afficher
     durees_aux_arrets = [0] * (nb_arrets - 1) # On créé une liste de 0 de taille nbArrets - 1
@@ -30,15 +30,15 @@ code:
             # Si c'est le bon arrêt, on l'affiche
             if (durees_aux_arrets[i_fin] == durees_restaurants[i_restaurant]):
                 print(i_fin + 1) # On ajoute + 1 à cause de la 0-indexation
-
+    
     # Solution et implémentation du bonus
-
+    
     # On réutilise le code du corrigé du bonus précédent
     temps_actuel = 0
     durees_aux_arrets = [0] * (nb_arrets - 1)
     for i_fin in range(1, nb_arrets):
         temps_actuel += durees[i_fin - 1]
-
+    
         durees_aux_arrets[i_fin - 1] = temps_actuel
             
     # Pour chaque restaurant
@@ -83,7 +83,7 @@ tests:
   - input: |
       10
       1 5 3 8 6 2 8 10 8
-      9
+      19
       6 17 6 43 33 51 33 51 51 6 6 25 25 51 23 9 1 1 23
     expectedOutput: |-
       2
@@ -131,9 +131,9 @@ Son ami lui a transmit 3 restaurants et la liste durees_restaurants est [7, 3, 9
 
 ### Bonus
 
-Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque `nb_arrets = 100'000` en utilisant moins de 10'000'000 opérations ?
+Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque `nb_arrets = 100'000` en utilisant moins de 10'000'000 opérations ? *Il est fortement conseillé d'avoir réussi à coder le programme et d'avoir lu la correction de la partie sans bonus avant de l'essayer. Certains indices dépendront de la correction de l'énoncé sans le bonus.*
 
-Vous pouvez supposer que vous savez résoudre l'exercice précédent en moins de 1'000'000 d'opérations.
+Vous pouvez supposer que vous savez résoudre l'exercice précédent en moins de 1'000'000 d'opérations. 
 
 ::hint
 Que pouvez vous dire de la liste dureesAuxArrets, représentant les mêmes valeurs que celles affichées dans l’exercice précédent ?

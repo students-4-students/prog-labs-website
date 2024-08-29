@@ -5,7 +5,7 @@ description: 'Déterminez les arrêts auquels se trouvent divers restaurants'
 code:
   default: |
     import java.util.Scanner;
-
+    
     class Main {
         public static void main (String[] args) {
             Scanner sc = new Scanner(System.in);
@@ -26,7 +26,7 @@ code:
     }
   corrected: |
     import java.util.Scanner;
-
+    
     class Main {
         public static void main (String[] args) {
             Scanner sc = new Scanner(System.in);
@@ -57,9 +57,9 @@ code:
                     }
                 }
             }
-
+    
             // Solution et implémentation du bonus
-
+    
             // On réutilise le code du corrigé du bonus précédent
             int tempsActuel = 0;
             int[] dureesAuxArrets2 = new int[nbArrets - 1];
@@ -116,7 +116,7 @@ tests:
   - input: |
       10
       1 5 3 8 6 2 8 10 8
-      9
+      19
       6 17 6 43 33 51 33 51 51 6 6 25 25 51 23 9 1 1 23
     expectedOutput: |-
       2
@@ -164,9 +164,9 @@ Son ami lui a transmit 3 restaurants et la liste dureesRestaurants est [7, 3, 9]
 
 ### Bonus
 
-Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque `nbArrets = 100'000` en utilisant moins de 10'000'000 opérations ?
+Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque `nbArrets = 100'000` en utilisant moins de 10'000'000 opérations ? *Il est fortement conseillé d'avoir réussi à coder le programme et d'avoir lu la correction de la partie sans bonus avant de l'essayer. Certains indices dépendront de la correction de l'énoncé sans le bonus.*
 
-Vous pouvez supposer que vous savez résoudre l'exercice précédent en moins de 1'000'000 d'opérations.
+Vous pouvez supposer que vous savez résoudre l'exercice précédent en moins de 1'000'000 d'opérations. 
 
 ::hint
 Que pouvez vous dire de la liste dureesAuxArrets, représentant les mêmes valeurs que celles affichées dans l’exercice précédent ?
