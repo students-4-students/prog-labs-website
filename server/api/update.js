@@ -27,6 +27,7 @@ export default defineEventHandler(async (event) => {
     language: query.language?.toString(),
     rating: parseInt(query.rating?.toString() || '-1'),
     createdAt: new Date(),
+    reviewContent: query.reviewContent?.toString() || null,
   });
 
   userEvent.save();

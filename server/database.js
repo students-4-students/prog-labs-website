@@ -51,6 +51,10 @@ export const UserEvent = sequelize.define('UserEvent', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  reviewContent: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
 });
 
 let initialized = false;
