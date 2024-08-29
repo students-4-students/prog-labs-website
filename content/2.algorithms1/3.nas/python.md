@@ -79,7 +79,7 @@ Pour une queue telle que :
 
 Votre programme doit afficher :
 
-`Temps d'attente estimé : 4 minute(s) et 30 seconde(s).`
+`Temps d'attente : 4 minute(s) et 30 seconde(s).`
 
 Pensez donc à effectuer les calculs pour convertir votre résultat en minutes et secondes.
 
