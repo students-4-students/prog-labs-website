@@ -116,6 +116,10 @@
       icon: LucideBug,
       members: [
         {
+          name: 'Laura (8)',
+          photoUrl: '/team/laura.png',
+        },
+        {
           name: 'Fabrice (6)',
           photoUrl: '/team/fabrice.png',
         },
