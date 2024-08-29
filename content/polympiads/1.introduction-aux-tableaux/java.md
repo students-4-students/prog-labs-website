@@ -5,7 +5,7 @@ description: 'Créez et manipulez des tableaux.'
 code:
   default: |
     import java.util.Scanner;
-
+    
     class Main { 
         public static void main (String[] args) {
             Scanner sc = new Scanner(System.in);
@@ -29,7 +29,7 @@ code:
     }
   corrected: |
     import java.util.Scanner;
-
+    
     class Main { 
         public static void main (String[] args) {
             Scanner sc = new Scanner(System.in);
@@ -68,7 +68,7 @@ tests:
       1 2 4 8
       1 3
     expectedOutput: |-
-      1 2 4 3
+      1 2 4 3 
 ---
 
 ### Introduction aux tableaux
@@ -88,7 +88,7 @@ class Main {
     public static void main (String[] args) {
         // créé une variable tableau de type tableau d'entier et de taille 4,
         int[] tableau = new int[4];
-
+        
         // ici 4 aurait aussi pu être une variable ou une expression
         // On stocke la séquence [1, 2, 3, 2] dans le tableau
         tableau[0] = 1;
@@ -102,10 +102,10 @@ class Main {
 
         // on peut alors calculer si on le souhaite la somme des deux premières valeurs
         int somme = tableau[0] + tableau[1];
-
+        
         // on peut alors le stocker dans la quatrième case du tableau
         tableau[3] = somme;
-
+        
         // notre nouvelle séquence est alors [1, 2, 3, 3]
         // on aurait aussi pu écrire tout sur une seule ligne
         // tableau[3] = tableau[0] + tableau[1];

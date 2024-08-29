@@ -5,7 +5,7 @@ description: 'Calculez la durée pour rejoindre tous les arrêts de la ligne de 
 code:
   default: |
     import java.util.Scanner;
-
+    
     class Main {
         public static void main (String[] args) {
             Scanner sc = new Scanner(System.in);
@@ -21,7 +21,7 @@ code:
     }
   corrected: |
     import java.util.Scanner;
-
+    
     class Main {
         public static void main (String[] args) {
             Scanner sc = new Scanner(System.in);
@@ -43,9 +43,9 @@ code:
                 // On affiche le temps
                 System.out.println(tempsAFin);
             }
-
+    
             // BONUS
-
+    
             // Pour chaque fin de trajet
             int tempsAFin = 0;
             for (int iFin = 1; iFin < nbArrets; iFin ++) {

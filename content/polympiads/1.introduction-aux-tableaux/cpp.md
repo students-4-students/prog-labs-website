@@ -6,13 +6,13 @@ code:
   default: |
     #include <iostream>
     #include <vector>
-
+    
     using namespace std;
-
+    
     int main () {
         int nbElements;
         cin >> nbElements;
-
+    
         vector<int> tableau(nbElements);
         for (int iElement = 0; iElement < nbElements; iElement ++) {
             cin >> tableau[iElement];
@@ -20,24 +20,24 @@ code:
         
         int indiceDepart, indiceFin;
         cin >> indiceDepart >> indiceFin;
-
+    
         // Implémentez ce que demande la consigne
-
+    
         for (int iElement = 0; iElement < nbElements; iElement ++) {
             cout << tableau[iElement] << " ";
         }
     }
-
+    
   corrected: |
     #include <iostream>
     #include <vector>
-
+    
     using namespace std;
-
+    
     int main () {
         int nbElements;
         cin >> nbElements;
-
+    
         vector<int> tableau(nbElements);
         for (int iElement = 0; iElement < nbElements; iElement ++) {
             cin >> tableau[iElement];
@@ -45,7 +45,7 @@ code:
         
         int indiceDepart, indiceFin;
         cin >> indiceDepart >> indiceFin;
-
+    
         // Ici, on récupère la valeur
         int valeurDepart = tableau[indiceDepart];
         
@@ -57,11 +57,12 @@ code:
         
         // On aurait aussi pu écrire
         // tableau[indiceFin] = tableau[indiceDepart] + 1;
-
+    
         for (int iElement = 0; iElement < nbElements; iElement ++) {
             cout << tableau[iElement] << " ";
         }
     }
+    
 
 tests:
   - input: |
@@ -69,7 +70,7 @@ tests:
       1 2 4 8
       1 3
     expectedOutput: |-
-      1 2 4 3
+      1 2 4 3 
 ---
 
 ### Introduction aux tableaux
@@ -106,10 +107,10 @@ int main () {
 
     // on peut alors calculer si on le souhaite la somme des deux premières valeurs
     int somme = tableau[0] + tableau[1];
-
+    
     // on peut alors le stocker dans la quatrième case du tableau
     tableau[3] = somme;
-
+    
     // notre nouvelle séquence est alors [1, 2, 3, 3]
     // on aurait aussi pu écrire tout sur une seule ligne
     // tableau[3] = tableau[0] + tableau[1];

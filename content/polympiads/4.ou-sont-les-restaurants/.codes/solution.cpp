@@ -32,7 +32,7 @@ int main () {
 		for (int iFin = 0; iFin < nbArrets - 1; iFin ++) {
 			// Si c'est le bon arrêt, on l'affiche
 			if (dureesAuxArrets[iFin] == dureesRestaurants[iRestaurant]) {
-				cout << iFin + 1;
+				cout << iFin + 1 << endl;
 			}
 		}
 	}
@@ -77,6 +77,6 @@ int main () {
 		// Il ne nous reste plus qu'à afficher la bonne valeur, à savoir l'indice plus grand ou égal (+ 1 car on commence avec l'indice 1 et non le 0),
 		// Qui sera forcément égal car tous les indices avant sont inférieurs et le tableau.
 		// Est strictement croissant, donc tous les indices après sont strictement supérieurs.
-		cout << iPlusGrandOuEgal + 1;
+		cout << iPlusGrandOuEgal + 1 << endl;
 	}
 }

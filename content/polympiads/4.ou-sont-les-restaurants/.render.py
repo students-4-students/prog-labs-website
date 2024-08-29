@@ -29,7 +29,7 @@ def get_inputs ():
         [
             10,
             T,
-            len(U),
+            len(V),
             V
         ]
     ]
