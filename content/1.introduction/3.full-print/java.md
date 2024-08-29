@@ -41,7 +41,7 @@ tests:
 
 ### Objectif
 
-Nous avons vu comment déclarez des variables, apprenons maintenant comment afficher leur contenu (c’est parfois utile pour comprendre pourquoi un programme ne fonctionne pas comme prévu !).
+Nous avons vu comment déclarer des variables, apprenons maintenant comment afficher leur contenu (c’est parfois utile pour comprendre pourquoi un programme ne fonctionne pas comme prévu !).
 
 ### Consigne
 
