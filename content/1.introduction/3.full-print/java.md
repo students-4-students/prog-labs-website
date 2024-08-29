@@ -51,7 +51,7 @@ Attention, le code à compléter contient 3 lignes qu'il ne faut pas modifier (`
 
 ### Cours
 
-Pour cela, utilisons l’instruction `System.out.println()` vu rapidement dans le premier exercice. Elle s’utilise comme ceci :
+Pour cela, utilisons l’instruction `System.out.println()` vue rapidement dans le premier exercice. Elle s’utilise comme ceci :
 
 ```java
 System.out.println("Hello EPFL"); // affiche Hello EPFL
