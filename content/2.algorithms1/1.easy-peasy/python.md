@@ -88,7 +88,7 @@ tests:
 
 Un exercice souvent donné à l'EPFL est de vous demander de trouver une erreur dans un algorithme. C’est l’objectif de cet exercice.
 
-On cherche a retrouver tous les nombres multiples de 3, 5 et 15 entre 1 et 100 (exclus)
+On cherche à retrouver tous les nombres multiples de 3, 5 et 15 entre 1 et 100 (exclu)
 
 - Si le nombre est multiple de 3 on affiche "easy"
 - Si le nombre est multiple de 5 on affiche "peasy"
