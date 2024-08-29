@@ -151,8 +151,14 @@
           derrière ce site web ?
         </h2>
         <p class="text-2xl text-foreground/85">
-          Projet réalisé par une équipe d'étudiants passionnés de l'EPFL durant
-          l'été 2024 :)
+          Projet
+          <a
+            href="https://github.com/students-4-students/prog-labs-website"
+            target="_blank"
+            >open source</a
+          >
+          réalisé par une équipe d'étudiants passionnés de l'EPFL durant l'été
+          2024 :)
         </p>
       </div>
       <div class="flex flex-wrap gap-x-8 gap-y-5">
