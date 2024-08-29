@@ -57,6 +57,18 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    esbuild: {
+      options: {
+        target: 'esnext',
+      },
+    },
+    typescript: {
+      tsConfig: {
+        compilerOptions: {
+          experimentalDecorators: true,
+        },
+      },
+    },
     // compressPublicAssets: true,
     preset: 'bun',
   },

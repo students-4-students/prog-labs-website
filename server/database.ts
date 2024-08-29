@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class User {
+class User {
   @PrimaryGeneratedColumn()
   id!: number;
 
@@ -18,7 +18,7 @@ export class User {
 }
 
 @Entity()
-export class UserEvent {
+class UserEvent {
   @PrimaryGeneratedColumn()
   id!: number;
 
@@ -41,6 +41,8 @@ export class UserEvent {
   @Column()
   userId!: number;
 }
+
+export { User, UserEvent };
 
 export const Postgres = new DataSource({
   type: 'postgres',
