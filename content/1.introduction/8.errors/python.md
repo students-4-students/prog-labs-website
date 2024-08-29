@@ -12,8 +12,8 @@ code:
     '''
     Il y a deux erreurs de compilation, et une erreur dans la conception du programme.
 
-    En Python on ne peux concaténer des chaines de charactères avec d’autres chaines de 
-    charactères et non comme dans le code donné des chaines de charactères et un entier. 
+    En Python on ne peut concaténer des chaines de caractères qu'avec d’autres chaines de 
+    caractères et non comme dans le code donné des chaines de caractères et un entier. 
     Pour corriger cette erreur il faut modifier la ligne comme suit : 
 
     `nombre_actuel = "On est au nombre : " + str(i)` ici l’instruction `str()` transforme 
