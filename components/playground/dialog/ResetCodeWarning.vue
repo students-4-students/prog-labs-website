@@ -1,17 +1,15 @@
 <script setup lang="ts">
-  // TODO : remove code duplication with CorrectedCodeWarning
   const emit = defineEmits<{
     (e: 'acknowledgeWarning'): void;
     (e: 'returnToExercise'): void;
   }>();
 
-  let opened = defineModel<boolean>();
+  const opened = defineModel<boolean>();
   let doNotTriggerCloseEvent = false;
   watch(opened, () => {
     if (!opened.value && !doNotTriggerCloseEvent) {
       emit('returnToExercise');
     }
-
     doNotTriggerCloseEvent = false;
   });
 
@@ -32,23 +30,22 @@
       <DialogHeader>
         <DialogTitle>Attention</DialogTitle>
         <DialogDescription>
-          Voulez vous vraiment recommencez depuis le début ?
+          Toute votre progression sur cet exercice sera perdue. Voulez vous
+          vraiment recommencez depuis le début ?
         </DialogDescription>
       </DialogHeader>
 
-      <DialogFooter class="flex">
+      <DialogFooter>
         <Button
           @click="acknowledgeWarning()"
           variant="destructive"
-          size="default"
-          class="flex-grow"
+          class="grow"
         >
+          <LucideTriangleAlert class="h-4" />
           Oui
         </Button>
         <DialogClose as-child>
-          <Button size="default" class="flex-grow" variant="outline">
-            Non
-          </Button>
+          <Button class="grow" variant="outline"> Non </Button>
         </DialogClose>
       </DialogFooter>
     </DialogContent>

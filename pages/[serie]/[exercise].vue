@@ -196,10 +196,10 @@
                 >
                   <template #trigger>
                     <Button
+                      :disabled="currentTab !== EditorTab.Code"
                       variant="outline"
                       size="sm"
                       class="ml-1"
-                      :disabled="!editable"
                     >
                       <LucideRotateCcw class="w-3 h-3" />
                     </Button>
@@ -251,7 +251,9 @@
             :testSpecs="tests"
             :writtenCode="writtenCode"
             :language="playgroundData.language"
-            :enabled="editable && writtenCode !== undefined"
+            :enabled="
+              currentTab === EditorTab.Code && writtenCode !== undefined
+            "
             @success="
               () => {
                 isCompleted = true;
