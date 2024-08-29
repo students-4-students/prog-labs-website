@@ -63,7 +63,9 @@ export const ensureSeqInitialized = async () => {
   if (initialized) return;
   else {
     await sequelize.authenticate();
-    await sequelize.sync();
+    await sequelize.sync({
+      alter: true,
+    });
     initialized = true;
   }
 };
