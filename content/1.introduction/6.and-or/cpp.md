@@ -88,7 +88,7 @@ if (condition1) {
 }
 ```
 
-Dans la quasi-totalité des langages de programmation que vous rencontrerez, il existe ce que l’on appelle des _opérateurs logiques._ Ce sont des opérateurs destinés à combiner où modifier vos conditions et permettre plus de flexibilité.
+Dans la quasi-totalité des langages de programmation que vous rencontrerez, il existe ce que l’on appelle des _opérateurs logiques._ Ce sont des opérateurs destinés à combiner ou modifier vos conditions et permettre plus de flexibilité.
 
 **Opérateur OU : si au moins une des N propositions est vraie**
 
