@@ -273,10 +273,7 @@
         >
           <ScrollArea class="h-full rounded-t-lg overflow-auto">
             <div class="flex flex-col grow gap-4 p-5 pb-20 bg-background">
-              <PlaygroundTestsResultView
-                v-if="test.input !== undefined"
-                title="Texte entré"
-              >
+              <PlaygroundTestsResultView v-if="test.input" title="Texte entré">
                 <pre class="p-4 whitespace-break-spaces">{{ test.input }}</pre>
               </PlaygroundTestsResultView>
               <PlaygroundTestsResultView
