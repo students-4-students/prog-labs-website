@@ -5,7 +5,7 @@ description: 'Retrouvez la promenade à partir du temps pour faire le trajet'
 code:
   default: |
     import java.util.Scanner;
-
+    
     class Main {
         public static void main (String[] args) {
             Scanner sc = new Scanner(System.in);
@@ -15,7 +15,7 @@ code:
             for (int i = 0; i < durees.length; i ++) {
                 durees[i] = sc.nextInt();
             }
-
+    
             int tempsTrajet = sc.nextInt();
             
             // Complétez le code pour calculer et afficher la promenade qui possède le bon temps de trajet
@@ -23,7 +23,7 @@ code:
     }
   corrected: |
     import java.util.Scanner;
-
+    
     class Main {
         public static void main (String[] args) {
             Scanner sc = new Scanner(System.in);
@@ -33,7 +33,7 @@ code:
             for (int i = 0; i < durees.length; i ++) {
                 durees[i] = sc.nextInt();
             }
-
+    
             int tempsTrajet = sc.nextInt();
             
             // Pour tous les débuts possibles
@@ -52,13 +52,13 @@ code:
                     }
                 }
             }
-
+    
             // Bonus 1
             // Pour tous les débuts possibles
             for (int iGauche = 0; iGauche < nbArrets - 1; iGauche ++) {
                 // On va calculer le temps de trajet comme dans le bonus de l'exercice 3
                 int tempsEntreGaucheEtDroite = 0;
-
+    
                 // Pour toute les fins possibles
                 for (int iDroite = iGauche + 1; iDroite < nbArrets; iDroite ++) {
                     // On incrémente le temps à partir du temps précédent
@@ -72,18 +72,18 @@ code:
             }
                 
             // Bonus 2 - Voir les indices et les solutions pour une autre explication
-
+    
             int iGauche = 0;
             int iDroite = 0;
             int tempsEntreGaucheEtDroite = 0;
-
+    
             // Tant qu'on a pas atteint l'intervalle [nbArrets - 1; nbArrets - 1]
             while (iGauche < nbArrets - 1) {
                 // Si la durée est correct on affiche la paire
                 if (tempsEntreGaucheEtDroite == tempsTrajet) {
                     System.out.println(iGauche + " " + iDroite);
                 }
-
+    
                 // Si on atteint la droite maximale ou que le temps de trajet de la balade candidate est trop long
                 // On passe à l'intervalle [iGauche + 1; iDroite] et on modifie la somme
                 if (iDroite == nbArrets - 1 || tempsEntreGaucheEtDroite >= tempsTrajet) {

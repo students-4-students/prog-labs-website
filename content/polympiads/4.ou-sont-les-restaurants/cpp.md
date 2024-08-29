@@ -6,9 +6,9 @@ code:
   default: |
     #include <vector>
     #include <iostream>
-
+    
     using namespace std;
-
+    
     int main () {
         int nbArrets;
         cin >> nbArrets;
@@ -22,15 +22,15 @@ code:
         for (int i = 0; i < nbRestaurants; i ++) {
             cin >> dureesRestaurants[i];
         }
-
+    
         // Complétez le code pour calculer et afficher les arrêts où se trouvent les restaurants
     }
   corrected: |
     #include <vector>
     #include <iostream>
-
+    
     using namespace std;
-
+    
     int main () {
         int nbArrets;
         cin >> nbArrets;
@@ -44,7 +44,7 @@ code:
         for (int i = 0; i < nbRestaurants; i ++) {
             cin >> dureesRestaurants[i];
         }
-
+    
         // On calcule la liste des distances aux arrêts comme dans l'exercice précédent.
         // Cette fois-ci, on la stocke au lieu de l'afficher
         vector<int> dureesAuxArrets (nbArrets - 1);
@@ -53,20 +53,20 @@ code:
                 dureesAuxArrets[i] += durees[j];
             }
         }
-
+    
         // Pour chaque restaurant
         for (int iRestaurant = 0; iRestaurant < nbRestaurants; iRestaurant ++) {
             // Pour chaque arrêt de fin
             for (int iFin = 0; iFin < nbArrets - 1; iFin ++) {
                 // Si c'est le bon arrêt, on l'affiche
                 if (dureesAuxArrets[iFin] == dureesRestaurants[iRestaurant]) {
-                    cout << iFin + 1;
+                    cout << iFin + 1 << endl;
                 }
             }
         }
-
+    
         // Solution et implémentation du bonus
-
+    
         // On réutilise le code du corrigé du bonus précédent
         int tempsActuel = 0;
         vector<int> dureesAuxArrets2 (nbArrets - 1);
@@ -105,7 +105,7 @@ code:
             // Il ne nous reste plus qu'à afficher la bonne valeur, à savoir l'indice plus grand ou égal (+ 1 car on commence avec l'indice 1 et non le 0),
             // Qui sera forcément égal car tous les indices avant sont inférieurs et le tableau.
             // Est strictement croissant, donc tous les indices après sont strictement supérieurs.
-            cout << iPlusGrandOuEgal + 1;
+            cout << iPlusGrandOuEgal + 1 << endl;
         }
     }
 
@@ -122,7 +122,7 @@ tests:
   - input: |
       10
       1 5 3 8 6 2 8 10 8
-      9
+      19
       6 17 6 43 33 51 33 51 51 6 6 25 25 51 23 9 1 1 23
     expectedOutput: |-
       2
@@ -172,7 +172,7 @@ Son ami lui a transmit 3 restaurants et la liste dureesRestaurants est [7, 3, 9]
 
 Le premier code présenté dans la correction est assez lent, seriez-vous capable de trouver une solution qui fonctionne lorsque `nbArrets = 100'000` en utilisant moins de 10'000'000 opérations ?
 
-Vous pouvez supposer que vous savez résoudre l'exercice précédent en moins de 1'000'000 d'opérations.
+Vous pouvez supposer que vous savez résoudre l'exercice précédent en moins de 1'000'000 d'opérations. *Il est fortement conseillé d'avoir réussi à coder le programme et d'avoir lu la correction de la partie sans bonus avant de l'essayer. Certains indices dépendront de la correction de l'énoncé sans le bonus.*
 
 ::hint
 Que pouvez vous dire de la liste dureesAuxArrets, représentant les mêmes valeurs que celles affichées dans l’exercice précédent ?
