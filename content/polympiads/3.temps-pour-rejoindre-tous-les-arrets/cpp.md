@@ -6,9 +6,9 @@ code:
   default: |
     #include <vector>
     #include <iostream>
-
+    
     using namespace std;
-
+    
     int main () {
         int nbArrets;
         cin >> nbArrets;
@@ -16,15 +16,15 @@ code:
         for (int i = 0; i < durees.size(); i ++) {
             cin >> durees[i];
         }
-
+    
         // Complétez le code pour calculer et afficher le temps pour atteindre tous les arrêts
     }
   corrected: |
     #include <vector>
     #include <iostream>
-
+    
     using namespace std;
-
+    
     int main () {
         int nbArrets;
         cin >> nbArrets;
@@ -32,7 +32,7 @@ code:
         for (int i = 0; i < durees.size(); i ++) {
             cin >> durees[i];
         }
-
+    
         // Pour chaque fin de trajet
         for (int iFin = 1; iFin < nbArrets; iFin ++) {
             // On calcule le temps de trajet à la fin
@@ -44,7 +44,7 @@ code:
             // On affiche le temps
             cout << tempsAFin << endl;
         }
-
+    
         // BONUS
         
         // Pour chaque fin de trajet

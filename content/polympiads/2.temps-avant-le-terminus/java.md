@@ -5,7 +5,7 @@ description: 'Calculez la durée pour rejoindre le terminus de la ligne de métr
 code:
   default: |
     import java.util.Scanner;
-
+    
     class Main {
         public static void main (String[] args) {
             Scanner sc = new Scanner(System.in);
@@ -21,7 +21,7 @@ code:
     }
   corrected: |
     import java.util.Scanner;
-
+    
     class Main {
         public static void main (String[] args) {
             Scanner sc = new Scanner(System.in);

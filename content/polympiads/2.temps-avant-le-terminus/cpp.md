@@ -6,9 +6,9 @@ code:
   default: |
     #include <vector>
     #include <iostream>
-
+    
     using namespace std;
-
+    
     int main () {
         int nbArrets;
         cin >> nbArrets;
@@ -16,15 +16,15 @@ code:
         for (int i = 0; i < durees.size(); i ++) {
             cin >> durees[i];
         }
-
+    
         // Complétez le code pour calculer et afficher le temps pour atteindre le terminus
     }
   corrected: |
     #include <vector>
     #include <iostream>
-
+    
     using namespace std;
-
+    
     int main () {
         int nbArrets;
         cin >> nbArrets;
@@ -32,7 +32,7 @@ code:
         for (int i = 0; i < durees.size(); i ++) {
             cin >> durees[i];
         }
-
+    
         int tempsAuTerminus = 0;
         for (int iTrajet = 0; iTrajet < nbArrets - 1; iTrajet ++) {
             tempsAuTerminus += durees[iTrajet];
