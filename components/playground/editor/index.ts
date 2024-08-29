@@ -7,7 +7,8 @@ export interface EditorProps {
   language: AllowedLanguage;
   darkMode?: boolean;
   class?: HTMLAttributes['class'];
-  markers: monaco.editor.IMarkerData[];
+  markers?: monaco.editor.IMarkerData[];
+  disableLanguageServer?: boolean;
 }
 
 export interface EditorEmits {

@@ -26,7 +26,9 @@
   } from './extensions/themes';
   import type { EditorEmits, EditorProps } from '.';
 
-  const props = defineProps<EditorProps>();
+  const props = withDefaults(defineProps<EditorProps>(), {
+    markers: () => [],
+  });
   const emit = defineEmits<EditorEmits>();
 
   const colorMode = useColorMode();
@@ -186,26 +188,24 @@
   async function getLanguageServerFor(
     languageId: AllowedLanguage,
   ): Promise<ClangdLanguageServer | PyrightLanguageServer | null> {
-    // Don't start a language server if the user cannot modify the code
-    if (props.readOnly) return null;
-
+    let languageServer = null;
     switch (languageId) {
       case 'cpp': {
-        const { ClangdLanguageServer } = await import(
-          './language-servers/cpp/clangd.js'
-        );
-        return await ClangdLanguageServer.initialize();
+        languageServer = (await import('./language-servers/cpp/clangd.js'))
+          .ClangdLanguageServer;
+        break;
       }
       case 'python': {
-        const { PyrightLanguageServer } = await import(
-          './language-servers/python/pyright.js'
-        );
-        return await PyrightLanguageServer.initialize();
-      }
-      default: {
-        return null;
+        languageServer = (await import('./language-servers/python/pyright.js'))
+          .PyrightLanguageServer;
+        break;
       }
     }
+
+    // Don't start a language server if the user cannot modify the code
+    return !languageServer || props.readOnly || props.disableLanguageServer
+      ? null
+      : languageServer.initialize();
   }
 </script>
 

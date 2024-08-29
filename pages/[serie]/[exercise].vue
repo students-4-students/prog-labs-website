@@ -39,7 +39,8 @@
 
   // Load & save student data
   const studentData = useStudentDataStore();
-  const { codeLanguage, sectionCode } = storeToRefs(studentData);
+  const { codeLanguage, sectionCode, disableLanguageServer } =
+    storeToRefs(studentData);
 
   // Load the content for the current exercise asynchronously
   const { data: playgroundData } = await useAsyncData<PayloadData>(
@@ -149,10 +150,10 @@
 </script>
 
 <template>
-  <Navbar
-    :previousExerciseUrl="surroundingExerciseUrls[0]"
-    :nextExerciseUrl="surroundingExerciseUrls[1]"
-    is-playground
+  <PlaygroundNavbar
+    :previous-exercise-url="surroundingExerciseUrls[0]"
+    :next-exercise-url="surroundingExerciseUrls[1]"
+    @reset-code="resetWrittenCode(playgroundData.exercise)"
   />
   <!-- Modals -->
   <PlaygroundDialogExerciseCompletion
@@ -204,24 +205,9 @@
                 </template>
               </PlaygroundDialogCorrectedCodeWarning>
               <!-- Add bottom border to the rest of the bar -->
-              <div class="flex border-b grow h-full items-center justify-start">
-                <PlaygroundDialogResetCodeWarning
-                  @acknowledge-warning="
-                    resetWrittenCode(playgroundData.exercise)
-                  "
-                >
-                  <template #trigger>
-                    <Button
-                      :disabled="currentTab !== EditorTab.Code"
-                      variant="outline"
-                      size="sm"
-                      class="ml-1"
-                    >
-                      <LucideRotateCcw class="w-3 h-3" />
-                    </Button>
-                  </template>
-                </PlaygroundDialogResetCodeWarning>
-              </div>
+              <div
+                class="flex border-b grow h-full items-center justify-start"
+              ></div>
             </PlaygroundTabsList>
             <KeepAlive>
               <PlaygroundTabsContent
@@ -234,6 +220,7 @@
                   :language="playgroundData.language"
                   v-model="writtenCode"
                   :markers="markers"
+                  :disableLanguageServer="disableLanguageServer"
                 />
               </PlaygroundTabsContent>
             </KeepAlive>
@@ -251,7 +238,6 @@
                     'blur-monaco-editor-code': !wantsToSeeCorrectedCode,
                   }"
                   readOnly
-                  :markers="[]"
                 />
               </PlaygroundTabsContent>
             </KeepAlive>

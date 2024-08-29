@@ -128,8 +128,9 @@ export const useStudentDataStore = defineStore({
   persist: {
     storage: persistedState.localStorage,
   },
-  state: (): StudentData => ({
+  state: (): StudentData & { disableLanguageServer: boolean } => ({
     sectionCode: undefined,
+    disableLanguageServer: false,
   }),
   getters: {
     section: (state) =>
@@ -139,6 +140,9 @@ export const useStudentDataStore = defineStore({
     },
   },
   actions: {
+    toggleLanguageServer() {
+      this.disableLanguageServer = !this.disableLanguageServer;
+    },
     setSection(sectionCode: SectionCode) {
       this.sectionCode = sectionCode;
     },
