@@ -46,7 +46,7 @@ Elle s’utilise comme ceci :
 print("Hello EPFL") # afficher Hello EPFL
 ```
 
-Attention, comme nous voulons afficher du texte, il faut l'encadrer de guillemets sinon cela ne fonctionne pas. Si on veut afficher 1, qui est simplement un nombre, on écrit simplement :
+Attention, comme nous voulons afficher du texte, il faut l'encadrer de guillemets sinon cela ne fonctionne pas. Si on veut afficher 1, qui est simplement un nombre, on écrit :
 
 ```python
 print(1) # affiche 1
