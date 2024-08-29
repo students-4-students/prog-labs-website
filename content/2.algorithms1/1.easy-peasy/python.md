@@ -86,7 +86,7 @@ tests:
 
 ### Enoncé
 
-Un exercice souvent donné lors du BA1 est de vous demander de trouver une erreur dans un algorithme. C’est l’objectif de cet exercice.
+Un exercice souvent donné à l'EPFL est de vous demander de trouver une erreur dans un algorithme. C’est l’objectif de cet exercice.
 
 On cherche a retrouver tous les nombres multiples de 3, 5 et 15 entre 1 et 100 (exclus)
 
