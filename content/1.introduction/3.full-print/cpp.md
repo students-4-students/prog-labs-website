@@ -63,7 +63,7 @@ Pour cela, utilisons l’instruction `cout << ... << endl` vue rapidement dans l
 cout << "Hello EPFL" << endl; // affiche Hello EPFL
 ```
 
-Attention, comme nous voulons afficher du texte, il faut l'encadrer de guillemets sinon cela ne fonctionne pas. Si on veut afficher 1, qui est simplement un nombre, on écrit simplement :
+Attention, comme nous voulons afficher du texte, il faut l'encadrer de guillemets sinon cela ne fonctionne pas. Si on veut afficher 1, qui est simplement un nombre, on écrit :
 
 ```cpp
 cout << 1 << endl; // affiche 1
