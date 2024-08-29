@@ -57,7 +57,7 @@ Pour cela, utilisons l’instruction `System.out.println()` vue rapidement dans 
 System.out.println("Hello EPFL"); // affiche Hello EPFL
 ```
 
-Attention, comme nous voulons afficher du texte, il faut l'encadrer de guillemets sinon cela ne fonctionne pas. Si on veut afficher 1, qui est simplement un nombre, on écrit simplement :
+Attention, comme nous voulons afficher du texte, il faut l'encadrer de guillemets sinon cela ne fonctionne pas. Si on veut afficher 1, qui est simplement un nombre, on écrit :
 
 ```java
 System.out.println(1); // affiche 1
