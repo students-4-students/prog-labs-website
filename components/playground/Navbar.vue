@@ -17,15 +17,9 @@
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger>
-          <NuxtLink :to="props.previousExerciseUrl">
+          <NuxtLink :to="props.previousExerciseUrl" external>
             <Button
-              @click="
-                () => {
-                  isLoadingPreviousExercise = true;
-                  // Temporary fix for clangd wasm workers not being correctly disposed
-                  reloadNuxtApp();
-                }
-              "
+              @click="isLoadingPreviousExercise = true"
               :disabled="
                 !props.previousExerciseUrl ||
                 isLoadingPreviousExercise ||
@@ -88,15 +82,9 @@
       </Tooltip>
     </TooltipProvider>
 
-    <NuxtLink :to="props.nextExerciseUrl">
+    <NuxtLink :to="props.nextExerciseUrl" external>
       <Button
-        @click="
-          () => {
-            isLoadingNextExercise = true;
-            // Temporary fix for clangd wasm workers not being correctly disposed
-            reloadNuxtApp();
-          }
-        "
+        @click="isLoadingNextExercise = true"
         :disabled="
           !props.nextExerciseUrl ||
           isLoadingPreviousExercise ||
