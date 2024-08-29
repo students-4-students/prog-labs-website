@@ -32,7 +32,7 @@
     --success: 138 71% 23%;
     --success-foreground: 210 40% 98%;
 
-    --destructive: 0.01 100% 72%;
+    --destructive: 0.99 72% 47%;
     --destructive-foreground: 210 40% 98%;
 
     --ring: 222.2 84% 4.9%;
@@ -68,7 +68,7 @@
     --success: 128 49% 49%;
     --success-foreground: 210 28.6% 97.3%;
 
-    --destructive: 0.01 100% 72%;
+    --destructive: 4 100% 72%;
     --destructive-foreground: 210 28.6% 97.3%;
 
     --ring: 212.7 26.8% 83.9%;
