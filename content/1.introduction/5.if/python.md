@@ -51,7 +51,7 @@ a == b # renvoie False
 a == (b + 1) # renvoie True
 ```
 
-Une variante de cet opéarateur est `!=` et permet de vérifier si deux variables sont différentes.
+Une variante de cet opérateur est `!=` et permet de vérifier si deux variables sont différentes.
 
 D’autres comparaisons peuvent être effectuées :
 
