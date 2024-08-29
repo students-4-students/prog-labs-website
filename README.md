@@ -2,6 +2,7 @@
 
 Ce site web permet aux étudiants de S4S de découvrir la programmation avec une série d'introduction à la syntaxe et des algorithmes pour mettre en pratique la syntaxe.
 
+- La rédaction est facile pour les staff conception en markdown.
 - Plusieurs langages sont supportés, dont Java, C++ et Python.
 - Les exercices sont interactifs, les étudiants peuvent écrire du code et le tester directement sur le site.
 
