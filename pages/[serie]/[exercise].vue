@@ -157,9 +157,11 @@
   />
   <!-- Modals -->
   <PlaygroundDialogExerciseCompletion
-    v-if="isCompleted"
-    :nextExerciseUrl="surroundingExerciseUrls[1]"
+    v-if="isCompleted && playgroundData.exercise?.title"
     @openChange="isCompleted = $event"
+    :nextExerciseUrl="surroundingExerciseUrls[1]"
+    :language="playgroundData.language"
+    :exercise-name="playgroundData.exercise.title"
     default-open
   />
   <!-- Playground -->

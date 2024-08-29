@@ -12,6 +12,7 @@
     "@typefox/pyright-browser": "^1.1.299",
     "@types/sequelize": "^4.28.20",
     "@vee-validate/zod": "^4.13.2",
+    "@vueuse/core": "^11.0.3",
     "@xterm/addon-clipboard": "^0.1.0",
     "@xterm/addon-fit": "^0.10.0",
     "@xterm/addon-unicode11": "^0.8.0",

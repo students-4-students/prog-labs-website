@@ -301,7 +301,7 @@
                       L’exécution du programme ne s’est pas terminée à temps.
                     </p>
                     <p class="text-sm">
-                      Vérifie que ton programme ne soit pas coincé dans une
+                      Vérifiez que votre programme ne soit pas coincé dans une
                       boucle infinie.
                     </p>
                   </div>
