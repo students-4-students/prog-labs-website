@@ -1,11 +1,11 @@
-# S4S Programming Labs
+# [S4S Programming Labs](https://prog.students4students.ch)
 
 Ce site web permet aux étudiants de S4S de découvrir la programmation avec une série d'introduction à la syntaxe et des algorithmes pour mettre en pratique la syntaxe.
 
 - Plusieurs langages sont supportés, dont Java, C++ et Python.
 - Les exercices sont interactifs, les étudiants peuvent écrire du code et le tester directement sur le site.
 
-## Rédaction des séries
+## 📝 Rédaction des séries
 
 Les séries et exercices sont rédigés en markdown et situés dans le dossier `content`.
 
@@ -21,7 +21,7 @@ Pour écrire un nouvel exercice, créez un sous-dossier dans le dossier de la s�
 
 Il y a toujours un titre, une description, un code (`default`, le code affiché dans l'éditeur quand le participant ouvre la page, et `corrected`, le code corrigé) et une paire de clés-valeurs `tests` qui contient les inputs et outputs attendus pour chaque test.
 
-## Documentation technique
+## 🛠️ Documentation technique
 
 ### Tests unitaires
 
