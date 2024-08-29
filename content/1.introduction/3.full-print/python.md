@@ -38,7 +38,7 @@ Attention, le code à compléter contient 1 ligne qu'il ne faut pas modifier (`i
 
 ### Cours
 
-Pour cela, utilisons l’instruction `print()` vu rapidement dans le premier exercice.
+Pour cela, utilisons l’instruction `print()` vue rapidement dans le premier exercice.
 
 Elle s’utilise comme ceci :
 
