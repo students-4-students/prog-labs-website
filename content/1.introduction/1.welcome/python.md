@@ -23,7 +23,7 @@ tests:
 
 Bienvenue au cours de programmation de Students 4 Students ! 🎉
 
-Cette année, vous allez apprendre le Python, un langage de programmation très utilisé dans de nombreux domaines et très adaptés pour les débutants. Ce site est là pour vous permettre d'acquérir quelques bases utiles pour votre première année à l'EPFL.
+Cette année, vous allez apprendre le Python, un langage de programmation très utilisé dans de nombreux domaines et très adapté pour les débutants. Ce site est là pour vous permettre d'acquérir quelques bases utiles pour votre première année à l'EPFL.
 
 Lors du semestre, vous utiliserez un logiciel installé sur votre ordinateur pour lancer le code, mais ce sera très similaire à ce site !
 
