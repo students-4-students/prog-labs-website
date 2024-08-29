@@ -54,7 +54,7 @@ tests:
 
 ### Enoncé
 
-Alice et Bob sont des noms d'usage fréquent dans les problèmes reliés à l'informatique depuis 1978 (voir [la page wikipédia](https://fr.wikipedia.org/wiki/Alice_et_Bob) si vous êtes curieux :)).
+Alice et Bob sont des noms d'usage fréquents dans les problèmes reliés à l'informatique depuis 1978 (voir [la page wikipédia](https://fr.wikipedia.org/wiki/Alice_et_Bob) si vous êtes curieux :)).
 
 Ils ont chacun un nombre “préféré” entre 0 et 99. Celui de Bob est 78. L’objectif de Bob est de deviner le nombre d’Alice.
 
