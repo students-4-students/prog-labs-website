@@ -5,10 +5,10 @@ description: 'Saurez-vous trouver une solution optimale... ?'
 code:
   default: |
     #include <iostream>
+
     using namespace std;
 
     int main() {
-
         int jourDebut (0); // lire le jour de debut
         cin >> jourDebut;
         int jourFin (0); // lire le jour de fin
@@ -20,10 +20,10 @@ code:
     }
   corrected: |
     #include <iostream>
+
     using namespace std;
 
     int main() {
-
         int jourDebut (0); // lire le jour de debut
         cin >> jourDebut;
         int jourFin (0); // lire le jour de fin

@@ -5,17 +5,16 @@ description: "Dessinez le logo de l'EPFL dans la console."
 code:
   default: |
     #include <iostream>
+
     using namespace std;
 
     int main() {
-
         // n est la hauteur du L
         int n (0);
         cin >> n;
 
+        // compléter le dessin du L
         for (int i (0); i < n; i++) {
-        
-            // compléter le dessin du L
             
         }
 
@@ -24,9 +23,11 @@ code:
 
   corrected: |
     #include <iostream>
+
     using namespace std;
 
     int main() {
+        // n est la hauteur du L
         int n (0);
         cin >> n;
 
@@ -43,6 +44,7 @@ code:
     // pour aller plus loin, vous pouvez dessiner les lettres EPF !
 
     #include <iostream>
+
     using namespace std;
 
     int main() {

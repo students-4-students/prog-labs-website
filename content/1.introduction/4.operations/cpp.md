@@ -6,6 +6,7 @@ code:
   default: |
     #include <iostream>
     #include <string>
+
     using namespace std;
 
     int main() {        
@@ -18,7 +19,7 @@ code:
             
         string texte1 ("");        
         string texte2 ("");     
-        cin >> texte1;
+        cin >> texte1; // (s'arrete apres le premier espace)
         cin >> texte2;   
         
         cout << nombre1 * nombre2 << endl;
@@ -29,6 +30,7 @@ code:
   corrected: |
     #include <iostream>
     #include <string>
+
     using namespace std;
 
     int main() {        

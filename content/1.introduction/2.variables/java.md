@@ -6,17 +6,15 @@ code:
   default: |
     class Main {
         public static void main(String[] args) {
-          // complétez le code ici
+            // complétez le code ici
         }
     }
   corrected: |
     class Main {
         public static void main(String[] args){
-        
             String a = "Salut";
             int b = 42;
             boolean c = true;
-
         }
     }
 

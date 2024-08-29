@@ -5,41 +5,43 @@ description: 'Utilisez les opérateurs logiques pour combiner des conditions.'
 code:
   default: |
     #include <iostream>
+
     using namespace std;
 
     int main() {        
-      // ne faites pas attention à ces deux lignes    
-      // elles servent à initialiser les variables    
-      // (voir le cours)    
+        // ne faites pas attention à ces deux lignes    
+        // elles servent à initialiser les variables    
+        // (voir le cours)    
+          
+        int heures (0);    
+        int minutes (0);  
+        cin >> heures;
+        cin >> minutes;      
         
-      int heures (0);    
-      int minutes (0);  
-      cin >> heures;
-      cin >> minutes;      
-      
-      // complétez le code        
+        // complétez le code        
 
-      return 0;	
+        return 0;	
     }
   corrected: |
     #include <iostream>
+
     using namespace std;
 
     int main() {        
-      // ne faites pas attention à ces deux lignes    
-      // elles servent à initialiser les variables    
-      // (voir le cours)    
-      
-      int heures (0);   
-      int minutes (0);
-      cin >> heures;
-      cin >> minutes;   
-      
-      if (heures == 8 and minutes == 15) {            
-        cout << "Good morning EPFL" << endl;        
-      } else {
-        cout << "EPFL" << endl;
-      }
+        // ne faites pas attention à ces deux lignes    
+        // elles servent à initialiser les variables    
+        // (voir le cours)    
+        
+        int heures (0);   
+        int minutes (0);
+        cin >> heures;
+        cin >> minutes;   
+        
+        if (heures == 8 and minutes == 15) {            
+            cout << "Good morning EPFL" << endl;        
+        } else {
+            cout << "EPFL" << endl;
+        }
 
       return 0;	
     }

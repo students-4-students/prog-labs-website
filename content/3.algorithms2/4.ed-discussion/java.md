@@ -23,11 +23,11 @@ code:
                 // Le programme lit les questions disponibles ce jour-ci
                 int questionsDisponibles = scanner.nextInt(); // lire le nombre de questions disponibles ce jour la
                 int allQuestions = questionsDisponibles + QUESTIONS_POSEES_RAOUL + QUESTIONS_POSEES_GANIMARD + QUESTIONS_POSEES_LUPIN;
-                // à compléter la gestion de la logique du problème
                 
+                // à compléter la gestion de la logique du problème
             }
+            
             // a compléter : trouvez l'étudiant avec le plus de point (afficher Raoul par défaut en cas d'égalité)
-
         }
     }
 
@@ -68,7 +68,7 @@ code:
                         // --> Arsène va avoir moins de points négatives.
                         pointsLupin -= (5 - questionsDisponibles);
                         questionsDisponibles = 0;
-                    }else{
+                    } else {
                         // Ici, Raoul répond qu'aux questions des qutres étudiants
                         // Arsène va répondre a toutes ses propres queestions
                         pointsLupin -= 5;
@@ -141,8 +141,6 @@ Ed Discussion est un site de questions réponses pour les étudiants utilisé ic
 Les étudiants posent leurs questions librement, et, les assistants ou les professeurs répondent à ces questions.
 
 Les étudiants peuvent aussi répondre aux questions des autres et c’est même conseillé, ça vous permet d’assimiler mieux le cours et les séries.
-
-Arsène, Ganimard et Raoul sont trois étudiants à l'EPFL qui répondent souvent aux questions. Le but de cet exo est de trouver qui a répondu aux plus de questions, cependant il y a quelques règles qu'ils ont posées pour eux-mêmes :
 
 Lupin, Ganimard et Raoul sont trois amis à l'EPFL qui répondent souvent aux questions. Le but de cet exo est de trouver qui a répondu aux plus de questions, cependant il y a quelques règles qu'ils ont posées pour eux-mêmes :
 

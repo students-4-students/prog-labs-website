@@ -25,7 +25,7 @@ code:
 
     # Initialisation du compteur de personnes
     nombre_personnes = 0
-    apres_moi = False
+    avant_moi = False
 
     for i in range(len(queue)):
         # cette ligne permet de récupérer le caractère actuel
@@ -33,10 +33,10 @@ code:
         
         # que faire si le caractère est * ?
         if character_actuel == "*":
-            apres_moi = True
+            avant_moi = True
         # si le charactère est _ ?
         elif character_actuel == "_":
-            if apres_moi: nombre_personnes += 1 # equivalent à nombre_personnes = nombre_personnes + 1
+            if avant_moi: nombre_personnes += 1 # equivalent à nombre_personnes = nombre_personnes + 1
 
     # Estimer le temps d'attente en secondes
     temps_estime_sec = nombre_personnes * 90 # 90 secondes par personnes

@@ -188,6 +188,7 @@
               </PlaygroundTabsTrigger>
               <PlaygroundDialogCorrectedCodeWarning
                 @acknowledge-warning="wantsToSeeCorrectedCode = true"
+                @return-to-exercise="currentTab = EditorTab.Code"
                 :only-keep-trigger="wantsToSeeCorrectedCode"
               >
                 <template #trigger>
@@ -204,14 +205,22 @@
               </PlaygroundDialogCorrectedCodeWarning>
               <!-- Add bottom border to the rest of the bar -->
               <div class="flex border-b grow h-full items-center justify-start">
-                <Button
-                  @click="resetWrittenCode(playgroundData.exercise)"
-                  variant="outline"
-                  size="sm"
-                  class="ml-1"
+                <PlaygroundDialogResetCodeWarning
+                  @acknowledge-warning="
+                    resetWrittenCode(playgroundData.exercise)
+                  "
                 >
-                  <LucideRotateCcw class="w-3 h-3" />
-                </Button>
+                  <template #trigger>
+                    <Button
+                      :disabled="currentTab !== EditorTab.Code"
+                      variant="outline"
+                      size="sm"
+                      class="ml-1"
+                    >
+                      <LucideRotateCcw class="w-3 h-3" />
+                    </Button>
+                  </template>
+                </PlaygroundDialogResetCodeWarning>
               </div>
             </PlaygroundTabsList>
             <KeepAlive>

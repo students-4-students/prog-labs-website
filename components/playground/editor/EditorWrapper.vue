@@ -71,6 +71,7 @@
           bottom: 16,
         },
         readOnly: props.readOnly,
+        fixedOverflowWidgets: true,
       },
     },
     serviceConfig: {

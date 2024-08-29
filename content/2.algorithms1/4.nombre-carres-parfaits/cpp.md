@@ -5,6 +5,7 @@ description: 'Résoudre un problème composé de plusieurs partie'
 code:
   default: |
     #include <iostream>
+
     using namespace std;
 
     int main() {
@@ -13,9 +14,7 @@ code:
             
         int count (0);        
         for (int i (0); i <= n; i++) {  
-                
             // à compléter...        
-        
         }        
         
         cout << count << endl;
@@ -24,14 +23,14 @@ code:
     }
   corrected: |
     #include <iostream>
+
     using namespace std;
 
     int main() {
         int n (0); 
         cin >> n;
                 
-        int count (0); 
-                
+        int count (0);        
         for (int i (0); i <= n; i++) {  
             for (int j (0); j <= i; j++) {
                 if (j * j == i) {

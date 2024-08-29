@@ -6,22 +6,37 @@ code:
   default: |
     for i in range(10)
         nombre_actuel = "On est au nombre : " + i
-    print(nombre_actuel)
+
+        print(nombre_actuel)
   corrected: |
     '''
     Il y a deux erreurs de compilation, et une erreur dans la conception du programme.
 
-    En Python on ne peux concaténer des chaines de charactères avec d’autres chaines de charactères et non comme dans le code donné des chaines de charactères et un entier. Pour corriger cette erreur il faut modifier la ligne comme suit : 
+    En Python on ne peux concaténer des chaines de charactères avec d’autres chaines de 
+    charactères et non comme dans le code donné des chaines de charactères et un entier. 
+    Pour corriger cette erreur il faut modifier la ligne comme suit : 
 
-    `nombre_actuel = "On est au nombre : " + str(i)` ici l’instruction `str()` transforme l’entier stocké dans la variable i en chaine de charactère. Par exemple, si `i` vaut `1` alors `str(i)` sera `“1”`. On peut donc à présent concaténer les deux chaines. Si vous ne comprenez pas bien comment `str()` peut fonctionner ne vous inquiétez pas vous verrez cela plus en détail durant le semestre.
+    `nombre_actuel = "On est au nombre : " + str(i)` ici l’instruction `str()` transforme 
+    l’entier stocké dans la variable i en chaine de charactère. Par exemple, si `i` vaut `1` 
+    alors `str(i)` sera `“1”`. On peut donc à présent concaténer les deux chaines. Si vous ne 
+    comprenez pas bien comment `str()` peut fonctionner ne vous inquiétez pas vous verrez cela 
+    plus en détail durant le semestre.
 
     La seconde erreur est du au que l’on a oublié les `:` dans la déclaration de la boucle for.
 
-    La troisième erreur fait que le programme affiche uniquement “On est au nombre : 9”. Alors qu’il devrait afficher cette phrase pour tous les nombres entre 0 et 9. Cette erreur est due à une mauvaise indentation ! En effet, `print(nombre_actuel)` n’est pas indentée, Python ne considère donc pas que cette ligne doit être exécutée à chaque itération de la boucle et considère cette instruction comme devant être exécutée après la boucle for. C’est pour cela que le texte est uniquement affiché une fois : cela arrive quand la boucle for est terminée. Pour corriger cette erreur il suffit d’indenter cette ligne.
+    La troisième erreur fait que le programme affiche uniquement “On est au nombre : 9”. 
+    Alors qu’il devrait afficher cette phrase pour tous les nombres entre 0 et 9. 
+    Cette erreur est due à une mauvaise indentation ! En effet, `print(nombre_actuel)` n’est 
+    pas indentée, Python ne considère donc pas que cette ligne doit être exécutée à chaque 
+    itération de la boucle et considère cette instruction comme devant être exécutée après 
+    la boucle for. C’est pour cela que le texte est uniquement affiché une fois : cela arrive 
+    quand la boucle for est terminée. Pour corriger cette erreur il suffit d’indenter cette 
+    ligne.
     '''
 
     for i in range(10):
         nombre_actuel = "On est au nombre : " + str(i)
+        
         print(nombre_actuel)
 
 tests:

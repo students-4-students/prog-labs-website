@@ -24,7 +24,7 @@ code:
     # ou alors
     for i in range(2, n+1):
         # si le reste de la division par 2 est 0
-            # c'est que i = 2k + 0 donc i est pair !
+        # c'est que i = 2k + 0 donc i est pair !
         if (i % 2 == 0):
             print(i)
 

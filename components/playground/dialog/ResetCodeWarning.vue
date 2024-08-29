@@ -1,8 +1,4 @@
 <script setup lang="ts">
-  const props = defineProps<{
-    onlyKeepTrigger?: boolean;
-  }>();
-
   const emit = defineEmits<{
     (e: 'acknowledgeWarning'): void;
     (e: 'returnToExercise'): void;
@@ -14,19 +10,19 @@
     if (!opened.value && !doNotTriggerCloseEvent) {
       emit('returnToExercise');
     }
-
     doNotTriggerCloseEvent = false;
   });
 
   function acknowledgeWarning() {
     doNotTriggerCloseEvent = true;
+    opened.value = false;
+
     emit('acknowledgeWarning');
   }
 </script>
 
 <template>
-  <slot v-if="props.onlyKeepTrigger" name="trigger" />
-  <Dialog v-bind="$attrs" v-model:open="opened" v-else>
+  <Dialog v-bind="$attrs" v-model:open="opened">
     <DialogTrigger as-child>
       <slot name="trigger" />
     </DialogTrigger>
@@ -34,19 +30,23 @@
       <DialogHeader>
         <DialogTitle>Attention</DialogTitle>
         <DialogDescription>
-          Avez-vous déjà passé du temps à chercher la solution par vous-même ?
-          Passer du temps à chercher maintenant auprès d'assistants est le plus
-          productif pour vous !
+          Toute votre progression sur cet exercice sera perdue. Voulez vous
+          vraiment recommencez depuis le début ?
         </DialogDescription>
       </DialogHeader>
 
-      <DialogFooter class="gap-2 justify-end">
-        <DialogClose as-childs>
-          <Button size="default"> Je souhaite continuer à chercher </Button>
-        </DialogClose>
-        <Button @click="acknowledgeWarning()" variant="outline">
-          Je veux voir la correction
+      <DialogFooter>
+        <Button
+          @click="acknowledgeWarning()"
+          variant="destructive"
+          class="grow"
+        >
+          <LucideTriangleAlert class="h-4" />
+          Oui
         </Button>
+        <DialogClose as-child>
+          <Button class="grow" variant="outline"> Non </Button>
+        </DialogClose>
       </DialogFooter>
     </DialogContent>
   </Dialog>

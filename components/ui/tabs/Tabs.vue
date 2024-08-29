@@ -9,7 +9,7 @@
 </script>
 
 <template>
-  <TabsRoot v-bind="forwarded">
+  <TabsRoot v-bind="forwarded" activation-mode="manual">
     <slot />
   </TabsRoot>
 </template>

@@ -8,10 +8,12 @@ code:
     QUESTIONS_POSEES_LUPIN = 5
     QUESTIONS_POSEES_RAOUL = 1
     QUESTIONS_POSEES_GANIMARD = 0
+
     # les points initiaux sont à 0 au debut
     points_lupin = 0
     points_raoul = 0
     points_ganimard = 0
+
     for i in range(7):
         # Jour numéro i
         # Le programme lit les questions disponibles ce jour-ci
@@ -76,11 +78,13 @@ code:
     else:
         print("Raoul")
 
-    # Le but de cet exo est de vous apprendre à bien lire un énoncé aussi long et extraire toutes les
-    # informations pertinentes pour résoudre un problème.
-    # De plus, le problème vous introduit un outil très utile pendant votre ba1 et votre parcours à l'EPFL en général
-    # à savoir Ed Discussion. Soyez actif. Lisez les, répondez et posez des questions quand vous avez le
-    # temps, c'est toujours bien et des connaissances de plus.
+    '''
+    Le but de cet exo est de vous apprendre à bien lire un énoncé aussi long et extraire toutes les
+    informations pertinentes pour résoudre un problème.
+    De plus, le problème vous introduit un outil très utile pendant votre ba1 et votre parcours à l'EPFL en général
+    à savoir Ed Discussion. Soyez actif. Lisez les, répondez et posez des questions quand vous avez le
+    temps, c'est toujours bien et des connaissances de plus.
+    '''
 
 tests:
   - input: |
@@ -122,9 +126,7 @@ Les étudiants posent leurs questions librement, et, les assistants ou les profe
 
 Les étudiants peuvent aussi répondre aux questions des autres et c’est même conseillé, ça vous permet d’assimiler mieux le cours et les séries.
 
-Lupin, Ganimard et Raoul sont trois étudiants à l'EPFL qui répondent souvent aux questions. Le but de cet exo est de trouver qui a répondu aux plus de questions, cependant il y a quelques règles qu'ils ont posées pour eux-mêmes :
-
--Lupin, Ganimard et Raoul sont trois amis à l'EPFL qui répondent souvent aux questions. Le but de cet exo est de trouver qui a répondu aux plus de questions, cependant il y a quelques règles qu'ils ont posées pour eux-mêmes :
+Lupin, Ganimard et Raoul sont trois amis à l'EPFL qui répondent souvent aux questions. Le but de cet exo est de trouver qui a répondu aux plus de questions, cependant il y a quelques règles qu'ils ont posées pour eux-mêmes :
 
 - Il ne peut y avoir qu'une réponse par question. Chaque réponse rapporte +1 à l'étudiant qui a répondu.
 - Si un étudiant pose une question et qu'il répond à sa propre question, il perd -1.

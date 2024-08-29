@@ -3,8 +3,10 @@ tableau = [ 1, 2, 3, 2 ]
 
 # on peut alors calculer si on le souhaite la somme des deux premières valeurs
 somme = tableau[0] + tableau[1]
+
 # on peut alors le stocker dans la quatrième case du tableau
 tableau[3] = somme
+
 # notre nouvelle séquence est alors [1, 2, 3, 3]
 # on aurait aussi pu écrire tout sur une seule ligne
 # tableau[3] = tableau[0] + tableau[1];

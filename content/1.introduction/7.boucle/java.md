@@ -15,7 +15,6 @@ code:
             int n = scanner.nextInt();
             
             // complétez le code
-        
         }
     }
   corrected: |
