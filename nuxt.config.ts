@@ -81,6 +81,16 @@ export default defineNuxtConfig({
         'Cross-Origin-Opener-Policy': 'same-origin',
       },
     },
+    '/api/**': {
+      // allow full access to the API
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers':
+          'X-Requested-With, Content-Type, Accept',
+        'Access-Control-Max-Age': '86400',
+      },
+    },
     // Cache language servers
     '/language-servers/**': {
       headers: {
