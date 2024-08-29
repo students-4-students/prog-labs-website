@@ -80,4 +80,4 @@ if a == b:
     print("Wow, amazing")
 ```
 
-⚠️ En Python, l’indentation (espace blanc avant une ligne de code) est très important pour le bon fonctionnnement du programme, par exemple, on ici on veut afficher “Wow, amazing” uniquement si `a == b`, on indente donc la ligne du `print` pour que Python la considère comme faisant partie du bloc de code à exécuter si `a == b`.
+⚠️ En Python, l’indentation (espace blanc avant une ligne de code) est très important pour le bon fonctionnnement du programme, par exemple, ici on veut afficher “Wow, amazing” uniquement si `a == b`, on indente donc la ligne du `print` pour que Python la considère comme faisant partie du bloc de code à exécuter si `a == b`.
