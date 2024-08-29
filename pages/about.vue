@@ -132,6 +132,10 @@
           name: 'Emmanuel (3)',
           photoUrl: '/team/emmanuel.png',
         },
+        {
+          name: 'Johnny (1)',
+          photoUrl: '/team/jo.png',
+        },
         'Antoine P. (1)',
       ],
     },
