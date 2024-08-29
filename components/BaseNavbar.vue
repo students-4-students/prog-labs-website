@@ -6,7 +6,7 @@
   const { disableLanguageServer } = storeToRefs(studentData);
 
   function switchColorMode() {
-    colorMode.preference = isDarkMode.value ? 'dark' : 'light';
+    colorMode.preference = isDarkMode.value ? 'light' : 'dark';
   }
 </script>
 
