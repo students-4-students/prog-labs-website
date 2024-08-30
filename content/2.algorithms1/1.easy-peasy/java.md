@@ -101,8 +101,8 @@ Un exercice souvent donné lors du BA1 est de vous demander de trouver une erreu
 
 On cherche à retrouver tous les nombres multiples de 3, 5 et 15 entre 1 et 100 (exclus)
 
-- Si le nombre est multiple de 3 on affiche "easy"
-- Si le nombre est multiple de 5 on affiche "peasy"
+- Si le nombre est multiple de 3 (mais pas de 15) on affiche "easy"
+- Si le nombre est multiple de 5 (mais pas de 15) on affiche "peasy"
 - Si le nombre est multiple de 15 on affiche "easy-peasy"
 - Sinon on affiche rien
 
