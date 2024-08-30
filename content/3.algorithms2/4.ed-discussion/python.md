@@ -44,7 +44,7 @@ code:
         if i == 0 or i == 4:  # si c'est lundi ou vendredi c'est Ganimard qui répond à toutes les questions
             points_ganimard += all_questions - QUESTIONS_POSEES_GANIMARD
         else:
-            # Il existe deux cas : les questions disponibles inférieur à 5 et les questions dispo supérieurs ou égale à 5
+            # Il existe deux cas : les questions disponibles inférieures à 5 et les questions dispo supérieurs ou égale à 5
             if questions_disponibles < 5:
                 # Le cas < 5
                 # On sait que Raoul va répondre à 5 questions, la question qui se pose est :
