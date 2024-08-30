@@ -15,4 +15,4 @@ tableau[indice_fin] = valeur_fin
 # On aurait aussi pu écrire
 # tableau[indice_fin] = tableau[indice_depart] + 1
 
-print(*tableau, "")
+print(*tableau)
