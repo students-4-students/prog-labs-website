@@ -15,6 +15,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxtjs/google-fonts',
     'nuxt-vitalizer',
+    '@sentry/nuxt/module',
   ],
 
   vite: {
@@ -156,4 +157,16 @@ export default defineNuxtConfig({
       ],
     },
   },
+
+  // @ts-expect-error
+  sentry: {
+    sourceMapsUploadOptions: {
+      org: 's4s-prog',
+      project: 's4s-prog',
+      authToken:
+        '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',
+    },
+  },
+
+  sourcemap: true,
 });

@@ -8,6 +8,7 @@
     "@nuxtjs/color-mode": "^3.4.2",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@pinia/nuxt": "^0.5.1",
+    "@sentry/nuxt": "^8.27.0",
     "@shikijs/monaco": "^1.10.3",
     "@typefox/pyright-browser": "^1.1.299",
     "@types/sequelize": "^4.28.20",
