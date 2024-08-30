@@ -49,7 +49,7 @@ code:
                 # Le cas < 5
                 # On sait que Raoul va répondre à 5 questions, la question qui se pose est :
                 # Raoul va répondre aux questions de Lupin ou ceux des autres étudiants ?
-                # l'énoncé nous dit que Raoul répond aux autres étudiants avant celles de ses amis
+                # l'énoncé nous dit que Raoul répond aux autres étudiants avant celles de Lupin
                 # (Ganimard ne pose pas de questions du coup on ne le compte pas)
                 # Si on a moins de 5 questions des autres étudiants, Raoul va répondre à toutes les
                 # questions disponibles et quelques questions de Lupin
