@@ -11,7 +11,7 @@ code:
     
     # Implémentez ce que demande la consigne
     
-    print(*tableau, "")
+    print(*tableau)
   corrected: |
     nb_elements = int(input())
     tableau     = list(map(int, input().split()))
@@ -30,7 +30,7 @@ code:
     # On aurait aussi pu écrire
     # tableau[indice_fin] = tableau[indice_depart] + 1
     
-    print(*tableau, "")
+    print(*tableau)
 
 tests:
   - input: |
