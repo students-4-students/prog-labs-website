@@ -95,6 +95,8 @@ La queue est représentée par une chaine de caractères comme suit :
 
 ### Exemple
 
+> Attention, notez que le food-truck se trouve à droite. Dans l'exemple ci-dessous, il y a donc 3 personnes devant vous et non 4 !
+
 Pour une queue telle que :
 
 `_ _ _ _ * _ _ _`
@@ -104,8 +106,6 @@ Votre programme doit afficher :
 `Temps d'attente : 4 minute(s) et 30 seconde(s).`
 
 Pensez donc à effectuer les calculs pour convertir votre résultat en minutes et secondes.
-
-> Attention, notez que le food-truck se trouve à droite. Dans l'exemple ci-dessus, il y a donc 3 personnes devant vous et non 4 !
 
 ::hint
 Cet exercice est difficile !
