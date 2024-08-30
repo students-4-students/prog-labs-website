@@ -172,7 +172,7 @@ Indice n°1
 ::
 
 ::hint
-Le 3ème indice est un spoiler, prenez une feuille et un stylo et réfléchissez plus amplement à ce problème (piste : lisez bien l’énoncé, divisez les situations par étudiant, par jour et étudiez les dépendances qui existent entre les différents facteurs de l’exercice…)
+Le 3<sup>e</sup> indice est un spoiler, prenez une feuille et un stylo et réfléchissez plus amplement à ce problème (piste : lisez bien l’énoncé, divisez les situations par étudiant, par jour et étudiez les dépendances qui existent entre les différents facteurs de l’exercice…)
 
 #title
 Indice n°2
@@ -181,9 +181,9 @@ Indice n°2
 ::hint
 Il y a plusieurs cas à gérer :
 
-- le cas du Lundi et du Vendredi, où Ganimard seulement répond
+- le cas du lundi et du vendredi, où Ganimard seulement répond
 - sinon
-- Raoul a chaque jour (=/= Lundi, Vendredi) 5 points. Pourquoi ? son ami Lupin pose chaque jour 5 questions et Raoul a l’avantage sur Lupin (c.-à-d. il répond avant lui), donc il est sur d’avoir les 5 points chaque jour (=/= Lundi, Vendredi) malgré toutes les conditions.
+- Raoul a chaque jour (=/= lundi, vendredi) 5 points. Pourquoi ? son ami Lupin pose chaque jour 5 questions et Raoul a l’avantage sur Lupin (c.-à-d. il répond avant lui), donc il est sur d’avoir les 5 points chaque jour (=/= lundi, vendredi) malgré toutes les conditions.
 - dans le cas où le nombre de questions disponibles est inférieur à 5 (dans ce cas Lupin va répondre à une partie de ses propres questions, points négatifs !)
 - dans le cas où le nombre de questions disponibles est plus que 5, alors Lupin va répondre à ses 5 questions (points négatifs !) + le reste (les questions restantes après que Raoul ait répondu sur les 5 questions) des “questions disponibles” (points positifs !)
 

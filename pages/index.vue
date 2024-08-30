@@ -60,10 +60,12 @@
           <LucideBookCopy class="ml-3 w-6 h-6" />
         </h2>
         <p class="text-xl text-foreground/75 xl:max-w-[70%]">
-          Lors du 1er TP, concentrez-vous sur la série de syntaxe, puis
-          commencez 1 ou 2 algorithmes et terminez les autres lors du 2ᵉ TP. Pas
-          d'inquiétude si tout n'est pas fini : les séries d'exercices de l'EPFL
-          dépassent souvent le temps imparti.
+          Lors du 1<sup>er</sup> TP, concentrez-vous sur la série de syntaxe,
+          puis commencez 1 ou 2 algorithmes et terminez les autres lors du 2<sup
+            >e</sup
+          >
+          TP. Pas d'inquiétude si tout n'est pas fini : les séries d'exercices
+          de l'EPFL dépassent souvent le temps imparti.
         </p>
       </div>
       <div class="flex flex-col">

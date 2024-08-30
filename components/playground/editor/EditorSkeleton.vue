@@ -6,7 +6,7 @@
 <template>
   <div class="w-full space-y-2 p-4">
     <p class="font-medium mb-4 text-muted-foreground">
-      Chargement de l'éditeur en cours... Cela peut prendre un moment.
+      Chargement de l’éditeur en cours... Cela peut prendre un moment.
     </p>
     <Skeleton
       v-for="width in skeletonSizes"
