@@ -61,25 +61,25 @@ code:
                         // Le cas < 5
                         // On sait que Raoul va répondre à 5 questions, la question qui se pose est  :
                         // Raoul va répondre aux questions de Arsène ou ceux des autres étudiants ?
-                        // l'énoncé nous dit que Raoul répond aux autres étudiants avant celles de Raoul
+                        // l'énoncé nous dit que Raoul répond aux autres étudiants avant celles de Lupin
                         // (Ganimard ne pose pas de questions du coup on ne le compte pas) 
                         // Si on a moins de 5 questions des autres étudiants, Raoul va répondre à toutes les
-                        // questions disponibles et quelques questions de Arséne 
-                        // --> Arsène va avoir moins de points négatives.
+                        // questions disponibles et quelques questions de Lupin 
+                        // --> Lupin va avoir moins de points négatives.
                         pointsLupin -= (5 - questionsDisponibles);
                         questionsDisponibles = 0;
                     } else {
                         // Ici, Raoul répond qu'aux questions des qutres étudiants
-                        // Arsène va répondre a toutes ses propres queestions
+                        // Lupin va répondre a toutes ses propres queestions
                         pointsLupin -= 5;
                         questionsDisponibles -= 5;
                     }
                     // on est sur que chaque jour Raoul a +5, car il y a toujours 5 ou plus questions disponibles 
-                    // puisque Arsène à lui tout seul pose 5 questions
+                    // puisque Lupin à lui tout seul pose 5 questions
                     pointsRaoul += 5;
                     // ajouter le reste des questions disponibles
                     pointsLupin += questionsDisponibles;
-                    // Arsène est le seul à répondre aux questions de Raoul si Ganimard ne le fait pas
+                    // Lupin est le seul à répondre aux questions de Raoul si Ganimard ne le fait pas
                     pointsLupin += QUESTIONS_POSEES_RAOUL;
         
                 }

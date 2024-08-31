@@ -44,12 +44,12 @@ code:
         if i == 0 or i == 4:  # si c'est lundi ou vendredi c'est Ganimard qui répond à toutes les questions
             points_ganimard += all_questions - QUESTIONS_POSEES_GANIMARD
         else:
-            # Il existe deux cas : les questions disponibles inférieur à 5 et les questions dispo supérieurs ou égale à 5
+            # Il existe deux cas : les questions disponibles inférieures à 5 et les questions dispo supérieurs ou égale à 5
             if questions_disponibles < 5:
                 # Le cas < 5
                 # On sait que Raoul va répondre à 5 questions, la question qui se pose est :
                 # Raoul va répondre aux questions de Lupin ou ceux des autres étudiants ?
-                # l'énoncé nous dit que Raoul répond aux autres étudiants avant celles de ses amis
+                # l'énoncé nous dit que Raoul répond aux autres étudiants avant celles de Lupin
                 # (Ganimard ne pose pas de questions du coup on ne le compte pas)
                 # Si on a moins de 5 questions des autres étudiants, Raoul va répondre à toutes les
                 # questions disponibles et quelques questions de Lupin
