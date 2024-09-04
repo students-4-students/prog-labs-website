@@ -10,21 +10,21 @@ class Main {
 			parents[i] = sc.nextInt();
 		}
 		
-		int nbRequetes = sc.nextInt();
+		int nbRestaurants = sc.nextInt();
 	
-		int[] kArretSuivant = new int[nbRequetes];
-		int[] arretDepart = new int[nbRequetes];
-		for (int i = 0; i < nbRequetes; i ++) {
-			kArretSuivant[i] = sc.nextInt();
+		int[] distancesALArret = new int[nbRestaurants];
+		int[] arretDepart = new int[nbRestaurants];
+		for (int i = 0; i < nbRestaurants; i ++) {
+			distancesALArret[i] = sc.nextInt();
 			arretDepart[i] = sc.nextInt();
 		}
 		
 		// Pour chaque requête
-		for (int i = 0; i < nbRequetes; i ++) {
+		for (int i = 0; i < nbRestaurants; i ++) {
 			int arretActuel = arretDepart[i];
 	
-			// On itère kArretSuivant[i] fois pour prendre le parent de l'arret actuel et avancer pour avancer k fois
-			for (int iterationActuelle = 0; iterationActuelle < kArretSuivant[i]; iterationActuelle ++) {
+			// On itère distancesALArret[i] fois pour prendre le parent de l'arret actuel, en réduisant à chaque fois la distance de 1
+			for (int distance = distancesALArret[i]; distance > 0; distance --) {
 				arretActuel = parents[arretActuel];
 			}
 	
@@ -50,9 +50,9 @@ class Main {
 		}
 	
 		// Pour chaque requête
-		for (int i = 0; i < nbRequetes; i ++) {
+		for (int i = 0; i < nbRestaurants; i ++) {
 			int arretActuel = arretDepart[i];
-			int kADecomposer = kArretSuivant[i];
+			int kADecomposer = distancesALArret[i];
 		
 			for (int iPuissance = 0; iPuissance < MAX_P2K; iPuissance ++) {
 				// Si kADecomposer est impair alors la iPuissance-ème puissance est inclue dans k.

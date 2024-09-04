@@ -1,19 +1,19 @@
 nb_arrets = int(input())
 parents = list(map(int, input().split()))
-nb_requetes = int(input())
-k_arret_suivant = []
+nb_restaurants = int(input())
+distances_a_l_arret = []
 arret_depart = []
-for i in range(nb_requetes):
+for i in range(nb_restaurants):
     k, d = list(map(int, input().split()))
-    k_arret_suivant.append(k)
+    distances_a_l_arret.append(k)
     arret_depart.append(d)
 
 # Pour chaque requête
-for i in range(nb_requetes):
+for i in range(nb_restaurants):
 	arret_actuel = arret_depart[i]
 	
-	# On itère kArretSuivant[i] fois pour prendre le parent de l'arret actuel et avancer pour avancer k fois
-	for iteration_actuelle in range(k_arret_suivant[i]):
+	# On itère distancesALArret[i] fois pour prendre le parent de l'arret actuel, en réduisant à chaque fois la distance de 1
+	for iteration_actuelle in range(distances_a_l_arret[i], 0, -1):
 		arret_actuel = parents[arret_actuel]
 		
 	print(arret_actuel)
@@ -34,15 +34,15 @@ for i_puissance in range(1, MAX_P2K):
 		parents_2k[i_puissance][i_arret] = parents_2k[i_puissance - 1][parents_2k[i_puissance - 1][i_arret]]
 	
 # Pour chaque requête
-for i in range(nb_requetes):
+for i in range(nb_restaurants):
 	arret_actuel = arret_depart[i]
-	k_a_decomposer = k_arret_suivant[i]
+	k_a_decomposer = distances_a_l_arret[i]
 		
 	for i_puissance in range(MAX_P2K):
-		# Si kADecomposer est impair alors la iPuissance-ème puissance est inclue dans k.
+		# Si k_a_decomposer est impair alors la iPuissance-ème puissance est inclue dans k.
 		if k_a_decomposer % 2 == 1:
 			arret_actuel = parents_2k[i_puissance][arret_actuel]
-		# On divise kADecomposer pour passer à la puissance suivante
+		# On divise k_a_decomposer pour passer à la puissance suivante
 		k_a_decomposer //= 2
 	
 	print(arret_actuel)

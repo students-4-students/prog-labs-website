@@ -10,15 +10,15 @@ class Main {
 			parents[i] = sc.nextInt();
 		}
 		
-		int nbRequetes = sc.nextInt();
+		int nbRestaurants = sc.nextInt();
 	
-		int[] kArretSuivant = new int[nbRequetes];
-		int[] arretDepart = new int[nbRequetes];
-		for (int i = 0; i < nbRequetes; i ++) {
-			kArretSuivant[i] = sc.nextInt();
+		int[] distancesALArret = new int[nbRestaurants];
+		int[] arretDepart = new int[nbRestaurants];
+		for (int i = 0; i < nbRestaurants; i ++) {
+			distancesALArret[i] = sc.nextInt();
 			arretDepart[i] = sc.nextInt();
 		}
 		
-		// Affichez pour chaque requête le kArretSuivant-ème arrêt suivant de arretDepart
+		// Affichez pour chaque requête l'arrêt à une distance distancesALArret[i] de l'arrêt arretDepart[i]
 	}
 }

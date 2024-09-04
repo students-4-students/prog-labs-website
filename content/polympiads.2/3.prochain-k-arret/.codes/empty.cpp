@@ -12,14 +12,14 @@ int main () {
         cin >> parents[i];
     }
 
-    int nbRequetes;
-    cin >> nbRequetes;
+    int nbRestaurants;
+    cin >> nbRestaurants;
 
-    vector<int> kArretSuivant (nbRequetes);
-    vector<int> arretDepart (nbRequetes);
-    for (int i = 0; i < nbRequetes; i ++) {
-        cin >> kArretSuivant[i] >> arretDepart[i];
+    vector<int> distancesALArret (nbRestaurants);
+    vector<int> arretDepart (nbRestaurants);
+    for (int i = 0; i < nbRestaurants; i ++) {
+        cin >> distancesALArret[i] >> arretDepart[i];
     }
     
-    // Affichez pour chaque requête le kArretSuivant[i]-ème arrêt suivant de arretDepart[i]
+    // Affichez pour chaque requête l'arrêt à une distance distancesALArret[i] de l'arrêt arretDepart[i]
 }
