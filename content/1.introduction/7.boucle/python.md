@@ -81,9 +81,9 @@ for i in range(98):
 
 - `i` est une variable qui prendra successivement toutes les valeurs de la séquence générée par `range(98)`, c'est-à-dire de 0 à 97.
 - `in` indique que la variable `i` va prendre toutes les valeurs comprise dans `range(98)` (_range_ en anglais veut dire intervalle)
-- l’instruction `range(98)` crée un intervalle de valeur que `i` va prendre qui commence à 0 inclus et qui se finit à 98 exclu et le “pas” de l’intervalle est 1 ( `i` prend d’abord la valeur 0 puis 1 puis 2, etc), ce qui se traduit dans la boucle dans le fait que `i` est incrémentée par 1 à chaque itération de la boucle
+- l’instruction `range(98)` crée un intervalle de valeur que `i` va prendre qui commence à 0 inclus et qui se finit à 98 exclu et le “pas” de l’intervalle est 1 ( `i` prend d’abord la valeur 0 puis 1 puis 2, etc), ce qui se traduit dans la boucle dans le fait que `i` est incrémentée par 1 (on ajoute 1 à `i`) à chaque itération de la boucle
 
-> Note : la syntaxe plus générale de range est la suivante : `range(début, fin, pas)` où `*début*` est la valeur initiale (incluse) de l’intervalle, `*fin*` la valeur finale (exclue) de l’intervalle et `*pas*` détermine l'incrément entre chaque valeur successive de la séquence.
+> Note : la syntaxe plus générale de range est la suivante : `range(début, fin, pas)` où `*début*` est la valeur initiale (incluse) de l’intervalle, `*fin*` la valeur finale (exclue) de l’intervalle et `*pas*` détermine l'incrément (la valeur à ajouter) entre chaque valeur successive de la séquence.
 >
 > Par exemple `range(2, 11, 2)` crée l’intervalle suivant : $[2, 4, 6, 8, 10]$
 >

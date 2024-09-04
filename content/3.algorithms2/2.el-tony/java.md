@@ -9,8 +9,8 @@ code:
     class Main {
         public static void main(String[] args) {
             Scanner scanner = new Scanner(System.in);
-            int jourDebut = scanner.nextInt(); // lire le jour de début
-            int jourFin = scanner.nextInt(); // lire le jour de fin
+            int dateDebut = scanner.nextInt(); // lire le jour de début
+            int dateFin = scanner.nextInt(); // lire le jour de fin
             
             // à compléter
         }
@@ -21,10 +21,10 @@ code:
     class Main {
         public static void main(String[] args) {
             Scanner scanner = new Scanner(System.in);
-            int jourDebut = scanner.nextInt(); // lire le jour de debut
-            int jourFin = scanner.nextInt(); // lire le jour de fin
+            int dateDebut = scanner.nextInt(); // lire le jour de debut
+            int dateFin = scanner.nextInt(); // lire le jour de fin
             
-            int nbJour = jourFin - jourDebut + 1;
+            int nbJour = dateFin - dateDebut + 1;
             System.out.println( (nbJour + 1) * nbJour / 2 );
         }
     }
@@ -62,7 +62,7 @@ Il faut trouver le nombre de maté dans la pyramide de cannettes.
 
 ### Exemple
 
-Si `jourDebut` vaut `3` et `jourFin` vaut `5`, alors votre programme doit renvoyer 6 . En effet :
+Si `dateDebut` vaut `3` et `dateFin` vaut `5`, alors votre programme doit renvoyer 6 . En effet :
 
 Si on est le jour 1 (le 3 juillet), Tony a bu 1 maté
 

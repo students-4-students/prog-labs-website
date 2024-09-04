@@ -134,6 +134,6 @@ for (int i = 0; i < 98; i = i + 1) {
 
 - `i` agit comme compteur d’”itérations” et peut être utilisée n’importe où **au sein de la boucle**. Dans cet exemple, celle-ci est initialisée à 0 mais on peut bien entendu choisir n’importe quelle valeur.
 - `i < 98` impose une condition à votre compteur : la boucle continuera d’itérer tant que `i` sera inférieure à `98` (un choix arbitraire ici).
-- `i = i + 1` met à jour le compteur à la fin de chaque itération : dans notre exemple, `i` sera incrémentée de 1 à chaque itération. Notez qu’une syntaxe plus courte existe pour faire la même chose `i += 1`, `i++` ou encore `++i` (vous verrez qu’il y a de légères différences plus tard, mais dans tous les exercices proposés ici le fonctionnement sera identique).
+- `i = i + 1` met à jour le compteur à la fin de chaque itération : dans notre exemple, `i` sera incrémentée de 1 (on ajoute 1 à `i`) à chaque itération. Notez qu’une syntaxe plus courte existe pour faire la même chose `i += 1`, `i++` ou encore `++i` (vous verrez qu’il y a de légères différences plus tard, mais dans tous les exercices proposés ici le fonctionnement sera identique).
 
 Ainsi, notre code sera exécuté 98 fois.
