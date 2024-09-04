@@ -10,35 +10,37 @@ def get_renderers():
     ]
 
 def get_inputs ():
-    P = [ 0, 0, 1, 2, 2, 1, 5, 0, 7, 7 ]
-    D = [ 0 ] * len(P)
-    for i in range(1, len(P)):
-        D[i] = D[P[i]] + 1
-
     Q = 10
-    U = [ random.randint(1, len(P) - 1) for _ in range(Q) ]
-    V = [ random.randint( 1, D[u] ) for u in U ]
-
+    A = [ random.randint(0, 9) for _ in range(Q) ]
+    B = [ random.randint(0, 9) for _ in range(Q) ]
     return [
         [
             4,
             [ 0, 0, 0, 1 ],
             2,
-            [ 2, 3 ],
-            [ 1, 2 ]
+            [ 1, 2 ],
+            [ 1, 3 ]
         ],
         [
             10,
             [ 0, 0, 1, 2, 2, 1, 5, 0, 7, 7 ],
-            Q,
-        ] + [(u, v) for (u, v) in zip(V, U)]
+            Q
+        ]
+        + list(zip(A, B))
     ]
 def get_output (input):
     nbNoeuds, parents, Q, *args = input
 
-    F = lambda f, x, n: x if n == 0 else f(f, parents[x], n - 1)
+    def is_parent(node, child):
+        if node == child: return True
+        if child == 0: return False
+        return is_parent(node, parents[child])
+    def lca (a, b):
+        if is_parent(a, b):
+            return a
+        return lca(parents[a], b)
     
-    return [ F(F, n, d) for d, n in args ]
+    return [ lca(a, b) for a, b in args ]
 
 def render_pipeline ( path, renderer, inout ):
     init_render(path)
