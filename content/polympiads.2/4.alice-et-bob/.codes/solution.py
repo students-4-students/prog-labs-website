@@ -9,9 +9,9 @@ for i in range(nb_questions):
     arret_bob.append(b)
 
 # On calcule la distance à la racine
-distanceRacine = [0 for i in range(nb_arrets)]
+distance_racine = [0 for i in range(nb_arrets)]
 for i_arret in range(nb_arrets):
-	distanceRacine[i_arret] = distanceRacine[parents[i_arret]] + 1
+	distance_racine[i_arret] = distance_racine[parents[i_arret]] + 1
 	
 MAX_P2K = 20 # la puissance maximale est 2 puissance 20
 parents_2k = [[0 for i_arret in range(nb_arrets)] for i_puissance in range(MAX_P2K)]
@@ -33,26 +33,26 @@ for i in range(nb_questions):
 	
 	# Si la distance à la racine d'alice est inférieure à celle de bob, on les inverse
 	# C'est utile pour faciliter la suite du code
-	if (distanceRacine[alice] < distanceRacine[bob]):
+	if (distance_racine[alice] < distance_racine[bob]):
 		temp = alice
 		alice = bob
 		bob = temp
 	
-	kADecomposer = distanceRacine[alice] - distanceRacine[bob];
-	for iPuissance in range(MAX_P2K):
+	k_a_decomposer = distance_racine[alice] - distance_racine[bob];
+	for i_puissance in range(MAX_P2K):
 		# Si kADecomposer est impair alors la iPuissance-ème puissance est inclue dans k.
-		if (kADecomposer % 2 == 1):
-			alice = parents_2k[iPuissance][alice]
+		if (k_a_decomposer % 2 == 1):
+			alice = parents_2k[i_puissance][alice]
 
 		# On divise kADecomposer pour passer à la puissance suivante
-		kADecomposer /= 2
+		k_a_decomposer /= 2
 	
 	# Maintenant, Alice et Bob sont à la distance de la racine donc on peut appliquer l'algorithme
 	# De recherche en parcourant les puissances de 2
-	for iPuissance in range(MAX_P2K - 1, -1, -1):
-		if (parents_2k[iPuissance][alice] != parents_2k[iPuissance][bob]):
-			alice = parents_2k[iPuissance][alice]
-			bob = parents_2k[iPuissance][bob]
+	for i_puissance in range(MAX_P2K - 1, -1, -1):
+		if (parents_2k[i_puissance][alice] != parents_2k[i_puissance][bob]):
+			alice = parents_2k[i_puissance][alice]
+			bob = parents_2k[i_puissance][bob]
 	
 	# Maintenant, alice = bob et il s'agit du résultat ou alice != bob et parents[alice] = parents[bob] et c'est le résultat
 	if (alice != bob):
