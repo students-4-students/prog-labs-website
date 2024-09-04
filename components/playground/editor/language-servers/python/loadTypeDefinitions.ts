@@ -34,7 +34,7 @@ export async function loadTypeDefinitionFiles() {
   const tryPrependSlash = (filename: string) =>
     filename.replace(/^(stdlib|stubs)/, '/$1');
   return await readZipFile(
-    '/language-servers/python/stdlib-source-with-typeshed-pyi.zip',
+    'https://raw.githubusercontent.com/students-4-students/prog-labs-website/main/public/language-servers/python/stdlib-source-with-typeshed-pyi.zip',
     tryPrependSlash,
   );
 }

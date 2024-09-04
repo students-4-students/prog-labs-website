@@ -79,7 +79,7 @@ function onAbort() {
 }
 
 const wasmBase = '/language-servers/cpp/';
-const wasmDataUrl = `${wasmBase}clangd.wasm`;
+const wasmDataUrl = `https://raw.githubusercontent.com/students-4-students/prog-labs-website/main/public/language-servers/cpp/clangd.wasm`;
 
 const { default: Clangd } = await import(
   /* @vite-ignore */ `${wasmBase}clangd.js`
