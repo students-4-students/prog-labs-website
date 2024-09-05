@@ -40,12 +40,12 @@
     );
   }
 
-  const EXPECTED_SERIES_NB = 2;
+  const EXPECTED_SERIES_NB = 3;
   const { data: series, status: seriesStatus } = queryAllSeries({
     isPartnerSerie: { $ne: true },
   });
 
-  const EXPECTED_PARTNER_SERIES_NB = 1;
+  const EXPECTED_PARTNER_SERIES_NB = 2;
   const { data: partnerSeries, status: partnerSeriesStatus } = queryAllSeries({
     isPartnerSerie: { $eq: true },
   });
@@ -95,20 +95,25 @@
         Partenaires
         <LucideHandshake class="ml-3 w-6 h-6" />
       </h2>
-      <SerieCardSkeleton
-        v-if="partnerSeriesStatus === 'pending'"
-        v-for="_ in EXPECTED_PARTNER_SERIES_NB"
-      />
-      <SerieCard
-        v-else
-        v-for="partnerSerie in partnerSeries"
-        :serieData="partnerSerie"
-        class="max-w-[47rem]"
-      >
-        <template #banner>
-          <NuxtImg class="h-24 mb-4 aspect-auto" src="/logos/polympiads.svg" />
-        </template>
-      </SerieCard>
+      <div class="flex flex-col md:flex-row gap-4 xl:gap-6 flex-wrap">
+        <SerieCardSkeleton
+          v-if="partnerSeriesStatus === 'pending'"
+          v-for="_ in EXPECTED_PARTNER_SERIES_NB"
+        />
+        <SerieCard
+          v-else
+          v-for="partnerSerie in partnerSeries"
+          :serieData="partnerSerie"
+          class="min-w-[32rem] max-w-[47rem]"
+        >
+          <template #banner>
+            <NuxtImg
+              class="h-24 mb-4 aspect-auto"
+              src="/logos/polympiads.svg"
+            />
+          </template>
+        </SerieCard>
+      </div>
     </div>
   </div>
 </template>
