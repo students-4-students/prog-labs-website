@@ -176,7 +176,7 @@ Indice n°1
 ::
 
 ::hint
-Les valeurs dans la liste dureesRestaurants sont strictement croissantes.
+Les valeurs dans la liste `dureesAuxArrets` sont strictement croissantes.
 
 #title
 Indice n°2
