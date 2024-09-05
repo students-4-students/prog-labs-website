@@ -1,6 +1,6 @@
 ---
 title: 'Alice et Bob'
-description: 'Aidez Alice et Bob à déterminer où ils pourront se retrouver selon l'arrêt où ils se trouvent'
+description: 'Aidez Alice et Bob à déterminer où ils pourront se retrouver selon leur arrêt où ils se trouvent'
 
 code:
   default: |
