@@ -88,6 +88,8 @@ La queue est représentée par une chaine de caractères comme suit :
 
 ### Exemple
 
+> Attention, notez que le food-truck se trouve à droite. Dans l'exemple ci-dessous, il y a donc 3 personnes devant vous et non 4 !
+
 Pour une queue telle que :
 
 `_ _ _ _ * _ _ _`

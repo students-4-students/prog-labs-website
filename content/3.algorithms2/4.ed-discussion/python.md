@@ -44,12 +44,12 @@ code:
         if i == 0 or i == 4:  # si c'est lundi ou vendredi c'est Ganimard qui répond à toutes les questions
             points_ganimard += all_questions - QUESTIONS_POSEES_GANIMARD
         else:
-            # Il existe deux cas : les questions disponibles inférieur à 5 et les questions dispo supérieurs ou égale à 5
+            # Il existe deux cas : les questions disponibles inférieures à 5 et les questions dispo supérieurs ou égale à 5
             if questions_disponibles < 5:
                 # Le cas < 5
                 # On sait que Raoul va répondre à 5 questions, la question qui se pose est :
                 # Raoul va répondre aux questions de Lupin ou ceux des autres étudiants ?
-                # l'énoncé nous dit que Raoul répond aux autres étudiants avant celles de ses amis
+                # l'énoncé nous dit que Raoul répond aux autres étudiants avant celles de Lupin
                 # (Ganimard ne pose pas de questions du coup on ne le compte pas)
                 # Si on a moins de 5 questions des autres étudiants, Raoul va répondre à toutes les
                 # questions disponibles et quelques questions de Lupin
@@ -156,7 +156,7 @@ Indice n°1
 ::
 
 ::hint
-Le 3ème indice est un spoiler, prenez une feuille et un stylo et réfléchissez plus amplement à ce problème (piste : lisez bien l’énoncé, divisez les situations par étudiant, par jour et étudiez les dépendances qui existent entre les différents facteurs de l’exercice…)
+Le 3<sup>e</sup> indice est un spoiler, prenez une feuille et un stylo et réfléchissez plus amplement à ce problème (piste : lisez bien l’énoncé, divisez les situations par étudiant, par jour et étudiez les dépendances qui existent entre les différents facteurs de l’exercice…)
 
 #title
 Indice n°2
@@ -165,9 +165,9 @@ Indice n°2
 ::hint
 Il y a plusieurs cas à gérer :
 
-- le cas du Lundi et du Vendredi, où Ganimard seulement répond
+- le cas du lundi et du vendredi, où Ganimard seulement répond
 - sinon
-- Raoul a chaque jour (=/= Lundi, Vendredi) 5 points. Pourquoi ? son ami Lupin pose chaque jour 5 questions et Raoul a l’avantage sur Lupin (c.-à-d. il répond avant lui), donc il est sur d’avoir les 5 points chaque jour (=/= Lundi, Vendredi) malgré toutes les conditions.
+- Raoul a chaque jour (=/= lundi, vendredi) 5 points. Pourquoi ? son ami Lupin pose chaque jour 5 questions et Raoul a l’avantage sur Lupin (c.-à-d. il répond avant lui), donc il est sur d’avoir les 5 points chaque jour (=/= lundi, vendredi) malgré toutes les conditions.
 - dans le cas où le nombre de questions disponibles est inférieur à 5 (dans ce cas Lupin va répondre à une partie de ses propres questions, points négatifs !)
 - dans le cas où le nombre de questions disponibles est plus que 5, alors Lupin va répondre à ses 5 questions (points négatifs !) + le reste (les questions restantes après que Raoul ait répondu sur les 5 questions) des “questions disponibles” (points positifs !)
 

@@ -62,7 +62,7 @@ Affichez à l’aide de `print`, dans l’ordre :
 - le résultat de l’addition de ces deux nombres
 
 Deux textes sont stockés dans les variables `texte1` et `texte2`.
-Affichez le résultat de la concaténation de ces deux chaînes de caractères
+Affichez le résultat de la concaténation de ces deux chaînes de caractères (c’est à dire les coller l’une à la suite de l’autre).
 
 ### Cours
 

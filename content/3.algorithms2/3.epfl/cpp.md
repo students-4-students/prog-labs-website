@@ -158,7 +158,7 @@ On vous donne les 3 premières lettres soit EPF, occupez-vous uniquement de dess
 
 **Exemples de tests :**
 
-Si n = `7`, votre programme doit renvoyer (ne prenez que le L en compte) :
+Par exemple, si n = `7`, votre programme doit renvoyer (ne prenez que le L en compte) :
 
 ```java
 *******  *****   ******  *

@@ -99,7 +99,7 @@ etc.
 Vous devez avoir une seule contrainte dans la boucle for qui est celle de vérifier que le nombre n’est pas 78. En d’autres termes pas d’utilisation de % 3.
 
 ::hint
-Rappelez-vous qu’une boucle `for` est de cette forme. Il pourrait être intéressant de modifier un peu l’incrémentation que vous avez vu en cours…
+Rappelez-vous qu’une boucle `for` est de cette forme. Il pourrait être intéressant de modifier un peu l’incrémentation (la valeur à ajouter à chaque itération) que vous avez vu en cours…
 
 ```cpp
 for (initialisation ; condition ; incrémentation) {

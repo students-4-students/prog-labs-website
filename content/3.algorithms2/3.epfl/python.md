@@ -114,7 +114,7 @@ Vous pourriez utiliser l'instruction `print("un texte...", end="")` qui afficher
 
 **Exemples de tests :**
 
-Si n = `7`, votre programme doit renvoyer (ne prenez que le L en compte) :
+Par exemple, si n = `7`, votre programme doit renvoyer (ne prenez que le L en compte) :
 
 ```java
 *******  *****   ******  *
