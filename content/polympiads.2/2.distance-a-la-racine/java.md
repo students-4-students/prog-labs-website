@@ -68,18 +68,18 @@ tests:
   - input: |
       10
       0 0 1 2 2 1 5 0 7 7
-      0 7 8 7 8 6 3 3 1 9
+      0 8 5 5 9 3 5 1 10 8
     expectedOutput: |-
       0
-      7
-      15
-      22
-      23
+      8
       13
+      18
+      22
+      11
       16
-      3
-      4
-      12
+      1
+      11
+      9
 ---
 
 ### Distances au centre-ville
