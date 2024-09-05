@@ -26,7 +26,7 @@
           <LucideUsersRound class="w-4 h-4 mr-2" />
           Section
           {{
-            section !== undefined ? '"' + section?.name + '"' : 'non définie'
+            section !== undefined ? '“' + section?.name + '”' : 'non définie'
           }}
         </Button>
       </template>

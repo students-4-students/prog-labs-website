@@ -73,3 +73,6 @@ Le code fourni compile-t-il ? Si oui, qu’affiche-t-il ? Est-ce le comportement
 Réglez-les.
 
 **Attention : il y a au moins 3 erreurs :)**
+
+Aide : chaque variable a un type. Une des erreurs pourrait (hehe) être due à une addition de deux types différents... pour la régler, sachez qu'il existe une fonction pour transformer un type en un autre.
+Par exemple, si vous avez un entier `i`, vous pouvez le transformer en chaine de caractères avec `str(i)`.

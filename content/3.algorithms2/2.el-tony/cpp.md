@@ -9,10 +9,10 @@ code:
     using namespace std;
 
     int main() {
-        int jourDebut (0); // lire le jour de debut
-        cin >> jourDebut;
-        int jourFin (0); // lire le jour de fin
-        cin >> jourFin;
+        int dateDebut (0); // lire le jour de debut
+        cin >> dateDebut;
+        int dateFin (0); // lire le jour de fin
+        cin >> dateFin;
             
         // à compléter
 
@@ -24,12 +24,12 @@ code:
     using namespace std;
 
     int main() {
-        int jourDebut (0); // lire le jour de debut
-        cin >> jourDebut;
-        int jourFin (0); // lire le jour de fin
-        cin >> jourFin;
+        int dateDebut (0); // lire le jour de debut
+        cin >> dateDebut;
+        int dateFin (0); // lire le jour de fin
+        cin >> dateFin;
             
-        int nbJour (jourFin - jourDebut + 1);
+        int nbJour (dateFin - dateDebut + 1);
         cout << ((nbJour + 1) * nbJour) / 2 << endl;
 
         return 0;
@@ -68,7 +68,7 @@ Il faut trouver le nombre de maté dans la pyramide de cannettes.
 
 ### Exemple
 
-Si `jourDebut` vaut `3` et `jourFin` vaut `5`, alors votre programme doit renvoyer 6 . En effet :
+Si `dateDebut` vaut `3` et `dateFin` vaut `5`, alors votre programme doit renvoyer 6 . En effet :
 
 Si on est le jour 1 (le 3 juillet), Tony a bu 1 maté
 
