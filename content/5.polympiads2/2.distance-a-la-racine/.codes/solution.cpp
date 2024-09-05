@@ -25,6 +25,6 @@ int main () {
     }
 
     for (int iArret = 0; iArret < nbArrets; iArret ++) {
-        cout << distancesAuCentre[iArret];
+        cout << distancesAuCentre[iArret] << endl;
     }
 }
