@@ -143,7 +143,7 @@ Indice n°1
 ::
 
 ::hint
-Les valeurs dans la liste durees_restaurants sont strictement croissantes.
+Les valeurs dans la liste `durees_aux_arrets` sont strictement croissantes.
 
 #title
 Indice n°2
