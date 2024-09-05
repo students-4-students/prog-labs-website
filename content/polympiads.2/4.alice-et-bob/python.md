@@ -1,6 +1,6 @@
 ---
 title: 'Alice et Bob'
-description: 'Aidez Alice et Bob à déterminer où ils pourront se retrouver selon l'arrêt où ils se trouvent'
+description: 'Aidez Alice et Bob à déterminer où ils pourront se retrouver selon leur arrêt où ils se trouvent'
 
 code:
   default: |
@@ -96,27 +96,27 @@ tests:
       10
       0 0 1 2 2 1 5 0 7 7
       10
-      3 4
-      2 0
+      4 4
+      8 8
+      3 5
+      1 2
+      2 2
       4 6
-      8 4
-      0 9
-      6 4
-      6 2
-      3 1
-      8 7
-      9 2
+      0 1
+      7 8
+      4 7
+      1 5
     expectedOutput: |-
+      4
+      8
+      1
+      1
       2
-      0
       1
       0
-      0
-      1
-      1
-      1
       7
       0
+      1
 ---
 
 ### Alice et Bob
