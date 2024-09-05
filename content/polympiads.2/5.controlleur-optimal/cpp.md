@@ -1,6 +1,6 @@
 ---
 title: 'Statistiques sur les voyageurs'
-description: 'Vous faites désormais partie de l'entreprise de transports, et souhaitez faire des statistiques.'
+description: 'Votre entreprise vous demande calculer des statistiques sur les chemins des voyageurs.'
 
 code:
   default: |
@@ -157,27 +157,27 @@ tests:
       10
       0 0 1 2 2 1 5 0 7 7
       10
+      1 3
       0 0
-      4 6
-      2 7
-      8 2
-      7 0
-      2 2
-      6 6
-      8 9
+      3 9
+      8 4
+      0 5
+      6 2
+      6 5
+      5 2
+      2 9
       9 4
-      7 3
     expectedOutput: |-
       6
-      5
-      6
+      8
+      7
+      2
+      2
+      4
+      2
+      4
       1
-      2
-      1
-      2
-      6
-      2
-      2
+      3
 ---
 
 ### Statistiques sur les voyageurs
