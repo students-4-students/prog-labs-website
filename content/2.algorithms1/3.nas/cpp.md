@@ -53,7 +53,7 @@ code:
             if (characterActuel == '*') {            
                 avantMoi = true;            
             } else if (characterActuel == '_') {            
-                if (apresMoi) nombrePersonnes++;
+                if (avantMoi) nombrePersonnes++;
             }            
         }    
         
