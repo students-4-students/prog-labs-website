@@ -1,3 +1,5 @@
+![Exercise playground screenshot](https://i.imgur.com/tndWlOa.png)
+
 # [S4S Programming Labs](https://prog.students4students.ch)
 
 Ce site web permet aux étudiants de S4S de découvrir la programmation avec une série d'introduction à la syntaxe et des algorithmes pour mettre en pratique la syntaxe.
