@@ -232,7 +232,7 @@
     <div class="flex basis-5/12">
       <NuxtImg
         class="h-full w-full border shadow-lg object-cover rounded-xl"
-        src="/illustrations/team-photo-placeholder.png"
+        src="/illustrations/team-photo-2024.png"
       />
     </div>
   </div>
