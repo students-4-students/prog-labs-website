@@ -140,7 +140,10 @@
           name: 'Johnny (1)',
           photoUrl: '/team/jo.png',
         },
-        'Antoine P. (1)',
+        {
+          name: 'Antoine P. (1)',
+          photoUrl: '/team/antoine-p.jpg',
+        },
       ],
     },
   ];
