@@ -108,4 +108,8 @@ nombre = "Salut"; // ne fonctionne pas !
 string text (2); // ne fonctionne pas non plus !
 ```
 
+En programmation, bien nommer ses variables est essentiel. C'est comme mettre des étiquettes claires sur des boîtes. Si vous avez des boîtes nommées "chaussettes", "livres" et "jouets", vous savez tout de suite ce qu'il y a dedans sans avoir à les ouvrir.
+
+De la même manière, si vous nommez une variable nombreDeVies au lieu de n, votre code est instantanément plus facile à comprendre pour vous et pour les autres. Des noms clairs permettent de gagner du temps, d'éviter la confusion et de corriger les erreurs plus facilement, surtout dans les grands projets où plusieurs personnes collaborent.
+
 Maintenant, c’est à vous de jouer !

@@ -50,7 +50,7 @@ tests:
 
 ### Objectif
 
-La grande majorité des algorithmes exécutent du code différent en fonction de calculs précédents (par exemple, si l’heure est 20h, alors on va dormir, sinon on travaille). Ce `si ... sinon ...` s’exprime avec ce qu’on appelle un branchement conditionnel.
+La grande majorité des algorithmes exécutent du code différent en fonction de calculs précédents (par exemple,  s’il est 20h ou plus tard, alors on va dormir, sinon on travaille). Ce `si ... sinon ...` s’exprime avec ce qu’on appelle un branchement conditionnel.
 
 ### Consigne
 

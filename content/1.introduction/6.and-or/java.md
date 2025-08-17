@@ -86,6 +86,8 @@ Dans la quasi-totalité des langages de programmation que vous rencontrerez, il 
 
 **Opérateur ET : si toutes les N propositions sont vraies**
 
+**Opérateur NON : si la proposition est fausse**
+
 Par exemple :
 
 ```java

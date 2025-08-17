@@ -144,7 +144,7 @@ On vous donne les 3 premières lettres soit EPF, occupez-vous uniquement de dess
 
 ### Entrées
 
-- **n** (Entier) : la hauteur maximale des lettres
+- **n** (Entier) : la hauteur et la largeur maximale des lettres
 
 **Exemples de tests :**
 

@@ -110,7 +110,7 @@ Vous pourriez utiliser l'instruction `print("un texte...", end="")` qui afficher
 
 ### Entrées
 
-- **n** (Entier) : la hauteur maximale des lettres
+- **n** (Entier) : la hauteur et la largeur maximale des lettres
 
 **Exemples de tests :**
 

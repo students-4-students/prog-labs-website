@@ -99,6 +99,10 @@ tests:
 
 ![Easy Peasy](/banner/easypeasy.png)
 
+### **Objectif**
+
+Ce code qu’on vous donne doit être corrigé, trouvez cette petite faille.
+
 ### Enoncé
 
 Un exercice souvent donné lors du BA1 est de vous demander de trouver une erreur dans un algorithme. C’est l’objectif de cet exercice.
@@ -115,10 +119,6 @@ On cherche à retrouver tous les nombres multiples de 3, 5 et 15 entre 1 et 100 
 Si n = 15, le code doit afficher `easy-peasy`.
 
 Si n = 6, le code doit afficher `easy`.
-
-### **Objectif**
-
-Ce code qu’on vous donne doit être corrigé, trouvez cette petite faille.
 
 **Bien sûr, la correction n’est pas unique, deux codes différents peuvent aboutir au même résultat !**
 

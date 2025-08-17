@@ -35,13 +35,12 @@ code:
         return 0;
     }
 
-    // L’informatique et la programmation
-    // ce n'est pas que des boucles for et des conditions
-    // il faut savoir utiliser les outils, il y a beaucoup de maths
-    // et de logique relié à la programmation,
-    // il faut être attentif et trouver a chaque fois
-    // le moyen le plus efficace en temps et en mémoire pour résoudre un problème.
-    // La programmation c'est avant tout raisonner.
+    // L’informatique et la programmation ce ne sont pas que des boucles for et des 
+    //conditions, il faut aussi savoir utiliser les outils à notre disposition. Les maths 
+    //et la logique sont intimement liés à la programmation, il faut être attentif et 
+    //trouver à chaque fois le moyen le plus efficace, en temps et en mémoire, pour 
+    //résoudre un problème. La programmation c'est avant tout raisonner méthodiquement et 
+    //de manière concise
 
 tests:
   - input: |
@@ -58,7 +57,7 @@ tests:
 
 ### Enoncé
 
-Tony, étudiant à l'EPFL, est addict aux matés, cette addiction s'accentue de plus en plus pendant la période de révision (mois de Juillet uniquement).
+Tony, étudiant à l'EPFL, est addict aux matés, cette addiction s'accentue de plus en plus pendant la période de révision (mois de Juin uniquement).
 
 Il boit chaque jour un maté de plus que le nombre de maté qu'il a bu la veille. Il commence par 1 maté le premier jour.
 

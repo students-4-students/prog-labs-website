@@ -78,4 +78,8 @@ variable = True # la variable est à présent de type 'bool'
 
 > Note : pour celles et ceux voulant aller plus loin, en Python il existe une instruction permetant de déterminer à tout moment du programme le type courant d’une variable, c’est l’instruction `type(...)`. Par exemple pour afficher le type d’une variable vous pouvez utiliser la ligne suivante `print(type(variable))`
 
+En programmation, bien nommer ses variables est essentiel. C'est comme mettre des étiquettes claires sur des boîtes. Si vous avez des boîtes nommées "chaussettes", "livres" et "jouets", vous savez tout de suite ce qu'il y a dedans sans avoir à les ouvrir.
+
+De la même manière, si vous nommez une variable nombreDeVies au lieu de n, votre code est instantanément plus facile à comprendre pour vous et pour les autres. Des noms clairs permettent de gagner du temps, d'éviter la confusion et de corriger les erreurs plus facilement, surtout dans les grands projets où plusieurs personnes collaborent.
+
 Maintenant, c’est à vous de jouer !

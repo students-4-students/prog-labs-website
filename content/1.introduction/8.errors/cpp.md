@@ -59,7 +59,7 @@ tests:
 
 ### Objectif
 
-L’objectif est maintenant de vous apprendre à identifier et à corriger des erreurs de syntaxe. Votre réussite en BA1 pour programmation repose principalement sur votre capacité à identifier les problèmes et à les résoudre par vous-mêmes.
+L’objectif est maintenant de vous apprendre à identifier et à corriger des erreurs de syntaxe. Votre réussite en programmation en BA1 repose principalement sur votre capacité à identifier les problèmes et à les résoudre par vous-mêmes.
 
 ### Consigne
 
